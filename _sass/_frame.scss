@@ -62,15 +62,18 @@
     }
     .navbar {
         ul {
-            display: none;
+            opacity: 0;
+            transform: scale(0);
+            transition: opacity .2s;
             position: fixed;
-            padding: 10px 80px 10px 20px;
+            padding: 10px;
             top: 20px;
             right: 20px;
             background: #fff;
             box-shadow: 0 1px 5px rgba(0,0,0,0.5);
             &.open {
-                display: block;
+                transform: scale(1);
+                opacity: 1;
             }
             li {
                 padding: 8px;
@@ -79,6 +82,9 @@
                     margin-top: 5px;
                 }
                 display: block;
+                a {
+                    padding-right: 80px;
+                }
             }
         }
     }
