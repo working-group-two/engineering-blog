@@ -1,3 +1,11 @@
+.width-limit {
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
 .page-header {
     height: 70px;
     padding: 15px 0;
@@ -30,8 +38,50 @@
     }
 }
 
-@media(max-width: 666px) {
+.mobile-menu-trigger {
+    display: none;
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    border: 2px solid $brand;
+    border-radius: 3px;
+    height: 30px;
+    width: 30px;
+    transform: rotate(45deg);
+    padding: 0;
+    background: #f8f8f8;
+    cursor: pointer;
+    .uk-icon {
+        transform: rotate(-45deg);
+    }
+}
 
+@media(max-width: 666px) {
+    .mobile-menu-trigger {
+        display: block;
+    }
+    .navbar {
+        ul {
+            display: none;
+            position: fixed;
+            padding: 10px 80px 10px 20px;
+            top: 20px;
+            right: 20px;
+            background: #fff;
+            box-shadow: 0 1px 5px rgba(0,0,0,0.5);
+            &.open {
+                display: block;
+            }
+            li {
+                padding: 8px;
+                margin: 0;
+                + li {
+                    margin-top: 5px;
+                }
+                display: block;
+            }
+        }
+    }
 }
 
 .page-main {

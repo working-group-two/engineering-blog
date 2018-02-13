@@ -1,25 +1,25 @@
 $brand: #004343;
 
+* {
+  outline: none;
+}
+
 html {
   box-sizing: border-box;
   overflow-y: scroll;
   color: rgba(0,0,0,.80);
   line-height: 1.5;
   background: #f8f8f8;
+  height: 100%;
+}
+
+body {
   position: relative;
   min-height: 100%;
 }
 
 *, *:before, *:after {
   box-sizing: inherit;
-}
-
-.width-limit {
-  width: 100%;
-  padding-left: 20px;
-  padding-right: 20px;
-  max-width: 1000px;
-  margin: 0 auto;
 }
 
 h1, 
