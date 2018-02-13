@@ -41,7 +41,7 @@
 .mobile-menu-trigger {
     display: none;
     position: fixed;
-    right: 20px;
+    right: 25px;
     top: 20px;
     border: 2px solid $brand;
     border-radius: 3px;
@@ -62,18 +62,15 @@
     }
     .navbar {
         ul {
-            opacity: 0;
-            transform: scale(0);
-            transition: opacity .2s;
+            display: none;
             position: fixed;
             padding: 10px;
-            top: 20px;
+            top: 15px;
             right: 20px;
             background: #fff;
             box-shadow: 0 1px 5px rgba(0,0,0,0.5);
             &.open {
-                transform: scale(1);
-                opacity: 1;
+                display: block;
             }
             li {
                 padding: 8px;
@@ -83,6 +80,7 @@
                 }
                 display: block;
                 a {
+                    display: block;
                     padding-right: 80px;
                 }
             }
