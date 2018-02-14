@@ -9,9 +9,9 @@ permalink: /
 
 Mobile communication has been immensely successful. With over five billion users it is one of the world's most widely used technologies. 
 
-This reach has a price. Standardization, local implementations and decades of legacy have effectively stifled product innovation, leaving new products to come from internet players.
+This reach has a price. Extreme standardization, local implementations and configurations,  as well as decades of accumulated legacy have effectively stifled product and service innovation. Operators have largely been left with innovating on pricing, billing and bundling while  leaving new products and services to come from internet players.
 
-We are about combining the reach of mobile operators with the innovation capacity of an internet player. 
+Our ambition is to bridge these two worlds: Enable operators to utilize their local presence, customers and reach with modern technology to give mobile operators the innovation capacity of an internet player. 
 
 We do this in four steps: 
 1. We rebuild telco the "internet way"
