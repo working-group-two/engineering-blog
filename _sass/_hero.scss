@@ -3,6 +3,7 @@
     background-color: #555;
     background: url("/img/hero-img.jpg");
     margin-bottom: -60px; // counteract padding-top form main due to fixed header
+    background-size: cover;
     .hero-content {
         text-align: center;
         margin: 0 auto;
@@ -15,24 +16,7 @@
         .slogan {
             margin-top: 20px;
             color: #fff;
-            text-shadow: 0 0 50px rgba(0,0,0,.8), 0 0 5px rgba(0,0,0,.8);
+            text-shadow: 0 0 5px rgba(0,0,0,.8);
         }
-    }
-}
-
-@media(min-width: 1200px) {
-    .hero-bg {
-        animation: animated-bg 20s linear forwards;
-    }
-}
-
-@keyframes animated-bg {
-    from { 
-        background-size: 150%;
-        background-position-x: 0%; 
-    }
-    to { 
-        background-size: 100%; 
-        background-position-x: 25%;
     }
 }
