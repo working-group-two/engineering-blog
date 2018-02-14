@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Operators
-permalink: /partners
+permalink: /operators
 ---
 
 # Operators
