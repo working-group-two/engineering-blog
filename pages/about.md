@@ -15,3 +15,5 @@ We started our work in Telenor, a global communications company, but we are now 
 WorkingGroupTwo is owned approximately 5% by the board and employees, with the remaining stakes held in equal proportion by Telenor and Digital Alpha LLP. 
 
 Cisco is partner to the company and contributes with technology, products and customer discussions.
+
+The company has offices in Oslo and Stockholm, with a hub in Trondheim. The team consists mainly of software engineers, some telco engineers and a few other people to herd the flock. 
