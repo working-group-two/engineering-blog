@@ -4,7 +4,7 @@ title: Career
 permalink: /career
 ---
 
-# Join us
+# Join us at our "startup for grown-ups"
 
 WorkingGroupTwo is here to change the telecom industry, and to do so we need more great people. Our ambition is to make your mobile subscription much more useful and relevant than it is today. For that to happen we need to change the way traditional telecom works by making telecom work the “internet way”. This includes making operators work on a platform, controlling our own technology, enabling rapid iterations and focus on the end-user experience.
 
