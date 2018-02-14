@@ -28,10 +28,11 @@
         margin: 0;
         list-style: none;
         li {
-            padding: 8px;
             margin-left: 8px;
             display: inline-block;
             a {
+                display: inline-block;
+                padding: 8px;
                 color: $brand;
             }
         }
@@ -81,7 +82,6 @@
                 display: block;
             }
             li {
-                padding: 8px;
                 margin: 0;
                 + li {
                     margin-top: 5px;
