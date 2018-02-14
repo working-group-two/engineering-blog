@@ -14,12 +14,12 @@ This reach has a price. Standardization, local implementations and decades of le
 We are about combining the reach of mobile operators with the innovation capacity of an internet player. 
 
 We do this in four steps: 
-1. We rebuild telco "internet way"
+1. We rebuild telco the "internet way"
 2. We make our software work across radio networks
 3. We open up network functionality previously hidden from view 
 4. We create the basis for an product eco-system
 
-As a partner or developer you should build or integrate a product once, and it will work for multiple customers in multiple geographies.
+As a partner or developer you should build or integrate a product once, and it will work for multiple operators in multiple geographies.
 
 Our success is measured by that end-users find their mobile subscription much more useful. 
 
@@ -31,4 +31,4 @@ The core network is deployed multi-tenancy from the cloud. We will usually deplo
 
 We work together with our customers to integrate into the host mobile network and partners for interconnectivity, connectivity, roaming, billing and other necessary pieces. For the sake of clarity, we only deliver the mobile core network as-a-service, and partner for the rest. 
 
-We do not own the end-users, and we do not handle the wholesale capacity agreements. We are a neutral platform for an eco-system of partners and developers. 
+We do not own the end-users, and we do not handle the wholesale capacity agreements. We are a neutral platform for an eco-system of operators, partners and developers. 
