@@ -18,13 +18,16 @@ Cisco is partner to the company and contributes with technology, products and cu
 
 The company has offices in Oslo and Stockholm, with a hub in Trondheim. The team consists mainly of software engineers, some telco engineers and a few other people to herd the flock. 
 
-## Information about our partners
+# Information about our partners and investors
 
 **About Telenor** 
+
 Telenor Group is one of the world’s major mobile operators. We keep our customers connected in 13 markets across Scandinavia, Central Eastern Europe, and Asia. More than 30,000 employees are committed to responsible business conduct and being our customers’ favourite partner in digital life. Connecting the world has been Telenor’s domain for more than 160 years, and we are driven by a singular vision: to empower societies.
 
 **About Digital Alpha** 
+
 Digital Alpha is an investment firm with a strategic collaboration agreement with Cisco Systems, Inc. As part of this agreement, Digital Alpha has preferred access to Cisco’s pipeline of commercial opportunities requiring equity financing. Digital Alpha believes that it is the first fund focused on making private equity investments in the significant growth opportunities required to underpin the Digital Economy, including next generation networks, smart cities, and enterprise communication solutions.
 
 **About Cisco** 
+
 Cisco (NASDAQ: CSCO) is the worldwide technology leader that has been making the Internet work since 1984. Our people, products, and partners help society securely connect and seize tomorrow's digital opportunity today. 
