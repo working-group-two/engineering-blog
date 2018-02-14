@@ -1,4 +1,4 @@
-$brand: #00adb5;
+$brand: #009da5;
 
 * {
   outline: none;
@@ -26,4 +26,14 @@ h1,
 h2,
 h3 {
   color: $brand;
+}
+
+h1,
+h2 {
+  font-family: 'Catamaran', sans-serif;
+}
+
+h1 + p,
+h2 + p {
+  margin-top: 0;
 }
