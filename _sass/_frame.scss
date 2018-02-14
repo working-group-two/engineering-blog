@@ -58,14 +58,7 @@
     }
 }
 
-.hidden-desktop {
-    display: none;
-}
-
-@media(max-width: 666px) {
-    .hidden-desktop {
-        display: block;
-    }
+@media(max-width: 639px) {
     .mobile-menu-trigger {
         display: block;
     }
