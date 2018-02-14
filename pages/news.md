@@ -16,8 +16,8 @@ Working Group Two is growing fast. Since last fall we have hired X employees, an
 ## The launch of Working Group Two
 ### 5th of October, 2017
 
-Working Group Two is now an independent company owned about 5% by the board and employees, with the remaining stakes held in equal proportion by Telenor and Digital Alpha LLC.
+Today Working Group Two announced it's creation as  an independent company. 
 
-Cisco is a partner to the company and contributes with technology, products and customer discussions.
-
-Working Group Two is entering into its first commercial deployments, and is now looking for a small set of partners to develop the platform further.
+For press releases, please see
+https://newsroom.cisco.com/press-release-content?type=webcontent&articleId=1884622
+https://www.telenor.com/media/press-release/telenor-and-cisco-introduce-workinggrouptwo/
