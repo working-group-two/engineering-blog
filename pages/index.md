@@ -25,9 +25,9 @@ Our success is measured by that end-users find their mobile subscription much mo
 
 # The technical view
 
-In more technical terms we have built a full stack MVNO core network. This includes the functionality of the HLR/HSS, the MSC, the SMSC and MMSC and the PGW. This means we control the user database, the signalling and media stream related to voice, messaging and internet connectivity. This enables us to build value enhancing products together with the eco-system on top of this basic functionality. 
+In more technical terms we have built a full stack MVNO core network. This includes the functionality of the HLR/HSS, the MSC, the SMSC and MMSC and the PGW. This means we control the user database, the signalling and media streams related to voice, messaging and internet connectivity. Among other innovations we have webRTC compatability in-built into the platform. With control of these media and control planes we are inviting developers to help build services for end-users that are more useful and interesting. 
 
-The core network is deployed multi-tenancy from the cloud. We put the packet gateway locally. 
+The core network is deployed multi-tenancy from the cloud. We will usually deploy the packet gateway locally. 
 
 We work together with our customers to integrate into the host mobile network and partners for interconnectivity, connectivity, roaming, billing and other necessary pieces. For the sake of clarity, we only deliver the mobile core network as-a-service, and partner for the rest. 
 
