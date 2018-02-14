@@ -13,10 +13,13 @@ This reach has a price. Standardization, local implementations and decades of le
 
 We are about combining the reach of mobile operators with the innovation capacity of an internet player. 
 
-We do this in three steps: 
-1. We rebuild the mobile core network the "internet way"
-2. We make our software work consistently across radio networks enabling developers to build and integrate once
-3. We are opening up the core network functionality for developers to build products not previously possible or practical
+We do this in four steps: 
+1. We rebuild telco "internet way"
+2. We make our software work across radio networks
+3. We open up network functionality previously hidden from view 
+4. We create the basis for an product eco-system
+
+As a partner or developer you should build or integrate a product once, and it will work for multiple customers in multiple geographies.
 
 Our success is measured by that end-users find their mobile subscription much more useful. 
 
