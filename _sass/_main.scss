@@ -22,6 +22,11 @@ body {
   box-sizing: inherit;
 }
 
+a,
+a:hover {
+  color: $brand;
+}
+
 h1, 
 h2,
 h3 {
