@@ -19,6 +19,6 @@ We work together with our customers to integrate into the host mobile network an
 We do not own the end-users, and we do not handle the wholesale capacity agreements. We are a neutral platform for an eco-system of operators, partners and developers. 
 
 Our business model is based on 
-- an affordable start-up cost;  
-- a fee per active user;
-- revenue share on additional products or services that are monetized
+- An affordable start-up cost;  
+- A fee per active user;
+- Revenue share on additional products or services that are monetized

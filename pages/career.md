@@ -14,7 +14,6 @@ We have offices in Stockholm and Oslo, and a hub in Trondheim. We offer competit
 
 We are a bunch of great people with different skillset that have come together to change a traditional industry. We find inspiration from each other and believe that with bright people, commitment and a willingness to invest for long-term you can achieve great things.
 
-
 **We are hiring** in the following areas:
 
 *   **Ops and infrastructure** specialists to help us build a secure, flexible and scalable telco grade infrastructure the Internet way (experience with AWS and Docker is helpful)
