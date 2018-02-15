@@ -16,8 +16,11 @@ We are building a core network for the future, among other things that means tha
 
 ### What "Gs" do you support?
 
-We support 2G, 3G and 4G. In 4G we are currently developing VoLTE/VoWiFi. We also support VoIP through webRTC protocols as an integrated part of the platform. We also offer some aspects of 5G through being able to run separate tenancies of the core network. 
+We support 2G, 3G and 4G. In 4G we are currently developing VoLTE/VoWiFi. We also support VoIP through webRTC protocols as an integrated part of the platform. We also offer some aspects of 5G through being able to run separate tenancies of the core network. We will continuously build and improve our network. Our approach is more about solving use-cases supported by the radio network as opposed to "jumping Gs". 
 
+### What functionality does your network support? 
+
+We deliver user databases, voice, messaging and internet connectivity from the core network. In telco terms we have the HLR/HSS, SMSC, MMSC, MSC and PGW. 
 
 ### What is the business model? 
 
@@ -26,7 +29,7 @@ We charge an affordable start-up and integration fee. We then charge a fee per a
 
 ### Can you really run telco out of the public cloud? 
 
-We know it is highly untraditional to run telco out of public cloud. However, we believe the "internet scale" services of the world are building infrastructure with tools and philosophies that over time will become more reliable than what an individual operator will be able to do. 
+We know it is highly untraditional to run telco out of public cloud. However, we believe the "internet scale" services of the world are building infrastructure with tools and philosophies that over time will become more reliable and flexible than what an individual operator will be able to do. We are using these tools to enable us to be more flexible, effective and efficient than what would otherwise have been possible. 
 
 ### What about data transfer, GDPR and national data laws? 
 
@@ -42,4 +45,4 @@ We run a uniform code based deployed from public cloud. So yes, it works. When w
 
 ### You talk about a product eco-system, what do you mean? 
 
-We want to replicate the dynamics of app stores in the smartphone world. Our ambition is to abstract the complexity of the underlying hardware (radio networks) by creating a uniform software layer (the core network) that works across many networks, open up the network level functionality and open up for a rich suite of products and services for consumers and businesses. We plan to create monetization mechanisms and systems for how end-users can activate services. We are on our way to building great APIs with great documentation and support. 
+We want to replicate the dynamics of app stores from the smartphone world in the world of mobile networks. Our ambition is to abstract the complexity of the underlying hardware (radio networks) by creating a uniform software layer (the core network) that works across many networks, open up the network level functionality and together with partners create a rich suite of products and services for consumers and businesses. We plan to create monetization mechanisms and systems for how end-users can activate services. We are on our way to building great APIs with great documentation and support. 
