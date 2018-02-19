@@ -21,4 +21,14 @@ We do this in four steps:
 
 As a partner or developer you should build or integrate a product once, and it will work for multiple operators in multiple geographies.
 
-Our success is measured by that end-users find their mobile subscription much more useful. 
+Our success is measured by that end-users find their mobile subscription much more useful.
+
+## Watch a short video explaining the concept
+<div class="video-border">
+    <video controls preload>
+    <source src="/video/promo.mp4" type="video/mp4">
+        Your browser does not support HTML5 video players.
+    </video>
+</div>
+
+If this video left you with a lot of questions, please head over to our [FAQ page](/faq).
