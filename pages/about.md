@@ -16,7 +16,7 @@ The company has offices in Oslo and Stockholm, with a hub in Trondheim. The team
 
 ## Our investors and strategic partnerships
 
-WorkingGroupTwo is owned approximately 5% by the board and employees, with the remaining stakes held in equal proportion by Telenor and Digital Alpha LLP. 
+Working Group Two is owned approximately 5% by the board and employees, with the remaining stakes held in equal proportion by Telenor and Digital Alpha LLP. 
 
 Cisco is partner to the company and contributes with technology, products and customer discussions.
 
