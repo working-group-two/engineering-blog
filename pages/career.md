@@ -17,7 +17,7 @@ We are a bunch of great people with different skillset that have come together t
 **We are hiring** in the following areas:
 
 *   **Ops and infrastructure** specialists to help us build a secure, flexible and scalable telco grade infrastructure the Internet way (experience with AWS and Docker is helpful)
-*   **Mobile** core network experts that can help us bring the telco world into the Internet world
+*   **Mobile core network** experts that can help us bring the telco world into the Internet world
 *   **Developers and product managers** with experience of building **APIs/SDKs** as products for developers
 *   **Backend and front-end developers** with experience and passion for real time communication services, security, and scalable services
 
