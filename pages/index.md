@@ -25,7 +25,7 @@ Our success is measured by that end-users find their mobile subscription much mo
 
 ## Watch a short video explaining the concept
 <div class="video-border">
-    <video controls preload>
+    <video controls poster="/img/video-poster.jpg">
     <source src="/video/promo.mp4" type="video/mp4">
         Your browser does not support HTML5 video players.
     </video>
