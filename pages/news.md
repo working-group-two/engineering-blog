@@ -7,9 +7,11 @@ permalink: /news
 # News
 
 ## Scaling up!
-### 13th of Feburary, 2018
+### 26th of February, 2018
 
-Working Group Two is growing fast. Since last fall we have hired X employees, and we plan on being Y before summer. Some more text her about working with us.
+Working Group Two is growing fast. We are a bunch of great people with different skillset that have come together to change a traditional industry. 
+
+We find inspiration from each other and believe that with bright people, commitment and a willingness to invest for the long-term you can achieve great things.
 
 ---
 
