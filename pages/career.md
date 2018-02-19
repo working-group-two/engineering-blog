@@ -22,3 +22,5 @@ We are a bunch of great people with different skillset that have come together t
 *   **Backend and front-end developers** with experience and passion for real time communication services, security, and scalable services
 
 Having telco domain knowledge is not a requirement.
+
+**If you are interested in any of these postions or if you think you are a good fit for another role, let us get to know you, please send us a short discription about you to career@wgtwo.com.**
