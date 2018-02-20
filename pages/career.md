@@ -12,15 +12,15 @@ We are building a core network as-a-service and as-a-platform. Our platform work
 
 We have offices in Stockholm and Oslo, with a hub in Trondheim. We offer competitive base compensation packages, and the opportunity to take part in the upside of the company. We are a mix between a start-up and a traditional company, we sometimes call it “start-up for grown-ups”. 
 
-We are a bunch of great people with different skillset that have come together to change a traditional industry. We find inspiration from each other and believe that with bright people, commitment and a willingness to invest for long-term you can achieve great things.
+We are a bunch of great people with different skill set that have come together to change a traditional industry. We find inspiration from each other and believe that with bright people, commitment and a willingness to invest for long-term you can achieve great things.
 
 **We are hiring** in the following areas:
 
 *   **Ops and infrastructure** specialists to help us build a secure, flexible and scalable telecom grade infrastructure the Internet way (experience with AWS and Docker is helpful)
 *   **Mobile core network** experts that can help us bring the telecom world into the Internet world
 *   **Developers and product managers** with experience of building **APIs/SDKs** as products for developers
-*   **Backend and front-end developers** with experience and passion for real time communication services, security, and scalable services
+*   **Back-end and front-end developers** with experience and passion for real time communication services, security, and scalable services
 
 Having telecom domain knowledge is not a requirement.
 
-**If you are interested in any of these postions or if you think you are a good fit for another role, let us get to know you, please send us a short discription about yourself to career@wgtwo.com.**
+**If you are interested in any of these positions or if you think you are a good fit for another role, let us get to know you, please send us a short description about yourself to career@wgtwo.com.**
