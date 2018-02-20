@@ -9,7 +9,7 @@ https://help.github.com/articles/basic-writing-and-formatting-syntax/
 
 ## Editing content
 
-**WARNING: All edits and pull-requests are publicly recorded, never enter confidenital information here**
+**WARNING: All edits and pull-requests are publicly recorded, never enter confidential information here**
 
 The different pages can be found in the [pages](https://github.com/omnicate/omnicate.github.io/tree/master/pages) dir. You can edit these directly on GitHub: 
 

@@ -9,7 +9,7 @@ permalink: /news
 ## Scaling up!
 ### 26th of February, 2018
 
-Working Group Two is growing fast. We are a bunch of great people with different skillset that have come together to change a traditional industry. 
+Working Group Two is growing fast. We are a bunch of great people with different skill set that have come together to change a traditional industry. 
 
 We find inspiration from each other and believe that with bright people, commitment and a willingness to invest for the long-term you can achieve great things.
 
