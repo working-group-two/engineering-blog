@@ -1,0 +1,23 @@
+.partner {
+    display: flex;
+    align-items: center;
+    + .partner {
+        margin-top: 32px;
+    }
+    .image {
+        height: 100px;
+        width: 100px;
+        margin-right: 16px;
+    }
+    .description {
+        font-size: 13px;
+        .title {
+            font-size: 18px;
+            color: $main-text;
+            margin: 0;
+        }
+        p {
+            margin: 0;
+        }
+    }
+}

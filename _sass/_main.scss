@@ -1,4 +1,5 @@
 $brand: #009da5;
+$main-text: rgba(0,0,0,.80);
 
 * {
   outline: none;
@@ -7,7 +8,7 @@ $brand: #009da5;
 html {
   box-sizing: border-box;
   overflow-y: scroll;
-  color: rgba(0,0,0,.80);
+  color: $main-text;
   line-height: 1.5;
   background: #f8f8f8;
   height: 100%;
