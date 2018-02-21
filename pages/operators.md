@@ -21,4 +21,4 @@ We do not own the end-users, and we do not handle the wholesale capacity agreeme
 Our business model is based on 
 - An affordable start-up cost;  
 - A fee per active user;
-- Revenue share on additional products or services that are monetised
+- Revenue share on additional products or services that are monetised or generate additional cost
