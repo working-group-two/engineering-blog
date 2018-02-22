@@ -8,7 +8,7 @@ permalink: /operators
 
 Our primary customers are mobile operators, and we focus on the user experience of their subscribers.  
 
-From an operator perspective we have built a full stack MVNO core network. This includes the functionality of the HLR/HSS, the MSC, the SMSC and MMSC and the PGW. This means we control the user database, the signalling and media streams related to voice, messaging and internet connectivity. 
+From an operator perspective we have built a full stack MVNO core network. This includes the functionality of the HLR/HSS, the MSC, the SMSC and MMSC and the PGW. This means we control the user database, the signalling and media streams related to voice, messaging and Internet connectivity. 
 
 With control of these media and control planes we are inviting developers to help build services for end-users that are more useful and interesting. Among other innovations we have WebRTC compatibility in-built into the platform, enabling handovers between GSM networks and WebRTC end-points seamlessly.
 
