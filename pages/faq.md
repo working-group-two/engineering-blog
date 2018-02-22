@@ -29,7 +29,7 @@ We charge an affordable start-up and integration fee. We then charge a fee per a
 
 ### Can you really run telco out of the public cloud? 
 
-We know it is highly nontraditional to run telco out of public cloud. However, we believe the "internet scale" services of the world are building infrastructure with tools and philosophies that over time will become more reliable and flexible than what an individual operator will be able to do. We are using these tools to enable us to be more flexible, effective and efficient than what would otherwise have been possible. 
+We know it is highly nontraditional to run telco out of public cloud. However, we believe the "Internet scale" services of the world are building infrastructure with tools and philosophies that over time will become more reliable and flexible than what an individual operator will be able to do. We are using these tools to enable us to be more flexible, effective and efficient than what would otherwise have been possible. 
 
 ### What about data transfer, GDPR and national data laws? 
 
