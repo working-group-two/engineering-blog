@@ -23,4 +23,4 @@ We are a bunch of great people with different skill set that have come together 
 
 Having telecom domain knowledge is not a requirement.
 
-**If you are interested in any of these positions or if you think you are a good fit for another role, let us get to know you, please send us a short description about yourself to career@wgtwo.com.**
+**If you are interested in any of these positions or if you think you are a good fit for another role, let us get to know you, please send us a short description about yourself to <career@wgtwo.com>.**
