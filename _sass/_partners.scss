@@ -7,6 +7,8 @@
     .image {
         height: 100px;
         width: 100px;
+        max-width: 10vw;
+        max-height: 10vw;
         margin-right: 16px;
     }
     .description {
@@ -19,5 +21,11 @@
         p {
             margin: 0;
         }
+    }
+}
+
+@media(max-width: 639px) {
+    .partner {
+        align-items: flex-start;
     }
 }
