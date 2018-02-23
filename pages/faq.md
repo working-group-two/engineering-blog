@@ -20,7 +20,7 @@ We support 2G, 3G and 4G. In 4G we are currently developing VoLTE/VoWiFi. We als
 
 ### What functionality does your network support? 
 
-We deliver user databases, voice, messaging and internet connectivity from the core network. In telco terms we have the HLR/HSS, SMSC, MMSC, MSC and PGW. 
+We deliver user databases, voice, messaging and Internet connectivity from the core network. In telco terms we have the HLR/HSS, SMSC, MMSC, MSC and PGW.
 
 ### What is the business model? 
 
