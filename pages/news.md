@@ -6,8 +6,6 @@ permalink: /news
 
 # News
 
----
-
 ## The launch of Working Group Two
 ### 5th of October, 2017
 
