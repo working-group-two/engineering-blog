@@ -17,7 +17,7 @@ We get there by making the mobile core network accessible and programmable throu
 
 As a partner or developer you should build or integrate a product once, and it will work across operators.
 
-We measure our success by end-users finding their mobile subscription much more useful.
+We focus on making a difference for the end-user. When we succeed in our mission, operators on our platform have more satisfied customers that use their mobile connectivity in new and meaningful ways. 
 
 ## Watch a short video explaining the concept
 <div class="video-border">
