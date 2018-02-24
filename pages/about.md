@@ -6,9 +6,13 @@ permalink: /about
 
 # About Working Group Two
 
-In the mid-80s a small band of Norwegian scientists challenged European tech giants in defining the modulation, coding and access systems for what would later be known as the GSM standard. The standards body deciding on the future standard wanted to accelerate progress and chose to arrange a competition. Whoever had the best solution when testing the solution in Paris would win. Against all odds, the small band of engineers came out as the winners. The scope of their efforts were defined under Working Group Two.
+In the mid-80s a small band of Norwegian scientists challenged European tech giants in defining the modulation, coding and access systems for what would later be known as the GSM standard. 
 
-We find inspiration in their story, and believe that with bright people, commitment and a willingness to invest for the long-term you can achieve great things.
+The standards body wanted to accelerate progress and chose to arrange a competition. During test drives in Paris, whoever had the best solution would win become the standard. It was a daunting task. In Europe the big technology companies were effectively national champions, and invested vast resources. The few engineers in Norway had few of these resources, but they understood the technology challenge at hand, were willing to think untraditionally and had operational closeness. 
+
+The scope of their efforts were defined under Working Group Two.
+
+We find inspiration in their story, and believe that with bright people, a willingess to bet on new technologies, commitment and a willingness to invest for the long-term you can achieve great things.
 
 We started our project inside an operator,  but we are now a separate and independent legal entity. 
 
