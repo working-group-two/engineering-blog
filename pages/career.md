@@ -4,7 +4,15 @@ title: Career
 permalink: /career
 ---
 
-# Join us at our "startup for grown-ups"
+# Our offices
+
+<div uk-grid class="ui-grid uk-grid-match uk-grid-small">
+    {% include office.html icon="star" name="Oslo (HQ)" address="Tordenskioldsgate 2, 0160 Oslo" %}
+    {% include office.html icon="location" name="Stockholm" address="Sveavagen 49, 11359 Stockholm" %}
+    {% include office.html icon="world" name="The world <small>(remote)</small>" address="Trondheim, London, etc" %}
+</div>
+
+## Join us at our "startup for grown-ups"
 
 Working Group Two is here to change the telecom industry, and to do so we need more great people. Our ambition is to make your mobile subscription much more useful and relevant than it is today. We need to make mobile operators work the “Internet way”. This includes promoting a platform logic, taking control of the technology, enabling rapid iterations and focusing on the end-user experience.
 

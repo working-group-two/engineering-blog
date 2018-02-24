@@ -10,7 +10,7 @@ In the mid-80s a small band of Norwegian scientists challenged European tech gia
 
 The standards body wanted to accelerate progress and chose to arrange a competition to force a decision. During test drives in Paris, whoever had the best solution would win become the standard. It was a daunting task. In Europe the big technology companies were effectively national champions, and invested vast resources. The few engineers in Norway had few of these resources, but they understood the technology challenge at hand, were willing to think untraditionally and had operational closeness. 
 
-The scope of their efforts were defined under Working Group Two.
+The scope of their efforts were defined under **Working Group Two**.
 
 We find inspiration in their story, and believe that with bright people, a willingess to bet on new technologies, commitment and a willingness to invest for the long-term you can achieve great things.
 
