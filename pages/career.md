@@ -8,7 +8,7 @@ permalink: /career
 
 Working Group Two is here to change the telecom industry, and to do so we need more great people. Our ambition is to make your mobile subscription much more useful and relevant than it is today. We need to make mobile operators work the “Internet way”. This includes promoting a platform logic, taking control of the technology, enabling rapid iterations and focusing on the end-user experience.
 
-Our strategy is to make the mobile core network programmable and accessible for third parties. At the heart of our effort is building a mobile core network, delivered as-a-service. We then enable this network to run across different radio networks. Finally, we expose core network functionality through APIs to third parties.  
+Our strategy is to make the mobile core network programmable and accessible for third parties. At the heart of our effort is building a mobile core network, delivered as-a-service. We then enable this network to run across different radio networks. Finally, we expose core network functionality through APIs to third parties. The logic is not unlike that of operating systems in the smartphone world, a homogeneous software layer on top of heterogeneous hardware to create a platform for innovation. 
 
 We have offices in Stockholm and Oslo, with a hub in Trondheim. We offer competitive compensation packages, and the opportunity to take part in the upside of the company. We are a mix between a start-up and a traditional company. We sometimes refer to it as a “start-up for grown-ups”, a naming that hints to how seriously we take our responsiblities. Our end-users rely on our services to manage their every-day lives. 
 
