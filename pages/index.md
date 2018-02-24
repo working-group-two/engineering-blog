@@ -7,17 +7,17 @@ permalink: /
 
 # What are we about?
 
-Our ambition is to bridge the telecom and Internet worlds. We want to enable operators to utilise their local presence and customer relationships, while  giving them the innovation capacity of an Internet player. We do this by making the mobile core network accessible and programmable for operators, developers and customers. 
+We are bridging the mobile telecom and Internet worlds. We are giving mobile operators the innovation capacity of an Internet player. We do this by making the mobile core network accessible and programmable. 
 
-We get there by: 
-1. Rebuilding mobile telco the "Internet way" to make the technology stack more flexible and accessible
-2. Making our software work across radio networks, enabling a platform logic
-3. Opening up network functionality previously hidden from view, and enable new functionality for developers
+We get there by 
+1. Rebuilding mobile telco the "Internet way" 
+2. Making our software work across radio networks
+3. Opening up hidden network capabilities
 4. Building the foundation for a product eco-system
 
-As a partner or developer you should build or integrate a product once, and it will work for multiple operators in multiple geographies.
+As a partner or developer you should build or integrate a product once, and it will work across operators.
 
-Our success is measured by end-users finding their mobile subscription much more useful.
+We measure our success by end-users finding their mobile subscription much more useful.
 
 ## Watch a short video explaining the concept
 <div class="video-border">
