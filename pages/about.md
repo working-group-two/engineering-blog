@@ -8,7 +8,7 @@ permalink: /about
 
 In the mid-80s a small band of Norwegian scientists challenged European tech giants in defining the modulation, coding and access systems for what would later be known as the GSM standard. 
 
-The standards body wanted to accelerate progress and chose to arrange a competition. During test drives in Paris, whoever had the best solution would win become the standard. It was a daunting task. In Europe the big technology companies were effectively national champions, and invested vast resources. The few engineers in Norway had few of these resources, but they understood the technology challenge at hand, were willing to think untraditionally and had operational closeness. 
+The standards body wanted to accelerate progress and chose to arrange a competition to force a decision. During test drives in Paris, whoever had the best solution would win become the standard. It was a daunting task. In Europe the big technology companies were effectively national champions, and invested vast resources. The few engineers in Norway had few of these resources, but they understood the technology challenge at hand, were willing to think untraditionally and had operational closeness. 
 
 The scope of their efforts were defined under Working Group Two.
 
