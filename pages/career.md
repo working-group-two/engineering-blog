@@ -6,7 +6,7 @@ permalink: /career
 
 # Join us at our "startup for grown-ups"
 
-Working Group Two is here to change the telecom industry, and to do so we need more great people. Our ambition is to make your mobile subscription much more useful and relevant than it is today. We need to change make mobile operators work the “Internet way”. This includes promoting a platform logic, taking control of the technology, enabling rapid iterations and focusing on the end-user experience.
+Working Group Two is here to change the telecom industry, and to do so we need more great people. Our ambition is to make your mobile subscription much more useful and relevant than it is today. We need to make mobile operators work the “Internet way”. This includes promoting a platform logic, taking control of the technology, enabling rapid iterations and focusing on the end-user experience.
 
 Our strategy is to make the mobile core network programmable and accessible for third parties. At the heart of our effort is building a mobile core network, delivered as-a-service. We then enable this network to run across different radio networks. Finally, we expose core network functionality through APIs to third parties.  
 
