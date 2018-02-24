@@ -11,8 +11,8 @@ We are bridging the mobile telecom and Internet worlds. We are giving mobile ope
 
 We get there by 
 1. Rebuilding mobile telco the "Internet way" 
-2. Making our software work across radio networks
-3. Opening up hidden network capabilities
+2. Making our core network function across radio networks
+3. Opening up previously unexposed network capabilities
 4. Building the foundation for a product eco-system
 
 As a partner or developer you should build or integrate a product once, and it will work across operators.
