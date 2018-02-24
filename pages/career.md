@@ -10,7 +10,7 @@ Working Group Two is here to change the telecom industry, and to do so we need m
 
 Our strategy is to make the mobile core network programmable and accessible for third parties. At the heart of our effort is building a mobile core network, delivered as-a-service. We then enable this network to run across different radio networks. Finally, we expose core network functionality through APIs to third parties.  
 
-We have offices in Stockholm and Oslo, with a hub in Trondheim. We offer competitive compensation packages, and the opportunity to take part in the upside of the company. We are a mix between a start-up and a traditional company. We sometimes refer to it as a “start-up for grown-ups”, a naming that hints to how seriously we take our responsiblities. Our end-users rely on our services every single day.   
+We have offices in Stockholm and Oslo, with a hub in Trondheim. We offer competitive compensation packages, and the opportunity to take part in the upside of the company. We are a mix between a start-up and a traditional company. We sometimes refer to it as a “start-up for grown-ups”, a naming that hints to how seriously we take our responsiblities. Our end-users rely on our services to manage their every-day lives. 
 
 We have come together to change one of the world's largest industries. It will require massive effort, inspired choices and taking calculated risk. We find inspiration in our differences. We believe that bright people, strong commitment and long-term perspective can achieve great things.
 
