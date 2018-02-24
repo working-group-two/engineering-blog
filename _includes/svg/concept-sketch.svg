@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="860px" height="280px" viewBox="0 0 860 280" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>concept-sketch</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="bigass-illustration-" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="concept-sketch">
+            <rect id="Rectangle-3" fill-opacity="0.787109375" fill="#93D5D9" x="185" y="137" width="150" height="6"></rect>
+            <rect id="Rectangle-3" fill="#D8D8D8" x="528" y="137" width="150" height="6"></rect>
+            <rect id="Rectangle-3" fill="#D8D8D8" x="672" y="47" width="130" height="6"></rect>
+            <rect id="Rectangle-3-Copy-6" fill="#D8D8D8" x="672" y="155" width="130" height="6"></rect>
+            <rect id="Rectangle-3-Copy-7" fill="#D8D8D8" x="672" y="119" width="130" height="6"></rect>
+            <rect id="Rectangle-3-Copy-9" fill="#D8D8D8" x="672" y="83" width="130" height="6"></rect>
+            <rect id="Rectangle-3-Copy-3" fill="#D8D8D8" x="672" y="191" width="130" height="6"></rect>
+            <rect id="Rectangle-3-Copy-5" fill="#D8D8D8" x="672" y="227" width="130" height="6"></rect>
+            <path d="M384.452917,88.6455886 C378.367445,83.8488711 370.73531,81.0058319 362.438253,81.0058319 C342.909815,81.0058319 327.009532,96.8102141 326.518069,116.507373 C306.353619,124.176289 292,143.917187 292,167.040573 C292,194.362909 312.019902,216.946847 337.995182,220.504291 L337.995182,221 L522.004818,221 L522.004818,220.912522 C547.662093,219.396234 568,197.818295 568,171.41448 C568,145.943764 549.078663,124.963592 524.722321,122.149713 C524.823505,120.604266 524.881324,119.029659 524.881324,117.455053 C524.881324,77.9878364 492.054467,46 451.566565,46 C421.60176,46 395.828847,63.5247855 384.452917,88.6455886" id="Shape" fill="#009DA5" fill-rule="nonzero"></path>
+            <text id="HLR/HSS-MSC-SMSC/MMS" font-family="LucidaGrande-Bold, Lucida Grande" font-size="18" font-weight="bold" fill="#FFFFFF">
+                <tspan x="393.139648" y="125">HLR/HSS</tspan>
+                <tspan x="414.277344" y="146">MSC</tspan>
+                <tspan x="376.154785" y="167">SMSC/MMSC</tspan>
+                <tspan x="413.635742" y="188">PGW</tspan>
+            </text>
+            <g id="api" transform="translate(0.000000, 20.000000)">
+                <rect id="Rectangle" fill="#AADEE1" fill-rule="evenodd" x="51" y="27" width="140" height="6"></rect>
+                <circle id="Oval" fill="#009DA5" fill-rule="evenodd" cx="30" cy="30" r="30"></circle>
+                <text id="API" font-family="LucidaGrande-Bold, Lucida Grande" font-size="18" font-weight="bold" fill="#FFFFFF">
+                    <tspan x="15" y="36">API</tspan>
+                </text>
+            </g>
+            <g id="api" transform="translate(0.000000, 200.000000)">
+                <rect id="Rectangle" fill="#AADEE1" fill-rule="evenodd" x="51" y="27" width="140" height="6"></rect>
+                <circle id="Oval" fill="#009DA5" fill-rule="evenodd" cx="30" cy="30" r="30"></circle>
+                <text id="API" font-family="LucidaGrande-Bold, Lucida Grande" font-size="18" font-weight="bold" fill="#FFFFFF">
+                    <tspan x="15" y="36">API</tspan>
+                </text>
+            </g>
+            <g id="api" transform="translate(0.000000, 110.000000)">
+                <rect id="Rectangle" fill="#AADEE1" fill-rule="evenodd" x="51" y="27" width="140" height="6"></rect>
+                <circle id="Oval" fill="#009DA5" fill-rule="evenodd" cx="30" cy="30" r="30"></circle>
+                <text id="API" font-family="LucidaGrande-Bold, Lucida Grande" font-size="18" font-weight="bold" fill="#FFFFFF">
+                    <tspan x="15" y="36">API</tspan>
+                </text>
+            </g>
+            <rect id="Rectangle" fill="#AADEE1" x="185" y="47" width="6" height="186"></rect>
+            <rect id="Rectangle" fill="#D8D8D8" x="672" y="47" width="6" height="186"></rect>
+            <rect id="Rectangle-2" fill="#C1C1C1" x="800" y="0" width="60" height="280"></rect>
+            <text id="Different-operators" transform="translate(832.000000, 140.000000) rotate(-270.000000) translate(-832.000000, -140.000000) " font-family="LucidaGrande, Lucida Grande" font-size="24" font-weight="normal" line-spacing="26" fill="#333333">
+                <tspan x="720" y="150">Different operators</tspan>
+            </text>
+        </g>
+    </g>
+</svg>

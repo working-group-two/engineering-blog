@@ -8,9 +8,9 @@ permalink: /operators
 
 Our primary customers are mobile operators. Our mission is to improve the user experience of their subscribers.
 
-Our platform includes the functionality of the <b uk-tooltip="title: Home Location Register/Home Subscriber Server">HLR/HSS</b>, the <b uk-tooltip="title: Mobile Switching Center">MSC</b>, the <b uk-tooltip="title: Short Message Service Center">SMSC</b> and <b uk-tooltip="title: Multimedia Service Center">MMSC</b> and the <b uk-tooltip="title: Package Data Network Gateway">PGW</b>. 
+Our platform includes the functionality of the <b uk-tooltip="title: Home Location Register/Home Subscriber Server">HLR/HSS</b>, the <b uk-tooltip="title: Mobile Switching Center">MSC</b>, the <b uk-tooltip="title: Short Message Service Center">SMSC</b> and <b uk-tooltip="title: Multimedia Service Center">MMSC</b> and the <b uk-tooltip="title: Package Data Network Gateway">PGW</b>. In other words, we enable an independent full stack <b uk-tooltip="title: Mobile Virtual Network Operator">MVNO</b>. 
 
-In other words, we enable an independent full stack <b uk-tooltip="title: Mobile Virtual Network Operator">MVNO</b>. 
+{% include svg/concept-sketch.svg %}
 
 We make the mobile core network programmable for operators, developers and end-users. Our aim is for an eco-system of partners to make  mobile connectivity much more useful. One of the  innovations embedded in the platform is WebRTC. As it is fully integrated into the platform, we enable handovers between GSM and WebRTC end-points seamlessly.
 
