@@ -5,10 +5,10 @@
         margin-top: 32px;
     }
     .image {
-        height: auto;
         width: 100px;
         max-width: 10vw;
         margin-right: 16px;
+        flex-shrink: 0;
     }
     .description {
         font-size: 13px;
