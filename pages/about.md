@@ -11,7 +11,7 @@ Working Group Two is owned approximately 5% by the board and employees, with the
 Cisco is partner to the company and contributes with technology, products and customer discussions.
 
 {% include partner.html title="Telenor" imgUrl="/img/partners/telenor.png" description="
-    Telenor Group is one of the world’s major mobile operators with customers in 13 markets across Scandinavia, Central Eastern Europe, and Asia.. Connecting the world has been Telenor’s domain for more than 160 years, and they are driven by a singular vision: To empower societies.
+    Telenor Group is one of the world’s major mobile operators with customers in 13 markets across Scandinavia, Central Eastern Europe, and Asia. Connecting the world has been Telenor’s domain for more than 160 years, and they are driven by a singular vision: To empower societies.
 "%}
 
 {% include partner.html title="Cisco" imgUrl="/img/partners/cisco.png" description="
