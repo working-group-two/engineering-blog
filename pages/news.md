@@ -6,6 +6,17 @@ permalink: /news
 
 # News
 
+## Working Group Two readies commercial launch
+### 27th of February, 2017
+
+Working Group Two readies for commercial launch and demonstrates innovation capacity. 
+
+For further information please see: 
+* [Telenor press release](https://www.telenor.com/media/press-release/working-group-two-readies-commercial-launch/)
+* [Cisco press release](https://newsroom.cisco.com/press-release-content?type=webcontent&articleId=1913518)
+
+---
+
 ## Signing our Head of Engineering 
 ### 4th of December, 2017
 
