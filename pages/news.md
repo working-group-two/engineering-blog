@@ -6,6 +6,15 @@ permalink: /news
 
 # News
 
+## Working Group Two discussed in Reuters article
+### 1st of March, 2018
+
+Working Group Two was discussed by Reuters in an article by Telenor and telco disruption. 
+
+[Reuters article](https://www.reuters.com/article/us-telecoms-mobileworld-telenor/norways-telenor-seeks-salvation-in-the-cloud-idUSKCN1GD5JA)
+
+---
+
 ## Working Group Two readies commercial launch
 ### 27th of February, 2017
 
