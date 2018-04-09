@@ -11,7 +11,7 @@ We work to bridge the mobile telecom and Internet worlds. We want to give mobile
 1. Getting mobile core networks to work across radio networks and geographies
 2. Making the mobile core network open, accessible and programmable for developers
 3. Making it easy and affordable to start and operate a mobile core network
-4. Getting the benefits of all operators on the platform
+4. Automatically getting the joint benefits of all the improvements of all developments of the platform 
 
 We get there by making the mobile core network accessible and programmable through 
 1. Rebuilding mobile telco the "Internet way" 
