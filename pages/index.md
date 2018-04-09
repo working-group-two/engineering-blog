@@ -9,12 +9,12 @@ permalink: /
 
 We work to bridge the mobile telecom and Internet worlds. We want to give mobile operators the innovation capacity of Internet players. We work to solve the following problems for mobile operators
 1. Getting mobile core networks to work across radio networks and geographies
-2. Making the mobile core network programmable
+2. Making the mobile core network open, programmable and accessible to developers
 3. Getting the benefit of all upgrades of all the customers on the platform without new negotiations
 
 We get there by making the mobile core network accessible and programmable through 
 1. Rebuilding mobile telco the "Internet way" 
-2. Making our core network function across radio networks
+2. Building cloud-native infrastructure
 3. Opening up previously unexposed network capabilities
 4. Building the foundation for a product eco-system
 
