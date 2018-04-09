@@ -7,7 +7,10 @@ permalink: /
 
 # What are we about?
 
-We work to bridge the mobile telecom and Internet worlds giving mobile operators the innovation capacity of Internet players. 
+We work to bridge the mobile telecom and Internet worlds. We want to give mobile operators the innovation capacity of Internet players. We work to solve the following problems for mobile operators
+1. Getting mobile core networks to work across radio networks and geographies
+2. Making the mobile core network programmable
+3. Getting the benefit of all upgrades of all the customers on the platform without new negotiations
 
 We get there by making the mobile core network accessible and programmable through 
 1. Rebuilding mobile telco the "Internet way" 
