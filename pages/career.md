@@ -24,7 +24,7 @@ If you would like to join us, please write a bit about yourself and email us at 
 
 # Working at Working Group Two
 We want to make a huge impact in our industry and foster strong personal growth while doing it! We challenge each other, we share knowledge, and we believe in the value of difference of opinion.\\
-We're a distrubted team, so we travel as often as possible between our offices to visit our colleagues (but we don't force anyone to travel if the don't want to).
+We're a distributed team, so we travel as often as possible between our offices to visit our colleagues (but we don't force anyone to travel if they don't want to).
 
 <div class="uk-child-width-1-2@m" uk-grid uk-lightbox="animation: scale">
     {% include image.html url="/img/career/workout.jpg" caption="We decided to work out at 7am before one of our gatherings..." %}
