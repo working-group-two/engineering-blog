@@ -7,28 +7,35 @@ permalink: /career
 # Our offices
 
 <div uk-grid class="ui-grid uk-grid-match uk-grid-small">
-    {% include office.html icon="star" name="Oslo (HQ)" address="Tordenskioldsgate 2, 0160 Oslo" %}
-    {% include office.html icon="location" name="Stockholm" address="Sveavagen 49, 11359 Stockholm" %}
-    {% include office.html icon="world" name="The world <small>(remote)</small>" address="Trondheim, London, etc" %}
+    {% include office.html icon="star" name="Oslo (HQ)" address="Tordenskioldsgate 2,<br> 0160 Oslo (Norway)" %}
+    {% include office.html icon="location" name="Stockholm" address="Sveavagen 49,<br> 11359 Stockholm (Sweden)" %}
+    {% include office.html icon="location" name="Trondheim" address="Olav Tryggvasons gate 30,<br> 7011 Trondheim (Norway)" %}
 </div>
 
-## Join us at our "startup for grown-ups"
-
-Working Group Two is here to change the telecom industry, and to do so we need more great people. Our ambition is to make your mobile subscription much more useful and relevant than it is today. We need to make mobile operators work the “Internet way”. This includes promoting a platform logic, taking control of the technology, enabling rapid iterations and focusing on the end-user experience.
-
-Our strategy is to make the mobile core network programmable and accessible for third parties. At the heart of our effort is building a mobile core network, delivered as-a-service. We then enable this network to run across different radio networks. Finally, we expose core network functionality through APIs to third parties. The logic is not unlike that of operating systems in the smartphone world: A homogeneous software layer on top of heterogeneous hardware to enable a platform of innovative products and services. 
-
-We have offices in Stockholm and Oslo, and a hub in Trondheim. We offer competitive compensation packages, and the opportunity to take part in the upside of the company. We are a mix between a start-up and a traditional company. We sometimes refer to it as a “start-up for grown-ups”, a naming that hints to how seriously we take our responsiblities. Our end-users rely on our services to manage their every-day lives. 
-
-We have come together to change one of the world's largest industries. It will require massive effort, inspired choices and taking calculated risk. We find inspiration in our differences. We believe that bright people, strong commitment and long-term perspective can achieve great things.
+Remote work is also an option, we also have engineers in London and Yangon (Myanmar).
 
 **We are hiring** in the following areas:
-
 *   **Ops and infrastructure** specialists to help us build a secure, flexible and scalable telecom grade infrastructure the Internet way (experience with AWS and Docker is helpful)
 *   **Mobile core network** experts that can help us bring the telecom world into the Internet world
 *   **Developers and product managers** with experience of building **APIs/SDKs** as products for developers
 *   **Back-end and front-end developers** with experience and passion for real time communication services, security, and scalable services
 
-Having telecom domain knowledge is not a requirement.
+If you would like to join us, please write a bit about yourself and email us at <career@wgtwo.com>.
 
-**If you are interested in any of these positions, or if you think you are a good fit for another role, let us get to know you. Please send us a short description about yourself to <career@wgtwo.com>.**
+# Working at Working Group Two
+We want to make a huge impact in our industry and foster strong personal growth while doing it! We challenge each other, we share knowledge, and we believe in the value of difference of opinion.\\
+We're a distrubted team, so we travel as often as possible between our offices to visit our colleagues (but we don't force anyone to travel if the don't want to).
+
+<div class="uk-child-width-1-2@m" uk-grid uk-lightbox="animation: scale">
+    {% include image.html url="/img/career/workout.jpg" caption="We decided to work out at 7am before one of our gatherings..." %}
+    {% include image.html url="/img/career/hackathon.jpg" caption="From our Hackathon in April 2018." %}
+</div>
+
+Every quarter the entire company meets up for two/three days to have fun and to get to know each other better. Here we find time for events like - sleddnig, skiing, cross-fit, karaoke - you name it! 
+
+<div class="uk-child-width-1-2@m" uk-grid uk-lightbox="animation: scale">
+    {% include image.html url="/img/career/map.png" caption="We have people in Norway, Sweden, The UK, and Myanmar" %}
+    {% include image.html url="/img/career/sledding.jpg" caption="We went sledding before Christmas 2017! We forgot to bring a proper camera." %}
+</div>
+
+
