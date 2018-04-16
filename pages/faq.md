@@ -12,7 +12,7 @@ The most important partnership you put in place is the access to radio network w
 
 ### Can I scrap my existing core network? 
 
-We are building a core network for the future, among other things that means that we don't bring every single legacy feature with us. In other words, if you are an existing MNO with legacy infrastructure you can probably not scrap your existing core network, but set up our core network in parallel with your existing one, and migrate over time. 
+We are building a core network for the future, among other things that means that we don't bring every single legacy feature with us. In other words, if you are an existing MNO with legacy infrastructure you can probably not scrap your existing core network immediately, but set up our core network in parallel with your existing one, and migrate over time. 
 
 ### What "Gs" do you support?
 
@@ -24,16 +24,15 @@ We deliver user databases, voice, messaging and Internet connectivity from the c
 
 ### What is the business model? 
 
-We charge an affordable start-up and integration fee. We then charge a fee per active user, as well as a revenue share on services that are monetised on top of the platform.
-
+We charge an affordable start-up and integration fee. We then charge a fee per active user, as well as a revenue share on services that are monetised on top of the platform (or a potential cost for use of APIs to ensure that APIs are seen as valuable).
 
 ### Can you really run telco out of the public cloud? 
 
-We know it is highly nontraditional to run telco out of public cloud. However, we believe the "Internet scale" services of the world are building infrastructure with tools and philosophies that over time will become more reliable and flexible than what an individual operator will be able to do. We are using these tools to enable us to be more flexible, effective and efficient than what would otherwise have been possible. 
+We know it is untraditional to run telco out of public cloud. However, we believe the "Internet scale" services of the world are building infrastructure with tools and philosophies that over time will become more reliable and flexible than what an individual operator will be able to do. We are using these tools to enable us to be more flexible, effective and efficient than what would otherwise have been possible. 
 
 ### What about data transfer, GDPR and national data laws? 
 
-We comply with GDPR regulations. Depending on where customers are located, what data centres are available and the status of national regulations we believe we can comply with the demands of most potential customers. In countries where security law demands that data is not transferred across borders, we depend on our partners having operational data centres within the boarders of that country. 
+We comply with GDPR regulations. Depending on where customers are located, what data centres are available and the status of national regulations we believe we can comply with the demands of most potential customers. In countries where security law demands that data is not transferred across borders, we depend on our partners having operational data centres within the boarders of that country (and/or use alternative anonymization techniques). 
 
 ### How long does it take to get started? 
 
