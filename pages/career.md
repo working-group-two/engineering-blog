@@ -31,7 +31,7 @@ We're a distrubted team, so we travel as often as possible between our offices t
     {% include image.html url="/img/career/hackathon.jpg" caption="From our Hackathon in April 2018." %}
 </div>
 
-Every quarter the entire company meets up for two/three days to have fun and to get to know each other better. Here we find time for events like - sleddnig, skiing, cross-fit, karaoke - you name it! 
+Every quarter the entire company meets up for two/three days to have fun and to get to know each other better. Here we find time for events like sledding, skiing, cross-fit, karaoke, you name it! 
 
 <div class="uk-child-width-1-2@m" uk-grid uk-lightbox="animation: scale">
     {% include image.html url="/img/career/map.png" caption="We have people in Norway, Sweden, The UK, and Myanmar" %}
