@@ -15,10 +15,10 @@ permalink: /career
 Remote work is also an option, we also have engineers in London and Yangon (Myanmar).
 
 **We are hiring** in the following areas:
-*   **Ops and infrastructure** specialists to help us build a secure, flexible and scalable telecom grade infrastructure the Internet way (experience with AWS and Docker is helpful)
-*   **Mobile core network** experts that can help us bring the telecom world into the Internet world
-*   **Developers and product managers** with experience of building **APIs/SDKs** as products for developers
-*   **Back-end and front-end developers** with experience and passion for real time communication services, security, and scalable services
+*   **Ops and infrastructure** specialists to help us build a secure, flexible and scalable telecom grade infrastructure the Internet way (experience with AWS and Docker is helpful).
+*   **Back-end and front-end developers** with experience and passion for real time communication services, security, and scalable services.
+*   **Mobile core network** experts that can help us bring the telecom world into the Internet world.
+
 
 If you would like to join us, please write a bit about yourself and email us at <career@wgtwo.com>.
 
