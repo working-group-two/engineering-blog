@@ -21,7 +21,7 @@ Remote work is also an option, we also have engineers in London and Yangon (Myan
 
 
 If you would like to join us, please write a bit about yourself and email us at <career@wgtwo.com>. 
-We take your privacy seriously, so we have created [privacy page](/privacy) to explain how we treat your data.
+We take your privacy seriously, so we have created a [privacy page](/privacy) to explain how we treat your data.
 
 # Working at Working Group Two
 We want to make a huge impact in our industry and foster strong personal growth while doing it! We challenge each other, we share knowledge, and we believe in the value of difference of opinion.\\
