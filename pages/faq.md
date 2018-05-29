@@ -8,11 +8,13 @@ permalink: /faq
 
 ### What other partnerships do I need to put in place to work with you? 
 
-The most important partnership you put in place is the access to radio network wholesale capacity. In addition you will need national and international interconnect agreements, roaming agreements, a BSS partner, a SIM vendor, potentially a number portability partner and a few more. We can help you with many of these, and we have pre-existing integrations with some. 
+It depends on who you are. If you are a MNO, you mainly need to give access to the host radio network, and we can reuse SIMs, roaming agreements etc. This depends somewhat on the setup, but in general this is true. 
+
+If you are a MVNO, the most important partnership you put in place is the access to radio network wholesale capacity. In addition you will need national and international interconnect agreements, roaming agreements, a BSS partner, a SIM vendor, potentially a number portability partner and a few more. We have partners that can assist you with these products and services.  
 
 ### Can I scrap my existing core network? 
 
-We are building a core network for the future, among other things that means that we don't bring every single legacy feature with us. In other words, if you are an existing MNO with legacy infrastructure you can probably not scrap your existing core network immediately, but set up our core network in parallel with your existing one, and migrate over time. 
+We are building a core network for the future, among other things that means that we don't bring every single legacy feature with us. In other words, if you are an existing MNO with legacy infrastructure you can probably not scrap your existing core network immediately, but set up our core network in parallel with your existing one, and migrate over time. In certain situations it might be possible to scrap an existing core network.  
 
 ### What "Gs" do you support?
 
