@@ -1,114 +1,114 @@
 .width-limit {
-    width: 100%;
-    padding-left: 20px;
-    padding-right: 20px;
-    max-width: 900px;
-    margin: 0 auto;
-  }
+  width: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
 
 .page-header {
-    height: 70px;
-    padding: 15px 0;
-    background: rgba(255, 255, 255, 0.95    );
-    position: fixed;
-    width: 100%;
-    top: 0;
-    left: 0;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.25);
-    z-index: 1;
+  height: 70px;
+  padding: 15px 0;
+  background: rgba(255, 255, 255, 0.95);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  z-index: 1;
 }
 
 .navbar {
-    height: 40px;
-    .logo img {
-        max-height: 40px;
+  height: 40px;
+  .logo img {
+    max-height: 40px;
+  }
+  ul {
+    float: right;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    li {
+      margin-left: 8px;
+      display: inline-block;
+      a {
+        display: inline-block;
+        padding: 8px;
+        color: $brand;
+      }
     }
-    ul {
-        float: right;
-        padding: 0;
-        margin: 0;
-        list-style: none;
-        li {
-            margin-left: 8px;
-            display: inline-block;
-            a {
-                display: inline-block;
-                padding: 8px;
-                color: $brand;
-            }
-        }
-    }
+  }
 }
 
 .mobile-menu-trigger {
-    display: none;
-    position: fixed;
-    right: 25px;
-    top: 20px;
-    border: 2px solid $brand;
-    border-radius: 3px;
-    height: 30px;
-    width: 30px;
-    transform: rotate(45deg);
-    padding: 0;
-    background: #f8f8f8;
-    color: $brand;
-    cursor: pointer;
-    .uk-icon {
-        transform: rotate(-45deg);
-    }
+  display: none;
+  position: fixed;
+  right: 25px;
+  top: 20px;
+  border: 2px solid $brand;
+  border-radius: 3px;
+  height: 30px;
+  width: 30px;
+  transform: rotate(45deg);
+  padding: 0;
+  background: #f8f8f8;
+  color: $brand;
+  cursor: pointer;
+  .uk-icon {
+    transform: rotate(-45deg);
+  }
 }
 
 @media(max-width: 639px) {
-    .mobile-menu-trigger {
+  .mobile-menu-trigger {
+    display: block;
+  }
+  .navbar {
+    ul {
+      display: none;
+      position: fixed;
+      padding: 10px;
+      top: 15px;
+      right: 20px;
+      background: #fff;
+      box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+      &.open {
         display: block;
-    }
-    .navbar {
-        ul {
-            display: none;
-            position: fixed;
-            padding: 10px;
-            top: 15px;
-            right: 20px;
-            background: #fff;
-            box-shadow: 0 1px 5px rgba(0,0,0,0.5);
-            &.open {
-                display: block;
-            }
-            li {
-                margin: 0;
-                + li {
-                    margin-top: 5px;
-                }
-                display: block;
-                a {
-                    display: block;
-                    padding-right: 80px;
-                }
-            }
+      }
+      li {
+        margin: 0;
+        + li {
+          margin-top: 5px;
         }
+        display: block;
+        a {
+          display: block;
+          padding-right: 80px;
+        }
+      }
     }
+  }
 }
 
 .page-main {
-    padding-top: 90px;
-    padding-bottom: 90px;
+  padding-top: 90px;
+  padding-bottom: 90px;
 }
 
 .page-footer {
-    font-size: 13px;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    height: 40px;
-    width: 100%;
-    line-height: 40px;
-    text-align: center;
-    background: $brand;
-    color: #fff;
-    padding: 0 20px;
-    overflow: hidden;
-    a {
-        color: inherit;
-    }
+  font-size: 13px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 40px;
+  width: 100%;
+  line-height: 40px;
+  text-align: center;
+  background: $brand;
+  color: #fff;
+  padding: 0 20px;
+  overflow: hidden;
+  a {
+    color: inherit;
+  }
 }

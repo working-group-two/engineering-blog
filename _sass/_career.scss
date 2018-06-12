@@ -1,29 +1,29 @@
 .office {
-    text-align: center;
-    padding: 16px;
-    .name {
-        color: rgba(0, 0, 0, 0.75);
-        font-size: 17px;
-    }
-    .address {
-        font-size: 13px;
-    }
-    .uk-icon {
-        padding: 5px;
-        margin-bottom: 8px;
-        color: #ff8600;
-    }
+  text-align: center;
+  padding: 16px;
+  .name {
+    color: rgba(0, 0, 0, 0.75);
+    font-size: 17px;
+  }
+  .address {
+    font-size: 13px;
+  }
+  .uk-icon {
+    padding: 5px;
+    margin-bottom: 8px;
+    color: #ff8600;
+  }
 }
 
 @media(max-width: 639px) {
-    .office {
-        display: flex;
-        align-items: center;
-        text-align: left;
-        padding: 16px;
-        .uk-icon {
-            margin-bottom: 0px;
-            margin-right: 16px;
-        }
+  .office {
+    display: flex;
+    align-items: center;
+    text-align: left;
+    padding: 16px;
+    .uk-icon {
+      margin-bottom: 0;
+      margin-right: 16px;
     }
+  }
 }

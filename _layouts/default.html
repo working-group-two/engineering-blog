@@ -6,23 +6,37 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
-        Working Group Two - {{ page.title }}
+        Working Group Two - {{ page.title }} - Working group 2
     </title>
-    <meta name="description" content="Taking traditional mobile telecom technology and making it easy to use for developers">
+    <meta name="description" content="Taking traditional mobile telecom technology and making it easy to use for developers - Working Group 2">
     <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
     <link rel="shortcut icon" type="image/png" href="/img/favicon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.39/css/uikit.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
     <link rel="stylesheet" href="/css/main.css">
     {% if page.showHeroImage %}
         <link rel="preload" href="/img/hero-img.jpg" as="image">
         <link rel="preload" href="/img/hero-logo.png" as="image">
     {% endif %}
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "url": "https://wgtwo.com",
+            "name": "Working Group Two",
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "contactType": "General",
+              "email": "contact@wgtwo.com",
+              "url": "https://wgtwo.com/contact"
+            }
+        }
+    </script>
 </head>
 <body>
     <header class="page-header">
         <nav class="navbar width-limit">
-            <a class="logo" href="/"><img src="/img/logo.png"></a>
+            <a class="logo" href="/"><img src="/img/logo.png" alt="Working Group 2"></a>
             <button class="mobile-menu-trigger"><span uk-icon="icon: menu"></span></button>
             <ul class="nav-menu">
                 <li><a class="nav-link uk-hidden@s" href="/">Home</a></li>
@@ -37,7 +51,7 @@
     {% if page.showHeroImage %}
     <div class="hero-bg">
         <div class="hero-content">
-            <img src="/img/hero-logo.png" alt="Working Group Two">
+            <img src="/img/hero-logo.png" alt="Working Group 2" title="Working Group 2">
             <div class="slogan">
                 Rebuilding the mobile core network to let operators innovate again
             </div>
@@ -54,6 +68,7 @@
         | <a href="/contact">Contact</a>
         | <a href="/privacy">Privacy and Cookies</a>
         | <a href="{{site.repourl}}/blob/master/{{page.path}}">Edit this page</a>
+        | Working Group 2
     </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.39/js/uikit.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.39/js/uikit-icons.min.js"></script>

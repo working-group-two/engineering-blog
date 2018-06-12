@@ -26,7 +26,7 @@ will only be used for recruitment purposes.
 ## Cookies
 
 We only use cookies for Google Analytics, and we only use Google Analytics to
-learn about how the website is being used so that we can improve it.
+learn about how the website is being used so that we can improve it. All data is anonymized.
 
 Google analytics has a [cookie usage page](https://developers.google.com/analytics/devguides/collection/analyticsjs/cookie-usage) 
 which explains how everything works in detail. We only allow Google Analytics to set first party cookies.

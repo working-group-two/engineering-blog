@@ -1,22 +1,22 @@
 .hero-bg {
-    height: 450px;
-    background-color: #555;
-    background: url("/img/hero-img.jpg");
-    margin-bottom: -60px; // counteract padding-top form main due to fixed header
-    background-size: cover;
-    .hero-content {
-        text-align: center;
-        margin: 0 auto;
-        padding: 175px 50px 0 50px;
-        img {
-            margin: 0 auto;
-            max-height: 135px;
-            max-width: 100%;
-        }
-        .slogan {
-            margin-top: 20px;
-            color: #fff;
-            text-shadow: 0 0 5px rgba(0,0,0,.8);
-        }
+  height: 450px;
+  background-color: #555;
+  background: url("/img/hero-img.jpg");
+  margin-bottom: -60px; // counteract padding-top form main due to fixed header
+  background-size: cover;
+  .hero-content {
+    text-align: center;
+    margin: 0 auto;
+    padding: 175px 50px 0 50px;
+    img {
+      margin: 0 auto;
+      max-height: 135px;
+      max-width: 100%;
     }
+    .slogan {
+      margin-top: 20px;
+      color: #fff;
+      text-shadow: 0 0 5px rgba(0, 0, 0, .8);
+    }
+  }
 }

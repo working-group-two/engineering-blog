@@ -1,11 +1,24 @@
-.news-page {
-    h2 {
-        margin: 10px 0 5px;
-        font-size: 28px;
+ul.news-list {
+  list-style: none;
+  padding: 0;
+  h2 {
+    font-size: 22px;
+  }
+  li + li {
+    margin-top: 30px;
+  }
+  a {
+    padding: 15px;
+    display: block;
+    background: white;
+    color: inherit;
+    p {
+      margin: 0;
     }
-    h3 {
-        margin-top: 0;
-        font-size: 16px;
-        color: rgba(0,0,0,0.5);
+    transition: box-shadow .2s;
+    &:hover {
+      text-decoration: none;
+      box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
     }
+  }
 }

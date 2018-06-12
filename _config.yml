@@ -1,1 +1,8 @@
 repourl: https://github.com/omnicate/omnicate.github.io
+
+# Build settings
+sass:
+  sass_dir: _sass
+  style: compressed
+plugins:
+  - jekyll-sitemap
