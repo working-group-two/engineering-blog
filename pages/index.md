@@ -11,13 +11,13 @@ We want to give mobile operators the innovation capacity of Internet players. We
 1. Getting mobile core networks to work across radio networks and geographies
 2. Making the mobile core network open, accessible and programmable for developers, operators and end-users
 3. Making it easy and affordable to start and operate a mobile core network
-4. Share improvements to the platform and eco-system among all participants on the platform 
+4. Share improvements to the platform and ecosystem among all participants on the platform 
 
 We seek to achieve these benefits by through 
 1. Rebuilding mobile telco the "Internet way" 
 2. Building cloud-native infrastructure, and leveraging cloud providers
 3. Opening up previously unexposed network capabilities
-4. Building the foundation for a product eco-system
+4. Building the foundation for a product ecosystem
 
 We focus on making a difference for both operators and end-users. When we succeed in our mission, operators on our platform have more satisfied customers that use their mobile connectivity in new and meaningful ways. 
 
