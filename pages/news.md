@@ -27,6 +27,8 @@ eRate provides solutions and systems for billing and customer relationship manag
 
 Working Group Two makes it easier to become a mobile operator and aims to 10x the innovation capacity in the mobile telecom industry. WG2 is developing a software layer laid across radio networks that opens the underlying capabilities of the networks to developers and enables products and services to work across networks. To give access to the necessary resources WG2 have built a full-stack mobile core network that has been built to be cloud-native. 
 
+---
+---
 
 ## Working Group Two discussed in Reuters article
 ### 1st of March, 2018
@@ -35,6 +37,7 @@ Working Group Two was discussed by Reuters in an article on Telenor and telco di
 
 [Reuters article](https://www.reuters.com/article/us-telecoms-mobileworld-telenor/norways-telenor-seeks-salvation-in-the-cloud-idUSKCN1GD5JA)
 
+---
 ---
 
 ## Working Group Two readies commercial launch
@@ -46,6 +49,7 @@ For further information please see:
 * [Telenor press release](https://www.telenor.com/media/press-release/working-group-two-readies-commercial-launch/)
 * [Cisco press release](https://newsroom.cisco.com/press-release-content?type=webcontent&articleId=1913518)
 
+---
 ---
 
 ## Signing our Head of Engineering 
@@ -59,6 +63,7 @@ In addition to leading the engineering resources in Working Group Two, Daniel wi
 
 For many years, Daniel has used the “Internet way” of solving real-time communication needs. At Working Group Two he will have the opportunity to use many of the same tools, but apply them to the mobile core network layer. This is fully in line of Working Group Two’s ambition of building mobile telecom the “Internet way”. 
 
+---
 ---
 
 ## The launch of Working Group Two
