@@ -2,3 +2,15 @@
 .small-shadow {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15)
 }
+
+.uk-modal-title {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.uk-modal-page {
+  overflow: scroll;
+  body {
+    overflow-y: auto !important;
+  }
+}
