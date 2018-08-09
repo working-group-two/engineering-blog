@@ -1,27 +1,27 @@
 <!DOCTYPE html>
 <html>
-<head>
-    {% include googleAnalytics.html %}
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>
-        {{ page.title }} - Working Group Two (Working group 2)
-    </title>
-    <meta name="description" content="Taking traditional mobile telecom technology and making it easy to use for developers - Working Group 2">
-    <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
-    <link rel="shortcut icon" type="image/png" href="/img/favicon.png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.39/css/uikit.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
-    <link rel="stylesheet" href="/css/main.css">
-    {% if page.showHeroImage %}
+    <head>
+        {% include googleAnalytics.html %}
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>
+            {{ page.title }} - Working Group Two (Working group 2)
+        </title>
+        <meta name="description" content="Taking traditional mobile telecom technology and making it easy to use for developers - Working Group 2">
+        <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+        <link rel="shortcut icon" type="image/png" href="/img/favicon.png">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.39/css/uikit.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+        <link rel="stylesheet" href="/css/main.css">
+        {% if page.showHeroImage %}
         <script>
             var suffix = window.innerWidth <= 480 ? "-mobile" : "";
             document.write('<link rel="preload" href="/img/hero-img' + suffix + '.jpg" as="image">');
         </script>
         <link rel="preload" href="/img/hero-logo.svg" as="image">
-    {% endif %}
-    <script type="application/ld+json">
+        {% endif %}
+        <script type="application/ld+json">
         {
             "@context": "https://schema.org",
             "@type": "Organization",
@@ -34,57 +34,59 @@
               "url": "https://wgtwo.com/contact"
             }
         }
-    </script>
-</head>
-<body>
-    <header class="page-header">
-        <nav class="navbar width-limit">
-            <a class="logo" href="/"><img src="/img/logo.svg" alt="Working Group 2"></a>
-            <button class="mobile-menu-trigger"><span uk-icon="icon: menu"></span></button>
-            <ul class="nav-menu">
-                <li><a class="nav-link uk-hidden@s" href="/">Home</a></li>
-                <li><a class="nav-link" href="/operators">Operators</a></li>
-                <li><a class="nav-link" href="/career">Career</a></li>
-                <li><a class="nav-link" href="/about">About</a></li>
-                <li><a class="nav-link" href="/news">News</a></li>
-                <li><a class="nav-link" href="/faq">FAQ</a></li>
-            </ul>
-        </nav>
-    </header>
-    {% if page.showHeroImage %}
-    <div class="hero-bg">
-        <div class="hero-content">
-            <img src="/img/hero-logo.svg" alt="Working Group 2" title="Working Group 2">
-            <div class="slogan">
-                Enabling the next generation mobile operator
+        </script>
+    </head>
+    <body>
+        <header class="page-header">
+            <nav class="navbar width-limit">
+                <a class="logo" href="/"><img src="/img/logo.svg" alt="Working Group 2"></a>
+                <button class="mobile-menu-trigger"><span uk-icon="icon: menu"></span></button>
+                <ul class="nav-menu">
+                    <li><a class="nav-link uk-hidden@s" href="/">Home</a></li>
+                    <li><a class="nav-link" href="/operators">Operators</a></li>
+                    <li><a class="nav-link" href="/career">Career</a></li>
+                    <li><a class="nav-link" href="/about">About</a></li>
+                    <li><a class="nav-link" href="/news">News</a></li>
+                    <li><a class="nav-link" href="/faq">FAQ</a></li>
+                </ul>
+            </nav>
+        </header>
+        {% if page.showHeroImage %}
+        <div class="hero-bg">
+            <div class="hero-content">
+                <img src="/img/hero-logo.svg" alt="Working Group 2" title="Working Group 2">
+                <div class="slogan">
+                    Enabling the next generation mobile operator
+                </div>
             </div>
         </div>
-    </div>
-    {% endif %}
-    <main class="page-main width-limit">
-        {{ content }}
-    </main>
-    <footer class="page-footer">
-        © <script>document.write(new Date().getFullYear())</script> Working Group Two (Working Group 2)
-        | <a href="/contact">Contact</a>
-        | <a href="/privacy">Privacy and Cookies</a>
-        | <a uk-toggle="target: #change-suggestion-modal">Edit this page</a>
-    </footer>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.39/js/uikit.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.39/js/uikit-icons.min.js"></script>
-    <script src="/js/scripts.js"></script>
-    <div id="change-suggestion-modal" uk-modal>
-        <div class="uk-modal-dialog uk-modal-body">
-            <h3 class="uk-modal-title">Suggest a change</h3>
-            <p>
-                Working Groups Two's website is completely open-source and hosted on GitHub.
-                Anyone is free to suggest changes through GitHub.
-            </p>
-            <p class="uk-text-right">
-                <button class="uk-button uk-button-default uk-modal-close" type="button">Nevermind</button>
-                <a class="uk-button uk-button-primary" href="{{site.repourl}}/blob/master/{{page.path}}">Suggest a change</a>
-            </p>
+        {% endif %}
+        <main class="page-main width-limit">
+            {{ content }}
+        </main>
+        <footer class="page-footer">
+            ©
+            <script>document.write(new Date().getFullYear())</script>
+            Working Group Two (Working Group 2)
+            | <a href="/contact">Contact</a>
+            | <a href="/privacy">Privacy and Cookies</a>
+            | <a uk-toggle="target: #change-suggestion-modal">Edit this page</a>
+        </footer>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.39/js/uikit.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.39/js/uikit-icons.min.js"></script>
+        <script src="/js/scripts.js"></script>
+        <div id="change-suggestion-modal" uk-modal>
+            <div class="uk-modal-dialog uk-modal-body">
+                <h3 class="uk-modal-title">Suggest a change</h3>
+                <p>
+                    Working Groups Two's website is completely open-source and hosted on GitHub.
+                    Anyone is free to suggest changes through GitHub.
+                </p>
+                <p class="uk-text-right">
+                    <button class="uk-button uk-button-default uk-modal-close" type="button">Nevermind</button>
+                    <a class="uk-button uk-button-primary" href="{{site.repourl}}/blob/master/{{page.path}}">Suggest a change</a>
+                </p>
+            </div>
         </div>
-    </div>
-</body>
+    </body>
 </html>
