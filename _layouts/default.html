@@ -2,6 +2,7 @@
 <html>
     <head>
         {% include googleAnalytics.html %}
+        {% include structuredData.html %}
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -21,20 +22,6 @@
         </script>
         <link rel="preload" href="/img/hero-logo.svg" as="image">
         {% endif %}
-        <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "Organization",
-            "url": "https://wgtwo.com",
-            "name": "Working Group Two",
-            "contactPoint": {
-              "@type": "ContactPoint",
-              "contactType": "General",
-              "email": "contact@wgtwo.com",
-              "url": "https://wgtwo.com/contact"
-            }
-        }
-        </script>
     </head>
     <body>
         <header class="page-header">
