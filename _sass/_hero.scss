@@ -1,7 +1,6 @@
 .hero-bg {
   height: 450px;
   background-color: #555;
-  background: url("/img/hero-img.jpg");
   margin-bottom: -60px; // counteract padding-top form main due to fixed header
   background-size: cover;
   .hero-content {
@@ -18,5 +17,17 @@
       color: #fff;
       text-shadow: 0 0 5px rgba(0, 0, 0, .8);
     }
+  }
+}
+
+@media(max-width: 480px) {
+  .hero-bg {
+    background: url("/img/hero-img-mobile.jpg")
+  }
+}
+
+@media(min-width: 481px) {
+  .hero-bg {
+    background: url("/img/hero-img.jpg")
   }
 }
