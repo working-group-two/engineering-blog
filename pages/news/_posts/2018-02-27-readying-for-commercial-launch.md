@@ -1,6 +1,6 @@
 ---
 layout: news
-title: Working Group Two readies commercial launch
+title: Readying for commercial launch
 date: 2018-02-27
 ---
 

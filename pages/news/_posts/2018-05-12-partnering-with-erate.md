@@ -1,6 +1,6 @@
 ---
 layout: news
-title: Working Group Two partners with eRate
+title: Partnering with eRate
 date: 2018-05-12
 ---
 

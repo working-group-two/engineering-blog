@@ -1,8 +1,21 @@
 ul.news-list {
   list-style: none;
   padding: 0;
+  header {
+    overflow: auto;
+  }
   h2 {
     font-size: 22px;
+    width: calc(100% - 100px);
+    float: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .date {
+    font-size: 75%;
+    float: right;
+    color: rgba(0, 0, 0, 0.6);
   }
   li + li {
     margin-top: 30px;
@@ -19,6 +32,14 @@ ul.news-list {
     &:hover {
       text-decoration: none;
       box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
+    }
+  }
+}
+
+@media(max-width: 480px) {
+  ul.news-list {
+    h2 {
+      font-size: 20px;
     }
   }
 }

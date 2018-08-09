@@ -9,12 +9,12 @@ permalink: /news
     {% for post in site.categories.news %}
         <li>
             <a href="{{ post.url }}" class="small-shadow">
-                <h2>
-                    {{ post.title }}
+                <header>
+                    <h2>{{ post.title }}</h2>
                     <span class="date">
                         (<time datetime="{{ post.date | date_to_xmlschema }}" itemprop="datePublished">{{ post.date | date: "%b %-d, %Y" }}</time>)
-                    </span>                                                         
-                </h2>
+                     </span>
+                </header>
                 <small>{{ post.excerpt }}</small>
             </a>
         </li>
