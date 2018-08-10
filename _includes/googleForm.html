@@ -1,0 +1,24 @@
+<div class="iframe-shrinker">
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSefMehX8QkwKRogdvt3UHs4ZNF0GXMZRxolt691HNvn45uQ_w/viewform?embedded=true"
+            width="100%" height="1200" frameborder="0" marginheight="0" marginwidth="0" scrolling="no">
+        Loading contact form
+    </iframe>
+    <style>
+        .iframe-shrinker {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            height: 1200px;
+        }
+        .iframe-shrinker iframe {
+            position: absolute;
+            left: 0;
+            top: -50px;
+        }
+        @media(min-width: 701px) {
+            .iframe-shrinker iframe {
+                top: -150px;
+            }
+        }
+    </style>
+</div>

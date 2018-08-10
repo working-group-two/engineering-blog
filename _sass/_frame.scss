@@ -35,8 +35,15 @@
         display: inline-block;
         padding: 8px;
         color: $brand;
+        font-size: 16px;
       }
     }
+  }
+}
+
+@media(max-width: 800px) {
+  .navbar ul li a {
+    font-size: 14px;
   }
 }
 
@@ -51,7 +58,7 @@
   width: 30px;
   transform: rotate(45deg);
   padding: 0;
-  background: #f8f8f8;
+  background: #f6f6f6;
   color: $brand;
   cursor: pointer;
   .uk-icon {
