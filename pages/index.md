@@ -15,7 +15,7 @@ We work to provide the following advantages to mobile operators:
 * Making it easy and affordable to start and operate a mobile core network
 * Share improvements to the platform and ecosystem among all participants on the platform
 
-We seek to achieve these benefits by through:
+We seek to achieve these benefits by:
 
 * Rebuilding mobile telco the "Internet way"
 * Building cloud-native infrastructure, and leveraging cloud providers
