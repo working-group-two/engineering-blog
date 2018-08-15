@@ -22,12 +22,12 @@
 
 @media(max-width: 480px) {
   .hero-bg {
-    background: url("/img/hero-img-mobile.jpg")
+    background-image: url("/img/hero-img-mobile.jpg")
   }
 }
 
 @media(min-width: 481px) {
   .hero-bg {
-    background: url("/img/hero-img.jpg")
+    background-image: url("/img/hero-img.jpg")
   }
 }
