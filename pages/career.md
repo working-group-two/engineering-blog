@@ -8,7 +8,7 @@ permalink: /career
 
 <div uk-grid class="ui-grid uk-grid-match uk-grid-small">
     {% include office.html icon="star" name="Oslo (HQ)" address="Tordenskioldsgate 2,<br> 0160 Oslo (Norway)" %}
-    {% include office.html icon="location" name="Stockholm" address="Sveavagen 49,<br> 11359 Stockholm (Sweden)" %}
+    {% include office.html icon="location" name="Stockholm" address="Fleminggatan 20,<br> 11226 Stockholm (Sweden)" %}
     {% include office.html icon="location" name="Trondheim" address="Olav Tryggvasons gate 30,<br> 7011 Trondheim (Norway)" %}
 </div>
 
