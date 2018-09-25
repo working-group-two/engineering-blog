@@ -41,6 +41,6 @@ The scope of their efforts were defined under **Working Group Two**.
 
 We find inspiration in their story, and believe that with bright people, a willingness to bet on new technologies, commitment and a willingness to invest for the long-term you can achieve great things.
 
-We started our project inside an operator,  but we are now a separate and independent legal entity. 
+We started our project inside an operator, but we are now a separate and independent legal entity. 
 
 The company has offices in Oslo and Stockholm, with a hub in Trondheim. The team consists mainly of software engineers, some telco engineers and a few other people to herd the flock. 
