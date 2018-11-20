@@ -8,6 +8,7 @@ permalink: /
 # What are we about?
 
 We in Working Group Two want to give mobile operators the innovation capacity of Internet players. 
+
 We work to provide the following advantages to mobile operators:
 
 * Getting mobile core networks to work across radio networks and geographies
