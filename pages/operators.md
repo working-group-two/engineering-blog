@@ -8,7 +8,7 @@ permalink: /operators
 
 Our primary customers are mobile operators. Our mission is to improve the user experience of their subscribers, as well as making it more affordable and easier to run a core network for the operator.
 
-Our platform includes the functionality of the <b uk-tooltip="title: Home Location Register/Home Subscriber Server">HLR/HSS</b>, the <b uk-tooltip="title: Mobile Switching Center">G-MSC</b>, the IMS stack</b>, the <b uk-tooltip="title: Short Message Service Center">SMSC</b> and <b uk-tooltip="title: Multimedia Service Center">MMSC</b> and the <b uk-tooltip="title: Package Data Network Gateway">PGW</b>. In other words, we offer the elements that give access to control and user plane necessary for innovation.  
+Our platform includes the functionality of the <b uk-tooltip="title: Home Location Register/Home Subscriber Server">HLR/HSS</b>, the <b uk-tooltip="title: Mobile Switching Center">G-MSC</b>, the <b uk-tooltip="title: IP Multimedia Subsystem">IMS stack</b>, the <b uk-tooltip="title: Short Message Service Center">SMSC</b> and <b uk-tooltip="title: Multimedia Service Center">MMSC</b> and the <b uk-tooltip="title: Package Data Network Gateway">PGW</b>. In other words, we offer the elements that give access to control and user plane necessary for innovation.  
 
 {% include svg/concept-sketch.svg %}
 
