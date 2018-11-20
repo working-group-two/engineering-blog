@@ -14,15 +14,15 @@ If you are a MVNO, the most important partnership you put in place is the access
 
 ### Can I scrap my existing core network? 
 
-We are building a core network for the future, among other things that means that we don't bring every single legacy feature with us. In other words, if you are an existing MNO with legacy infrastructure you can probably not scrap your existing core network immediately, but set up our core network in parallel with your existing one, and migrate over time. In certain situations it might be possible to scrap an existing core network.  
+We are building a core network for the future, among other things that means that we don't bring every single legacy feature with us. In other words, if you are an existing MNO with legacy infrastructure you can probably not scrap your existing core network immediately, but set up our core network in parallel with your existing one, and migrate over time. Furthermore, we do not currently have nodes such as the SGSN/S-GW, VLR, MSC and MME in-house. These are possible to partner for, and it is likely we would expect into these nodes as we go along.    
 
 ### What "Gs" do you support?
 
-We support 2G, 3G and 4G. In 4G we are currently developing VoLTE/VoWiFi. We also support VoIP through WebRTC protocols as an integrated part of the platform. We also offer some aspects of 5G through being able to run separate tenancies of the core network. We will continuously build and improve our network. Our approach is more about solving use-cases supported by the radio network as opposed to "jumping Gs". 
+We support all the Gs, also future ones. This includes 2G, 3G, 4G and eventually 5G. We are currently in final phases of developing VoLTE/VoWiFi. We also support VoIP through WebRTC protocols as an integrated part of the platform. We also offer some aspects of 5G through being able to run separate tenancies of the core network. We will continuously build and improve our network. Our approach is more about solving use-cases supported by the radio network as opposed to "jumping Gs". 
 
 ### What functionality does your network support? 
 
-We deliver user databases, voice, messaging and Internet connectivity from the core network. In telco terms we have the HLR/HSS, SMSC, MMSC, MSC and PGW.
+We deliver user databases, voice, messaging and Internet connectivity from the core network. In telco terms we have the HLR/HSS, SMSC, MMSC, G-MSC and PGW.
 
 ### What is the business model? 
 
