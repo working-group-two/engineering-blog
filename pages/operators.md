@@ -21,6 +21,6 @@ We work with our customers to select and integrate with the host mobile network,
 We do not own the end-users, and we do not handle the wholesale capacity agreements. 
 
 Our business model is based on 
-- An affordable start-up cost;  
-- A monthly fee per active user;
+- An affordable start-up cost 
+- A monthly fee per active user
 - Revenue share on additional platform products
