@@ -1,0 +1,26 @@
+<script>
+    (function () {
+        let events = {
+            started: false,
+            w1min: false,
+            w2min: false,
+            w3min: false,
+        };
+        let video = document.querySelector("#concept-video");
+        setInterval(() => {
+            if (!events.started && video.currentTime > 0) {
+                events.started = true;
+                gtag('event', 'Clicked play', {'event_category' : 'Concept video'});
+            } else if (!events.w1min && video.currentTime > 60) {
+                events.w1min = true;
+                gtag('event', 'Watched 1 min', {'event_category' : 'Concept video'});
+            } else if (!events.w2min && video.currentTime > 120) {
+                events.w2min = true;
+                gtag('event', 'Watched 2 min', {'event_category' : 'Concept video'});
+            } else if (!events.w3min && video.currentTime > 180) {
+                events.w3min = true;
+                gtag('event', 'Watched 3 min', {'event_category' : 'Concept video'});
+            }
+        }, 1000);
+    })();
+</script>

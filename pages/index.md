@@ -31,11 +31,13 @@ In short, Working Group Two enables the next generation mobile operator.
 
 ## Watch a short video explaining the concept
 <div class="video-border">
-    <video controls poster="/img/video-poster.jpg">
+    <video id="concept-video" controls poster="/img/video-poster.jpg">
     <source src="/video/promo.mp4" type="video/mp4">
         Your browser does not support HTML5 video players.
     </video>
 </div>
+
+ {% include videoStats.html %}
 
 If this video left you with a lot of questions, please head over to our [FAQ page](/faq).
 
