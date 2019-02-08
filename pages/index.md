@@ -1,33 +1,38 @@
 ---
 layout: default
-showHeroImage: true
 title: Index
 permalink: /
 ---
 
-# What are we about?
+{% include section-image.html img="index.jpg" heading="Working Group Two" %}
 
-We in Working Group Two want to give mobile operators the innovation capacity of Internet players. 
+Working Group Two gives mobile operators the innovation capacity of Internet players.
+By delivering the mobile core gateway nodes as-a-service and leveraging the benefits of being cloud native,
+we radically enhance the innovation capacity of operators, and in parallel dramatically reduce cost and complexity.
 
-We work to provide the following advantages to mobile operators:
+{% include left-right-image.html img="cloud-native.svg" title="Cloud native" text="
+    Our cloud-native infrastructure makes it easy and affordable to start and operate
+    a mobile core network which works across radio networks and geograpies.
+"%}
 
-* Getting mobile core networks to work across radio networks and geographies
-* Making the mobile core network open, accessible and programmable for developers, operators and end-users
-* Making it easy and affordable to start and operate a mobile core network
-* Share improvements to the platform and ecosystem among all participants on the platform
+{% include left-right-image.html img="app-ecosystem.svg" title="An open platform" text="
+    We're creating a product ecosystem by exposing previously unavailable
+    networking capabilities to operators, developers and end users.
+"%}
 
-We seek to achieve these benefits by:
+{% include left-right-image.html img="cloud-native.svg" title="Cloud native" text="
+    Our cloud-native infrastructure makes it easy and affordable to start and operate
+    a mobile core network which works across radio networks and geograpies.
+"%}
 
-* Rebuilding mobile telco the "Internet way"
-* Building cloud-native infrastructure, and leveraging cloud providers
-* Opening up previously unexposed network capabilities
-* Building the foundation for a product ecosystem
+{% include left-right-image.html img="app-ecosystem.svg" title="An open platform" text="
+    We're creating a product ecosystem by exposing previously unavailable
+    networking capabilities to operators, developers and end users.
+"%}
 
-We focus on making a difference for both operators and end-users. 
+We focus on making a difference for both operators and end-users.
 When we succeed in our mission, operators on our platform have more satisfied 
 customers that use their mobile connectivity in new and meaningful ways.
-
-In short, Working Group Two enables the next generation mobile operator.
 
 ## Watch a short video explaining the concept
 <div class="video-border">

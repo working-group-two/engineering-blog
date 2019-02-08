@@ -4,9 +4,9 @@ title: Frequently asked questions
 permalink: /faq
 ---
 
-# Frequently asked questions
+{% include section-image.html img="faq.jpg" heading="FAQ" %}
 
-### What other partnerships do I need to put in place to work with you? 
+### What other partnerships do I need to put in place to work with you?
 
 It depends on who you are. If you are a MNO, you mainly need to give access to the host radio network, and we can reuse SIMs, roaming agreements etc. This depends somewhat on the setup, but in general this is true. 
 

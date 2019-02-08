@@ -4,7 +4,8 @@ title: News
 permalink: /news
 ---
 
-# News
+{% include section-image.html img="news.jpg" heading="News" %}
+
 <ul class="news-list">
     {% for post in site.categories.news %}
         <li>

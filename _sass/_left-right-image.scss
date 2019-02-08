@@ -1,0 +1,33 @@
+.left-right-row {
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  .image {
+    display: flex;
+    justify-content: center;
+    width: 49%;
+  }
+  .text {
+    width: 49%;
+  }
+}
+
+.left-right-row:nth-of-type(odd) {
+  flex-direction: row;
+}
+
+@media(max-width: 639px) {
+  .left-right-row {
+    flex-wrap: wrap;
+    .image {
+      width: 100%;
+    }
+    .text {
+      text-align: center;
+      width: 100%;
+    }
+  }
+}
+

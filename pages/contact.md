@@ -4,7 +4,7 @@ title: Contact
 permalink: /contact
 ---
 
-# Contact
+{% include section-image.html img="contact.jpg" heading="Contact" %}
 
 ### Email
 

@@ -4,6 +4,11 @@ title: Career
 permalink: /career
 ---
 
+{% include section-image.html img="career.jpg" heading="Career" %}
+
+We aim to make a huge impact in our industry and foster strong personal growth while doing it.
+We challenge each other, we share knowledge, and we believe in the value of difference of opinion.
+
 # Our offices
 
 <div uk-grid class="ui-grid uk-grid-match uk-grid-small">
@@ -12,11 +17,11 @@ permalink: /career
     {% include office.html icon="location" name="Trondheim" address="Olav Tryggvasons gate 30,<br> 7011 Trondheim (Norway)" %}
 </div>
 
-In certain cases, remote work is also an option.
+Remote work is an option in special cases.
 
 **We are hiring** in the following areas:
-*   **Ops and infrastructure** specialists to help us build a secure, flexible and scalable telecom grade infrastructure the Internet way (experience with AWS and Docker is helpful).
-*   **Backend and Frontend Developers** with experience and passion for real time communication services, security, and scalable services. Individuals in the intersection between telco and software development are especially relevant. 
+*   **Ops and infrastructure** specialists to help us build a secure, flexible and scalable infrastructure (experience with AWS and Docker is helpful).
+*   **Backend and Frontend Developers** with experience and passion for real time communication, security, and scale. Individuals in the intersection between telco and software development are especially relevant.
 *   **Mobile core network** experts that can help us bring the telecom world into the Internet world.
 *   **Product Managers**
 
@@ -25,8 +30,7 @@ If you would like to join us, please write a bit about yourself and email us at 
 We take your privacy seriously, so we have created a [privacy page](/privacy) to explain how we treat your data.
 
 # Working at Working Group Two
-We aim to make a huge impact in our industry and foster strong personal growth while doing it! We challenge each other, we share knowledge, and we believe in the value of difference of opinion.\\
-We're a distributed team, but invest in people getting to know each other across locations. 
+We're a distributed team, but invest in people getting to know each other across locations.
 
 <div class="uk-child-width-1-2@m" uk-grid uk-lightbox="animation: scale">
     {% include image.html url="/img/career/workout.jpg" caption="We decided to work out at 7am before one of our gatherings..." %}

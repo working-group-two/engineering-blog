@@ -4,19 +4,34 @@ title: Operators
 permalink: /operators
 ---
 
-# Operators
+{% include section-image.html img="operators.jpg" heading="Operators" %}
 
-Our primary customers are mobile operators. Our mission is to improve the user experience of their subscribers, as well as making it more affordable and easier to run a core network for the operator.
+Our primary customers are mobile operators.
+Our mission is to improve the user experience of their subscribers,
+as well as making it more affordable and easier to run a core network for the operator.
+Our platform includes the functionality of
+the <b uk-tooltip="title: Home Location Register/Home Subscriber Server">HLR/HSS</b>,
+the <b uk-tooltip="title: Mobile Switching Center">G-MSC</b>,
+the <b uk-tooltip="title: IP Multimedia Subsystem">IMS stack</b>,
+the <b uk-tooltip="title: Short Message Service Center">SMSC</b>
+and <b uk-tooltip="title: Multimedia Service Center">MMSC</b>, and
+the <b uk-tooltip="title: Package Data Network Gateway">PGW</b>.
 
-Our platform includes the functionality of the <b uk-tooltip="title: Home Location Register/Home Subscriber Server">HLR/HSS</b>, the <b uk-tooltip="title: Mobile Switching Center">G-MSC</b>, the functionality of the <b uk-tooltip="title: IP Multimedia Subsystem">IMS stack</b>, the <b uk-tooltip="title: Short Message Service Center">SMSC</b> and <b uk-tooltip="title: Multimedia Service Center">MMSC</b> and the <b uk-tooltip="title: Package Data Network Gateway">PGW</b>. In other words, we offer the elements that give access to control and user plane necessary for innovation.  
+We provide control over all the telecom elements necessary for innovation,
+and we make the mobile core network programmable for operators, developers and end-users.
+Our aim is to create an eco-system of partners to make  mobile connectivity much more useful.
 
-{% include svg/concept-sketch.svg %}
+One of the innovations embedded in our platform is WebRTC.
+As it is fully integrated into the platform, we enable handovers between
+GSM and WebRTC end-points seamlessly,
+meaning you can transfer a call from your phone to your computer, or the other way.
 
-We make the mobile core network programmable for operators, developers and end-users. Our aim is for an eco-system of partners to make  mobile connectivity much more useful. One of the  innovations embedded in the platform is WebRTC. As it is fully integrated into the platform, we enable handovers between GSM and WebRTC end-points seamlessly.
-
-The core network is deployed multi-tenancy from the public cloud. We will usually deploy the packet gateway locally. 
-
-We work with our customers to select and integrate with the host mobile network, as well as interconnectivity, connectivity, roaming, billing and other partners. We deliver the mobile core network as-a-service, and integrate with partners for the remaining services. 
+We work with our customers to select and integrate with the host mobile network,
+as well as interconnectivity, connectivity, roaming, billing and other partners.
+We deliver the mobile core network as-a-service,
+and integrate with partners for the remaining services.
+The core network is deployed multi-tenancy from the public cloud.
+We will usually deploy the packet gateway locally.
 
 We do not own the end-users, and we do not handle the wholesale capacity agreements. 
 

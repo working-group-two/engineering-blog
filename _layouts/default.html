@@ -12,41 +12,26 @@
         <link rel="shortcut icon" type="image/png" href="/img/favicon.png">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.39/css/uikit.min.css">
         <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:600" rel="stylesheet">
         <link rel="stylesheet" href="/css/main.css">
-        {% if page.showHeroImage %}
-        <script>
-            var suffix = window.innerWidth <= 480 ? "-mobile" : "";
-            document.write('<link rel="preload" href="/img/hero-img' + suffix + '.jpg" as="image">');
-        </script>
-        <link rel="preload" href="/img/hero-logo.svg" as="image">
-        {% endif %}
     </head>
     <body>
-        <header class="page-header">
-            <nav class="navbar width-limit">
-                <a class="logo" href="/"><img src="/img/logo.svg" alt="Working Group Two"></a>
-                <button class="mobile-menu-trigger" aria-label="mobile-menu-trigger"><span uk-icon="icon: menu"></span></button>
-                <ul class="nav-menu">
-                    <li><a class="nav-link" href="/">Home</a></li>
-                    <li><a class="nav-link" href="/operators">Operators</a></li>
-                    <li><a class="nav-link" href="/career">Career</a></li>
-                    <li><a class="nav-link" href="/about">About</a></li>
-                    <li><a class="nav-link" href="/news">News</a></li>
-                    <li><a class="nav-link" href="/faq">FAQ</a></li>
-                    <li><a class="nav-link" href="/contact">Contact</a></li>
-                </ul>
-            </nav>
+        <header class="mobile-header">
+            <a class="logo" href="/"><img src="/img/logo.svg" alt="Working Group Two"></a>
+            <button class="menu-trigger" aria-label="mobile-menu-trigger"><span uk-icon="icon: menu"></span></button>
         </header>
-        {% if page.showHeroImage %}
-        <div class="hero-bg">
-            <div class="hero-content">
-                <img src="/img/hero-logo.svg" alt="Working Group Two" title="Working Group Two">
-                <div class="slogan">
-                    Give life back to Telecoms
-                </div>
-            </div>
-        </div>
-        {% endif %}
+        <nav class="sidebar">
+            <a class="logo" href="/"><img src="/img/sidebar-logo.svg" alt="Working Group Two"></a>
+            <ul class="nav-menu">
+                <li><a class="nav-link" href="/">Home</a></li>
+                <li><a class="nav-link" href="/operators">Operators</a></li>
+                <li><a class="nav-link" href="/career">Career</a></li>
+                <li><a class="nav-link" href="/about">About us</a></li>
+                <li><a class="nav-link" href="/faq">FAQ</a></li>
+                <li><a class="nav-link" href="/contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="sidebar-overlay"></div>
         <main class="page-main width-limit">
             {{ content }}
         </main>
@@ -54,12 +39,11 @@
             ©
             <script>document.write(new Date().getFullYear())</script>
             Working Group Two (Working Group 2)
-            | <a href="/contact">Contact</a>
             | <a href="/privacy">Privacy and Cookies</a>
             | <a uk-toggle="target: #change-suggestion-modal">Edit this page</a>
         </footer>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.39/js/uikit.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.39/js/uikit-icons.min.js"></script>
+        <script src="/js/uikit.min.js"></script>
+        <script src="/js/uikit-icons.min.js"></script>
         <script src="/js/scripts.js"></script>
         <div id="change-suggestion-modal" uk-modal>
             <div class="uk-modal-dialog uk-modal-body">
@@ -69,7 +53,7 @@
                     Anyone is free to suggest changes through GitHub.
                 </p>
                 <p class="uk-text-right">
-                    <button class="uk-button uk-button-default uk-modal-close" type="button">Nevermind</button>
+                    <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
                     <a class="uk-button uk-button-primary" href="{{site.repourl}}/blob/master/{{page.path}}">Suggest a change</a>
                 </p>
             </div>
