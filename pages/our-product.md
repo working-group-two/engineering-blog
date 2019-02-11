@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Operators
-permalink: /operators
+title: Our product
+permalink: /our-product
 ---
 
-{% include section-image.html img="operators.jpg" heading="Operators" %}
+{% include section-image.html img="our-product.jpg" heading="Our product" %}
 
 Our primary customers are mobile operators.
 Our mission is to improve the user experience of their subscribers,
