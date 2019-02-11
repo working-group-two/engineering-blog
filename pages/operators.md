@@ -21,10 +21,29 @@ We provide control over all the telecom elements necessary for innovation,
 and we make the mobile core network programmable for operators, developers and end-users.
 Our aim is to create an eco-system of partners to make  mobile connectivity much more useful.
 
-One of the innovations embedded in our platform is WebRTC.
-As it is fully integrated into the platform, we enable handovers between
-GSM and WebRTC end-points seamlessly,
-meaning you can transfer a call from your phone to your computer, or the other way.
+Our business model is based on
+- An affordable start-up cost 
+- A monthly fee per active user
+- Revenue share on additional platform products
+
+## Our operators
+
+<div uk-grid class="ui-grid uk-grid-match uk-grid-small">
+
+    {% include operator.html img="vimla.png" description="
+        We started porting Vimla subscribers to our platform in the fall of 2018.
+        We aim to have hundreds of thousands of Vimla subscribers on the platform by the end of 2019.
+    "%}
+
+    {% include operator.html img="erate.png" description="
+        eRate provides a platform for multiple operators. We started integrating with them in 2019, and
+        we will start onboarding their first operators shortly.
+    "%}
+
+</div>
+
+
+## Integrating with us
 
 We work with our customers to select and integrate with the host mobile network,
 as well as interconnectivity, connectivity, roaming, billing and other partners.
@@ -33,9 +52,4 @@ and integrate with partners for the remaining services.
 The core network is deployed multi-tenancy from the public cloud.
 We will usually deploy the packet gateway locally.
 
-We do not own the end-users, and we do not handle the wholesale capacity agreements. 
-
-Our business model is based on 
-- An affordable start-up cost 
-- A monthly fee per active user
-- Revenue share on additional platform products
+We do not own the end-users, and we do not handle the wholesale capacity agreements.
