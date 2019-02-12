@@ -53,3 +53,16 @@ The core network is deployed multi-tenancy from the public cloud.
 We will usually deploy the packet gateway locally.
 
 We do not own the end-users, and we do not handle the wholesale capacity agreements.
+
+## Watch a short video explaining the concept
+
+<div class="video-border">
+    <video id="concept-video" controls poster="/img/video-poster.jpg">
+    <source src="/video/promo.mp4" type="video/mp4">
+        Your browser does not support HTML5 video players.
+    </video>
+</div>
+
+ {% include videoStats.html %}
+
+If this video left you with a lot of questions, please head over to our [FAQ page](/faq).

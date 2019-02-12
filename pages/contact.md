@@ -6,11 +6,16 @@ permalink: /contact
 
 {% include section-image.html img="contact.jpg" heading="Contact" %}
 
+When you communicate with us, we will be storing your message for some time (at the very least until we read it).
+We take your privacy seriously though, so we have created a [privacy page](/privacy) to explain how we treat your data.
+
 ### Email
 
-For general questions, please send an email to <a href="mailto:contact@wgtwo.com">contact@wgtwo.com</a>.
-
-For questions about career opportunities, please use <a href="mailto:career@wgtwo.com">career@wgtwo.com</a>.
+* General questions: <a href="mailto:contact@wgtwo.com">contact@wgtwo.com</a>
+* Career questions: <a href="mailto:career@wgtwo.com">career@wgtwo.com</a>.
 
 ### Form
+
+If you prefer using a form, we have one of those too:
+
 {% include googleForm.html %}
