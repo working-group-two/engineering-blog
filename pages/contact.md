@@ -6,7 +6,7 @@ permalink: /contact
 
 {% include section-image.html img="contact.jpg" heading="Contact" %}
 
-When you communicate with us, we will be storing your message for some time (at the very least until we read it).
+When you communicate with us, we need to store your message for some time (at the very least until we read it).
 We take your privacy seriously though, so we have created a [privacy page](/privacy) to explain how we treat your data.
 
 ### Email

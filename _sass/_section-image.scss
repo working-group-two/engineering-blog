@@ -21,7 +21,11 @@
   h1 {
     text-align: center;
     font-size: 72px;
-    text-shadow: 1px 1px #000, 0 0 250px #000, 0 0 50px rgba(0, 0, 0, 0.1);
+    text-shadow:
+            1px 1px rgba(0, 0, 0, 0.75),
+            0 0 250px #000,
+            0 0 50px rgba(0, 0, 0, 0.2),
+            -1px -1px 2px rgba(0, 0, 0, 0.1);
     margin: 0 auto;
     font-weight: 700;
   }
@@ -39,9 +43,13 @@
 
 @media(max-width: 639px) {
   .image-wrap {
+    height: 250px;
     padding-top: 60px;
     h1 {
       font-size: 50px;
+    }
+    .section-image {
+      height: 250px;
     }
   }
 }

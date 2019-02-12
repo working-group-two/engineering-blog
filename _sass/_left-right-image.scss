@@ -1,9 +1,11 @@
 .left-right-row {
-  margin-top: 40px;
   display: flex;
   align-items: center;
   flex-direction: row-reverse;
   justify-content: space-between;
+  + .left-right-row {
+    margin-top: 40px;
+  }
   .image {
     display: flex;
     justify-content: center;
@@ -11,6 +13,9 @@
   }
   .text {
     width: 49%;
+    p {
+      margin: 0;
+    }
   }
 }
 

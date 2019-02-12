@@ -21,10 +21,8 @@ We provide control over all the telecom elements necessary for innovation,
 and we make the mobile core network programmable for operators, developers and end-users.
 Our aim is to create an eco-system of partners to make  mobile connectivity much more useful.
 
-Our business model is based on
-- An affordable start-up cost 
-- A monthly fee per active user
-- Revenue share on additional platform products
+Our business model is primarily based a monthly fee per active user, but we also have a small start-up fee,
+and options for revenue sharing on additional platform products.
 
 ## Our operators
 
