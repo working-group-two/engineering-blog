@@ -14,3 +14,17 @@
     overflow-y: auto !important;
   }
 }
+
+.uk-accordion-title {
+  font-family: "Quicksand", Arial, sans-serif;
+  letter-spacing: -1px;
+}
+
+.uk-accordion-content p {
+  font-size: 16px;
+}
+
+.uk-accordion-content {
+  margin-top: 8px;
+  padding-bottom: 16px;
+}

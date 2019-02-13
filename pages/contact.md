@@ -12,10 +12,10 @@ We take your privacy seriously though, so we have created a [privacy page](/priv
 ### Email
 
 * General questions: <a href="mailto:contact@wgtwo.com">contact@wgtwo.com</a>
-* Career questions: <a href="mailto:career@wgtwo.com">career@wgtwo.com</a>.
+* Career questions: <a href="mailto:career@wgtwo.com">career@wgtwo.com</a>
 
 ### Form
 
 If you prefer using a form, we have one of those too:
 
-{% include googleForm.html %}
+{% include google-form.html %}

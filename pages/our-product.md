@@ -61,6 +61,6 @@ We do not own the end-users, and we do not handle the wholesale capacity agreeme
     </video>
 </div>
 
- {% include videoStats.html %}
+{% include video-stats.html %}
 
 If this video left you with a lot of questions, please head over to our [FAQ page](/faq).
