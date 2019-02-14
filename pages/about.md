@@ -29,28 +29,23 @@ It will require massive effort, inspired choices and taking calculated risk.
 We find inspiration in our differences. We believe that bright people,
 strong commitment and long-term perspective can achieve great things.
 
-# Our investors and partnerships
+# Our partners
+
+{% include partner.html title="Cisco" imgUrl="/img/partners/cisco.png" description="
+    Cisco is a worldwide technology leader that has been making the Internet work since 1984.
+    Cisco is our partner and contributes with technology, products and customer discussions.
+"%}
+
+# Our investors
 Working Group Two is owned approximately 5% by the board and employees,
 with the remaining stakes held in equal proportion by Telenor and Digital Alpha LLP.
 
-Cisco is partner to the company and contributes with technology, products and customer discussions.
-
 {% include partner.html title="Telenor" imgUrl="/img/partners/telenor.png" description="
-    Telenor Group is one of the world’s major mobile operators with customers in 13 markets across Scandinavia,
-    Central Eastern Europe, and Asia. Connecting the world has been Telenor’s domain for more than 160 years,
-    and they are driven by a singular vision: To empower societies.
-"%}
-
-{% include partner.html title="Cisco" imgUrl="/img/partners/cisco.png" description="
-    Cisco (NASDAQ: CSCO) is the worldwide technology leader that has been making the Internet work since 1984.
-    Cisco's people, products, and partners help society securely connect and seize tomorrow's digital opportunity today.
+    Telenor Group is one of the world’s major mobile operators with almost 200 million customers in Europe and Asia.
 "%}
 
 {% include partner.html title="Digital Alpha" imgUrl="/img/partners/digitalalpha.png" description="
-    Digital Alpha is an investment firm with a strategic collaboration agreement with Cisco Systems and
-    considers itself the first fund focused on making private equity investments in the
-    growth opportunities required to underpin the Digital Economy, including next generation networks,
-    smart cities, and enterprise communication solutions.
+    Digital Alpha is an investment firm with a strategic collaboration agreement with Cisco Systems.
 "%}
 
 ## Our history
