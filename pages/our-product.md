@@ -17,12 +17,34 @@ the <b uk-tooltip="title: Short Message Service Center">SMSC</b>
 and <b uk-tooltip="title: Multimedia Service Center">MMSC</b>, and
 the <b uk-tooltip="title: Package Data Network Gateway">PGW</b>.
 
-We provide control over all the telecom elements necessary for innovation,
-and we make the mobile core network programmable for operators, developers and end-users.
-Our aim is to create an eco-system of partners to make  mobile connectivity much more useful.
+## Multi-tenant / sliced
+Our core network is deployed in multi-tenant mode. Once integrated into a host network, new logical slices can be spun up to serve specific purposes. The network can also be deployed consistently across networks, countries and operators.
 
-Our business model is primarily based a monthly fee per active user, but we also have a small start-up fee,
-and options for revenue sharing on additional platform products.
+## Advanced services
+The IMS stack including VoLTE/VoWiFi, entitlement servers, call forking, home routing of SMS and more are all part of the service, and constantly expanding.
+
+## Aggregated benefits
+As we operate our network as-a-service, we run a consistent code-base across networks. As we make improvements for one operator, this improvement propagates to other operators on the platform. In this way we generate strong platform effects for all our customers. We are convinced that many of these incremental effects will create strong differentiation over time.
+
+## Continuously improving
+We operate in a DevOps model, and the network is constantly improving for our customers.
+
+As part of our contract we commit to developing the next “G”.
+In other words, you don’t have to ask for next generation technology, it is part of the package.
+
+We are constantly evolving our infrastructure. We improve security,
+add redundancy and improve the resilience of our network every day.
+
+Access to constant stream of innovation
+As we are building the foundation for a marketplace for product and service innovation.
+As this evolves, operators on our platform will get access to new products and services
+available to them and their end-users, without operators having to develop or integrate these themselves.
+
+## BSS
+We have one central API for provisioning and billing related functionality.
+We don’t provide BSS functionality ourselves, but we can offer pre-integrated BSS
+functionality via partners. Using a pre-integrated partner can reduce cost and complexity,
+and improve time-to-market.
 
 ## Our operators
 

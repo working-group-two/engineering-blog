@@ -11,24 +11,28 @@ By delivering the mobile core gateway nodes as-a-service and leveraging the bene
 we radically enhance the innovation capacity of operators, and in parallel dramatically reduce cost and complexity.
 
 {% include left-right-image.html img="cloud-native.svg" title="A platform for innovation" text="
-    We nurture innovation for telecom functionality by exposing APIs for Voice, Messaging, and Data.
-    Operators, developers and even end-users can build apps for their subscription.
+    Inspired by smartphone app stores, we are building an ecosystem of innovation on top of the mobile core network.
+    We expose network capabilities through APIs, so end-users, third parties and
+    operators themselves can build products on the platform.
 "%}
 
 {% include left-right-image.html img="app-ecosystem.svg" title="As-a-service" text="
-    With our as-a-service offering, operators don't have to buy or install anything.
-    We can easily and quickly develop and enable new features such as VoLTE, 5G, and Speech-to-text Voicemail.
-    Operators only pay for what they use.
+    By offering our platform as-a-service we ensure that all operators benefit from the aggregated benefits
+    of the improvements made on the platform. We constantly deploy new features,
+    integrate new products, improve security and redundancy and develop the next ''G'' for you.
 "%}
 
 {% include left-right-image.html img="cloud-native.svg" title="Cloud native" text="
-    Our platform is virtual and can run anywhere (in any cloud, in any country).
-    We don't use dedicated physical hardware, and we work with infrastructure giants like Amazon, Google, and Microsoft.
+    Our platform is built to leverage cloud infrastructure. We currently operate out of
+    public clouds, but can move to private cloud environments as well.
+    By leveraging the best of cloud infrastructure we can be agile,
+    cost effective and focus on what creates value for operators and end-users.
 "%}
 
 {% include left-right-image.html img="app-ecosystem.svg" title="Operator friendly" text="
-    Our platform is cost efficient, and we only charge our operators for what they use.
-    This business model gives new operators a great start. If our operators succeed, we succeed.
+    When partnering with us, operators get access to unique functionality they can use to grow their user base.
+    Our business model is primarily based on a per-user fee, so we really want our operators to succeed.
+    Benchmarks have shown we can cut costs up to 50% on a TCO basis.
 "%}
 
 We focus on making a difference for both operators and end-users.
