@@ -9,6 +9,15 @@ permalink: /career
 We aim to make a huge impact in our industry and foster strong personal growth while doing it.
 We challenge each other, we share knowledge, and we believe in the value of difference of opinion.
 
+## We're hiring
+*   **Ops and infrastructure engineers** to help us build a secure, flexible and scalable infrastructure (experience with AWS and Docker is a plus).
+*   **Backend and frontend engineers** with experience and passion for real time communication, security, and scale. Individuals in the intersection between telco and software development are especially relevant.
+*   **Mobile core network** experts that can help us bring the telecom world into the Internet world.
+*   **Product Managers** to help us build products on the telecom stack.
+
+If you would like to join us, please write a bit about yourself and email us at <career@wgtwo.com>.
+We take your privacy seriously, so we have created a [privacy page](/privacy) to explain how we treat your data.
+
 ## Our offices
 
 <div uk-grid class="ui-grid uk-grid-match uk-grid-small">
@@ -16,15 +25,6 @@ We challenge each other, we share knowledge, and we believe in the value of diff
     {% include office.html icon="location" name="Stockholm" address="Fleminggatan 20,<br> 11226 Stockholm (Sweden)" %}
     {% include office.html icon="location" name="Trondheim" address="Olav Tryggvasons gate 30,<br> 7011 Trondheim (Norway)" %}
 </div>
-
-## We're hiring
-*   **Ops and infrastructure engineers** to help us build a secure, flexible and scalable infrastructure (experience with AWS and Docker is a plus).
-*   **Backend and frontend engineers** with experience and passion for real time communication, security, and scale. Individuals in the intersection between telco and software development are especially relevant.
-*   **Mobile core network** experts that can help us bring the telecom world into the Internet world.
-*   **Product Managers** to help us build products on the telecom stack
-
-If you would like to join us, please write a bit about yourself and email us at <career@wgtwo.com>.
-We take your privacy seriously, so we have created a [privacy page](/privacy) to explain how we treat your data.
 
 ## Working at Working Group Two
 We're a distributed team, but invest in people getting to know each other across locations.
