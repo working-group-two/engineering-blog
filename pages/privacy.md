@@ -4,13 +4,14 @@ title: Privacy
 permalink: /privacy
 ---
 
-# Privacy
+{% include section-image.html img="cookies.jpg" heading="Privacy and Cookies" %}
+
 This page contains details about how we handle your privacy and cookies.
 In short; your data is only used internally in order to improve your experience.
 
 ---
 
-# Cookies
+## Cookies
 
 We only use cookies for Google Analytics, and we only use Google Analytics to
 learn about how the website is being used so that we can improve it. All data is anonymized.
@@ -22,7 +23,7 @@ _Last updated: September 6th, 2018_
 
 ---
 
-# Candidate Privacy Statement
+## Candidate Privacy Statement
 This Candidate Privacy Statement informs you of how Working Group Two AS/AB (“Working Group Two”/“we”/“our”/“us”) collects and uses information when considering you for employment.
 
 ### What kinds of information do we collect and process?

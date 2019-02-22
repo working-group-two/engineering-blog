@@ -1,44 +1,43 @@
 ---
 layout: default
-showHeroImage: true
 title: Index
 permalink: /
 ---
 
-# What are we about?
+{% include section-image.html img="index.jpg" heading="Working Group Two" %}
 
-We in Working Group Two want to give mobile operators the innovation capacity of Internet players. 
+Working Group Two offers a mobile core network built the Internet way.
+We give mobile operators enhanced innovation capacity, while reducing cost and complexity
 
-We work to provide the following advantages to mobile operators:
+{% include left-right-image.html img="a-platform-for-innovation.svg" title="A platform for innovation" text="
+    Inspired by smartphone app stores, we're building an ecosystem of innovation for the mobile core network.
+    We expose network capabilities through APIs, allowing end-users, third parties,
+    and operators to build new products.
+"%}
 
-* Getting mobile core networks to work across radio networks and geographies
-* Making the mobile core network open, accessible and programmable for developers, operators and end-users
-* Making it easy and affordable to start and operate a mobile core network
-* Share improvements to the platform and ecosystem among all participants on the platform
+{% include left-right-image.html img="as-a-service.svg" title="As-a-service" text="
+    By offering our platform as-a-service we ensure that all operators benefit from
+    the efforts we put into development. We constantly deploy new features,
+    integrate new products, improve security and redundancy and develop the next ''G'' for you.
+"%}
 
-We seek to achieve these benefits by:
+{% include left-right-image.html img="cloud-native.svg" title="Cloud native" text="
+    Our platform is built to leverage cloud infrastructure. We currently use
+    public clouds, but can move to private if needed.
+    By leveraging cloud infrastructure, we can be agile and cost effective,
+    and focus our efforts on creating value for operators and end-users.
+"%}
 
-* Rebuilding mobile telco the "Internet way"
-* Building cloud-native infrastructure, and leveraging cloud providers
-* Opening up previously unexposed network capabilities
-* Building the foundation for a product ecosystem
+{% include left-right-image.html img="operator-friendly.svg" title="Operator friendly" text="
+    When partnering with us, operators get access to unique functionality they can use to attract new users.
+    Our business model is primarily based on a per-user fee, so we really want our operators to grow.
+    Benchmarks have shown we can cut costs up to 50% on a TCO basis.
+"%}
 
-We focus on making a difference for both operators and end-users. 
-When we succeed in our mission, operators on our platform have more satisfied 
+<h2 class="spacious-heading">Making a difference</h2>
+We focus on making a difference for both operators and end-users.
+When we succeed in our mission, operators on our platform have more satisfied
 customers that use their mobile connectivity in new and meaningful ways.
 
-In short, Working Group Two enables the next generation mobile operator.
+<img src="/img/illustrations/making-a-difference.svg" alt="Decorative illustration">
 
-## Watch a short video explaining the concept
-<div class="video-border">
-    <video id="concept-video" controls poster="/img/video-poster.jpg">
-    <source src="/video/promo.mp4" type="video/mp4">
-        Your browser does not support HTML5 video players.
-    </video>
-</div>
-
- {% include videoStats.html %}
-
-If this video left you with a lot of questions, please head over to our [FAQ page](/faq).
-
-You can learn more about Working Group Two's history on our [About page](/about).

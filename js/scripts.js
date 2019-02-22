@@ -1,12 +1,15 @@
-document.querySelector(".mobile-menu-trigger").addEventListener("click", function (e) {
-    e.stopPropagation();
-    document.querySelector(".nav-menu").classList.toggle("open");
+document.querySelector(".menu-trigger").addEventListener("click", function (e) {
+    document.querySelector(".sidebar").classList.add("open");
 });
 
-["click", "touchend"].forEach(function (eventType) {
-    document.body.addEventListener(eventType, function (e) {
-        if (!e.target.classList.contains("nav-link")) {
-            document.querySelector(".nav-menu").classList.remove("open");
-        }
-    });
+document.querySelector(".sidebar-overlay").addEventListener("click", function (e) {
+    document.querySelector(".sidebar").classList.remove("open");
+});
+
+document.querySelectorAll(".nav-link").forEach(link => {
+   link.addEventListener("click", e => {
+       e.preventDefault();
+       document.querySelector(".sidebar").classList.remove("open");
+       setTimeout(() => window.location = e.target.href, 200);
+   })
 });

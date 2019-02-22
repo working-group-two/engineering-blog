@@ -1,0 +1,11 @@
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-114662288-1"></script>
+<script>
+    if (location.hostname !== "localhost" && location.hostname !== "127.0.0.1") { // not localhost
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-114662288-1', { 'anonymize_ip': true });
+    } else {
+        window.gtag = () => console.log("Analytics is disabled on localhost");
+    }
+</script>
