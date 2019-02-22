@@ -1,4 +1,4 @@
-.image-wrap {
+.section-image-wrap {
   height: 400px;
   margin-top: -24px;
   margin-bottom: 32px;
@@ -10,6 +10,7 @@
     color: white;
   }
   .section-image {
+    background: #aaa;
     z-index: 0;
     height: 400px;
     object-fit: cover;
@@ -39,7 +40,6 @@
     border-radius: 8px;
   }
 }
-
 
 @media(max-width: 639px) {
   .image-wrap {
