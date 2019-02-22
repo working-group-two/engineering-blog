@@ -50,12 +50,12 @@ and improve time-to-market.
 
 <div uk-grid class="ui-grid uk-grid-match uk-grid-small">
 
-    {% include operator.html img="vimla.png" description="
+    {% include operator.html img="vimla.png" url="https://vimla.se" description="
         We started porting Vimla subscribers to our platform in the fall of 2018.
         We aim to have hundreds of thousands of Vimla subscribers on the platform by the end of 2019.
     "%}
 
-    {% include operator.html img="erate.png" description="
+    {% include operator.html img="erate.png" url="https://erate.no" description="
         eRate provides a platform for multiple operators. We started integrating with them in 2019, and
         we will start onboarding their first operators shortly.
     "%}

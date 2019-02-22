@@ -6,8 +6,10 @@ permalink: /
 
 {% include section-image.html img="index.jpg" heading="Working Group Two" %}
 
-Working Group Two offers a mobile core network built the Internet way.
-We give mobile operators enhanced innovation capacity, while reducing cost and complexity
+<p class="landing-text">
+    Working Group Two offers a mobile core network built the Internet way.
+    We give mobile operators enhanced innovation capacity, while reducing cost and complexity.
+</p>
 
 {% include left-right-image.html img="a-platform-for-innovation.svg" title="A platform for innovation" text="
     Inspired by smartphone app stores, we're building an ecosystem of innovation for the mobile core network.
@@ -16,9 +18,9 @@ We give mobile operators enhanced innovation capacity, while reducing cost and c
 "%}
 
 {% include left-right-image.html img="as-a-service.svg" title="As-a-service" text="
-    By offering our platform as-a-service we ensure that all operators benefit from
+    By offering our platform as-a-service, we ensure that all operators benefit from
     the efforts we put into development. We constantly deploy new features,
-    integrate new products, improve security and redundancy and develop the next ''G'' for you.
+    integrate new products, improve security and redundancy, and develop the next ''G'' for you.
 "%}
 
 {% include left-right-image.html img="cloud-native.svg" title="Cloud native" text="
@@ -35,9 +37,14 @@ We give mobile operators enhanced innovation capacity, while reducing cost and c
 "%}
 
 <h2 class="spacious-heading">Making a difference</h2>
-We focus on making a difference for both operators and end-users.
-When we succeed in our mission, operators on our platform have more satisfied
-customers that use their mobile connectivity in new and meaningful ways.
+<p class="landing-text">
+    We focus on making a difference for both operators and end-users.
+    When we succeed in our mission, operators on our platform have more satisfied
+    customers that use their mobile connectivity in new and meaningful ways.
+</p>
 
 <img src="/img/illustrations/making-a-difference.svg" alt="Decorative illustration">
 
+<p class="landing-text" markdown="1">
+    If you're an operator looking for a modern core, head on over to our [product](/our-product) or [faq](/faq) pages.
+</p>

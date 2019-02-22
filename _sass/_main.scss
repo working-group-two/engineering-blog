@@ -10,7 +10,7 @@ html {
   overflow-y: scroll;
   color: $main-text;
   line-height: 1.5;
-  background: #f6f6f6;
+  background: #fafafa;
   height: 100%;
 }
 
@@ -61,4 +61,13 @@ h2 + h3 {
 
 p {
   font-size: 18px;
+}
+
+.landing-text {
+  margin: 40px 0;
+  font-size: 22px;
+}
+
+h2 + .landing-text {
+  margin-top: 0;
 }

@@ -31,10 +31,16 @@
     flex-wrap: wrap;
     .image {
       width: 100%;
+      img {
+        height: 260px;
+      }
     }
     .text {
       text-align: center;
       width: 100%;
+      h2 {
+        margin-top: 16px;
+      }
     }
   }
 }
