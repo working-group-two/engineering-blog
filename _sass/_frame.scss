@@ -111,6 +111,9 @@ body {
 }
 
 @media(max-width: 639px) {
+  .page-main {
+    padding-top: 60px;
+  }
   .mobile-header {
     display: flex;
   }

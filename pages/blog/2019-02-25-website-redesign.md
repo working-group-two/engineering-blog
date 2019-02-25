@@ -30,7 +30,7 @@ although there were smaller iterations done per illustration over Slack:
 
 <div class="uk-child-width-1-3 uk-child-width-1-6@s" uk-grid uk-lightbox="animation: fade">
     {% include image.html url="/img/blog/website-redesign/illu1.png" caption="
-        We wanted a modern and friendly look. This was the first we saw of the illustrations, and we happy with the overall style.
+        We wanted a modern and friendly look. This was the first we saw of the illustrations, and we were happy with the overall style.
         We asked if they could make the first illustration more 'phone' themed.
     "%}
     {% include image.html url="/img/blog/website-redesign/illu2.png" caption="
