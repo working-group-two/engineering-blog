@@ -34,7 +34,7 @@ although there were smaller iterations done per illustration over Slack:
         We asked if they could make the first illustration more 'phone' themed.
     "%}
     {% include image.html url="/img/blog/website-redesign/illu2.png" caption="
-        They added a phone screen in front of the woman, but our employees thought it looked more like an airplane emergency exit.
+        They added a phone screen in front of the woman, but we thought it looked more like an airplane emergency exit.
         We asked for a more 'in-your-face' phone, and for the books under the globe in the second illustration to be a server.
     "%}
     {% include image.html url="/img/blog/website-redesign/illu3.png" caption="
@@ -68,7 +68,7 @@ In parallel with having the illustrations done, we needed to work on the website
 Our UX/frontend engineer lead the project and did the design and CSS.
 Our Head of Security is a good photographer and edited the photos.
 Our CEO is good at talking and was in charge of writing the copy.
-Several other employees volunteered to edit the copy (proof-reading, reworking sentences, etc).
+Several other team members volunteered to edit the copy (proof-reading, reworking sentences, etc).
 
 ## The Result
 
