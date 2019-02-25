@@ -110,7 +110,7 @@ Like the old one, the new website isn't perfect, but it's a big improvement,
 and it still feels very much like it's ours.
 
 A lot of companies just hand their website over to a marketing firm and let them do the rest.
-We take pride in fully owning the whole process, and the website is even open source so anyone can contribute.
+We take pride in fully owning the whole process, and the website is open source so anyone can contribute.
 You can even <a href="{{site.repourl}}/blob/master/{{page.path}}">edit this post</a> if you want.
 
 We're looking forward to the Mobile World Congress 2020 redesign.
