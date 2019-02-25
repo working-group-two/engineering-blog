@@ -28,7 +28,7 @@ just in time to deploy a new version of the website.
 The gallery below (click to enlarge) contains the six main iterations,
 although there were smaller iterations done per illustration over Slack:
 
-<div class="uk-child-width-1-6@m" uk-grid uk-lightbox="animation: fade">
+<div class="uk-child-width-1-3 uk-child-width-1-6@s" uk-grid uk-lightbox="animation: fade">
     {% include image.html url="/img/blog/website-redesign/illu1.png" caption="
         We wanted a modern and friendly look. This was the first we saw of the illustrations, and we happy with the overall style.
         We asked if they could make the first illustration more 'phone' themed.
@@ -74,7 +74,7 @@ Several other employees volunteered to edit the copy (proof-reading, reworking s
 
 The gallery below contains some before and after screenshots of the old and the current website.
 
-<div class="uk-child-width-1-6@m" uk-grid uk-lightbox="animation: fade">
+<div class="uk-child-width-1-3 uk-child-width-1-6@s" uk-grid uk-lightbox="animation: fade">
     {% include image.html url="/img/blog/website-redesign/ba1-old.png" caption="
         Our old index page had some issues we wanted to address:
         The header image was dark, there was too much going on in the top (top menu, logo, tagline), and there was too much text.
