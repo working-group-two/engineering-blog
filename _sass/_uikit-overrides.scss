@@ -28,3 +28,17 @@
   margin-top: 8px;
   padding-bottom: 16px;
 }
+
+@media(min-width: 1000px) {
+  .uk-lightbox-caption {
+    padding: 16px 35%;
+    background: rgba(0, 0, 0, 0.65)
+  }
+  .uk-lightbox-toolbar.uk-position-top.uk-text-right.uk-transition-slide-top.uk-transition-opaque {
+    width: 50px;
+    right: 0;
+    left: auto;
+  }
+}
+
+
