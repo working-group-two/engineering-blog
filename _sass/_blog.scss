@@ -43,3 +43,18 @@
     }
   }
 }
+
+@media(max-width: 639px) {
+  .blogpost {
+    header {
+      padding-right: 100px;
+      .date {
+        font-size: 14px;
+        line-height: 30px;
+      }
+      h2 {
+        font-size: 22px;
+      }
+    }
+  }
+}
