@@ -27,7 +27,7 @@ We've collected the most frequent ones here, please read through them if you're 
         you can probably not scrap your existing core network immediately, but set up our core network in
         parallel with your existing one, and migrate over time. Furthermore, we do not currently have nodes
         such as the SGSN/S-GW, VLR, MSC and MME in-house. These are possible to partner for,
-        and it is likely we would expect into these nodes as we go along.
+        and it is likely we will develop these nodes as we go along.
     "%}
 
     {% include accordion-item.html title="What 'Gs' do you support?" text="
