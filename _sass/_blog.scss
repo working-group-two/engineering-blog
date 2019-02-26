@@ -1,0 +1,44 @@
+.blogpost {
+  display: block;
+  padding: 16px;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  header {
+    position: relative;
+    .date {
+      position: absolute;
+      top: 0;
+      right: 0;
+      line-height: 40px;
+    }
+  }
+  p {
+    font-size: 16px;
+    margin: 10px 0 0 0;
+  }
+  .tag {
+    padding: 0 6px;
+    background: #333;
+    color: #fff;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    font-size: 13px;
+    border-radius: 4px;
+    text-transform: capitalize;
+    display: inline-block;
+    &.frontend {
+      background: #1372F5;
+    }
+    &.design {
+      background: #EF5180;
+    }
+    &.culture {
+      background: #009DA5;
+    }
+    &.infra {
+      background: #F37645;
+    }
+    &.backend {
+      background: #894B30;
+    }
+  }
+}
