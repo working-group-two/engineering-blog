@@ -7,8 +7,7 @@ permalink: /security
 {% include section-image.html img="security.jpg" heading="Security" %}
 
 <p class="landing-text">
-    Working Group Two offers a mobile core network built the Internet way.
-    We give mobile operators enhanced innovation capacity, while reducing cost and complexity.
+    
 </p>
 
 {% include left-right-image.html img="wgtwo-security-whitepaper-2019.jpg" title="2019 Security Whitepaper" text="
