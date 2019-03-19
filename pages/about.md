@@ -6,7 +6,7 @@ permalink: /about
 
 {% include section-image.html img="about.jpg" heading="About us" %}
 
-Working Group Two (also known as “Working Group 2”, “wgtwo” and “wg2”) is working to the mobile
+Working Group Two (also known as “Working Group 2”, “wgtwo” and “wg2”) is working to make the mobile
 subscription much more useful and relevant than it is today. We are giving mobile operators the
 ability to work the “Internet way”. This includes promoting a platform logic, taking control of
 the technology, enabling rapid iterations and focusing on the end-user experience.
