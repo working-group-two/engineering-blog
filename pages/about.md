@@ -30,6 +30,10 @@ Working Group Two was spun off from the Telenor Group in October 2017.
     Cisco is our partner and contributes with technology, products and customer discussions.
 "%}
 
+{% include partner.html title="Amazon Web Services (AWS)" imgUrl="/img/partners/aws.png" description="
+    We are an Advanced Technology Partner in Amazon's Partner Network (APN).
+"%}
+
 ## Our investors
 Telenor and Digital Alpha LLP are our biggest investors and own 47.5% each. The remaining 5% is owned by the board and the employees.
 
