@@ -17,7 +17,7 @@ what we would like to find out, and some tips on how you might want to show off 
 For each step in the process you can decide if you want to do it on the phone, in a video conference, or face to face.
 We will cover all your travel expenses.
 
-<img src="/img/illustrations/our-interview-process.svg" alt="Decorative illustration">
+<img src="/img/illustrations/our-interview-process.png" alt="Decorative illustration">
 
 ### Step 1: Meet your recruiter
 The goal of this meeting is to get to know each other better. We will introduce you to our
