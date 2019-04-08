@@ -14,7 +14,7 @@ know about you, but leave the **how** up to you!
 You can find a description of each step in our process below, including why we do it,
 what we would like to find out, and some tips on how you might want to show off your skills during each step.
 
-For each step in the process you can decide if you want to do it on the phone, in a video conference, or face to face.
+For most steps in the process you can decide if you want to do it on the phone, in a video conference, or face to face.
 We will cover all your travel expenses.
 
 <img src="/img/illustrations/our-interview-process.png" alt="Decorative illustration">
@@ -57,7 +57,7 @@ This typically includes a tour of the office, and/or lunch with the team (we're 
 ## All done. Now what?
 
 Now that we both (hopefully) have all the information we need,
-we will decide if we're good fit for each other.
+we will decide if we're a good fit for each other.
 This is the time to reach out with any questions you might still have.
 
 If we both agree you'd be a good fit for the company we will draw up the papers.
