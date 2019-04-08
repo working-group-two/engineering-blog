@@ -12,13 +12,12 @@ We openly share non-work related information on the same level as work-related i
 
 You might think this is information-overload in an already hectic day. Nonetheless, it provides opportunities. Opportunities to see what is happening in my co-worker's life and we connect on a personal level. It provides possibilities to follow up about their sports games, and asks how their kids are doing. 
 
-## I do not want to be perceived as a “Mom”
+## "I do not want to be perceived as a Mom”
 We are in a tech-heavy, male-dominated industry, and we are less than 20% females as per now. For a long time, I personally took our open and transparent communication for granted. 
 
 That was until a friend of mine who is working in a similar male-dominated industry told me this. 
  
 “I do not want to share with my coworkers that I need to leave early to pick up my sick child in Kindergarten. I do not want to be perceived as “the Mom” in our team. My male colleagues are never leaving and sharing it. So if I start, I am afraid of being labeled.” 
-
 
 ## Role models 
 Do not take it for granted! 
@@ -30,7 +29,6 @@ Getting to know your colleagues on a personal level builds interpersonal trust a
 Interpersonal trust and emotional connections, built on open and informal communication, are proven positive for creativity and innovation in a company. 
 
 So, do you know what your coworkers are doing this weekend? 
-
 
 # What we do 
 1. Open calendars by default
