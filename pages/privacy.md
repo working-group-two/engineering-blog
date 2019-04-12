@@ -63,7 +63,7 @@ We gather the information to conduct a quality recruitment process. The legal ba
 
 Under the General Data Protection Regulation (GDPR), you have the right to access, port and erase your data. 
 
-To exercise your rights, email career@wgtwo.com.  
+To exercise your rights, email [career@wgtwo.com](mailto:career@wgtwo.com).  
 
 _Last updated: September 6th, 2018_
 
