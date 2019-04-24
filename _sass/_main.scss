@@ -75,3 +75,31 @@ p {
 h2 + .landing-text {
   margin-top: 0;
 }
+
+.sales-notification {
+  padding: 16px 40px;
+  font-size: 18px;
+  font-style: italic;
+  display: flex;
+  align-items: center;
+  margin-top: 40px;
+  img {
+    height: 128px;
+    margin-right: 32px;
+  }
+}
+
+@media(max-width: 639px) {
+  .sales-notification {
+    padding: 8px 16px;
+    margin-top: 40px;
+    font-size: 14px;
+    .pitch-demographic-two {
+      display: none;
+    }
+    img {
+      height: 100px;
+      margin-right: 16px;
+    }
+  }
+}

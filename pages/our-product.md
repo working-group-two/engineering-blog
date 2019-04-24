@@ -26,6 +26,8 @@ The IMS stack including VoLTE/VoWiFi, entitlement servers, call forking, home ro
 ## Aggregated benefits
 As we operate our network as-a-service, we run a consistent code-base across networks. As we make improvements for one operator, this improvement propagates to other operators on the platform. In this way we generate strong platform effects for all our customers. We are convinced that many of these incremental effects will create strong differentiation over time.
 
+{% include sales-notification.html %}
+
 ## Continuously improving
 We operate in a DevOps model, and the network is constantly improving for our customers.
 
@@ -85,4 +87,4 @@ We do not own the end-users, and we do not handle the wholesale capacity agreeme
 
 {% include video-stats.html %}
 
-If this video left you with a lot of questions, please head over to our [FAQ page](/faq).
+If this video left you with a lot of questions, please head over to our [FAQ page](/faq), or send your questions to [sales@wgtwo.com](mailto:sales@wgtwo.com).
