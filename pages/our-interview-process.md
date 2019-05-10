@@ -25,20 +25,11 @@ organization, and you can tell us how you ended up where you are.
 We will also discuss compensation and role expectations.
 How we do this is up to you, we can meet for a coffee, chat on the phone, or have lunch.
 
-### Step 2: Solve a problem
-The goal of this session is to show off your problem solving ability. There are many ways you can do this,
-for example presenting a project you have worked on, completing a home assignment or whiteboard problem,
-or perhaps pair programming with one of our engineers.
-Or maybe you know another way to show us what you know? It's up to you.
-You are welcome to use your own equipment, or we can provide machines on-site.
+### Step 2: We want to see your delivery skills
+The goal of this session is to see how you deliver solutions to a real problem. There are many ways you can do this, for example presenting a project you have worked on, completing a home assignment, solving the problem on a whiteboard, or perhaps pair programming with one of our engineers. Let us know what works best for you. You are welcome to use your own equipment, or we can provide machines on-site.
 
 ### Step 3: Show off your expertise
-The goal of this session is to look more deeply into one of your areas of expertise.
-This discussion will be tailored to the role you are interested in.
-For example, if you are looking to join us as a Software Engineer,
-this session will be about problem solving, code quality and algorithms.
-We will do some live programming, either with paper/pencil, in a simple text editor on a computer, or on a whiteboard.
-Whatever you prefer.
+The goal of this session is to look more deeply into one of your areas of expertise. This discussion will be tailored to the role you are interested in. For example, if you are looking to join us as a Software Engineer, this session will focus on problem solving, code quality and algorithms. We will do some live programming, either with paper/pencil, in a simple text editor on a computer, or on a whiteboard; the choice is yours.
 
 ### Step 4: Touch base with your recruiter
 After the interviews we should both reflect and give each other feedback to decide on the next step.
