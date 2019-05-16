@@ -1,6 +1,13 @@
-# What are your weekend plans?
+---
+layout: blogpost
+permalink: /blog/what-are-your-weekend-plans/
+title: What are your weekend plans?
+date: 2019-04-29
+tags: culture diversity
+author: <a href="https://linkedin.com/in/therese-nesseth-t%C3%B8rlen">Therese Nesseth Tørlen</a>
+---
 
-## Open communication as a tool to break down barriers   
+## Open communication as a tool to break down barriers
  
 Do you know what your coworkers are doing this weekend, and should you know? Do you share your day, evening, and weekend plans in your work calendar or to your colleagues? From my experience, having an open work calendar and sharing personal information can drastically improve organizational culture.  
 
