@@ -15,7 +15,6 @@ and we have three main offices (Oslo, Stockholm, Trondheim).
 * **Developers** to build our core platform (**backend**/**infrastructure**), and our products (**frontend**).
 * **Mobile core network experts** that can help us rebuild telecom in a more modern way.
 * A **Head of Product** to help us build new and innovative products on our platform.
-* A **Tech Recruiter** who wants to help us build our Stockholm office ([more info](https://www.linkedin.com/feed/update/activity:6516248120987308032/)).
 
 We believe in transparency, so we've created a page outlining our [interview process](/our-interview-process).
 If you would like to join us, please write a bit about yourself and email us at <career@wgtwo.com>.
