@@ -53,7 +53,7 @@ Our teal logo is now red, and the red "unlocked account" icon we use in developm
 This is in line with the documentation for the `difference` blend mode, but luckily CSS also supports hue-rotation,
 so we can just rotate the hue back 180 degrees. Our base style now looks like this:
 
-```
+```css
 html.dark-mode {
    mix-blend-mode: difference;
    filter: hue-rotate(180deg);
@@ -63,7 +63,7 @@ html.dark-mode {
 This fixes our colors, but we also have to do something about the darkness.
 The whole application is pretty much pitch black, and to make it brighter we need to … turn down the brightness:
 
-```
+```css
 html.dark-mode {
    mix-blend-mode: difference;
    filter: hue-rotate(180deg) brightness(0.67);
@@ -89,10 +89,12 @@ Our solution was to embrace the “glow” feel and change the shadows to brand 
 </div>
 
 As you might have noticed in the previous screenshot, we also made some other adjustments.
-We made the logo white using a brightness filter, and we made the base font-weight 500
-(since contrast is lower in the dark theme).
+We made the logo white using a brightness filter, and we set the base font-weight to 700 (bold),
+since contrast is lower in the dark theme.
 
 ## More comparison screenshots
+The following gallery shows some screenshots with custom components and JavaScript plugins.
+No additional CSS was written for any of the views <small>(click to enlarge)</small>:
 
 <div class="uk-child-width-1-3 uk-child-width-1-6@s bordered-gallery" uk-grid uk-lightbox="animation: fade">
     {% include image.html url="/img/blog/blend-modes/03-console-blacklist-light.png" caption="A standard Vuetify data table"%}
@@ -103,12 +105,31 @@ We made the logo white using a brightness filter, and we made the base font-weig
     {% include image.html url="/img/blog/blend-modes/03-console-stats-dark.png" caption="Charts also look okay"%}
 </div>
 
-<small>Click to enlarge.</small>
-
 ## Conclusion
 All in all, it took around two hours to create this dark theme. There are probably better ways of doing this,
 but this was incredibly quick, and allowed us to deliver something we normally wouldn't be able to deliver.
 Other than the shadows, nothing is particularly ugly, so we consider this a success.
+The whole style sheet is just a couple of selectors :
+
+
+```css
+html.dark-mode {
+    background: #eee;
+    mix-blend-mode: difference;
+    filter: brightness(0.67) hue-rotate(180deg);
+    font-weight: 700 !important;
+}
+
+/* Glow for dropdown/card-hover*/
+.dark-mode .v-menu__content,
+.dark-mode .v-card--hover:hover {
+    box-shadow: 0 5px 20px rgba(142, 255, 252, 0.74);
+}
+
+.dark-mode .logo {
+    filter: brightness(0);
+}
+```
 
 Thanks for reading!
 
