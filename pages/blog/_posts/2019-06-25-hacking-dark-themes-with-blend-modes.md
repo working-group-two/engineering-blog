@@ -39,7 +39,7 @@ difference
 
 Let’s see it in action <small>(click to enlarge)</small>:
 
-<div class="uk-child-width-1-3 uk-child-width-1-2@s bordered-gallery" uk-grid uk-lightbox="animation: fade">
+<div class="uk-child-width-1-2 uk-child-width-1-2@s bordered-gallery" uk-grid uk-lightbox="animation: fade">
     {% include image.html url="/img/blog/blend-modes/01-console-subs-light.png" caption="Starting point, mostly basic Vuetify"%}
     {% include image.html url="/img/blog/blend-modes/01-console-subs-difference.png" caption="After applying `mix-blend-mode: difference;`"%}
 </div>
@@ -72,7 +72,7 @@ html.dark-mode {
 
 Let's have a look <small>(click to enlarge)</small>:
 
-<div class="uk-child-width-1-3 uk-child-width-1-2@s bordered-gallery" uk-grid uk-lightbox="animation: fade">
+<div class="uk-child-width-1-2 uk-child-width-1-2@s bordered-gallery" uk-grid uk-lightbox="animation: fade">
     {% include image.html url="/img/blog/blend-modes/01-console-subs-light.png" caption="Starting point, mostly basic Vuetify"%}
     {% include image.html url="/img/blog/blend-modes/01-console-subs-difference-filters.png" caption="After applying blend mode and filters"%}
 </div>
@@ -81,10 +81,10 @@ That’s a lot better (blend modes are fun!). Our dark theme is close to done no
 but we have one problem remaining: Shadows. Because of our blend mode, making
 things darker means making them brighter, so all our shadows look like white glows.
 Since our base color is white/light gray, we can’t simply change our shadows to white as there would be no contrast.
-Our solution was to embrace the “glow” feel and change the shadows to brand colored glows:
+Our solution was to embrace the “glow” feel and change the shadows to brand colored glows <small>(click to enlarge)</small>:
 
-<div class="uk-child-width-1-3 uk-child-width-1-2@s bordered-gallery" uk-grid uk-lightbox="animation: fade">
-    {% include image.html url="/img/blog/blend-modes/02-console-shadows-light.png" caption="Normally, the menu crates a black shadow on the background"%}
+<div class="uk-child-width-1-2 uk-child-width-1-2@s bordered-gallery" uk-grid uk-lightbox="animation: fade">
+    {% include image.html url="/img/blog/blend-modes/02-console-shadows-light.png" caption="Normally, the menu creates a shadow on the background"%}
     {% include image.html url="/img/blog/blend-modes/02-console-shadows-glow.png" caption="More of a glow than a shadow"%}
 </div>
 
@@ -106,15 +106,16 @@ No additional CSS was written for any of the views <small>(click to enlarge)</sm
 </div>
 
 ## Conclusion
-All in all, it took around two hours to create this dark theme. There are probably better ways of doing this,
-but this was incredibly quick, and allowed us to deliver something we normally wouldn't be able to deliver.
+All in all, it took around two hours to create this dark theme. Most of the time was
+spent experimenting with different settings to get acceptable contrast rations.
+There are probably better ways of doing this, but this was incredibly quick,
+and allowed us to deliver something we normally wouldn't be able to deliver.
 Other than the shadows, nothing is particularly ugly, so we consider this a success.
 The whole style sheet is just a couple of selectors :
 
 
 ```css
 html.dark-mode {
-    background: #eee;
     mix-blend-mode: difference;
     filter: brightness(0.67) hue-rotate(180deg);
     font-weight: 700 !important;
