@@ -10,14 +10,14 @@ author: <a href="https://linkedin.com/in/davidaase">David Åse</a>
 Like many other companies, [Working Group Two](/) has a number of applications which are
 only available internally or to partners.
 Our UI designer (that's me) prefers light backgrounds with dark text, but one of our
-partners have requested a dark theme for one application. We haven't been able to prioritize this,
-but we were using CSS blend modes for a different project, and wondered if we could use them
-to quickly put together a dark theme.
+partners have wanted a dark theme for one of our applications for some time.
+We haven't been able to prioritize this, but we were using CSS blend modes for a different project,
+and wondered if we could use them to quickly put together a dark theme.
 
 The application in this post is one of our partner portals, which follows the Material Design
 guidelines. It’s built with [Vue](https://vuejs.org/) and [Vuetify](https://vuetifyjs.com/en/),
-but also has some custom components and JS plugins (for charts, etc).
-It took about two hours to create the dark theme and deploy it to production, and we'll walk
+but also has some custom components and JS plugins (for uploads, charts, etc).
+It took two hours to create the dark theme and deploy it to production, and we'll walk
 you through the whole process (with screenshots) in this post.
 
 ## What are CSS blend modes?
@@ -44,7 +44,7 @@ Let’s see it in action <small>(click to enlarge)</small>:
     {% include image.html url="/img/blog/blend-modes/01-console-subs-difference.png" caption="After applying `mix-blend-mode: difference;`"%}
 </div>
 
-Okay, that’s actually not too bad! There are some obvious issues, like the color hues being
+Okay, that’s actually not too bad. There are some obvious issues, like the color hues being
 inverted and everything being way too dark, but it should be possible to make some adjustments.
 
 ## Working with a non-standard blend mode
@@ -80,15 +80,15 @@ Let's have a look <small>(click to enlarge)</small>:
 That’s a lot better (blend modes are fun!). Our dark theme is close to done now,
 but we have one problem remaining: Shadows. Because of our blend mode, making
 things darker means making them brighter, so all our shadows look like white glows.
-Since our base color is white/bright gray, we can’t simply change our shadows to white as there would be no contrast.
-Our solution was to embrace the “glow” feel and change the shadows to a brand colored glows:
+Since our base color is white/light gray, we can’t simply change our shadows to white as there would be no contrast.
+Our solution was to embrace the “glow” feel and change the shadows to brand colored glows:
 
 <div class="uk-child-width-1-3 uk-child-width-1-2@s bordered-gallery" uk-grid uk-lightbox="animation: fade">
     {% include image.html url="/img/blog/blend-modes/02-console-shadows-light.png" caption="Normally, the menu crates a black shadow on the background"%}
     {% include image.html url="/img/blog/blend-modes/02-console-shadows-glow.png" caption="More of a glow than a shadow"%}
 </div>
 
-As you might have seen in the previous screenshot, we also made some other adjustments.
+As you might have noticed in the previous screenshot, we also made some other adjustments.
 We made the logo white using a brightness filter, and we made the base font-weight 500
 (since contrast is lower in the dark theme).
 
