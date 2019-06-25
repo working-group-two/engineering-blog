@@ -107,7 +107,7 @@ No additional CSS was written for any of the views <small>(click to enlarge)</sm
 
 ## Conclusion
 All in all, it took around two hours to create this dark theme. Most of the time was
-spent experimenting with different settings to get acceptable contrast rations.
+spent experimenting with different settings to get acceptable contrast ratios.
 There are probably better ways of doing this, but this was incredibly quick,
 and allowed us to deliver something we normally wouldn't be able to deliver.
 Other than the shadows, nothing is particularly ugly, so we consider this a success.
@@ -137,7 +137,15 @@ Thanks for reading!
 ## FAQ
 
 *“Many CSS frameworks have a dark-mode, why not use that?”*\\
-Vuetify also has a dark mode. Most of the components they offer look okay in dark-mode, but we would have
+Vuetify also has a dark-mode. Most of the components they offer look okay in dark-mode, but we would have
 to write custom CSS for our own components, and for other libraries we’re using (primarily for charts).
-The great thing about the blend-mode hack is that is operates independent of any framework.
-You just set it on an HTML tag and it works the same on everything.
+The great thing about the blend-mode hack is that is operates independently of any framework.
+You set it on an HTML tag and it treats everything the same.
+
+*“What about accessibility?”*\\
+Yeah, this isn't great for accessibility. Since we're lowering the brightness to 67% we're losing a lot of contrast.
+We increased the font-weight to mitigate the effects of this, but you shouldn't use this technique for your primary theme.
+
+*“What about browser support?”*\\
+Supported in modern browsers, except Edge.
+There's a [detailed table](https://developer.mozilla.org/en-US/docs/Web/CSS/blend-mode#Browser_Compatibility) available on MDN.
