@@ -10,6 +10,7 @@
 
 .uk-modal-page {
   overflow: scroll;
+
   body {
     overflow-y: auto !important;
   }
@@ -41,4 +42,19 @@
   }
 }
 
+.bordered-gallery img {
+  border: 1px solid #ddd;
+}
 
+:not(pre) > code,
+:not(pre) > kbd,
+:not(pre) > samp {
+  font-size: .875rem;
+  font-family: Consolas, monaco, monospace;
+  color: #f0506e;
+  white-space: nowrap;
+  padding: 1px 4px;
+  background: #f8f8f8;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+}
