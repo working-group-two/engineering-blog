@@ -60,7 +60,23 @@ html.dark-mode {
 }
 ```
 
-This fixes our colors, but we also have to do something about the darkness.
+Hue is measured in degrees from 0 to 360, so we're flipping the hues twice.
+Below, you can see a color wheel with no effects (1), with blend-mode (2), and with blend mode and hue rotate (3).
+All the effects are applied to the same image here in your browser.
+
+<div class="color-wheel-examples" style="display:flex;background:white;justify-content:space-between;border-radius:3px;border:1px solid #ddd;">
+    <img src="/img/blog/blend-modes/color-wheel.png" uk-tooltip="title: Original, no effects">
+    <img src="/img/blog/blend-modes/color-wheel.png" style="mix-blend-mode:difference;" uk-tooltip="title: mix-blend-mode:difference">
+    <img src="/img/blog/blend-modes/color-wheel.png" style="mix-blend-mode:difference;filter:hue-rotate(180deg);" uk-tooltip="title: mix-blend-mode:difference and filter:hue-rotate(180deg)">
+    <style>.color-wheel-examples img {width:32%;padding:16px;}</style>
+</div>
+
+As you can see from the illustration, brightness and saturation
+is not accounted for with hue-rotate, so most colors won't look the same.
+They will have the same hue though, so semantic meaning (red = danger, green = safe) is preserved.\\
+We're lucky that our brand color doesn't change too much!
+
+So, this fixes our colors, but we also have to do something about the darkness.
 The whole application is pretty much pitch black, and to make it brighter we need to … turn down the brightness:
 
 ```css
