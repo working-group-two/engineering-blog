@@ -165,3 +165,7 @@ We increased the font-weight to mitigate the effects of this, but you shouldn't 
 *“What about browser support?”*\\
 Supported in modern browsers, except Edge.
 There's a [detailed table](https://developer.mozilla.org/en-US/docs/Web/CSS/blend-mode#Browser_Compatibility) available on MDN.
+
+*“What about performance?”*\\
+We haven't had any problems with performance, but some readers noted that they tried
+the trick on a complex website (Jira), which resulted in sluggish behavior.
