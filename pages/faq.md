@@ -40,7 +40,7 @@ We've collected the most frequent ones here, please read through them if you're 
 
     {% include accordion-item.html title="What functionality does your network support?" text="
         We deliver user databases, voice, messaging and Internet connectivity from the core network.
-        In telco terms we have the HLR/HSS, G-MSC and IMS inftastructure, G-SMSC, SMSC, MMSC, PCRF, entitlement server, GGSN/P-GW,  STP/DRA and more.
+        In telco terms we have the HLR/HSS, G-MSC and IMS inftastructure (VoLTE/VoWiFi), G-SMSC, SMSC, MMSC, PCRF, entitlement server, GGSN/P-GW,  STP/DRA and more.
     "%}
 
     {% include accordion-item.html title="What is the business model?" text="
