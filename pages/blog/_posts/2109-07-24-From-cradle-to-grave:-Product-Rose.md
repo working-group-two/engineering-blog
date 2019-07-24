@@ -17,7 +17,6 @@ Although we're good at marking and celebrating life stages like birth, name days
 As a product manager, you should always consider which features or products you can kill. 
 
 In the basic product life cycle theory, you often experience slow pick-up, growth pains, resource constraints, and struggles, sometimes referred to as the S curve and all its challenges. You’re constantly reminded to learn, plan, design, implement, operate, and what no other product life cycle tools you’re referred to. 
-[photo]
 
 You’re presented with circle after circle. Learn, iterate, implement and start all over again. Theory often fails to mention the crucial part of letting a product go. When should the product or feature leave the infinity wheel? The theory is rarely learning you when or how to say goodbye.  
 
@@ -35,8 +34,6 @@ There might be people in your team and organization that spent all their time on
 The only thing that’s for sure is that you always should take learnings from what you have done and remember it.
 
 ## How we say goodbye  
-[photo] 
-
 Back to the start; “we are gathered here today”, yes we're having an actual funeral for the product we kill. 
 
 This provides us with time to reflect on the life it had. Which problems it was supposed to solve, honor those who conceived it, and those who used it. We reflect over key milestones and learning it gave us. 
@@ -49,7 +46,6 @@ For products as with life, death should be a normal thing. We should not be afra
 One of the reasons is that it provides space, time and resources to focus on something new. 
 
 In Working Group Two it all ends with a rose. 
-[PHOTO] 
 
 Hey wait… how did it all begin? 
 To be continued 
