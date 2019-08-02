@@ -65,10 +65,10 @@ Below, you can see a color wheel with no effects (1), with blend-mode (2), and w
 All the effects are applied to the same image here in your browser.
 
 <div class="color-wheel-examples" style="display:flex;background:white;justify-content:space-between;border-radius:3px;border:1px solid #ddd;">
-    <img src="/img/blog/blend-modes/color-wheel.png" uk-tooltip="title: Original, no effects">
-    <img src="/img/blog/blend-modes/color-wheel.png" style="mix-blend-mode:difference;" uk-tooltip="title: mix-blend-mode:difference">
-    <img src="/img/blog/blend-modes/color-wheel.png" style="mix-blend-mode:difference;filter:hue-rotate(180deg);" uk-tooltip="title: mix-blend-mode:difference and filter:hue-rotate(180deg)">
-    <style>.color-wheel-examples img {width:32%;padding:16px;}</style>
+    <div><img src="/img/blog/blend-modes/color-wheel.png" uk-tooltip="title: Original, no effects"></div>
+    <div><img src="/img/blog/blend-modes/color-wheel.png" style="mix-blend-mode:difference;" uk-tooltip="title: mix-blend-mode:difference"></div>
+    <div><img src="/img/blog/blend-modes/color-wheel.png" style="mix-blend-mode:difference;filter:hue-rotate(180deg);" uk-tooltip="title: mix-blend-mode:difference and filter:hue-rotate(180deg)"></div>
+    <style>.color-wheel-examples > div {width:32%;padding:16px;}</style>
 </div>
 
 As you can see from the illustration, brightness and saturation
