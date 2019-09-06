@@ -14,8 +14,6 @@ and we have three main offices (Oslo, Stockholm, Trondheim).
 ## We're hiring
 * **Developers** to build our core platform (**backend**/**infrastructure**), and our products (**frontend**).
 * **Mobile core network experts** that can help us rebuild telecom in a more modern way.
-* A **Head of Product** to help us build new and innovative products on our platform.
-* A **Chief Sales and Development Officer** to drive sales and development (read more on [finn](https://www.finn.no/job/management/ad.html?finnkode=147932821)).
 
 We believe in transparency, so we've created a page outlining our [interview process](/our-interview-process).
 If you would like to join us, please write a bit about yourself and email us at <career@wgtwo.com>.
