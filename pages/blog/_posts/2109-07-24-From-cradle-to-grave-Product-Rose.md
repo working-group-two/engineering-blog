@@ -1,7 +1,7 @@
 ---
 layout: blogpost
-permalink: /blog/From-cradle-to-grave:-Product-Rose/
-title: From cradle to grave: Product Rose
+permalink: /blog/From-cradle-to-grave-Product-Rose/
+title: "From cradle to grave: Product Rose"
 date: 2019-07-24
 tags: product lifecycle ceremonies 
 author: <a href="https://www.linkedin.com/in/therese-nesseth-t%C3%B8rlen/">Therese Nesseth Tørlen</a>
@@ -33,7 +33,10 @@ There might be people in your team and organization that spent all their time on
 
 The only thing that’s for sure is that you always should take learnings from what you have done and remember it.
 
-## How we say goodbye  
+## How we say goodbye
+
+![Ceremony](/img/blog/funeral/ceremony.jpg)
+
 Back to the start; “we are gathered here today”, yes we're having an actual funeral for the product we kill. 
 
 This provides us with time to reflect on the life it had. Which problems it was supposed to solve, honor those who conceived it, and those who used it. We reflect over key milestones and learning it gave us. 
@@ -50,3 +53,4 @@ In Working Group Two it all ends with a rose.
 Hey wait… how did it all begin? 
 To be continued 
 
+![Rose](/img/blog/funeral/rose.jpg)
