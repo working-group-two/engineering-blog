@@ -6,12 +6,12 @@ permalink: /internship
 
 # Internship
 
-We're currently looking for an intern for our Trondheim office.
+Our Trondheim office is looking for an intern.
 The internship is in our Product Team, where you’ll be working
 closely with two developers who graduated from NTNU five years ago.
 
 ## About the Product team
-The product team at Working Group Two owns user-facing products,
+The product team at Working Group Two owns user-facing products
 and is responsible for driving API development by creating prototypes and
 example projects for partner operators and end-users.
 
@@ -35,9 +35,9 @@ HTML and CSS, and we design using Balsamiq and Sketch.
 * Autonomy and the ability to influence your day to day tasks.
 * Free snacks and lunch, with post-lunch playstation battles (optional).
 
-The internship is one to two days per week (20% - 40%), and is expected to run at least until summer 2020.
+The internship is one to two days per week (20% - 40%) and is expected to run at least until summer 2020.
 You should be in your 4th or 5th year and think that our company is interesting.
-Hopefully this is the first step to becoming a permanent member of our team.
+We hope that this is the first step for you to become a permanent member of our team.
 
 ## How to apply
 Please send your CV and a few words about yourself and why you'd
@@ -47,9 +47,9 @@ You can use "Trondheim Internship (Firstname Lastname)" for your email subject.
 The application deadline is the **14th of October**, and we'll come visit
 NTNU for a round of speed interviews on the **21st of October**.
 
-Selected candidates will have two 10-15 minute interviews at NTNU,
-then there will be one one-hour interview in our Trondheim office for those
-who advance from the speed interviews.
+Selected candidates will have two 10-15 minute interviews at NTNU.
+Those who advance from the speed interviews will have an interview
+in our Trondheim office.
 
 ## Where we're located
 
