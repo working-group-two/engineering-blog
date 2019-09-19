@@ -38,8 +38,16 @@ You should be in your 4th or 5th year and think that our company is interesting.
 Hopefully this is the first step to becoming a permanent member of our team.
 
 ## How to apply
-Please send your CV and application to Ana Timofei at ana@wgtwo.com.
+Please send your CV and a few words about yourself and why you'd
+like this internship to Ana Timofei at ana@wgtwo.com.
 You can use "Trondheim Internship (Firstname Lastname)" for your email subject.
+
+The application deadline is the 14th of October, and we'll come to
+NTNU for a round of speed interviews on the 21th of October.
+
+Selected candidates will have two 10-15 minute interviews at NTNU,
+then there will be one one-hour interview in our Trondheim office for those
+who advance from the speed interviews.
 
 ## Where we're located
 
