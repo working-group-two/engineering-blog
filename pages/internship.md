@@ -41,7 +41,7 @@ We hope that this is the first step for you to become a permanent member of our 
 
 ## How to apply
 Please send your CV and a few words about yourself and why you'd
-like this internship to Ana Timofei at **ana@wgtwo.com**.
+like this internship to **career@wgtwo.com**.
 You can use "Trondheim Internship (Firstname Lastname)" for your email subject.
 
 The application deadline is the **14th of October**, and we'll come visit
