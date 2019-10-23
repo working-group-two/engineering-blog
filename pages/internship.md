@@ -1,18 +1,20 @@
 ---
 layout: default
-title: Internship
-permalink: /internship
+title: Part-time job
+permalink: /part-time-job
 ---
 
-# Internship
+# Part-time job for students
 
-Our Trondheim office is looking for an intern.
-The internship is in our Product Team, where you’ll be working
+Our Trondheim office has a part-time position open for
+a student who is close to finishing their degree.
+The position is in our Product Team, where you’ll be working
 closely with two developers who graduated from NTNU five years ago.
 
-## About the Product team
-The product team at Working Group Two owns user-facing products
-and is responsible for driving API development by creating prototypes and
+## About the Product team at Working Group Two
+Working Group Two is a startup backed by Telenor and Cisco, which aims to modernize telecommunication.
+Our product team owns our user-facing products and is responsible for
+driving API development by creating prototypes and
 example projects for partner operators and end-users.
 
 Right now we have five main projects:
@@ -35,25 +37,18 @@ HTML and CSS, and we design using Balsamiq and Sketch.
 * Autonomy and the ability to influence your day to day tasks.
 * Free snacks and lunch, with post-lunch playstation battles (optional).
 
-The internship is one to two days per week (20% - 40%) and is expected to run at least until summer 2020.
+The position is one to two days per week (20% - 40%) and is expected to run at least until summer 2020.
 You should be in your 4th or 5th year and think that our company is interesting.
 We hope that this is the first step for you to become a permanent member of our team.
 
 ## How to apply
 Please send your CV and a few words about yourself and why you'd
-like this internship to **career@wgtwo.com**.
-You can use "Trondheim Internship (Firstname Lastname)" for your email subject.
-
-The application deadline is the **14th of October**, and we'll come visit
-NTNU for a round of speed interviews on the **21st of October**.
-
-Selected candidates will have two 10-15 minute interviews at NTNU.
-Those who advance from the speed interviews will have an interview
-in our Trondheim office.
+like this position to **career@wgtwo.com**.
+You can use "Trondheim part-time job (Firstname Lastname)" for your email subject.
 
 ## Where we're located
 
-Our Trondheim office is located at DIGS in Midtbyen
+Our Trondheim office is located at DIGS in Midtbyen:
 
 <iframe
     src="https://maps.google.com/maps?q=krambugata%202&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
