@@ -18,10 +18,8 @@ network functionality through APIs to third parties. The logic is not unlike tha
 systems in the smartphone world: A homogeneous software layer on top of heterogeneous hardware
 to enable a platform of innovative products and services.
 
-We have offices in Oslo, Stockholm and Trondheim.
-
-Working Group Two was spun off from the Telenor Group in October 2017.
-
+We have offices in Oslo, Stockholm and Trondheim. Learn more about how it is working with 
+us on our [career page](https://wgtwo.com/career).
 
 ## Our partners
 
@@ -37,12 +35,12 @@ Working Group Two was spun off from the Telenor Group in October 2017.
 ## Our investors
 Telenor and Digital Alpha LLP are our biggest investors and own 47.5% each. The remaining 5% is owned by the board and the employees.
 
-{% include partner.html title="Telenor" imgUrl="/img/partners/telenor.png" description="
-    Telenor Group is a major mobile operator with almost 200 million customers in Europe and Asia.
+{% include partner.html title="TN" imgUrl="/img/partners/telenor.png" description="
+    A major mobile operator with almost 200 million customers in Europe and Asia.
 "%}
 
 {% include partner.html title="Digital Alpha" imgUrl="/img/partners/digitalalpha.png" description="
-    Digital Alpha is an investment firm with a strategic collaboration agreement with Cisco Systems.
+    An investment firm with a strategic collaboration agreement with Cisco Systems.
 "%}
 
 {% include partner.html title="Our board and employees" imgUrl="/img/partners/people.png" description="
