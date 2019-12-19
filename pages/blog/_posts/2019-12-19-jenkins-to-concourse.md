@@ -49,6 +49,8 @@ Changes to pipelines are applied by updating the yaml file and running Concourse
 
 Concourse runs every job in its own container, which means that every job uses an entirely clean, reproducible environment. Any dependencies required for a task can be pre-installed in the image.
 
+We use docker containers, and we also run Concourse itself as a container, which means a bit of docker-in-docker inception. This has gone surprisingly smoothly for us on the whole, the only drawback being that we have to run images in privileged mode, but in our self-managed kubernetes cluster this isn't an issue.
+
 ## Debugging
 
 Since the tasks all run in containers, it's easy to debug issues locally by running the same image on the laptop. The fly intercept tool also allows us to log into a container currently running in concourse.
