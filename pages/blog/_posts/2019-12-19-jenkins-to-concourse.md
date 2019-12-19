@@ -15,8 +15,6 @@ Having to configure a service by navigating a web ui means that a service like J
 
 We spent time investigating other options, and eventually settled on **[Concourse](https://concourse-ci.org/), a cloud-native CI/CD server where tasks are deployed in containers, and config is stored as yaml**.
 
-![Concourse home](/img/blog/jenkins-to-concourse/concourse_home.png)
-
 
 ## Infrastructure as code
 
@@ -83,8 +81,5 @@ Right now we have jobs like:
 ## Learning curve
 
 The move from Jenkins to Concourse has overall been a very positive step for us. If there has been any drawback it's that implementing any brand new system usually means something of a learning curve, and Concourse is no exception.
+
 The documentation has been a little sparse at times, but now that we have a number of pipelines up and running we're finding it easier and easier to add more. The clean UI and the ability to have the entire deployment in code are two of our favourite features.
-
-## Further reading
-
-[](https://content.pivotal.io/blog/the-making-of-a-cloud-native-ci-cd-tool-the-concourse-journey)
