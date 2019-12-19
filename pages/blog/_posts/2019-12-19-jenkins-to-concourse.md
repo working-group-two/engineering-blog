@@ -13,7 +13,7 @@ We decided to replace our [Jenkins](https://jenkins.io/) server some time ago fo
 
 Having to configure a service by navigating a web ui means that a service like Jenkins is difficult to maintain, redeploy, and upgrade. We try to do all of our infrastructure configuration via [gitops](https://www.gitops.tech/), and Jenkins has been a bad fit for us here.
 
-We spent time investigating other options, and eventually settled on *[Concourse](https://concourse-ci.org/), a cloud-native CI/CD server where tasks are deployed in containers, and config is stored as yaml*.
+We spent time investigating other options, and eventually settled on _[Concourse](https://concourse-ci.org/), a cloud-native CI/CD server where tasks are deployed in containers, and config is stored as yaml_.
 
 ![Concourse home](/img/blog/jenkins-to-concourse/concourse_home.png)
 
