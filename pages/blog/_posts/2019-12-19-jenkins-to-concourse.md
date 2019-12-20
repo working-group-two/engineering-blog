@@ -4,7 +4,7 @@ permalink: /blog/replacing-jenkins-with-concourse/
 title: "We killed the butler: Replacing Jenkins with Concourse"
 date: 2019-12-19
 tags: infrastructure cicd
-author: <a href="https://www.linkedin.com/in/annaken">Anna Kennedy</a>
+author: <a href="https://www.linkedin.com/in/annaken">Anna Kennedy</a> and <a href="https://www.linkedin.com/in/hihrig/">Holger Ihrig</a>
 ---
 
 At Working Group Two, we try to use CI/CD pipelines to automate all of our repetitive tasks when it comes to code and infrastructure deployment and testing, such as:
