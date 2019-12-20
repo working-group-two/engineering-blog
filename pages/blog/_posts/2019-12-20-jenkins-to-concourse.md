@@ -17,7 +17,7 @@ At Working Group Two, we try to use CI/CD pipelines to automate all of our repet
 * syncing secrets between different sources
 * notifying slack if changes are made in Kubernetes
 
-We had been using [Jenkins](https://jenkins.io/) to run such pipelines, but having to configure it by navigating a web ui made it difficult to maintain, redeploy, and upgrade, so we decided to look for alternatives.
+We had been using [Jenkins](https://jenkins.io/) to run such pipelines, but having to configure it by navigating a web GUI made it difficult to maintain, redeploy, and upgrade, so we decided to look for alternatives.
 
 ![Jenkins](/img/blog/jenkins-to-concourse/jenkins.png)
 
