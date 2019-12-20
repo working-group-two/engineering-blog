@@ -2,27 +2,27 @@
 layout: blogpost
 permalink: /blog/replacing-jenkins-with-concourse/
 title: "We killed the butler: Replacing Jenkins with Concourse"
-date: 2019-12-19
+date: 2019-12-20
 tags: infrastructure cicd
 author: <a href="https://www.linkedin.com/in/annaken">Anna Kennedy</a> and <a href="https://www.linkedin.com/in/hihrig/">Holger Ihrig</a>
 ---
 
 At Working Group Two, we try to use CI/CD pipelines to automate all of our repetitive tasks when it comes to code and infrastructure deployment and testing, such as:
 
-* run unit tests on each pull request
-* build and run integration tests with bazel on every merge to the monorepo
-* build container images and upload them to the registry
-* scan all images for security flaws
-* run acceptance tests in the staging environment
-* sync secrets between different sources
-* notify slack if changes are made in Kubernetes
+* running unit tests on each pull request
+* building and running integration tests with bazel on every merge to the monorepo
+* building container images and upload them to the registry
+* scanning all images for security flaws
+* running acceptance tests in the staging environment
+* syncing secrets between different sources
+* notifying slack if changes are made in Kubernetes
 
 We had been using [Jenkins](https://jenkins.io/) to run such pipelines, but having to configure it by navigating a web ui made it difficult to maintain, redeploy, and upgrade, so we decided to look for alternatives.
 
 ![Jenkins](/img/blog/jenkins-to-concourse/jenkins.png)
 
 The majority of our code lives in a monorepo, and we use Bazel to manage builds and tests.
-We try to do all of our infrastructure configuration via [gitops](https://www.gitops.tech/) so it was important that a CI/CD system not only play nicely with our existing structures, but be itself configurable from code.
+We try to do all of our infrastructure configuration via [gitops](https://www.gitops.tech/) so it was important that a continuous integration and deployment system not only play nicely with our existing structures, but be itself configurable from code.
 
 We spent time investigating other options, and eventually settled on **[Concourse](https://concourse-ci.org/), a cloud-native CI/CD server where tasks are deployed in containers, and config is stored as yaml**.
 
@@ -53,8 +53,6 @@ Pipelines are made up of jobs that run in series or parallel; jobs consist of ta
 Pipelines, jobs and tasks are described in code and automatically visualised in the UI.
 Changes to pipelines are applied by updating the yaml file and running Concourse's [fly cli](https://concourse-ci.org/fly.html) tool.
 
-![Concourse pipeline](/img/blog/jenkins-to-concourse/concourse_pipeline.png)
-
 
 ## Containerised deployment
 
@@ -63,14 +61,17 @@ This is a huge improvement for us over Jenkins, where dependencies were installe
 
 We use docker containers, and we also run Concourse itself as a container, which means a bit of docker-in-docker magic.
 It look a little work to build an image we were happy with, but beyond that it went surprisingly smoothly for us on the whole.
-The only drawback being that we have to run images in privileged mode, but in our self-managed Kubernetes cluster this isn't an issue.
+The only drawback is that we have to run images in privileged mode, but in our self-managed Kubernetes cluster this isn't really too much of an issue.
 
-There were some challenges in figuring out what resources needed to be allocated; we settled on three worker nodes and max 2 active tasks per worker. We see a little bit of slowness some afternoons when the pull-requests are coming thick and fast, but the cluster remains stable. It would be nice to set some autoscaling here to cope with short-term peaks in load.
+There were some challenges in figuring out what resources needed to be allocated; we settled on three worker nodes and a maximum of 2 active tasks per worker. We see a little bit of slowness some afternoons when the pull-requests are coming thick and fast, but the cluster remains stable. It would be nice to set some autoscaling here to cope with short-term peaks in load.
+
+![Concourse pipeline](/img/blog/jenkins-to-concourse/concourse_pipeline.png)
 
 
 ## Debugging
 
-Since the tasks all run in containers, it's easy to debug issues locally by running the same image on the laptop. Alternatively, the [fly execute](https://concourse-ci.org/running-tasks.html#fly-execute) cli tool runs a local project in a container in Concourse, a nice interim step when trying to get a deploy working.
+Since the tasks all run in containers, it's easy to debug issues locally by running the same image on the laptop as is running in Concourse.
+Alternatively, the [fly execute](https://concourse-ci.org/running-tasks.html#fly-execute) cli tool runs a local project in a container in Concourse, a nice interim step when trying to get a deploy working.
 
 The [fly intercept](https://concourse-ci.org/builds.html#fly-intercept) tool offers a way to log into a running container in concourse to troubleshoot:
 
@@ -87,18 +88,18 @@ root@02f69d15-b7be-4f2e-43f7-24f549071bb1:/tmp/build/3a58ea39#
 
 ## Resource types and extending Concourse
 
-There are a large number of [resource types](https://github.com/concourse/concourse/wiki/Resource-Types) available for Concourse, making it pretty easy to configure pipelines.
+There are a large number of [resource types](https://github.com/concourse/concourse/wiki/Resource-Types) available for Concourse, making it fairly straightforwards to configure pipelines.
 
-As resource types in Concourse are all based on containers, extending Concourse actually means introducing a new container that can be called from Concourse.
+As resource types in Concourse are all based on containers, extending Concourse means introducing a new container that can be called from Concourse.
 
 A resource type needs to implement the following executables/scripts:
 
-* check (checking new versions of the resource, e.g. is there a new pull Rrquest)
-* in (pulling a new version of the resource down, e.g. download code from a PR)
-* out (pushing a new version of the resource up, e.g. pushing a build result to Github)
+* check (checking new versions of the resource, eg. is there a new pull request)
+* in (pulling a new version of the resource down, eg. download code from a pull request)
+* out (pushing a new version of the resource up, eg. push a build result to Github)
 
 These binaries need to be placed under /opt/resource in the docker container.
-Concourse calls these binaries with JSON payload and optional parameters that can all be found [here]https://concourse-ci.org/implementing-resource-types.html.
+Concourse calls these binaries with JSON payload and optional parameters that can all be found [here](https://concourse-ci.org/implementing-resource-types.html).
 What is done in those executables/scripts is up to the implementer, but it is really easy to extend concourse using this mechanism.
 
 
