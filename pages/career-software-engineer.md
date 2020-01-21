@@ -8,8 +8,6 @@ permalink: /career/software-engineer
 
 Working Group Two is here to change the telco industry, and to do so we need more great people. We are on a mission to make mobile subscriptions much more useful and relevant by providing programmable mobile networks for everyone. The way we do this is to change the way traditional telco work and deliver mobile core network services from the cloud. This includes making mobile operators work on a platform, controlling our own technology, enabling rapid iterations and focus on the end-user experience. 
 
-## Software Engineer
-
 We are now looking to welcome an experienced software engineer to join our office in Stockholm, and continue to develop our platform with new key features.
 Most of our components are in-house developed in Java/Kotlin, Go, or Erlang, and are deployed on our self-managed Kubernetes cluster running on AWS. We are however language agnostic and believe in using the right tool for the job. 
 We are firmly rooted in having people own their own work. This means that you are allowed a lot of freedom when it comes to planning and which features to build. However, our engineers who develop the code are also responsible for operating the code once in production. We adhere to principles that include the use of continuous integration, continuous delivery, microservices and infrastructure as code. 
