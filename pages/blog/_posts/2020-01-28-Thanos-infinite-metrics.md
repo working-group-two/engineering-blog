@@ -59,11 +59,39 @@ data source to do this in the required intervals.
 
 ## Architecture in a Cluster
 
+![Thanos Architecture](/img/blog/thanos/thanos_architecture.png)
+
+As we can see, there are quite a few things going on in this architectural view of the system, but on the other hand it
+is fairly simple to understand as the component are nicely decoupled from each other.
+
+An interesting thing here is that the drawing has multiple Prometheus instances with multiple Sidecars. Thanos actually
+allows for deduplication of Timeseries Data. The data uploaded from the sidecars have information from which prometheus
+instance the metrics are generated and adds that. The Querier can then deduplicate this data so that the metrics shown
+in Grafana are consistent and do not come sometimes from Prometheus A and sometimes from Prometheus B.
+
+This design also allows for an interesting other Use Case: Querying multiple Clusters. As
+long as the storage location used by the Sidecars for uploading the metrics is identical, the Time Series data is
+available to the Thanos Store and therefor the Querier and Grafana.
+That even allows to run Grafana, Querier and Store in a completely different part of the world if need be.
 
 ## Is it worth it?
 
 ### Pros
+- Highly Available Prometheus
+- Increased Reliability (Decoupled query component)
+- Infinite Metric Storage
+- Query Multiple clusters from a single point
+- Easy to Scale
 
 ### Cons
+- More complex architecture
+- Increased Resource usage
 
 ## Summary
+
+Even though Thanos comes with an increased architectural and operational complexity, we have to say after running
+with it for a while that it is totally worth it. We can make architecture decisions by looking further
+back in time than before. It also has the additional Advantage that a misconfiguration of a Prometheus Deployment
+does not pull down the whole stack as the Prometheus is HA and only updates one at a time. If the deployment fails, 
+we can get notified and the deployment can be aborted. Also upgrades of the whole monitoring stack, can
+now be done more gradual, which is also a great advantage for us!
