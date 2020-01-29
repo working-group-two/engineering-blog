@@ -87,6 +87,17 @@ That even allows to run Grafana, Querier and Store in a completely different par
 - more complex architecture
 - increased resource usage
 
+## What are the biggest benefits for us?
+
+As stated in the beginning of this article one of our objectives for implementing Thanos was the increased
+metric retention to be able to look back further in time.
+
+These are the most interesting applications for us:
+- analyze trends and identify anomalies within the mobile core network
+- visualize and graph service usage
+- predict service usage on peak days (think New Years Eve)
+- observe behaviour over multiple deployments (regions, customers and cloud providers)
+
 ## Summary
 
 Even though Thanos comes with an increased architectural and operational complexity, we have to say after running it for a while, we think it is totally worth it. We can make architecture decisions by looking further
