@@ -92,7 +92,7 @@ That even allows to run Grafana, Querier and Store in a completely different par
 As stated in the beginning of this article one of our objectives for implementing Thanos was the increased
 metric retention to be able to look back further in time.
 
-These are the most interesting applications for us:
+The most interesting features for us are to be able to:
 - analyze trends and identify anomalies within the mobile core network
 - visualize and graph service usage
 - predict service usage on peak days (think New Years Eve)
