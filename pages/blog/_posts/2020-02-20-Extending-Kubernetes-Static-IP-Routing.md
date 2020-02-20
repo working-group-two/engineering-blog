@@ -207,7 +207,91 @@ NB: This changed since operator-sdk 0.15
 
 #### Creating the controller
 
+There are two main parts to the controller. One part that creates a watcher on resources and one part
+that reconciles your resource (in our case the IP and Pods).
 
+##### Watching for resource changes
+The watch code is in our case in the `add` function of ip_controller.go:
+```
+	// Watch for changes to primary resource IP, as this always requires an action
+	err = c.Watch(&source.Kind{Type: &ipv1alpha1.IP{}}, &handler.EnqueueRequestForObject{})
+	if err != nil {
+		return err
+	}
+
+	// Create Filter list triggering on ip.wgtwo.com/ip as annotation
+	pred := predicate.Funcs{
+		// Ignore the pod if it does not contain annotation ip.wgtwo.com/ip
+		CreateFunc: func(e event.CreateEvent) bool {
+			return hasAnnotation(e.Meta)
+		},
+		UpdateFunc: func(e event.UpdateEvent) bool {
+			if hasAnnotation(e.MetaOld) || hasAnnotation(e.MetaNew){
+				return true
+			} else {
+				return false
+			}
+		},
+		DeleteFunc: func(e event.DeleteEvent) bool {
+			// Evaluates to false if the object has been confirmed deleted.
+			return !e.DeleteStateUnknown
+		},
+	}
+	// Watch for all pods having the right annotation
+	err = c.Watch(&source.Kind{Type: &corev1.Pod{}}, &handler.EnqueueRequestForObject{}, pred)
+```
+Here we are creating watchers for all changes to the `IP` resource and watchers for all create/update/delete operations on
+pods, if they have a specific annotation set.
+
+If any of these conditions are met, the reconciliation loop will be triggered.
+
+##### Reconciliation
+
+This is where the business logic of your operator/controller is sitting. The `Reconcile` function in `ip_controller.go` will
+be triggered whenever one of the watch conditions fits.
+We do not know which type of resource triggered the loop, so that is the first thing we need to figure out:
+```
+oip := &ipv1alpha1.IP{}
+err := r.client.Get(context.TODO(), request.NamespacedName, oip)
+if err == nil {
+    ... yes it is a resource of kind IP ... go and do business
+}
+...
+op := &corev1.Pod{}
+err = r.client.Get(context.TODO(), request.NamespacedName, op)
+if err == nil {
+    ... yes it is a resource of kind Pod ... go and do business
+}
+...
+```
+
+In these two code blocks, we are handling all the interactions for the primary resource of kind IP and the secondary
+resource of type Pod. Depending on what has happened last we have different scenarios.
+
+Cases for the IP resource to consider:
+- IP is new
+- IP has been modified
+- IP has been deleted
+
+Cases for the Pod resource to consider:
+- Annotation sticking the IP to the Pod has been deleted
+- IP needs to be assigned to a Pod
+- Pod has moved to another node
+- Pod has been deleted
+
+We will not go any further into the detail on what these parts are actually doing, as this is enough
+to actually give you an idea on how this can be accomplished.
+
+
+## Summary
+
+We have been looking at how to expand kubernetes to suit our needs better. Creating the Operator/Controller
+has taught us quite a bit about how kubernetes works and has already saved us work in the past 
+few months, especially on node failures.
+
+The operator-sdk has been a great tool for us to solve this problem and we see that there is a lot of work
+going into it, making it simpler to create operators. It might look intimidating at first, but is worth the effort and 
+we think in the future kubernetes operators will be the way how stateful components will be managed.
 
 
 ## Resources / Further Reading
