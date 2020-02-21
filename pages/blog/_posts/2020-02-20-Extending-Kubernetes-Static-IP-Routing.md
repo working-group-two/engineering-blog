@@ -14,7 +14,8 @@ One case for example is that we have to use static IPs for some of our services 
 Telecom companies as they expect a single IP address to bind to. This address needs to be fixed and
 DNS records are not accepted either. We are running in AWS as well, so the reader might ask why are we not
 using Elastic IPs and adding them to the services? Good idea, but Telecom operators will not whitelist
-an Elastic IP for you as there are no guarantees that it will belong to your company infrastructure forever.
+an Elastic IP for you as there are no guarantees that it will belong to your company infrastructure forever. There
+are also additional challenges when it comes to using Elastic IP in private subnet over VPN or direct connect.
 
 We are a member of RIPE and do have a small subnet block for our own use, so we thought we could make use of 
 that. As we own the block and AWS supports BYOIP (Bring your own IP-range), we created a special subnet with
@@ -35,16 +36,16 @@ Possible ways to go forward:
 - Creating an operator/controller
 
 There are more ways to extend Kubernetes, but these two ways will be the one we shall look at. Just for completeness
-you can as well also add another scheduler or change kubernetes itself. However these possibilities have some serious
+you can as well also add another scheduler or change Kubernetes itself. However these possibilities have some serious
 downsides.
 
 ### Adding a scheduler extender
-The kubernetes scheduler checks for certain requirements before it schedules a pod onto a node. Some of these requirements
+The Kubernetes scheduler checks for certain requirements before it schedules a pod onto a node. Some of these requirements
 are hard requirements, like cpu, memory and number of pods. Other requirements are more soft, like if the pods are allowed to
 be packed together or in which AZ they are going to run. All of those requirements are collected and points given to each
-node on how good they meet the requirements. The node that fits best, gets chosen.
+node on how well they meet the requirements. The node that fits best, gets chosen.
 
-All of that are things the scheduler will do for you automatically, however it is also possible to give the cluster a 
+All of these are things the scheduler will do for you automatically, however it is also possible to give the cluster a 
 `KubeSchedulerConfiguration` object that will tell the scheduler to also reach out to a service for additional point scoring.
 The SchedulerConfiguration is a JSON file and for further explanations, please have a look at this 
 excellent [blog post](https://developer.ibm.com/articles/creating-a-custom-kube-scheduler/).
@@ -61,8 +62,8 @@ application, whereas a controller may control specific resources that are not as
 They both use the controller pattern though and both can be implemented with the same toolset, so for simplicity sake in the
 context of this article, we will consider them to be equal.
 
-Operators usually consists at least out of a **CRD(CustomResourceDefinition)**, an **event listener** and a **reconciliation loop**.
-The *CRD* defines the object that shall be created, e.g. a Redis deployment. The whole description on what this deployment
+Operators usually consists at least out of a **[CRD(CustomResourceDefinition)][2]**, an **event listener** and a **reconciliation loop**.
+The *CRD* basically creates a new type of resource and effectively implements a domain specific language for the operator. The whole description on what this deployment
 needs to look like and all its abilities need to be defined in the *CRD*. The operator will create an *event listener* for that
 *CRD* as the primary resource and additional *event listeners* for the secondary resource (most likely pods in this example).
 The *event listener* will let the *reconciliation loop* know once a CRUD operation has been requested on either the primary or
@@ -174,7 +175,7 @@ type IP struct {
 
 The "spec" needs to contain all information the controller needs to create the resource.
 The "status" part needs to contain all the bookkeeping information the controller needs to work. In a way the
-"status" fields are used as a database for operating kubernetes (yes, this is oversimplified).
+"status" fields are used as a database for operating Kubernetes (yes, this is oversimplified).
 
 ```
 // +k8s:openapi-gen=true
@@ -285,13 +286,13 @@ to actually give you an idea on how this can be accomplished.
 
 ## Summary
 
-We have been looking at how to expand kubernetes to suit our needs better. Creating the Operator/Controller
-has taught us quite a bit about how kubernetes works and has already saved us work in the past 
+We have been looking at how to expand Kubernetes to suit our needs better. Creating the Operator/Controller
+has taught us quite a bit about how Kubernetes works and has already saved us work in the past 
 few months, especially on node failures.
 
 The operator-sdk has been a great tool for us to solve this problem and we see that there is a lot of work
 going into it, making it simpler to create operators. It might look intimidating at first, but is worth the effort and 
-we think in the future kubernetes operators will be the way how stateful components will be managed.
+we think in the future Kubernetes operators will be the way how stateful components will be managed.
 
 
 ## Resources / Further Reading
@@ -301,3 +302,4 @@ we think in the future kubernetes operators will be the way how stateful compone
 - [Operator SDK](https://github.com/operator-framework/operator-sdk)
 
 [1]: https://github.com/operator-framework/operator-sdk/blob/master/README.md
+[2]: https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/
