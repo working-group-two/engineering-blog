@@ -66,7 +66,7 @@ Operators usually consists at least out of a **[CRD(CustomResourceDefinition)][2
 The *CRD* basically creates a new type of resource and effectively implements a domain specific language for the operator. The whole description on what this deployment
 needs to look like and all its abilities need to be defined in the *CRD*. The operator will create an *event listener* for that
 *CRD* as the primary resource and additional *event listeners* for the secondary resource (most likely pods in this example).
-The *event listener* will let the *reconciliation loop* know once a CRUD operation has been requested on either the primary or
+The *event listener* will let the *reconciliation loop* know once a [CRUD][3] operation has been requested on either the primary or
 secondary resource. The *loop* will then try to bring the *CRD* into the desired state, depending on what operation has been
 requested. So in the Redis example it will either create the pods, update the pods, in the case of an upgrade it might blue/green
 deploy the pods or delete the pods. Basically things a human operator would do in this case, just in programmatic form, taking it
@@ -303,3 +303,4 @@ we think in the future Kubernetes operators will be the way how stateful compone
 
 [1]: https://github.com/operator-framework/operator-sdk/blob/master/README.md
 [2]: https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/
+[3]: https://en.wikipedia.org/wiki/Create,_read,_update_and_delete
