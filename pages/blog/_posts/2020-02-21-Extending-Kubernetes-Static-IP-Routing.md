@@ -2,7 +2,7 @@
 layout: blogpost
 permalink: /blog/extending-k8s/
 title: "Extending Kubernetes for our needs"
-date: 2020-01-28
+date: 2020-02-21
 tags: infrastructure kubernetes operator operator-framework networking aws
 author: <a href="https://www.linkedin.com/in/hihrig/">Holger Ihrig</a>
 ---
