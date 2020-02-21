@@ -134,7 +134,7 @@ operator-sdk new app-operator --repo <YOURREPO>
 ```
 
 This will create some boilerplate folders and files for you and will look roughly like this:
-![operator-fs-structure](img/blog/operator/operator-structure.png "Operator Folder Structure")
+![operator-fs-structure](/img/blog/operator/operator-structure.png "Operator Folder Structure")
 
 The next thing you might want to do is then add the boilerplate for a CRD and a Controller:
 
@@ -144,7 +144,7 @@ operator-sdk add controller --api-version=ip.wgtwo.com/v1alpha1 --kind=IP
 ```
 
 After creating the boilerplate, your folder structure will look a lot like this:
-![operator-fs-structure-expanded](img/blog/operator/operator-structure-expanded.png "Operator Folder Structure Expanded")
+![operator-fs-structure-expanded](/img/blog/operator/operator-structure-expanded.png "Operator Folder Structure Expanded")
 
 The most important files right now are in:
 - cmd/manager/main.go (the main program that will run in the cluster)
