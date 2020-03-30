@@ -3,24 +3,23 @@ layout: blogpost
 permalink: /blog/vowifi-imsi-leak/
 title: VoWifi leaking IMSI
 date: 2020-03-30
-tags: telco 4g epdg vowifi networking security
+tags: telco 4G epdg vowifi networking security
 author: <a href="https://www.linkedin.com/in/rskjetlein/">Roger Skjetlein</a>
 ---
 
-4g offers more services than the earlier generation such as 3g and 2g. One of
-the service that really have gained traction later years is VoLTE, that is Voice
-over LTE and later that we will go more in dept regarding security is VoWifi,
-Voice over Wifi.
+4G offers more services than the earlier generation such as 3G and 2G. One of
+the services has really have gained traction later years is VoLTE (Voice
+over LTE) and VoWifi (Voice over Wifi) that we will go more in dept regarding security.
 
-VoWifi is beneficial in terms of using any Wifi connection offering public
+VoWifi is beneficial in terms being able to use any Wifi connection offering public
 internet access thus extending and improving the coverage and connectivity.
-Think of it in similar ways of building our own eNodeB cellular network, but
+Think of it as building our own cellular network, but
 using commodity wifi components instead and avoiding the strict regulation and
-licensing spectrum.
+licensing of spectrum.
 
 ## What is IMSI
 *The international mobile subscriber identity (IMSI) is a number that uniquely
-identifies every user of a cellular network.[1] It is stored as a 64-bit field
+identifies every user of a cellular network. It is stored as a 64-bit field
 and is sent by the mobile device to the network. It is also used for acquiring
 other details of the mobile in the home location register (HLR) or as locally
 copied in the visitor location register. To prevent eavesdroppers from
@@ -31,7 +30,7 @@ as rarely as possible and a randomly-generated TMSI is sent instead.*
 
 ### Security implications
 The IMSI is a secret identifier stored on the sim and can be exploited in many
-ways once known and bound to sim so changing UE will not help.
+ways once known. It is bound to the sim, so changing UE will not help.
 
 Examples:
 * Locating user (UE)
@@ -46,12 +45,20 @@ public internet to epdg (evolved packet data gateway) which is in essence a
 ipsec (ikev2) termination using SIM-AKA to authenticate UE. The ipsec comes into
 play since epdg is exposed publicly.
 
-I won't go further in depth for volte and vowifi since there are already
+We won't go further in depth for volte and vowifi since there are already
 excellent articles about the matter:
 * [Voice over WLAN](https://en.wikipedia.org/wiki/Voice_over_WLAN)
 * [Voice over LTE](https://en.wikipedia.org/wiki/Voice_over_LTE)
 
 ![VoWifi topology](/img/blog/vowifi-imsi-leak/vowifi.jpg)
+
+To enable VoWifi on your device, please refer to your device manufacturer website:
+
+* [Android](https://support.google.com/phoneapp/answer/2811843?hl=en)
+* [Apple](https://support.apple.com/en-in/HT203032)
+
+Also check on your operator website if VoWifi is supported in your region. Please note that VoWifi is usually blocked when roaming.
+
 
 ## EPDG exposed on the public internet
 The Evolved Packet Data Gateway needs to be publicly available on the internet
@@ -63,16 +70,16 @@ The UE finds the epdg termination point by looking dns records partly following
 a convention decided by 3gpp and typically looks like this in DNS:
 
 ```
-epdg.epc.mnc001.mcc242.pub.3gppnetwork.org. 3488 IN A 77.16.1.126
-epdg.epc.mnc001.mcc242.pub.3gppnetwork.org. 3488 IN A 77.16.1.125
+epdg.epc.mnc999.mcc999.pub.3gppnetwork.org. 3488 IN A 1.2.3.4
+epdg.epc.mnc999.mcc999.pub.3gppnetwork.org. 3488 IN A 5.6.7.8
 ```
 
-From the DNS records we recognize the network operator and and the country code,
-in case corresponds to Norway (242) and Telenor (001).
+From the DNS records we recognize the network operator (MNC) and the
+country code (MCC).
 
-The DNS records are registered under under a delegated domain owned by GSMA and
-usually are redelegated to operator under their own umbrella like the example
-mnc001.mcc242.pub.3gppnetwork.org.
+The DNS records are registered under a delegated domain owned by GSMA and
+usually are redelegated to operator under their own umbrella, like the example
+mnc999.mcc999.pub.3gppnetwork.org.
 
 ## The problem
 When UE establish session to epdg it uses a vpn, a ipsec relationship using
@@ -91,7 +98,7 @@ inherently passive since it cannot know where from (ip) the UE will come from.
 Vowifi as mentioned earlier utilises an encryption protocol based on the widely
 adopted Extensible Authentication Protocol. EAP itself is just a protocol and
 does not define the contents of the data or how exact the data exchanges look
-like. EAP-AKA unfortunately exposes user identity in the clear unencrypted during
+like. EAP-AKA unfortunately exposes the unencrypted user identity during
 the authentication session and in this case the user identity is equal to the
 imsi.
 
@@ -122,20 +129,20 @@ would have been picked to catch imsi since its open and unencrypted:
 Snippet from the ipsec termination, UE (iPhone 8) exposes imsi several times:
 ```
 13[ENC] parsed IKE_AUTH request 2 [ EAP/RES/AKA ]
-13[IKE] '0242014511******@wlan.mnc001.mcc242.3gppnetwork.org' is not a reauth identity
-13[IKE] '0242014511******@wlan.mnc001.mcc242.3gppnetwork.org' is not a pseudonym
-13[IKE] received identity '0242014511******@wlan.mnc001.mcc242.3gppnetwork.org'
-13[IKE] no EAP key found for 0242014511******@wlan.mnc001.mcc242.3gppnetwork.org to authenticate with AKA
-13[LIB] tried 0 SIM providers, but none had a quintuplet for '0242014511******@wlan.mnc001.mcc242.3gppnetwork.org'
-13[IKE] failed to map pseudonym/reauth identity '0242014511******@wlan.mnc001.mcc242.3gppnetwork.org', fallback to permanent identity request
+13[IKE] '09999994511******@wlan.mnc999.mcc999.3gppnetwork.org' is not a reauth identity
+13[IKE] '09999994511******@wlan.mnc999.mcc999.3gppnetwork.org' is not a pseudonym
+13[IKE] received identity '09999994511******@wlan.mnc999.mcc999.3gppnetwork.org'
+13[IKE] no EAP key found for 09999994511******@wlan.mnc999.mcc999.3gppnetwork.org to authenticate with AKA
+13[LIB] tried 0 SIM providers, but none had a quintuplet for '09999994511******@wlan.mnc999.mcc999.3gppnetwork.org'
+13[IKE] failed to map pseudonym/reauth identity '09999994511******@wlan.mnc999.mcc999.3gppnetwork.org', fallback to permanent identity request
 13[ENC] generating IKE_AUTH response 2 [ EAP/REQ/AKA ]
 13[NET] sending packet: from 192.168.17.1[500] to 192.168.17.24[500] (92 bytes)
 09[NET] received packet: from 192.168.17.24[500] to 192.168.17.1[500] (140 bytes)
 09[ENC] parsed IKE_AUTH request 3 [ EAP/RES/AKA ]
-09[IKE] received identity '0242014511******@wlan.mnc001.mcc242.3gppnetwork.org'
-09[IKE] no EAP key found for 0242014511******@wlan.mnc001.mcc242.3gppnetwork.org to authenticate with AKA
-09[LIB] tried 0 SIM providers, but none had a quintuplet for '0242014511******@wlan.mnc001.mcc242.3gppnetwork.org'
-09[IKE] EAP method EAP_AKA failed for peer 0242014511******@nai.epc.mnc001.mcc242.3gppnetwork.org
+09[IKE] received identity '09999994511******@wlan.mnc999.mcc999.3gppnetwork.org'
+09[IKE] no EAP key found for 09999994511******@wlan.mnc999.mcc999.3gppnetwork.org to authenticate with AKA
+09[LIB] tried 0 SIM providers, but none had a quintuplet for '09999994511******@wlan.mnc999.mcc999.3gppnetwork.org'
+09[IKE] EAP method EAP_AKA failed for peer 09999994511******@nai.epc.mnc999.mcc999.3gppnetwork.org
 09[ENC] generating IKE_AUTH response 3 [ EAP/FAIL ]
 ```
 
