@@ -3,7 +3,7 @@ layout: blogpost
 permalink: /blog/vowifi-imsi-leak/
 title: VoWifi leaking IMSI
 date: 2020-03-30
-tags: telco 4G epdg vowifi networking security
+tags: telco 4G ePDG.fixedcase VoWifi.fixedcase networking security
 author: <a href="https://www.linkedin.com/in/rskjetlein/">Roger Skjetlein</a>
 ---
 
