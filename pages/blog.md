@@ -16,7 +16,7 @@ permalink: /blog
             </span>
         </header>
         {% for tag in post.tags %}
-            <span class="tag {{tag}}">{{ tag }}</span>
+            <span class="tag {{ tag | split: "." | join: " " }}">{{ tag | split: "." | first }}</span>
         {% endfor %}
         <p>{{ post.excerpt | strip_html | truncate: 300 }} <a href="{{ post.url }}">Read more →</a></p>
     </div>

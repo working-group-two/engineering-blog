@@ -3,7 +3,7 @@ layout: blogpost
 permalink: /blog/replacing-jenkins-with-concourse/
 title: "We killed the butler: Replacing Jenkins with Concourse"
 date: 2019-12-20
-tags: infrastructure cicd
+tags: infrastructure CICD.fixedcase
 author: <a href="https://www.linkedin.com/in/annaken">Anna Kennedy</a> and <a href="https://www.linkedin.com/in/hihrig/">Holger Ihrig</a>
 ---
 
@@ -132,4 +132,5 @@ Overall, we're pretty pleased with Concourse. There are a few features we're eag
 * https://content.pivotal.io/blog/the-making-of-a-cloud-native-ci-cd-tool-the-concourse-journey
 * https://github.com/karlkfi/concourse-dcind
 * https://github.com/concourse/docker-image-resource/blob/master/assets/common.sh
+* https://concoursetutorial.com
 

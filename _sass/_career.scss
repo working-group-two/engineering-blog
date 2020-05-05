@@ -27,3 +27,22 @@
     }
   }
 }
+
+// the markup for this is in scripts.js
+.position {
+  display: flex;
+  padding: 16px;
+  justify-content: space-between;
+  align-items: center;
+  margin: 8px 0;
+}
+
+.position .position-title {
+  color: $brand;
+  font-size: 18px;
+}
+
+.position:hover {
+  text-decoration: none;
+  color: inherit;
+}

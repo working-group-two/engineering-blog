@@ -36,3 +36,29 @@ document.querySelectorAll(".blogpost .tag").forEach(el => {
     let tagName = el.className.substr(4);
     el.style.background = getColor(tagName);
 });
+
+if (document.querySelector("#personio-ads") !== null) {
+    fetch("https://wgtwo-jobs.personio.de/xml")
+        .then(response => response.text())
+        .then(str => new DOMParser().parseFromString(str, "text/xml"))
+        .then(xml => {
+            let positions = Array.from(xml.querySelectorAll("position")).map(p => ({
+                name: p.querySelector("name").innerHTML,
+                schedule: p.querySelector("schedule").innerHTML,
+                location: p.querySelector("office").innerHTML,
+                id: p.querySelector("id").innerHTML,
+            }));
+            positions.forEach(position => {
+                document.querySelector("#personio-ads").insertAdjacentHTML("beforeend", `
+                    <a class="position uk-card uk-card-default" href="https://wgtwo-jobs.personio.de/job/${position.id}">
+                        <div class="position-text">
+                            <div class="position-title">${position.name}</div>
+                            <div class="position-details">Permanent employee, ${position.schedule} - ${position.location}</div>
+                        </div>
+                        <span uk-icon="icon: chevron-right; ratio: 1.7"></span>
+                    </a>
+                `)
+            })
+        });
+
+}
