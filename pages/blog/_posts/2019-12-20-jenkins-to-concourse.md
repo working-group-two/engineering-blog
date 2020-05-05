@@ -3,7 +3,7 @@ layout: blogpost
 permalink: /blog/replacing-jenkins-with-concourse/
 title: "We killed the butler: Replacing Jenkins with Concourse"
 date: 2019-12-20
-tags: infrastructure cicd
+tags: infrastructure CICD.fixedcase
 author: <a href="https://www.linkedin.com/in/annaken">Anna Kennedy</a> and <a href="https://www.linkedin.com/in/hihrig/">Holger Ihrig</a>
 ---
 
