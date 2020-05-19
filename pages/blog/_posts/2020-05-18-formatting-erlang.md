@@ -90,7 +90,7 @@ the `erlang-mode` 4 spaces standard that is used in our code base.
 
 Here is a sample of a complex record structure
 
-```
+```diff
 -                   components =
 -                       [{invoke,
 -                         #'Invoke'{
@@ -124,7 +124,7 @@ Here is a sample of a complex record structure
 I was quite happy with the results, even though they were slow, until
 I saw how it treated maps
 
-```
+```diff
 -      parameters =
 -          #{called_party_addr =>
 -                #sccp_addr{
@@ -134,18 +134,17 @@ I saw how it treated maps
 -                ... },
 -            data =>
 -                #'Continue'{
-
 +         parameters =
 +             #{
 +                 called_party_addr
 +                 =>
 +                 #sccp_addr{
-...
++                   ...
 +                 },
 +                 calling_party_addr
 +                 =>
 +                 #sccp_addr{
-...
++                   ...
 +                 },
 +                 data
 +                 =>
@@ -171,51 +170,51 @@ document then it inserts too many newlines.
 
 Visualising with this example again
 
-```
--                   components =
--                       [{invoke,
--                         #'Invoke'{
--                            invokeID = 1,linkedID = asn1_NOVALUE,
--                            operationCode = updateLocation,
--                            parameter =
--                                #'UpdateLocationArg'{
--                                   imsi = IMSI,
--                                   'msc-Number' = CallingGTBCD,
--                                   'vlr-Number' = CallingGTBCD}}}]},
-+			     components =
-+				 [{invoke,
-+				   #'Invoke'{invokeID
-+						 =
-+						 1,
-+					     linkedID
-+						 =
-+						 asn1_NOVALUE,
-+					     operationCode
-+						 =
-+						 updateLocation,
-+					     parameter
-+						 =
-+						 #'UpdateLocationArg'{imsi
-+									  =
-+									  IMSI,
-+								      'msc-Number'
-+									  =
-+									  CallingGTBCD,
-+								      'vlr-Number'
-+									  =
-+									  CallingGTBCD}}}]},
+```diff
+-        components =
+-            [{invoke,
+-              #'Invoke'{
+-                 invokeID = 1,linkedID = asn1_NOVALUE,
+-                 operationCode = updateLocation,
+-                 parameter =
+-                     #'UpdateLocationArg'{
+-                        imsi = IMSI,
+-                        'msc-Number' = CallingGTBCD,
+-                        'vlr-Number' = CallingGTBCD}}}]},
++     components =
++	 [{invoke,
++	   #'Invoke'{invokeID
++			 =
++			 1,
++		     linkedID
++			 =
++			 asn1_NOVALUE,
++		     operationCode
++			 =
++			 updateLocation,
++		     parameter
++			 =
++			 #'UpdateLocationArg'{imsi
++						  =
++						  IMSI,
++					      'msc-Number'
++						  =
++						  CallingGTBCD,
++					      'vlr-Number'
++						  =
++						  CallingGTBCD}}}]},
 ```
 
 There are also some issues with `erl_prettypr`; it throws an exception
 when there are argumented macro functions.
 
-```
+```erlang
 -define(MACRO(), object).
 foo(?MACRO()) ->
   ok.
 ```
 
-```
+```erlang
 ** exception exit: no_translation
      in function  io:put_chars/3
         called as io:put_chars(<0.4843.0>,unicode,
@@ -250,34 +249,34 @@ Formatting-wise it is similar to `erl_tidy`. This is because it uses
 inakas `katana_code` which in its turn uses `erl_tidy`.
 
 
-```
--                   components =
--                       [{invoke,
--                         #'Invoke'{
--                            invokeID = 1,linkedID = asn1_NOVALUE,
--                            operationCode = updateLocation,
--                            parameter =
--                                #'UpdateLocationArg'{
--                                   imsi = IMSI,
--                                   'msc-Number' = CallingGTBCD,
--                                   'vlr-Number' = CallingGTBCD}}}]},
-+                                              components =
-+                                                  [{invoke,
-+                                                    #'Invoke'{invokeID = 1,
-+                                                              linkedID =
-+                                                                  asn1_NOVALUE,
-+                                                              operationCode =
-+                                                                  updateLocation,
-+                                                              parameter =
-+                                                                  #'UpdateLocationArg'{imsi
-+                                                                                           =
-+                                                                                           IMSI,
-+                                                                                       'msc-Number'
-+                                                                                           =
-+                                                                                           CallingGTBCD,
-+                                                                                       'vlr-Number'
-+                                                                                           =
-+                                                                                           CallingGTBCD}}}]},
+```diff
+-           components =
+-               [{invoke,
+-                 #'Invoke'{
+-                    invokeID = 1,linkedID = asn1_NOVALUE,
+-                    operationCode = updateLocation,
+-                    parameter =
+-                        #'UpdateLocationArg'{
+-                           imsi = IMSI,
+-                           'msc-Number' = CallingGTBCD,
+-                           'vlr-Number' = CallingGTBCD}}}]},
++                                      components =
++                                          [{invoke,
++                                            #'Invoke'{invokeID = 1,
++                                                      linkedID =
++                                                          asn1_NOVALUE,
++                                                      operationCode =
++                                                          updateLocation,
++                                                      parameter =
++                                                          #'UpdateLocationArg'{imsi
++                                                                                   =
++                                                                                   IMSI,
++                                                                               'msc-Number'
++                                                                                   =
++                                                                                   CallingGTBCD,
++                                                                               'vlr-Number'
++                                                                                   =
++                                                                                   CallingGTBCD}}}]},
 ```
 
 Problem is that both `erl_tidy` and `katana_code` have multiple issues
