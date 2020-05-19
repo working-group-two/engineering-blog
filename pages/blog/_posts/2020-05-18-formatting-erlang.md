@@ -1,7 +1,7 @@
 ---
 layout: blogpost
-permalink: /blog/formatting-erlang/
-title: Formatting Erlang
+permalink: /blog/choosing-erlang-formatter/
+title: Choosing an Erlang formatter
 date: 2020-05-18
 tags: erlang rebar3 coding culture
 author: <a href="https://www.linkedin.com/in/sebastian-weddmark-olsson/">Sebastian Weddmark Olsson</a>
@@ -23,21 +23,21 @@ different languages and environments. We are pretty autonomous and we
 are expected to jump in and out in different services to fix bugs and
 add features.
 
-We like when the code is uniform because that make it easier to
-understand it. That is why we want to use tools to make sure our code
-is consistent no matter who writes it, which tool, or regards to
-language rules or background.
+We like when the code is uniform, because it makes it easier to focus
+on the business logic. That is why we want to use tools to make sure
+our code is consistent no matter who is the author, or which IDE is
+used, or in which part of the system the code resides.
 
 About half a year ago there was a discussion about code style within
-WG2 that resulted in formatting tools being applied for Kotlin, Bazel,
-Go and Java. It also resulted in an internal wiki page containing
-guidelines about code style.
+Working Group Two that resulted in formatting tools being applied for
+Kotlin, Bazel, Go and Java. It also resulted in an internal wiki page
+containing guidelines about code style.
 
-That document highlights some of the problems with different
-code-styles mixed. It should be easy for newcomers to maintain the
-coding style. It should also be easy to read diffs, and the
-discussions about code style and formatting will be minimized because
-there is a concensus.
+That document highlights some of the problems with mixing different
+code-styles. It should be easy for newcomers to maintain the coding
+style. It should also be easy to read diffs, and the discussions about
+code style and formatting will be minimized because there is a
+concensus.
 
 # This is nice, I want it for Erlang
 
@@ -73,14 +73,14 @@ used.
 
 One big problem with this is that it uses Emacs `erlang-mode` for
 formatting. Sure, I am an Emacs user and the `erlang-mode` and its
-formatting is maintained and supperted by OTP, but my non-emacs
+formatting is maintained and supperted by OTP, but my non-Emacs
 coworkers would not be happy if they need to install Emacs every time
 they want to format the code.
 
 ## [steamroller](https://github.com/old-reliable/steamroller/)
 
-Though it was easy to setup, just add it to dependencies in your Rebar
-config and run `rebar3 steamroll`, my first impression of the
+Though it was easy to setup (just add it to dependencies in your Rebar
+config and run `rebar3 steamroll`), my first impression of the
 execution was that it was really slow. Even when running subsequent
 calls on my Dell XPS 13 P82G it took around 3.5 minutes to format.
 
@@ -94,65 +94,65 @@ the `erlang-mode` 4 spaces standard that is used in our code base.
 Here is a sample of a complex record structure
 
 ```
--                                  components =
--                                      [{invoke,
--                                        #'Invoke'{
--                                           invokeID = 1,linkedID = asn1_NOVALUE,
--                                           operationCode = updateLocation,
--                                           parameter =
--                                               #'UpdateLocationArg'{
--                                                  imsi = IMSI,
--                                                  'msc-Number' = CallingGTBCD,
--                                                  'vlr-Number' = CallingGTBCD}}}]},
-+                  components =
-+                    [
-+                      {
-+                        invoke,
-+                        #'Invoke'{
-+                          invokeID = 1,
-+                          linkedID = asn1_NOVALUE,
-+                          operationCode = updateLocation,
-+                          parameter =
-+                            #'UpdateLocationArg'{
-+                              imsi = IMSI,
-+                              'msc-Number' = CallingGTBCD,
-+                              'vlr-Number' = CallingGTBCD
-+                            }
-+                        }
-+                      }
-+                    ]
-+                },
+-                   components =
+-                       [{invoke,
+-                         #'Invoke'{
+-                            invokeID = 1,linkedID = asn1_NOVALUE,
+-                            operationCode = updateLocation,
+-                            parameter =
+-                                #'UpdateLocationArg'{
+-                                   imsi = IMSI,
+-                                   'msc-Number' = CallingGTBCD,
+-                                   'vlr-Number' = CallingGTBCD}}}]},
++   components =
++     [
++       {
++         invoke,
++         #'Invoke'{
++           invokeID = 1,
++           linkedID = asn1_NOVALUE,
++           operationCode = updateLocation,
++           parameter =
++             #'UpdateLocationArg'{
++               imsi = IMSI,
++               'msc-Number' = CallingGTBCD,
++               'vlr-Number' = CallingGTBCD
++             }
++         }
++       }
++     ]
++ },
 ```
 
 I was quite happy with the results, even though they were slow, until
 I saw how it treated maps
 
 ```
--                     parameters =
--                         #{called_party_addr =>
--                               #sccp_addr{
--                               ... },
--                           calling_party_addr =>
--                               #sccp_addr{
--                               ... },
--                           data =>
--                               #'Continue'{
+-      parameters =
+-          #{called_party_addr =>
+-                #sccp_addr{
+-                ... },
+-            calling_party_addr =>
+-                #sccp_addr{
+-                ... },
+-            data =>
+-                #'Continue'{
 
-+                        parameters =
-+                            #{
-+                                called_party_addr
-+                                =>
-+                                #sccp_addr{
++         parameters =
++             #{
++                 called_party_addr
++                 =>
++                 #sccp_addr{
 ...
-+                                },
-+                                calling_party_addr
-+                                =>
-+                                #sccp_addr{
++                 },
++                 calling_party_addr
++                 =>
++                 #sccp_addr{
 ...
-+                                },
-+                                data
-+                                =>
-+                                #'Continue'{
++                 },
++                 data
++                 =>
++                 #'Continue'{
 ```
 
 I can't say that I easily understand what the parameters are and which
@@ -161,7 +161,7 @@ the values are with this formatting. It burns in my eyes.
 
 ## [erl_tidy](https://github.com/tsloughter/erl_tidy) and [erl_tidy](http://erlang.org/doc/man/erl_tidy.html)
 
-So I found two erl_tidy projects, one is included in the Erlang/OTP
+So I found two `erl_tidy` projects, one is included in the Erlang/OTP
 libraries. The other one seems just to be a rebar3 wrapper around the
 first one, so I'll just talk about the former one.
 
@@ -175,41 +175,41 @@ document then it inserts too many newlines.
 Visualising with this example again
 
 ```
--                                  components =
--                                      [{invoke,
--                                        #'Invoke'{
--                                           invokeID = 1,linkedID = asn1_NOVALUE,
--                                           operationCode = updateLocation,
--                                           parameter =
--                                               #'UpdateLocationArg'{
--                                                  imsi = IMSI,
--                                                  'msc-Number' = CallingGTBCD,
--                                                  'vlr-Number' = CallingGTBCD}}}]},
-+							     components =
-+								 [{invoke,
-+								   #'Invoke'{invokeID
-+										 =
-+										 1,
-+									     linkedID
-+										 =
-+										 asn1_NOVALUE,
-+									     operationCode
-+										 =
-+										 updateLocation,
-+									     parameter
-+										 =
-+										 #'UpdateLocationArg'{imsi
-+													  =
-+													  IMSI,
-+												      'msc-Number'
-+													  =
-+													  CallingGTBCD,
-+												      'vlr-Number'
-+													  =
-+													  CallingGTBCD}}}]},
+-                   components =
+-                       [{invoke,
+-                         #'Invoke'{
+-                            invokeID = 1,linkedID = asn1_NOVALUE,
+-                            operationCode = updateLocation,
+-                            parameter =
+-                                #'UpdateLocationArg'{
+-                                   imsi = IMSI,
+-                                   'msc-Number' = CallingGTBCD,
+-                                   'vlr-Number' = CallingGTBCD}}}]},
++			     components =
++				 [{invoke,
++				   #'Invoke'{invokeID
++						 =
++						 1,
++					     linkedID
++						 =
++						 asn1_NOVALUE,
++					     operationCode
++						 =
++						 updateLocation,
++					     parameter
++						 =
++						 #'UpdateLocationArg'{imsi
++									  =
++									  IMSI,
++								      'msc-Number'
++									  =
++									  CallingGTBCD,
++								      'vlr-Number'
++									  =
++									  CallingGTBCD}}}]},
 ```
 
-There are also some issues with erl_prettypr; it throws an exception
+There are also some issues with `erl_prettypr`; it throws an exception
 when there are argumented macro functions.
 
 ```
@@ -249,38 +249,38 @@ apps/**/{src,include}/*.?rl` is apparantly not the same as specifying
 config. The command line options finds only one file, while the config
 parameter works as expected.
 
-Formatting-wise it is similar to erl_tidy. This is because it uses
-inakas `katana_code` which in its turn uses erl_tidy.
+Formatting-wise it is similar to `erl_tidy`. This is because it uses
+inakas `katana_code` which in its turn uses `erl_tidy`.
 
 
 ```
--                                  components =
--                                      [{invoke,
--                                        #'Invoke'{
--                                           invokeID = 1,linkedID = asn1_NOVALUE,
--                                           operationCode = updateLocation,
--                                           parameter =
--                                               #'UpdateLocationArg'{
--                                                  imsi = IMSI,
--                                                  'msc-Number' = CallingGTBCD,
--                                                  'vlr-Number' = CallingGTBCD}}}]},
-+                                                             components =
-+                                                                 [{invoke,
-+                                                                   #'Invoke'{invokeID = 1,
-+                                                                             linkedID =
-+                                                                                 asn1_NOVALUE,
-+                                                                             operationCode =
-+                                                                                 updateLocation,
-+                                                                             parameter =
-+                                                                                 #'UpdateLocationArg'{imsi
-+                                                                                                          =
-+                                                                                                          IMSI,
-+                                                                                                      'msc-Number'
-+                                                                                                          =
-+                                                                                                          CallingGTBCD,
-+                                                                                                      'vlr-Number'
-+                                                                                                          =
-+                                                                                                          CallingGTBCD}}}]},
+-                   components =
+-                       [{invoke,
+-                         #'Invoke'{
+-                            invokeID = 1,linkedID = asn1_NOVALUE,
+-                            operationCode = updateLocation,
+-                            parameter =
+-                                #'UpdateLocationArg'{
+-                                   imsi = IMSI,
+-                                   'msc-Number' = CallingGTBCD,
+-                                   'vlr-Number' = CallingGTBCD}}}]},
++                                              components =
++                                                  [{invoke,
++                                                    #'Invoke'{invokeID = 1,
++                                                              linkedID =
++                                                                  asn1_NOVALUE,
++                                                              operationCode =
++                                                                  updateLocation,
++                                                              parameter =
++                                                                  #'UpdateLocationArg'{imsi
++                                                                                           =
++                                                                                           IMSI,
++                                                                                       'msc-Number'
++                                                                                           =
++                                                                                           CallingGTBCD,
++                                                                                       'vlr-Number'
++                                                                                           =
++                                                                                           CallingGTBCD}}}]},
 ```
 
 Problem is that both `erl_tidy` and `katana_code` have multiple issues
