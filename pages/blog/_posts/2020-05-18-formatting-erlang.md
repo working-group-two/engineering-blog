@@ -7,13 +7,10 @@ tags: erlang rebar3 coding culture
 author: <a href="https://www.linkedin.com/in/sebastian-weddmark-olsson/">Sebastian Weddmark Olsson</a>
 ---
 
-I've looked into different formatters for Erlang and there are some
-options. The main two alternatives being `steamroller` and
-`rebar3_format`. `steamroller` is slow, which one could have imageined
-by its name. `rebar3_format` have issues with macros due to underlying
-dependencies.
-
-I've also briefly looked into an Erlang linter called `elvis`.
+There are many different Erlang formatters, and as a hack day project
+I investigated which options exist for us at Working Group Two. There
+are two main alternatives, but sadly both have problems.  I've also
+briefly looked at an Erlang linter.
 
 # Background
 
