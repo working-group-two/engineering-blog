@@ -13,7 +13,7 @@ We take your privacy seriously though, so we have created a [privacy page](/priv
 
 <div uk-grid class="ui-grid uk-grid-match uk-grid-small">
     {% include office.html icon="star" name="Oslo (HQ)" address="Tordenskioldsgate 2,<br> 0160 Oslo (Norway)" %}
-    {% include office.html icon="location" name="Stockholm" address="Fleminggatan 20,<br> 11226 Stockholm (Sweden)" %}
+    {% include office.html icon="location" name="Stockholm" address="Jakobsbergsgatan 8,<br> 11144 Stockholm (Sweden)" %}
     {% include office.html icon="location" name="Trondheim" address="Krambugata 2,<br> 7011 Trondheim (Norway)" %}
 </div>
 
