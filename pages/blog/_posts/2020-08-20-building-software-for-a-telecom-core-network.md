@@ -1,0 +1,157 @@
+---
+layout: blogpost
+permalink: /blog/building-software-for-a-telecom-core-network
+title: Building software for a telecom core network
+date: 2020-08-20
+tags: telecom software-development core-network app-ecosystem
+author: <a href="https://linkedin.com/in/davidaase">David Åse</a>
+---
+
+One of the goals of Working Group Two is to enable operators and third parties to build products and services for the “core network” of the telecom stack. In short, this means providing API access to a subscription’s telecom functionality (messaging, calling, etc). In this article we will show how we built VoiceBox, a Voicemail forwarding application.
+
+## The product
+
+One of the most common complaints people have with their Voicemail service in Europe is that you have to call in to your Voicemail to hear your messages. In order to play the message you have to navigate through a slow voice menu using your dialpad. We believed this would be easy to improve.
+
+Our product idea was simple. When Alice leaves a voicemail message for Bob, Bob receives this message either as an audio file or as a speech-to-text transcript.
+
+<div class="post-images">
+    <img src="/img/blog/building-software-for-a-telecom-core-network/voicebox-splash.png" alt="VoiceBox splash screen">
+    <img src="/img/blog/building-software-for-a-telecom-core-network/voicebox-home.png" alt="VoiceBox home screen">
+</div>
+
+The product idea isn’t what most people would call revolutionary, but almost all of the world's mobile operators have hermetically sealed core networks. This means it would be impossible to build this product without lawyering up and coming to some sort of agreement with one of them. The Working Group Two core network, however, is open and provides API access to Voicemail, MMS and SMS  (among other things), which is just what we need to build our product.
+
+## Developing on the Working Group Two platform
+
+To create a product on the Working Group Two platform, the first thing you have to do is create a free developer account at <a href="https://developer.wgtwo.com" target="_blank">https://developer.wgtwo.com</a>. Once you have signed up, you have to create an Organization and add a Product to that organization.
+
+You can specify what permissions your product will require in the `Product > Scopes` tab:
+
+<div class="post-images">
+    <img src="/img/blog/building-software-for-a-telecom-core-network/developer-portal-scopes.png" alt="Developer Portal Scopes Screen">
+</div>
+
+VoiceBox will need to: know the subscriber’s phone number, access their voicemail events, and access their voicemail messages (the audio files themselves).
+
+In an ideal world, VoiceBox would work like this:
+1. The subscriber signs in and enables the desired functionality in VoiceBox
+2. The next time the subscriber receives a voicemail, an event is fired by Working Group Two’s core network, which VoiceBox receives
+3. VoiceBox triggers an SMS/MMS send using our APIs
+4. The subscriber receives an SMS/MMS from the sender “VoiceBox”
+
+In a few months time this ideal world should be reality, but at the time of writing (mid August 2020) we’re missing the events API and the “Send from Product” API. Currently VoiceBox works like this (changes are highlighted):
+1. The subscriber signs in and enables the desired functionality in VoiceBox
+2. The next time the subscriber receives a voicemail, **VoiceBox will discover it by polling**
+3. VoiceBox triggers an MMS send using our APIs
+4. The subscriber receives an **MMS from their own number**
+
+It’s not perfect, but it still demonstrates the potential of the platform. None of this can happen without the subscriber’s consent though, so in the next section we’ll have a look at how that works.
+
+## Obtaining user consent
+
+The app we are building is touching sensitive data, and there is no way we can do that without asking the subscriber if it’s okay. The Working Group Two platform includes an oauth implementation with pin roundtrip authentication, which means that we can be sure that the subscriber (or someone in control of the subscription) has consented to the subscription being controlled by a third party.
+
+When a subscriber opens VoiceBox for the first time, they’re met with a login page, and when they complete the pin challenge they arrive at an oauth consent screen. Here they have to accept the terms of VoiceBox, as well as all the required scopes.
+
+The login is branded to look like the product (notice the pink action button), while the consent screen is branded to look like the operator (in this case, the Swedish operator <a href="https://vimla.se" target="_blank">Vimla</a>, which uses our platform):
+
+<div class="post-images threes">
+    <img src="/img/blog/building-software-for-a-telecom-core-network/msisdn-screen.png" alt="ID login screen">
+    <img src="/img/blog/building-software-for-a-telecom-core-network/pin-screen.png" alt="ID pin screen">
+    <img src="/img/blog/building-software-for-a-telecom-core-network/consent-screen.png" alt="ID consent screen">
+</div>
+
+This follows a standard <a href="https://oauth.net/2/" target="_blank">OAuth</a> flow, which means that when the subscriber taps “Accept”, Working Group Two redirects the subscriber to the third party. This redirect includes a code as a query parameter, which the third party has to use to obtain an access token and a refresh token. This access token gives the third party access to act on behalf of the subscriber. In this case it will let the third party fetch Voicemails and send MMS from the subscriber, so it’s very important to keep it safe.
+Next we’ll look at using this access token to perform actions on the subscribers behalf.
+
+## Connecting to the Working Group Two API
+
+All Working Group Two APIs are <a href="https://grpc.io/" target="_blank">gRPC</a>. This can be a bit intimidating if you are used to REST APIs, but luckily we also have official Java clients distributed through Maven/JitPack. If you want to use a different language you can generate your own client using our public proto files. One of the benefits of gRPC is that you don’t have to ever write your own rest adapter for the API.
+
+Let’s have a look at how you can fetch a Voicemail file:
+
+```kotlin
+fun getVoicemail(user: User, uuid: String): Voicemail? {
+    val getVoicemailRequest = VoicemailProto.GetVoicemailRequest.newBuilder().setVoicemailId(uuid).build()
+    val voicemail = try {
+        blockingStub
+                .withOAuthTokenFor(user) // this function attaches the access token (from the consent screen)
+                .getVoicemail(getVoicemailRequest)
+    } catch (e: StatusRuntimeException) {
+        logger.warn("Error getting voicemail $uuid; ${e.message}")
+        throw e
+    }
+    if (voicemail.metadata) {
+        return Voicemail(
+            ... // we map the gRPC voicemail object to a VoiceBox specific object
+        )
+    } else {
+        logger.warn("No voicemail metadata for $uuid")
+        return null
+    }
+}
+```
+
+The first line of the function declares a `GetVoicemailRequest`, which is a class from the official Java client (this example is written in Kotlin, but Kotlin and Java are interoperable languages). Inside the `try`, we pass the OAuth credentials and the request to a `blockingStub`, which is of the type `VoicemailMediaServiceGrpc.VoicemailMediaServiceBlockingStub` (another class we get from the client). If the voicemail metadata is present, we have everything we need to return a VoiceBox specific `Voicemail` class, if not we have to log and return null. Unlike REST APIs, we don't have to think about writing client code and handling HTTP responses, this is taken care of by the client library.
+
+As we mentioned earlier, once we have the `Voicemail`, we send it to the subscriber using their own number as the sender:
+
+```kotlin
+fun sendMms(user: User, phone: Msisdn, audio: ByteString) = try {
+    val request = MmsProto.SendMessageFromSubscriberRequest
+            .newBuilder()
+            .addMessageContent(
+                MmsProto.MessageContent.newBuilder().setAudio(
+                    MmsProto.AudioContent.newBuilder().setWav(audio)
+                )
+            )
+            .setToE164(phone.toPhoneNumberProto()) // the receiver is the same as the sender
+            .setFromSubscriber(phone.toPhoneNumberProto()) // the sender is the same as the receiver
+            .build()
+    val response = blockingStub
+            .withOAuthTokenFor(user) // this function attaches the access token (from the consent screen)
+            .sendMessageFromSubscriber(request)
+    if (response.status == MmsProto.SendResponse.SendStatus.SEND_OK) {
+        true
+    } else {
+        logger.warn("Unable to send MMS to ${phone.e164}: ${response.description} (${response.status.name})")
+        false
+    }
+} catch (e: Exception) {
+    logger.warn("Unable to send MMS to ${phone.e164}: ${e.message}")
+    false
+}
+```
+
+This is also pretty straightforward, except for the part where the sender is also the receiver. In the future this will be a bit less confusing, since we’ll be sending the MMS from the product (“VoiceBox”) instead of the subscriber itself.
+
+## Conclusion
+
+As you can see, we’re still in the very early stages of our platform. In the coming year we will be adding a lot more APIs, as well as building an app-store where subscribers can browse products that they want to add to their subscription. We believe opening up the core network in this way will allow third party developers to build incredible apps that will lead to much happier subscribers, which will in turn lead to subscriber growth for operators on our platform.
+
+At the time of writing, all apps on the platform have to be free, but we are working on a monetization model similar to that of the Apple and Google app-stores. Our main priority is to come up with a model that is fair to both third party developers and operators.
+
+If you’re interested in our platform, please head on over to <a href="https://developer.wgtwo.com" target="_blank">https://developer.wgtwo.com</a> and create an account. If you have any questions please contact us at <products@wgtwo.com>.
+
+<style>
+.post-images {
+    padding: 16px;
+    display: flex;
+    justify-content: space-around;
+    background: #283E96;
+    border-radius: 4px;
+    flex-wrap: wrap;
+}
+
+.post-images.threes img {
+    margin: 16px 10px;
+    width: calc(33% - 20px);
+}
+
+.post-images img {
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.25);
+    margin: 16px;
+}
+</style>
