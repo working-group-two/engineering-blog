@@ -11,7 +11,7 @@ One of the goals of Working Group Two is to enable operators and third parties t
 
 ## The product
 
-One of the most common complaints people have with their Voicemail service in Europe is that you have to call in to your Voicemail to hear your messages. In order to play the message you have to navigate through a slow voice menu using your dialpad. We believed this would be easy to improve.
+One of the most common complaints people have with their Voicemail service in Europe is that you have to call in to your Voicemail to listen to your messages. In order to play the message, you have to navigate through a slow voice menu using your dialpad. We believed this would be easy to improve.
 
 Our product idea was simple. When Alice leaves a voicemail message for Bob, Bob receives this message either as an audio file or as a speech-to-text transcript.
 
@@ -49,9 +49,9 @@ It’s not perfect, but it still demonstrates the potential of the platform. Non
 
 ## Obtaining user consent
 
-The app we're building is touching sensitive data, and we can't do that without asking the subscriber if it’s okay. The Working Group Two platform includes an oauth implementation with SMS authentication, which means that we can be reasonably sure that the subscriber has consented.
+The app we're building is touching sensitive data, and we can't do that without asking the subscriber if it’s okay. The Working Group Two platform includes an OAuth implementation with SMS authentication, which means that we can be reasonably sure that the subscriber has consented.
 
-When a subscriber opens VoiceBox for the first time, they’re met with a login page, and after completing a pin challenge they arrive at an oauth consent screen. Here they have to accept the terms of VoiceBox, as well as all the required scopes.
+When a subscriber opens VoiceBox for the first time, they’re met with a login page, and after completing a pin challenge they arrive at an OAuth consent screen. Here they have to accept the terms of VoiceBox, as well as all the required scopes.
 
 The login is branded to look like the product (notice the pink action button), while the consent screen is branded to look like the operator (in our case this is <a href="https://vimla.se" target="_blank">Vimla</a>, a Swedish operator which uses our platform):
 
@@ -61,8 +61,8 @@ The login is branded to look like the product (notice the pink action button), w
     <img src="/img/blog/building-software-for-a-telecom-core-network/consent-screen.png" alt="ID consent screen">
 </div>
 
-Our platform has a standard <a href="https://oauth.net/2/" target="_blank">OAuth 2</a> flow. When the subscriber taps “Accept”, Working Group Two redirects the subscriber to the third party, which receives an "access token" that allows them to act on behalf of the subscriber. In this case the access token will let the third party fetch Voicemails and send MMS from the subscriber, so it’s important to keep it safe.
-Next we’ll look at using this access token to perform actions on the subscribers behalf.
+Our platform has a standard <a href="https://oauth.net/2/" target="_blank">OAuth 2</a> flow. When the subscriber taps “Accept”, Working Group Two redirects the subscriber to the third-party, which receives an "access token" that allows them to act on behalf of the subscriber. In this case the access token will let the third-party fetch Voicemails and send MMS from the subscriber, so it’s important to keep it safe.
+Next we’ll look at using this access token to perform actions on the subscriber's behalf.
 
 ## Connecting to the Working Group Two API
 
@@ -129,9 +129,9 @@ This is also pretty straightforward, except for the part where the sender is als
 
 ## Conclusion
 
-As you can see, we’re still in the early stages of our developer platform. In the coming year we will be adding a lot more APIs, as well as building an app-store where subscribers can browse products that they want to add to their subscription. We believe opening up the core network in this way will allow third party developers to build incredible apps that will lead to much happier subscribers, which will in turn lead to subscriber growth for operators on our platform.
+As you can see, we’re still in the early stages of our developer platform. In the coming year, we will be adding a lot more APIs, as well as building an app-store where subscribers can browse products that they want to add to their subscription. We believe opening up the core network in this way will allow third-party developers to build incredible apps that will lead to much happier subscribers, which will in turn lead to subscriber growth for operators on our platform.
 
-At the time of writing, all apps on the platform have to be free, but we are working on a monetization model similar to that of the Apple and Google app-stores. Our main priority is to come up with a model that is fair to both third party developers and operators.
+At the time of writing, all apps on the platform have to be free, but we are working on a monetization model similar to that of the Apple and Google app-stores. Our main priority is to come up with a model that is fair to both third-party developers and operators.
 
 If you’re interested in our platform, please head on over to <a href="https://developer.wgtwo.com" target="_blank">https://developer.wgtwo.com</a> and create an account. If you have any questions please contact us at <products@wgtwo.com>.
 
