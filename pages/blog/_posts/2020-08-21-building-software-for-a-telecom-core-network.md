@@ -2,7 +2,7 @@
 layout: blogpost
 permalink: /blog/building-software-for-a-telecom-core-network
 title: Building software for a telecom core network
-date: 2020-08-20
+date: 2020-08-21
 tags: telecom software-development core-network app-ecosystem
 author: <a href="https://linkedin.com/in/davidaase">David Åse</a>
 ---
@@ -15,9 +15,10 @@ One of the most common complaints people have with their Voicemail service in Eu
 
 Our product idea was simple. When Alice leaves a voicemail message for Bob, Bob receives this message either as an audio file or as a speech-to-text transcript.
 
-<div class="post-images">
+<div class="post-images threes">
     <img src="/img/blog/building-software-for-a-telecom-core-network/voicebox-splash.png" alt="VoiceBox splash screen">
     <img src="/img/blog/building-software-for-a-telecom-core-network/voicebox-home.png" alt="VoiceBox home screen">
+    <img src="/img/blog/building-software-for-a-telecom-core-network/message-inbox.png" alt="Android messaging app">
 </div>
 
 The product idea isn’t what most people would call revolutionary, but almost all of the world's mobile operators have hermetically sealed core networks. This means it would be impossible to build this product without lawyering up and coming to some sort of agreement with one of them. The Working Group Two core network, however, is open and provides API access to Voicemail, MMS and SMS  (among other things), which is just what we need to build our product.
@@ -32,29 +33,27 @@ You can specify what permissions your product will require in the `Product > Sco
     <img src="/img/blog/building-software-for-a-telecom-core-network/developer-portal-scopes.png" alt="Developer Portal Scopes Screen">
 </div>
 
-VoiceBox will need to: know the subscriber’s phone number, access their voicemail events, and access their voicemail messages (the audio files themselves).
-
 In an ideal world, VoiceBox would work like this:
-1. The subscriber signs in and enables the desired functionality in VoiceBox
-2. The next time the subscriber receives a voicemail, an event is fired by Working Group Two’s core network, which VoiceBox receives
-3. VoiceBox triggers an SMS/MMS send using our APIs
-4. The subscriber receives an SMS/MMS from the sender “VoiceBox”
+1. The subscriber signs in and enables the desired functionality in VoiceBox.
+2. The next time the subscriber receives a voicemail, an event is fired by Working Group Two’s core network, which VoiceBox receives.
+3. VoiceBox triggers an SMS/MMS send using our APIs.
+4. The subscriber receives an SMS/MMS from the sender “VoiceBox”.
 
 In a few months time this ideal world should be reality, but at the time of writing (mid August 2020) we’re missing the events API and the “Send from Product” API. Currently VoiceBox works like this (changes are highlighted):
-1. The subscriber signs in and enables the desired functionality in VoiceBox
-2. The next time the subscriber receives a voicemail, **VoiceBox will discover it by polling**
-3. VoiceBox triggers an MMS send using our APIs
-4. The subscriber receives an **MMS from their own number**
+1. The subscriber signs in and enables the desired functionality in VoiceBox.
+2. The next time the subscriber receives a voicemail, **VoiceBox will discover it by polling**.
+3. VoiceBox triggers an MMS send using our APIs.
+4. The subscriber receives an **MMS from their own number**.
 
 It’s not perfect, but it still demonstrates the potential of the platform. None of this can happen without the subscriber’s consent though, so in the next section we’ll have a look at how that works.
 
 ## Obtaining user consent
 
-The app we are building is touching sensitive data, and there is no way we can do that without asking the subscriber if it’s okay. The Working Group Two platform includes an oauth implementation with pin roundtrip authentication, which means that we can be sure that the subscriber (or someone in control of the subscription) has consented to the subscription being controlled by a third party.
+The app we're building is touching sensitive data, and we can't do that without asking the subscriber if it’s okay. The Working Group Two platform includes an oauth implementation with SMS authentication, which means that we can be reasonably sure that the subscriber has consented.
 
-When a subscriber opens VoiceBox for the first time, they’re met with a login page, and when they complete the pin challenge they arrive at an oauth consent screen. Here they have to accept the terms of VoiceBox, as well as all the required scopes.
+When a subscriber opens VoiceBox for the first time, they’re met with a login page, and after completing a pin challenge they arrive at an oauth consent screen. Here they have to accept the terms of VoiceBox, as well as all the required scopes.
 
-The login is branded to look like the product (notice the pink action button), while the consent screen is branded to look like the operator (in this case, the Swedish operator <a href="https://vimla.se" target="_blank">Vimla</a>, which uses our platform):
+The login is branded to look like the product (notice the pink action button), while the consent screen is branded to look like the operator (in our case this is <a href="https://vimla.se" target="_blank">Vimla</a>, a Swedish operator which uses our platform):
 
 <div class="post-images threes">
     <img src="/img/blog/building-software-for-a-telecom-core-network/msisdn-screen.png" alt="ID login screen">
@@ -62,7 +61,7 @@ The login is branded to look like the product (notice the pink action button), w
     <img src="/img/blog/building-software-for-a-telecom-core-network/consent-screen.png" alt="ID consent screen">
 </div>
 
-This follows a standard <a href="https://oauth.net/2/" target="_blank">OAuth</a> flow, which means that when the subscriber taps “Accept”, Working Group Two redirects the subscriber to the third party. This redirect includes a code as a query parameter, which the third party has to use to obtain an access token and a refresh token. This access token gives the third party access to act on behalf of the subscriber. In this case it will let the third party fetch Voicemails and send MMS from the subscriber, so it’s very important to keep it safe.
+Our platform has a standard <a href="https://oauth.net/2/" target="_blank">OAuth 2</a> flow. When the subscriber taps “Accept”, Working Group Two redirects the subscriber to the third party, which receives an "access token" that allows them to act on behalf of the subscriber. In this case the access token will let the third party fetch Voicemails and send MMS from the subscriber, so it’s important to keep it safe.
 Next we’ll look at using this access token to perform actions on the subscribers behalf.
 
 ## Connecting to the Working Group Two API
@@ -93,9 +92,11 @@ fun getVoicemail(user: User, uuid: String): Voicemail? {
 }
 ```
 
-The first line of the function declares a `GetVoicemailRequest`, which is a class from the official Java client (this example is written in Kotlin, but Kotlin and Java are interoperable languages). Inside the `try`, we pass the OAuth credentials and the request to a `blockingStub`, which is of the type `VoicemailMediaServiceGrpc.VoicemailMediaServiceBlockingStub` (another class we get from the client). If the voicemail metadata is present, we have everything we need to return a VoiceBox specific `Voicemail` class, if not we have to log and return null. Unlike REST APIs, we don't have to think about writing client code and handling HTTP responses, this is taken care of by the client library.
+We use the official Working Group Two API client to fetch a voicemail based on the UUID of the voicemail, which we polled for earlier (code not shown).
 
-As we mentioned earlier, once we have the `Voicemail`, we send it to the subscriber using their own number as the sender:
+Unlike with REST APIs, we don't have to think about writing client code and handling HTTP responses, this is taken care of by the gRPC client library.
+
+Once we have the voicemail, we send it to the subscriber using their own number as the sender:
 
 ```kotlin
 fun sendMms(user: User, phone: Msisdn, audio: ByteString) = try {
