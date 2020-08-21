@@ -129,7 +129,7 @@ This is also pretty straightforward, except for the part where the sender is als
 
 ## Conclusion
 
-As you can see, we’re still in the very early stages of our platform. In the coming year we will be adding a lot more APIs, as well as building an app-store where subscribers can browse products that they want to add to their subscription. We believe opening up the core network in this way will allow third party developers to build incredible apps that will lead to much happier subscribers, which will in turn lead to subscriber growth for operators on our platform.
+As you can see, we’re still in the early stages of our developer platform. In the coming year we will be adding a lot more APIs, as well as building an app-store where subscribers can browse products that they want to add to their subscription. We believe opening up the core network in this way will allow third party developers to build incredible apps that will lead to much happier subscribers, which will in turn lead to subscriber growth for operators on our platform.
 
 At the time of writing, all apps on the platform have to be free, but we are working on a monetization model similar to that of the Apple and Google app-stores. Our main priority is to come up with a model that is fair to both third party developers and operators.
 
