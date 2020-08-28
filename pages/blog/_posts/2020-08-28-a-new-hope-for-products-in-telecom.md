@@ -2,15 +2,12 @@
 layout: blogpost
 permalink: /blog/a-new-hope-for-products-in-telecom
 title: A new hope for products in telecom
-date: 2020-08-27
+date: 2020-08-28
 tags: telecom software-development core-network app-ecosystem
-author: <a href="https://www.linkedin.com/in/mariuswaldum/">Marius Waldum, Head of Product @ wgtwo</a>
+author: <a href="https://www.linkedin.com/in/mariuswaldum/">Marius Waldum</a> - Head of Product
 ---
 
-## A new hope for products in telecom
-
-****This blog post will cover technology driven products that rely on telecom infrastructure, and not price plans, bundles, or marketing gimmicks.
-Anyone who has created a product and brought it to market more than once will tell you that it is hard.*
+**This blog post will cover technology driven products that rely on telecom infrastructure, and not price plans, bundles, or marketing gimmicks. Anyone who has created a product and brought it to market more than once will tell you that it is hard.**
 
 The prerequisites for a great product is that:
 1. It is valuable to the user and customer 

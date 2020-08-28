@@ -4,7 +4,7 @@ permalink: /blog/From-cradle-to-grave-Product-Rose/
 title: "From cradle to grave: Product Rose"
 date: 2019-07-24
 tags: product lifecycle ceremonies 
-author: <a href="https://www.linkedin.com/in/therese-nesseth-t%C3%B8rlen/">Therese Nesseth Tørlen</a>
+author: <a href="https://www.linkedin.com/in/therese-nesseth-t%C3%B8rlen/">Therese Nesseth Tørlen</a> - Product Manager
 ---
 
 _“Dear friends and family, we are gathered here today to say goodbye to a dear friend of ours“_

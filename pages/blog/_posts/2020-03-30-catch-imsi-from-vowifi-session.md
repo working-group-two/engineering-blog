@@ -4,7 +4,7 @@ permalink: /blog/vowifi-imsi-leak/
 title: VoWifi leaking IMSI
 date: 2020-03-30
 tags: telco 4G ePDG.fixedcase VoWifi.fixedcase networking security
-author: <a href="https://www.linkedin.com/in/rskjetlein/">Roger Skjetlein</a>
+author: <a href="https://www.linkedin.com/in/rskjetlein/">Roger Skjetlein</a>, Senior Software Engineer
 ---
 
 4G offers more services than the earlier generation such as 3G and 2G. One of

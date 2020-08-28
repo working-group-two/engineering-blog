@@ -4,7 +4,7 @@ permalink: /blog/extending-k8s/
 title: "Extending Kubernetes for our needs"
 date: 2020-02-21
 tags: infrastructure kubernetes operator operator-framework networking AWS.fixedcase
-author: <a href="https://www.linkedin.com/in/hihrig/">Holger Ihrig</a>
+author: <a href="https://www.linkedin.com/in/hihrig/">Holger Ihrig</a>, Software Engineer
 ---
 
 We are using Kubernetes as our cluster scheduler and this serves us well. However we have a 

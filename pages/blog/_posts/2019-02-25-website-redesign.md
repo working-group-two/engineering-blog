@@ -4,7 +4,7 @@ permalink: /blog/website-redesign/
 title: Redesigning our website
 date: 2019-02-25
 tags: design culture frontend
-author: <a href="https://linkedin.com/in/davidaase">David Åse</a>
+author: <a href="https://linkedin.com/in/davidaase">David Åse</a> - Tech Lead
 ---
 
 Being a young startup (founded in 2017), we have a very agile approach to most things.

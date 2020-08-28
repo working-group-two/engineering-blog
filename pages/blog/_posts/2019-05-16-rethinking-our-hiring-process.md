@@ -4,7 +4,7 @@ permalink: /blog/rethinking-our-hiring-process/
 title: Time to set the engineer in charge of the recruitment process
 date: 2019-05-16
 tags: hiring diversity culture
-author: <a href="https://www.linkedin.com/in/saraekstrom/">Sara Hedenström</a> and <a href="https://www.linkedin.com/in/jamesmathieson/">James Mathieson</a>
+author: <a href="https://www.linkedin.com/in/saraekstrom/">Sara Hedenström</a> - HR, and <a href="https://www.linkedin.com/in/jamesmathieson/">James Mathieson</a> - Software Engineer
 ---
 
 Recruiting Software Engineers is a challenge. The current market is dictated by engineers who

@@ -4,7 +4,7 @@ permalink: /blog/what-are-your-weekend-plans/
 title: What are your weekend plans?
 date: 2019-04-29
 tags: culture diversity
-author: <a href="https://linkedin.com/in/therese-nesseth-t%C3%B8rlen">Therese Nesseth Tørlen</a>
+author: <a href="https://linkedin.com/in/therese-nesseth-t%C3%B8rlen">Therese Nesseth Tørlen</a> - Product Manager
 ---
 
 ## Open communication as a tool to break down barriers

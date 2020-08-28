@@ -4,7 +4,7 @@ permalink: /blog/metrics-unlimited-thanos/
 title: "Towards observability nirvana: infinite metric retention with Thanos"
 date: 2020-01-28
 tags: infrastructure observability prometheus thanos kubernetes
-author: <a href="https://www.linkedin.com/in/hihrig/">Holger Ihrig</a>
+author: <a href="https://www.linkedin.com/in/hihrig/">Holger Ihrig</a>, Software Engineer
 ---
 In the current DevOps world, our industry relies on the ability to observe and monitorize our infrastructure and 
 services. Working Group Two is no exception here and as we are operating in the TelCo space

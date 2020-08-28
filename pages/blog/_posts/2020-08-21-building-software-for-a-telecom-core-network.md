@@ -4,7 +4,7 @@ permalink: /blog/building-software-for-a-telecom-core-network
 title: Building software for a telecom core network
 date: 2020-08-21
 tags: telecom software-development core-network app-ecosystem
-author: <a href="https://linkedin.com/in/davidaase">David Åse</a>
+author: <a href="https://linkedin.com/in/davidaase">David Åse</a> - Tech Lead
 ---
 
 One of the goals of Working Group Two is to enable operators and third parties to build products and services for the “core network” of the telecom stack. In short, this means providing API access to a subscription’s telecom functionality (messaging, calling, etc). In this article we will show how we built VoiceBox, a Voicemail forwarding application.

@@ -4,7 +4,7 @@ permalink: /blog/hacking-dark-themes-with-css-blend-modes/
 title: Hacking dark themes with CSS blend modes
 date: 2019-06-25
 tags: CSS frontend design
-author: <a href="https://linkedin.com/in/davidaase">David Åse</a>
+author: <a href="https://linkedin.com/in/davidaase">David Åse</a> - Tech Lead
 ---
 
 Like many other companies, [Working Group Two](/) has a number of applications which are
