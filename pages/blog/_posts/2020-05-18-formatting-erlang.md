@@ -315,3 +315,20 @@ purposes. There are issues with macros, or execution time.
 
 I have to put this on the shelf again for a while, with just a dream
 of uniform code.
+
+# Edit: 2020-10-01
+
+I forgot to update this blogpost, but something amazing happend.
+
+After I wrote this blog post I contacted the maintainer of
+steamroller, and told him about the slowness I experienced, and some
+other difficulties.  One day later he had found and fixed an algorithm
+going from an O(n^2) complexity to an O(n). When retrying it on our
+code base, things went from minutes to seconds!
+
+He also removed and improved some of the ambiguous configuration
+parameters.
+
+I haven't yet started to look at the map formatting issues I had, but
+maybe it has improved as well? Anyway I'll have to leave that for
+another hackday.
