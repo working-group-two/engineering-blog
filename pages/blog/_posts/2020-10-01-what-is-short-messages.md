@@ -147,6 +147,10 @@ which does not include any privacy correlation ids, and there are no
 fancy responses with delivery status. There is still an
 acknowledgement, but is in a form of an empty message.
 
+Only way to see difference between an MO and a MT in version 1 is to
+look at the addresses and see if they are either coming from an SMSC
+or going to an SMSC.
+
 Ok, to recap, what do we have now
 
 - `Begin`, `Continue`, `End`, `Abort` messages.
@@ -179,6 +183,33 @@ answered with a response.
 
 To make *SMSes* work on *LTE* networks a new node was invented which
 translates Diameter messages to *SIGTRAN* messages. This node sits in
-between the *SMSC* and the other telco Diameter *LTE* nodes (now called
-agents).
+between the *SMSC* and the other telco Diameter *LTE* nodes (with
+Diameter the nodes are now called agents).
 
+
+# Headache
+
+Hopefully you did not get a (too severe) headache by reading this
+post.
+
+I've spared you with a lot of details on the lower level of
+protocols. There are loads of implementation details that must match
+the specifications, otherwise you will get all kinds of Aborts and
+possibly even dropped traffic.
+For instance we learned that we accidentally sent dialogue portions in
+more than the first response back, which seemed to work at first
+glance; at closer inspection we found out that some messages were
+dropped because the length of the packet became larger in size than an
+allowed value. We could still send them, but the other side was not
+able to receive them.
+
+Remember: Telco is old and complex. However, it should still function
+with different setups and on different hardware, vendors and with
+environment.
+
+Fun-fact: Even though physical human operators are not used anymore,
+there are still bits in some packets which tells which language the
+operators speak.
+
+Hope you enjoy the reading as much as I enjoy digging into these
+protocols!
