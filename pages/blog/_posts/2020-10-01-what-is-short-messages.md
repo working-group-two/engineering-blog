@@ -7,9 +7,6 @@ tags: telco SIGTRAN SMS
 author: <a href="https://www.linkedin.com/in/sebastian-weddmark-olsson/">Sebastian Weddmark Olsson</a>, Telco newb
 ---
 
-There might be many things in this blog post that might not be
-true. This is because of my knowledge of this stuff is limited.
-
 I will try as best as I can to give an explanation of what happens
 when you send an SMS from your phone.
 
