@@ -1,7 +1,7 @@
 ---
 layout: blogpost
 permalink: /blog/what-is-a-short-message
-title: What the f* is a short message?
+title: What the heck is a short message?
 date: 2020-10-01
 tags: telco SIGTRAN SMS
 author: <a href="https://www.linkedin.com/in/sebastian-weddmark-olsson/">Sebastian Weddmark Olsson</a>, Telco newb
@@ -207,9 +207,11 @@ Remember: Telco is old and complex. However, it should still function
 with different setups and on different hardware, vendors and with
 environment.
 
-Fun-fact: Even though physical human operators are not used anymore,
-there are still bits in some packets which tells which language the
-operators speak.
+Fun-fact: Sometimes a boolean value is not just encoded as a 1
+or 0. To save bandwith telco decided that you could also just define
+it as a `NULL OPTIONAL` meaning that if it is defined (but lacks a
+value), then it is considered true.  if it is not defined then it is
+considered false. This is the case for the `moreMessagesToSend` flag.
 
 Hope you enjoy the reading as much as I enjoy digging into these
 protocols!
