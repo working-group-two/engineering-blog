@@ -3,7 +3,7 @@ layout: blogpost
 permalink: /blog/what-is-a-short-message
 title: What the heck is a short message?
 date: 2020-10-01
-tags: telco SIGTRAN SMS
+tags: telco MAP TCAP SS7 FORWARDSM SMS
 author: <a href="https://www.linkedin.com/in/sebastian-weddmark-olsson/">Sebastian Weddmark Olsson</a>, Telco newb
 ---
 
@@ -22,31 +22,41 @@ _Aaand down the rabbit hole we go..._
 In the *SS7* (telco/telecom/telecommunications) network there are many
 different nodes (servers), with different kinds of tasks.
 
-The group of protocols that are used to send signals between these
-nodes is called *SIGTRAN*.
+The group of protocols that is used to send signals over *IP* between
+these nodes is called *SIGTRAN* (derived from "signaling transport").
+Older networks that have not switched to *IP* do not use *SIGTRAN*.
 
-It is transported over *IP*/*SCTP* (Stream Control Transmission Protocol)
-which is like a mix between *UDP* and *TCP*. It is supposed to be quicker
-than *TCP*, but more reliable than *UDP*.
+*SIGTRAN* protocols are the lower layer protocols used for signaling,
+they range from *SCTP* (Stream Control Transmission Protocol) to
+*M2PA* (Message Transfer Part 2 User Peer-to-Peer Adaptation Layer)
+and *M3UA* (Message Transfer Part 3 User Adaptation Layer).
 
-The signalling I'm going to talk about is the highest layer in the
-*SIGTRAN* protocol stack, the *MAP* (Mobile Application Part) as well as
-the *TCAP* (Transaction Capabilities Application Part). The protocol
-layers between *SCTP* and *MAP* are *M3UA* (Message Transfer Part 3 User
-Adaptation Layer) and *SCCP* (Signalling Connection Control Part) which
-both handles handshaking, routing, and resilience.
+*SCTP* is like a mix between *UDP* and *TCP*. It is supposed to be
+quicker than *TCP*, but more reliable than *UDP*.
+
+Both *M2PA* and *M3UA* support *SCTP* management, and the reporting of
+status changes of those, as well as providing transfer of *MTP3*
+(Message Transfer Part 3) messages.
+
+On top of *SIGTRAN* are the *SS7* protocols.
+
+What I'm going to talk about are the protocols on the very top of *SS7*,
+specifically the *MAP* (Mobile Application Part) as well as the *TCAP*
+(Transaction Capabilities Application Part). There are other protocols
+inbetween, for instance *SCCP* (Signalling Connection Control Part)
+which handles some handshaking, routing, and resilience.
 
 The *MAP* layer is used when talking to some of the telco nodes such
 as *HLR* (Home location registry), *VLR* (Visitor location registry),
-*MSC* (Mobile switching center), *SGSN* (Serving *GPRS* [ackronym in
+*MSC* (Mobile switching centre), *SGSN* (Serving *GPRS* [ackronym in
 ackronyms; go telco!] support node) and the *SMSC* (Short message
-service center).
+service centre).
 
 # MAP versions and TCAP dialogues
 
-There are three iterations of *MAP*, v1, v2, and v3, and all messages
-almost always comes in pair, an acknowledgement for each sent message
-(so called `Invoke` and `ReturnResult`).
+There are some iterations of *MAP*, v1, v2, v3, and v4, and all
+messages almost always comes in pair, an acknowledgement
+(`ReturnResult` or `ReturnError`) for each sent message (`Invoke`).
 
 To determine which version to use between two nodes, the sending node
 tries to start the transaction (called a dialogue) by sending a *TCAP*
@@ -59,16 +69,16 @@ might not even be a reason, but the sending node might try to send the
 In my head it goes like this:
 
 ```
-Node 1: "Hi, I want to talk to you about this in the latest version"
-Node 2: "No I don't understand you, but we can talk about version 2 instead"
-Node 1: "Ok, then I want to talk to you about this in version 2 instead"
+Node 1: "Hi, I want to talk version 3 to you about this"
+Node 2: "No I don't understand you, but we can talk version 2 about it instead"
+Node 1: "Ok, then I want to talk version 2 to you about this instead"
 Node 2: "Aah, now I see..."
 ```
 
 Or maybe
 
 ```
-Node 1: "Hi, I want to talk to you about this in the latest version"
+Node 1: "Hi, I want to talk version 3 to you about this"
 Node 2: "No"
 Node 1: "Ok, then I want to talk to you about this in version 1 instead"
 Node 2: "Maybe I will talk to you, maybe I will not"
@@ -78,8 +88,9 @@ For *TCAP* dialogues there are (mainly) four message types.  `Begin`,
 `Continue`, `End`, `Abort`. Each of the types have an ID (or two, as I
 said, telco is complicated), a component and a dialogue part. The
 component contains the *MAP* messages, and the dialogue part contains
-the version negotiation, but it is only used in the first message from
-both nodes for the version negotiation.
+the version and application to use (that is *MAP* Application;
+i.e. which type of message it contains), but it is only used in the
+first message from both nodes for the version negotiation.
 
 _I think this covers most of it, let's get back to the fun part._
 
@@ -91,48 +102,103 @@ phonecalls. It was decided at a meeting in Oslo to be released to the
 public when some French and German company understood it's
 value. (Don't quote me on any of this).
 
-When you send an *SMS*, a signal goes towards the *SMSC* node in your
-current *SS7* network. This signal is in a form of a packet, and is
-called `MO-Forward-SM`. It stands for "Mobile Originating Forward Short
+When you send an *SMS*, the *SMS* is transfered to the *MSC* or the
+*SGSN* in your current (serving) network. The *MSC* or *SGSN* then
+sends an packet called `MO-Forward-SM` towards the *SMSC* in your
+current network. It stands for "Mobile Originating Forward Short
 Message" meaning it started from your (mobile-)phone.
 
-The *SMSC* then takes your *SMS* and tries to find out where to send
-it. For instance if the recipient's phone is on the same
-operator/network or if it should route it to another operators
-*SMSC*. When it is clear where it should be sent, it goes out as another
-packet, a `MT-Forward-SM`. In this case *MT* stands for Mobile Terminated,
-meaning it goes towards the recipients phone.
+The *SMSC* then sends another packet, this time a `MT-Forward-SM`,
+towards the *MSC* in the recipients network. In this case *MT* stands
+for Mobile Terminated, meaning it goes towards the recipients phone.
 
-The similarities in *MO* and *MT* requests are that they both contain the
-origin and destination addresses as well as the user data (your actual
-text message), and a correlation id which is basically a mapping
-between your sim-card and a temporary id and it is used for privacy
-purposes; you might not want other networks and hackers to know about
-who you are.
+```
+                           MO-FSM                   MT-FSM
+Mobile device ---> *MSC* ----------> *SMSC* ----------------------> *MSC*
+^-------------- Same network -------------^ ^-- Potentially different --^
+```
 
-For *MT* requests there is also a flag which is called
-`moreMessagesToSend` which is used if (god forbid) you would break the
-protocol and send a text message longer than 115 bytes. The message is
-then breaked up into chunks which starts with an empty *TCAP* `Begin`
-message followed with the actual text message in `Continue`
-messages. In the end (_hehe_) the `End` message is transmitted as a
-response and the transaction is finished.
+The similarities in *MO* and *MT* requests are that they both contain
+a origin and destination address as well as the user data (your actual
+text message), and a possibly a correlation id which is basically a
+mapping between your SIM-card id and a temporary id and was originally
+used for making sure that the sending network payed for *SMS*s towards
+the receiving network.
 
-When one of these chunk (or the full message if lesser than 115 bytes)
-is delivered to the recipient, a response is sent back with the
-`MT-Forward-SM` containing a delivery status.
+For *MO* the origin address is your *MSISDN* (read telephone number),
+and the destination is the *GT* address (Global title; a way to route
+stuff) of the *SMSC*. For *MT* messages the origin address is the *GT*
+of the *SMSC* and the destination address is either the recipients
+*IMSI* (read SIM-card) or the recipients correlation id. It could also
+be a *LMSI* which is a 4-byte network location identifier if the
+recipient is also within the same network as the sender.
 
-OR, in the case that you are sending an *SMS* to a recipient in another
-network and the recipient is not available, it might contain the time
-the receiving *SMSC* will hold the message and retry to send it to the
-recipient.
+Ever wondered why there is a limit to the size of the text message you
+are sending?
+
+<div class="post-images center">
+    <img src="/img/blog/sms/160_chars.png" width="50%" alt="Characters left: 2/160" />
+</div>
+
+If you (god forbid) you would break the protocol and send a text
+message greater than 140 bytes, which translates to 160, 140, or 70
+characters depending on locale [1], then your phone would break up the
+message into multiple text messages. This arbitrary size of 140 bytes
+is not really arbitrary at all. It was chosen because it would
+precisely fit into a single *MTP3* *SIF* (Signalling Information
+Field) when routing label, *SCCP*, *TCAP* and *MAP* layers were taken
+into account.
+
+[1] There is something called *GSM7* bit-packing. Instead of using 1
+byte (8 bits) per character, *GSM7* uses 7 bits. This means that
+instead of 140 characters, you can get up to 160 characters per
+*SMS*. The drawback is that you will have a smaller subset of
+characters to use, only the most common is supported. If you include
+any non-*GSM7* characters in your *SMS* then the *SMS* will
+automatically be converted to use *USC-2* instead. *USC-2* uses
+2-bytes, or 16 bits, instead of *GSM7*s 7 bits. That leaves you with
+70 characters per *SMS*. *USC-2* is similar for the basic multilingual
+plane to *UTF-16*. In fact *UTF-16* is an extension of *UCS-2*. The
+main difference is that *USC-2* is fixed width, while *UTF-16* is
+variable width of one or two 16-bits code points. Most phones will
+however see *USC-2* text and think it is *UTF-16* and thus decode it
+wrongly.
+
+Using emojis will convert the encoding:
+<div class="post-images">
+    <img src="/img/blog/sms/67_chars.png" width="50%" alt="Characters left: 45/67 (3)" />
+</div>
+
+However when *MAP* v2 started to use *TCAP* dialogues there was more
+information to put into the packet and 140 bytes might not be left for
+the *SMS*. The *SMSC* would then need to break up the message into
+chunks, and start the transaction an empty *TCAP* `Begin` message and
+set a flag in the *MT* request called `moreMessagesToSend`. It would
+then send the actual text inside `Continue` messages. In the end
+(_hehe_) the `End` message is transmitted as a response and the
+transaction is finished.
+
+The response back to a *MO* request is, as previous stated, an
+acknowledgement if the *SMS* have been successfully submitted to the
+*SMSC* or not (again either `returnResult` or `returnError`). For *MT*
+requests the acknowledgement is if the *SMS* is successfully delivered
+or not.
+
+If the *MT* request is not successful, the *SMSC* could ask the *HLR*
+(the Home Location Registry is basically a database containing user
+subscriptions and knowledge of which nodes the mobile talked to
+latest) to be notified when the user comes back online. A bunch of
+other *MAP* messages are then involved, such as
+- `reportSMDeliveryStatus`,
+- `informServiceCentre`,
+- `alterServiceCentre`, and
+- `readyForSM`.
 
 _At least this is main idea I think..._
 
 # Differences in MAP versions for SMS
 
-The `moreMessagesToSend` flag was implemented for version 2, so it exist
-only after version 1.
+There are three *MAP* versions defined for *SMS*.
 
 In version 1, the dialogue portion was not invented and all chunks are
 sent in new *TCAP* dialogues. The size of the user data could then
@@ -148,41 +214,45 @@ Only way to see difference between an MO and a MT in version 1 is to
 look at the addresses and see if they are either coming from an SMSC
 or going to an SMSC.
 
+The `moreMessagesToSend` flag was implemented in version 2, so it exist
+only for version 2 and version 3.
+
 Ok, to recap, what do we have now
 
 - `Begin`, `Continue`, `End`, `Abort` messages.
 - Dialogue handshake in the first request/response messages sent.
 - `MT-Forward-SM`, `MO-Forward-SM`, `Forward-SM`
-- Mobile phones and *SMSCs*
+- Involved parties: Mobile phones, *MSC* and *SMSC*
 
-_Let's talk a bit about the last item_
+_Wait we are missing something. I've only covered 2G,3G.._
 
-# Different SMSCs
-
-So you are either on your home network or on a different (roaming)
-network. If you are not on your operators network you are a visitor
-and thus roaming. The same goes for the recipient of the *SMS*.
-
-So the mobile originating message is sent to the *SMSC* in the network
-you are in. That *SMSC* then sends a mobile terminating message to the
-*SMSC* in the recipients network, which in turn sends a mobile
-terminating message to the recipient.
-
-# What about 4G/LTE networks?
+# What about 4G/LTE and beyond (5G)?
 
 _Ouch._
 
 *LTE* networks does not use any of the *M3UA*, *SCCP*, *TCAP*, *MAP*
-protocols. In *LTE* networks the main message type is Diameter which
+protocols. In *LTE* networks the main message type is *Diameter* which
 doesn't contain fragmentation and can contain larger
 messages. Everything is sent in one request and every request is
-answered with a response.
+answered with a response. *Diameter* could use either *TCP* or *SCTP* as
+transport layer.
 
-To make *SMSes* work on *LTE* networks a new node was invented which
-translates Diameter messages to *SIGTRAN* messages. This node sits in
-between the *SMSC* and the other telco Diameter *LTE* nodes (with
-Diameter the nodes are now called agents).
+To make *SMSes* work on *LTE* networks a new interface *SGs* was
+invented which translates *SS7* messages to *Diameter* messages.  This
+interface is in most cases used by the *MSC* to translate the messages
+to *Diameter* and forward it to the *MME* (Mobility Management Entity,
+similar to *SGSN* but in the *LTE* network). The *MME* then forwards
+it to the *UE* (user equipment, same as mobile subscriber or *MS* in
+*GSM*/*GPRS* networks).
 
+For 5G the *SMSC* is called *SMSF*; The Centre becomes a Function. The
+signalling will be based on *HTTP2*/*JSON* ontop of *TCP*. The *SMSF*
+will still need to support both *MAP* and *Diameter*.
+
+Relevant xkcd:
+<div class="post-images">
+    <a href="https://xkcd.com/2365/"><img src="https://imgs.xkcd.com/comics/messaging_systems.png" /></a>
+</div>
 
 # Headache
 
