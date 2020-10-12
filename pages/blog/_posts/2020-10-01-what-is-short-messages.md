@@ -112,11 +112,10 @@ The *SMSC* then sends another packet, this time a `MT-Forward-SM`,
 towards the *MSC* in the recipients network. In this case *MT* stands
 for Mobile Terminated, meaning it goes towards the recipients phone.
 
-```
-                           MO-FSM                   MT-FSM
-Mobile device ---> *MSC* ----------> *SMSC* ----------------------> *MSC*
-^-------------- Same network -------------^ ^-- Potentially different --^
-```
+Dia have amazing icons:
+<div class="post-images center">
+    <img src="/img/blog/sms/forward-sm.svg" alt="You calling your mom" />
+</div>
 
 The similarities in *MO* and *MT* requests are that they both contain
 a origin and destination address as well as the user data (your actual
