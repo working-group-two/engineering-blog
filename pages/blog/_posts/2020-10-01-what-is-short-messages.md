@@ -3,7 +3,7 @@ layout: blogpost
 permalink: /blog/what-is-a-short-message
 title: What the heck is a short message?
 date: 2020-10-01
-tags: telco MAP TCAP SS7 FORWARDSM SMS
+tags: telco MAP TCAP SS7 Forward-SM SMS
 author: <a href="https://www.linkedin.com/in/sebastian-weddmark-olsson/">Sebastian Weddmark Olsson</a>, Telco newb
 ---
 
