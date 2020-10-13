@@ -54,17 +54,17 @@ service centre).
 
 # MAP versions and TCAP dialogues
 
-There are some iterations of *MAP*, v1, v2, v3, and v4, and all
-messages almost always comes in pair, an acknowledgement
-(`ReturnResult` or `ReturnError`) for each sent message (`Invoke`).
+There are some iterations of *MAP* (v1, v2, v3, and v4) and messages
+almost always come in pairs, an acknowledgement (`ReturnResult` or
+`ReturnError`) for each sent message (`Invoke`).
 
 To determine which version to use between two nodes, the sending node
 tries to start the transaction (called a dialogue) by sending a *TCAP*
 `Begin` message with the *MAP* message and it's highest compatible
 version. If the receiving node cannot talk that version, it sends a
-*TCAP* `Abort` message with it's highest compatible version. For v1 there
-might not even be a reason, but the sending node might try to send the
-*MAP* message as v1 anyway.
+*TCAP* `Abort` message with it's highest compatible version. In v1
+there might not even be a reason, just an empty `Abort`; the sending
+node might then try to send the *MAP* message as v1 anyway.
 
 In my head it goes like this:
 
@@ -87,7 +87,7 @@ Node 2: "Maybe I will talk to you, maybe I will not"
 For *TCAP* dialogues there are (mainly) four message types.  `Begin`,
 `Continue`, `End`, `Abort`. Each of the types have an ID (or two, as I
 said, telco is complicated), a component and a dialogue part. The
-component contains the *MAP* messages, and the dialogue part contains
+component contains the *MAP* message. The dialogue part contains
 the version and application to use (that is *MAP* Application;
 i.e. which type of message it contains), but it is only used in the
 first message from both nodes for the version negotiation.
@@ -112,8 +112,8 @@ The *SMSC* then sends another packet, this time a `MT-Forward-SM`,
 towards the *MSC* in the recipients network. In this case *MT* stands
 for Mobile Terminated, meaning it goes towards the recipients phone.
 
-Dia have amazing icons:
-<div class="post-images center">
+_Dia have amazing icons:_
+<div>
     <img src="/img/blog/sms/forward-sm.svg" alt="You calling your mom" />
 </div>
 
@@ -135,8 +135,9 @@ recipient is also within the same network as the sender.
 Ever wondered why there is a limit to the size of the text message you
 are sending?
 
-<div class="post-images center">
-    <img src="/img/blog/sms/160_chars.png" width="50%" alt="Characters left: 2/160" />
+<div class="left-right-row">
+    <div class="text">Two characters left on a GSM7 encoded SMS.</div>
+    <img class="image" src="/img/blog/sms/160_chars.png" alt="Characters left: 2/160" />
 </div>
 
 If you (god forbid) you would break the protocol and send a text
@@ -163,9 +164,13 @@ variable width of one or two 16-bits code points. Most phones will
 however see *USC-2* text and think it is *UTF-16* and thus decode it
 wrongly.
 
-Using emojis will convert the encoding:
-<div class="post-images">
-    <img src="/img/blog/sms/67_chars.png" width="50%" alt="Characters left: 45/67 (3)" />
+<div class="left-right-row">
+    <img class="image" src="/img/blog/sms/67_chars.png" alt="Characters left: 45/67 (3)" />
+    <div class="text">
+        Using emojis will convert the encoding to USC-2. (3 characters
+        less than I wrote ^. It is probably because of headers telling
+        the phone which encoding it is.
+    </div>
 </div>
 
 However when *MAP* v2 started to use *TCAP* dialogues there was more
@@ -174,7 +179,7 @@ the *SMS*. The *SMSC* would then need to break up the message into
 chunks, and start the transaction an empty *TCAP* `Begin` message and
 set a flag in the *MT* request called `moreMessagesToSend`. It would
 then send the actual text inside `Continue` messages. In the end
-(_hehe_) the `End` message is transmitted as a response and the
+the `End` (_hehe_) message is transmitted as a response and the
 transaction is finished.
 
 The response back to a *MO* request is, as previous stated, an
@@ -197,7 +202,8 @@ _At least this is main idea I think..._
 
 # Differences in MAP versions for SMS
 
-There are three *MAP* versions defined for *SMS*.
+There are three *MAP* versions defined for *SMS*. The latest version
+(v4) is not used in the context of *SMS*.
 
 In version 1, the dialogue portion was not invented and all chunks are
 sent in new *TCAP* dialogues. The size of the user data could then
@@ -248,9 +254,60 @@ For 5G the *SMSC* is called *SMSF*; The Centre becomes a Function. The
 signalling will be based on *HTTP2*/*JSON* ontop of *TCP*. The *SMSF*
 will still need to support both *MAP* and *Diameter*.
 
+
 Relevant xkcd:
-<div class="post-images">
-    <a href="https://xkcd.com/2365/"><img src="https://imgs.xkcd.com/comics/messaging_systems.png" /></a>
+<div class="left-right-row">
+    <table class="text">
+        <tr>
+            <td>Generation</td>
+            <td>2G/3G</td>
+            <td>4G</td>
+            <td>5G</td>
+        </tr>
+        <tr>
+            <td>Radio technology</td>
+            <td>GSM/GPRS</td>
+            <td>LTE</td>
+            <td>NR</td>
+        </tr>
+        <tr>
+            <td>Protocol group</td>
+            <td>SS7</td>
+            <td>Diameter</td>
+            <td>HTTP2/JSON</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>Node</td>
+            <td>Agent</td>
+            <td>Function</td>
+        </tr>
+        <tr>
+            <td>Session management</td>
+            <td>SGSN</td>
+            <td>MME</td>
+            <td>AMF</td>
+        </tr>
+        <tr>
+            <td>SM management</td>
+            <td>SMSC</td>
+            <td>SMSC</td>
+            <td>SMSF</td>
+        </tr>
+        <tr>
+            <td>User management</td>
+            <td>HLR</td>
+            <td>HSS</td>
+            <td>UDM</td>
+        </tr>
+        <tr>
+            <td>User is called</td>
+            <td>MS</td>
+            <td>UE</td>
+            <td>UE</td>
+        </tr>
+    </table>
+    <a class="image" href="https://xkcd.com/2365/"><img src="https://imgs.xkcd.com/comics/messaging_systems.png" /></a>
 </div>
 
 # Headache
