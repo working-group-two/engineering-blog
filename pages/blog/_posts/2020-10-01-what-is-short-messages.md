@@ -169,14 +169,14 @@ extended characters in the private use area of *BMP*. *UTF-16* is
 variable width of one or two 16-bits code points, and does allow the
 extended characters. For extended characters to work (for instance
 "praying/folded hands" &#x1F64F;), phones might try to fake *UTF-16*
-by using two *USC-2* characters.
+by using two *USC-2* characters. New phones can handle this fine, but
+older phones might receive two question marks as they cannot decode it
+properly.
 
-Most phones will however see *USC-2* text and
-think it is *UTF-16* and thus decode it wrongly. If *GSM7* have a
-modified charset (i.e. not the default *BMP*) then there will be a
-header in front that specifies that. That header will take up 7 bytes
-after packing (in other words 8 characters), making the maximum length
-of the *SMS* 152 characters.
+If *GSM7* have a modified charset (i.e. not the default *BMP*) then
+there will be a header in front that specifies that. That header will
+take up 7 bytes after packing (in other words 8 characters), making
+the maximum length of the *SMS* 152 characters.
 
 <div class="left-right-row">
     <img class="image" src="/img/blog/sms/67_chars.png" alt="Characters left: 45/67 (3)" />
@@ -332,7 +332,7 @@ post.
 
 I've spared you with a lot of details on the lower level of
 protocols. There are loads of implementation details that must match
-the specifications, otherwise you will get all kinds of Aborts and
+the specifications, otherwise you will get all kinds of aborts and
 possibly even dropped traffic.
 For instance we learned that we accidentally sent dialogue portions in
 more than the first response back, which seemed to work at first
@@ -353,3 +353,6 @@ considered false. This is the case for the `moreMessagesToSend` flag.
 
 Hope you enjoy the reading as much as I enjoy digging into these
 protocols!
+
+Special thanks to *Stein Eldar* and *Tobias* for giving me feedback and
+answering all my stupid questions on this subject.
