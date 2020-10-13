@@ -108,6 +108,11 @@ sends an packet called `MO-Forward-SM` towards the *SMSC* in your
 current network. It stands for "Mobile Originating Forward Short
 Message" meaning it started from your (mobile-)phone.
 
+The *SMSC* then asks the recipients HLR about the routing details for
+the *SMS*. It does so by sending another *MAP* message of type
+`sendRoutingInfoForSM` requesting the location of the recipients *MSC*
+or *SGSN*, or both.
+
 The *SMSC* then sends another packet, this time a `MT-Forward-SM`,
 towards the *MSC* in the recipients network. In this case *MT* stands
 for Mobile Terminated, meaning it goes towards the recipients phone.
@@ -132,8 +137,7 @@ of the *SMSC* and the destination address is either the recipients
 be a *LMSI* which is a 4-byte network location identifier if the
 recipient is also within the same network as the sender.
 
-Ever wondered why there is a limit to the size of the text message you
-are sending?
+## Ever wondered why there is a limit to the size of the text message you are sending?
 
 <div class="left-right-row">
     <div class="text">Two characters left on a GSM7 encoded SMS.</div>
@@ -141,7 +145,7 @@ are sending?
 </div>
 
 If you (god forbid) you would break the protocol and send a text
-message greater than 140 bytes, which translates to 160, 140, or 70
+message greater than 140 bytes, which translates to 160, 152, or 70
 characters depending on locale [1], then your phone would break up the
 message into multiple text messages. This arbitrary size of 140 bytes
 is not really arbitrary at all. It was chosen because it would
@@ -155,21 +159,32 @@ instead of 140 characters, you can get up to 160 characters per
 *SMS*. The drawback is that you will have a smaller subset of
 characters to use, only the most common is supported. If you include
 any non-*GSM7* characters in your *SMS* then the *SMS* will
-automatically be converted to use *USC-2* instead. *USC-2* uses
-2-bytes, or 16 bits, instead of *GSM7*s 7 bits. That leaves you with
-70 characters per *SMS*. *USC-2* is similar for the basic multilingual
-plane to *UTF-16*. In fact *UTF-16* is an extension of *UCS-2*. The
-main difference is that *USC-2* is fixed width, while *UTF-16* is
-variable width of one or two 16-bits code points. Most phones will
-however see *USC-2* text and think it is *UTF-16* and thus decode it
-wrongly.
+automatically be converted to use either *USC-2* or *GSM7* with a
+different charset instead. *USC-2* uses 2 bytes, or 16 bits, instead
+of *GSM7*s 7 bits. That leaves you with 70 characters per
+*SMS*. *USC-2* is similar for the basic multilingual plane (*BMP*) to
+*UTF-16*. In fact *UTF-16* is an extension of *UCS-2*. The main
+difference is that *USC-2* is fixed width and does not allow for the
+extended characters in the private use area of *BMP*. *UTF-16* is
+variable width of one or two 16-bits code points, and does allow the
+extended characters. For extended characters to work (for instance
+"praying/folded hands" &#x1F64F;), phones might try to fake *UTF-16*
+by using two *USC-2* characters.
+
+Most phones will however see *USC-2* text and
+think it is *UTF-16* and thus decode it wrongly. If *GSM7* have a
+modified charset (i.e. not the default *BMP*) then there will be a
+header in front that specifies that. That header will take up 7 bytes
+after packing (in other words 8 characters), making the maximum length
+of the *SMS* 152 characters.
 
 <div class="left-right-row">
     <img class="image" src="/img/blog/sms/67_chars.png" alt="Characters left: 45/67 (3)" />
     <div class="text">
-        Using emojis will convert the encoding to USC-2. (3 characters
-        less than I wrote ^. It is probably because of headers telling
-        the phone which encoding it is.
+        Using emojis will convert the encoding to USC-2. Note the missing 3
+        characters and that there are multiple SMSes. When multiple messages
+        are sent, the phone needs some way of telling how to reassemble the
+        messages. The headers take up 6 bytes per message for this purpose.
     </div>
 </div>
 
@@ -301,7 +316,7 @@ Relevant xkcd:
             <td>UDM</td>
         </tr>
         <tr>
-            <td>User is called</td>
+            <td>Device</td>
             <td>MS</td>
             <td>UE</td>
             <td>UE</td>
