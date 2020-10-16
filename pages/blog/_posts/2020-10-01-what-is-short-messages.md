@@ -126,7 +126,7 @@ The similarities in *MO* and *MT* requests are that they both contain
 a origin and destination address as well as the user data (your actual
 text message), and a possibly a correlation id which is basically a
 mapping between your SIM-card id and a temporary id and was originally
-used for making sure that the sending network payed for *SMS*s towards
+used for making sure that the sending network paid for *SMS*s towards
 the receiving network.
 
 For *MO* the origin address is your *MSISDN* (read telephone number),
@@ -230,9 +230,9 @@ which does not include any privacy correlation ids, and there are no
 fancy responses with delivery status. There is still an
 acknowledgement, but is in a form of an empty message.
 
-Only way to see difference between an MO and a MT in version 1 is to
-look at the addresses and see if they are either coming from an SMSC
-or going to an SMSC.
+Only way to see difference between an *MO* and a *MT* in version 1 is
+to look at the addresses and see if they are either coming from an
+*SMSC* or going to an *SMSC*.
 
 The `moreMessagesToSend` flag was implemented in version 2, so it exist
 only for version 2 and version 3.
@@ -264,6 +264,11 @@ to *Diameter* and forward it to the *MME* (Mobility Management Entity,
 similar to *SGSN* but in the *LTE* network). The *MME* then forwards
 it to the *UE* (user equipment, same as mobile subscriber or *MS* in
 *GSM*/*GPRS* networks).
+
+There is also the *SM-over-IP* that does not use *Diameter*. Instead
+it uses the *SIP*-protocol (Session Initiation Protocol) to transfer
+messages over *IP* and *UDP* to the *IMS* (IP Multimedia
+Subsystem). *SIP* is also used to enable VoLTE (Voice over *LTE*).
 
 For 5G the *SMSC* is called *SMSF*; The Centre becomes a Function. The
 signalling will be based on *HTTP2*/*JSON* ontop of *TCP*. The *SMSF*
@@ -330,7 +335,7 @@ Relevant xkcd:
 Hopefully you did not get a (too severe) headache by reading this
 post.
 
-I've spared you with a lot of details on the lower level of
+I've spared you with **a lot** of details on the lower level of
 protocols. There are loads of implementation details that must match
 the specifications, otherwise you will get all kinds of aborts and
 possibly even dropped traffic.
@@ -354,5 +359,47 @@ considered false. This is the case for the `moreMessagesToSend` flag.
 Hope you enjoy the reading as much as I enjoy digging into these
 protocols!
 
-Special thanks to *Stein Eldar* and *Tobias* for giving me feedback and
-answering all my stupid questions on this subject.
+Special thanks to *Stein Eldar* and *Tobias* for giving me feedback
+and answering all my stupid questions on this subject, and *Atanas*
+for making me realize there are yet other protocols to carry *SMS*.
+Also *Bung* for this amazing addition:
+
+#### Addition from *Bung*
+
+"I’ve spared you with a lot of details on the lower level of
+protocols" needs a lot of emphasis.
+
+Some funny extra complexities that just came into my mind while
+reading:
+
+The actual *SMS* text goes into a field called "user data". There is a
+field called "user data length". When the message is *GSM7* encoded, the
+"user data length" is the number of characters in the text message,
+otherwise it's the number of bytes in the user data.
+
+Normally the user data only contains the (encoded) text of the
+message, but there is a field called "user data header" which
+indicates that there is a length prefixed TLV header in the "user
+data". If the message is *GSM7* encoded, then the "user data lenght"
+field needs to be filled as if the "user data header" was really *GSM7*
+encoded, which it isn't.
+
+*GSM7* is really a variably septet encoding, one character can consist
+of either 7 or 14 bits similar to how a *UTF-8* code point can be 8,
+16, 24, or 32 bits. Unlike *UTF-8* however, there are not multiple
+byte ranges corresponding to the different locales (called code pages
+in Unicode) but a single 7 bit shift character that says that
+following 7 bits should be interpreted as a character from a
+translation table which is communicated out of band.
+
+So all that is only the complexities of a single field (the user data)
+for a single encoding (*GSM7*).
+
+Then the real kicker: The protocol for *SMS* is really called *SM-TP*
+(Short Message Transfer Protocol). *SM-TP* is the same for 2G/3G (on top
+of *MAP*), 4G (on top of *SIP*), 5G (on top of *HTTP*). So the very
+same stupid "length prefixed TLV encoded headers concatenated with
+encoded text with length either in characters or in bytes depending on
+encoding and actual meaning of the encoding communicated out of band
+but only sometimes" field exists no matter if your talking over old
+legacy *MAP* or the modern *HTTP/XML* based 5G.
