@@ -267,7 +267,7 @@ it to the *UE* (user equipment, same as mobile subscriber or *MS* in
 
 There is also the *SM-over-IP* that does not use *Diameter*. Instead
 it uses the *SIP*-protocol (Session Initiation Protocol) to transfer
-messages over *IP* and *UDP* to the *IMS* (IP Multimedia
+messages over *IP* and *TCP* or *UDP* to the *IMS* (IP Multimedia
 Subsystem). *SIP* is also used to enable VoLTE (Voice over *LTE*).
 
 For 5G the *SMSC* is called *SMSF*; The Centre becomes a Function. The
