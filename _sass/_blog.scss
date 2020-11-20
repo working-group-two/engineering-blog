@@ -3,15 +3,19 @@
   padding: 16px;
   background: #fff;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+
   + .blogpost {
     margin-top: 24px;
   }
+
   header {
     position: relative;
     padding-right: 120px;
+
     h2 a {
       color: #444;
     }
+
     .date {
       position: absolute;
       top: 0;
@@ -19,10 +23,12 @@
       line-height: 40px;
     }
   }
+
   p {
     font-size: 16px;
     margin: 10px 0 0 0;
   }
+
   .tag {
     padding: 0 6px 1px 6px;
     background: #555;
@@ -45,13 +51,40 @@
   .blogpost {
     header {
       padding-right: 100px;
+
       .date {
         font-size: 14px;
         line-height: 30px;
       }
+
       h2 {
         font-size: 22px;
       }
+    }
+  }
+}
+
+.blog-image-with-text {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  img {
+    border-radius: 10px;
+    width: calc(40% - 48px);
+  }
+
+  p {
+    width: 60%;
+  }
+}
+
+@media(max-width: 1000px) {
+  .blog-image-with-text {
+    flex-direction: column;
+
+    img, p {
+      width: 100%;
     }
   }
 }
