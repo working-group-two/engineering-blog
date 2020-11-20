@@ -29,7 +29,7 @@ These aren’t necessarily big things in everyday life, but they take out admini
 
 <div class="blog-image-with-text">
 <p>This lack of approvals does create another need though - the need for role models. So we do remind the team to keep in mind that we are role models for each other. It provides alignment. Whether it’s sharing with the others that the train ticket prices are currently low and recommend people to book now to save money, or taking initiative to set up a virtual social Friday get-together to end the week together. We even have our own role model emoji in slack, which we sometimes remember to use and I do believe people feel proud if they get one.</p>
-<img src="/img/blog/we-are-all-grownups-here/awards.png" alt="Decorative illustration">
+<img src="/img/blog/we-are-all-grownups-here/04.png" alt="Decorative illustration">
 </div>
 
 ## Sharing is caring
@@ -40,7 +40,7 @@ That we see each other as grownups is also evident in how we communicate and wha
 
 <div class="blog-image-with-text">
 <p>To clarify. We do of course need to make sure we move the company in the right direction together. We have chosen to use OKRs (Objectives and Key Results) as a tool for that. A tool that helps us discuss and decide together as a team what we want to achieve, but without dictating the how. This is a delicate balance, and we always have to fight to not create too detailed OKRs. The teams and individuals should feel empowered when understanding and agreeing on the why and what, but are allowed to determine the how.</p>
-<img src="/img/blog/we-are-all-grownups-here/map.png" alt="Decorative illustration">
+<img src="/img/blog/we-are-all-grownups-here/03.png" alt="Decorative illustration">
 </div>
 
 
