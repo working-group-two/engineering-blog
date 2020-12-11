@@ -40,9 +40,10 @@ In other words,
 * k8s coreDNS sets reg.wgtwo.com -> read-only-registry
 * CI (Concourse) bypasses cluster lookup and goes to route53 instead, such that reg.wgtwo.com -> harbor
 
-![Magic](/img/blog/forbidden-lore-hacking-dns-routing-for-k8s/sleight-of-hand.gif)
-
-We initially deployed a DNS sidecar to the CI system, but with multiple Concourse pods we got multiple sidecars and we really only needed one, plus we had to manipulate Concourse’s internal DNS cache (CONCOURSE_GARDEN_DNS_SERVER) but that broke DNS between Concourse and everything else in the cluster. Replacing the sidecar with a DNS pod in the CI namespace worked better, although then all the CI jobs needed to be updated to use that new pod as their nameserver.
+<div class="blog-image-with-text">
+<p>We initially deployed a DNS sidecar to the CI system, but with multiple Concourse pods we got multiple sidecars and we really only needed one, plus we had to manipulate Concourse’s internal DNS cache (CONCOURSE_GARDEN_DNS_SERVER) but that broke DNS between Concourse and everything else in the cluster. Replacing the sidecar with a DNS pod in the CI namespace worked better, although then all the CI jobs needed to be updated to use that new pod as their nameserver.</p>
+<img src="/img/blog/forbidden-lore-hacking-dns-routing-for-k8s/sleight-of-hand.gif" alt="Sleight of hand">
+</div>
 
 However at this point we realised that although we want to deploy pods into Kubernetes, the process that does the deploying lives on the Kubernetes nodes, outside of cluster scope. 
 We don’t do any config management on the nodes, we just let [kOps](https://github.com/kubernetes/kops) deploy everything that Kubernetes needs for a cluster, so we were reluctant to introduce an entirely different system just for managing one resolv.conf file. Also the concentric DNS setup would have a very wide scope and be somewhat difficult to debug. Maybe this was a problem better resolved using some clever nginx routing?
@@ -116,9 +117,10 @@ We put the DNS solution back in place again, where
 
 Which brought us back to the problem that was still there: how to update /etc/resolv.conf on the nodes. In the continued absence of config management, we hit upon the wonderful hack of using a privileged pod daemonset to manage the config for us via systemd.
 
-![Wheelchange](/img/blog/forbidden-lore-hacking-dns-routing-for-k8s/wheelchange.gif)
-
-We use the privileged pod to write a new config file to /etc/systemd/resolvd.conf, then reload the systemd-service. We thus control configuration on the Kubernetes node from inside of Kubernetes, which is admittedly morally wrong but also works really well, and keeps the configuration alongside all the rest of our configuration instead of hidden away somewhere new
+<div class="blog-image-with-text">
+<p>We use the privileged pod to write a new config file to /etc/systemd/resolvd.conf, then reload the systemd-service. We thus control configuration on the Kubernetes node from inside of Kubernetes, which is admittedly morally wrong but also works really well, and keeps the configuration alongside all the rest of our configuration instead of hidden away somewhere new.</p>
+<img src="/img/blog/forbidden-lore-hacking-dns-routing-for-k8s/wheelchange.gif" alt="Wheel change">
+</div>
 
 A future solution might be to implement some kind of local DNS server/cache on each node, but for now we’ll settle for a working system and a huge increase in knowledge about the inner workings of many of our components.
 
