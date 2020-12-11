@@ -51,7 +51,7 @@ We don’t do any config management on the nodes, we just let [kOps](https://git
 
 <div class="blog-image-with-text">
 <p>If we could find some way of differentiating the Harbor traffic from read-only-registry traffic, we could let nginx route requests to the right place.</p>
-<iframe src="https://giphy.com/embed/QaPkV29BJh3gI" width="480" height="355" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/sorting-oddlysatisfying-coin-QaPkV29BJh3gI">via GIPHY</a></p>
+<iframe src="https://giphy.com/embed/QaPkV29BJh3gI" width="480" height="355" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
 </div>
 
 # Solution 2a: nginx routes traffic on IP
@@ -79,7 +79,7 @@ In our initial tests from the laptop, this worked great. However it quickly tran
 
 <div class="blog-image-with-text">
 <p>Getting nervous that we’d used a week to get nothing working, we started clutching at some very hacky straws. Even if docker-shim doesn’t send custom headers, we could see it sending auth headers, and we have different login details for Harbor versus the read-only registry. We wondered if we could route on the auth hash, postponing entirely the discussion about whether we should do such a horrible thing, or the security implications of having the auth hash in a plaintext nginx config.</p>
-<iframe src="https://giphy.com/embed/I8RMi1UY8cEKs" width="480" height="274" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/the-fifth-element-leeloo-I8RMi1UY8cEKs">via GIPHY</a></p>
+<iframe src="https://giphy.com/embed/I8RMi1UY8cEKs" width="480" height="274" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
 </div>
 
 We soon discovered that this solution was also never going to work. In Kubernetes, it is the kubelet process that does the image pull at the start of a pod deployment, and after some wiresharking it turns out that the very first thing kubelet does is make an unauthenticated call to the registry/v2 endpoint to fetch metadata which it then uses to begin authentication.
