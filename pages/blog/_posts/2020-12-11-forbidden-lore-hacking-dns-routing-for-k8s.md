@@ -24,7 +24,7 @@ The overall workflow would look something like:
 
 ![Workflow](/img/blog/forbidden-lore-hacking-dns-routing-for-k8s/multiregion.jpg)
 
-Harbor has to live somewhere, so we decided it should live in the dev environment, close to the CI system that builds the majority of our images. However, container image names contain the registry location that they are pulled from / pushed to, eg reg.wgtwo.com/infra/logstash. Therefore in the dev environment we have to find a way to deal with the fact that we want users and the CI system to push to Harbor, but we also want Kubernetes to pull images from the read-only registry.
+Harbor has to live somewhere, so we decided it should live in the dev environment, close to the CI system that builds the majority of our images. However, container image names contain the registry location that they are pulled from / pushed to, eg `reg.wgtwo.com/infra/logstash`. Therefore in the dev environment we have to find a way to deal with the fact that we want users and the CI system to push to Harbor, but we also want Kubernetes to pull images from the read-only registry.
 
 So the main problem becomes: if the image name includes the url `reg.wgtwo.com`, how to make that point to two different places depending on usage?
 
@@ -36,8 +36,8 @@ In non-dev environments, the obvious solution is to redirect `reg.wgtwo.com -> r
 
 In other words,
 
-* route53 sets reg.wgtwo.com -> harbor
-* k8s coreDNS sets reg.wgtwo.com -> read-only-registry
+* route53 sets `reg.wgtwo.com -> harbor`
+* k8s coreDNS sets `reg.wgtwo.com -> read-only-registry`
 * CI (Concourse) bypasses cluster lookup and goes to route53 instead, such that `reg.wgtwo.com -> harbor`
 
 <div class="blog-image-with-text">
@@ -64,7 +64,7 @@ The [nginx geo module](http://nginx.org/en/docs/http/ngx_http_geo_module.html) s
 
 # Solution 2b: nginx routes on custom header
 
-The new `canary` feature in nginx makes this kind of routing very easy - traffic that matches a certain criteria gets sent to a different backend. We could use a custom header such as “ro-reg” to send internal traffic to the read-only registry.
+The new `canary` feature in nginx makes this kind of routing very easy - traffic that matches a certain criteria gets sent to a different backend. We could use a custom header such as `ro-reg` to send internal traffic to the read-only registry.
 
     annotations:
       nginx.ingress.kubernetes.io/canary: "true"
@@ -83,7 +83,7 @@ In our initial tests from the laptop, this worked great. However it quickly tran
 <iframe src="https://giphy.com/embed/I8RMi1UY8cEKs" width="480" height="274" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
 </div>
 
-We soon discovered that this solution was also never going to work. In Kubernetes, it is the kubelet process that does the image pull at the start of a pod deployment, and after some wiresharking it turns out that the very first thing kubelet does is make an unauthenticated call to the registry/v2 endpoint to fetch metadata which it then uses to begin authentication.
+We soon discovered that this solution was also never going to work. In Kubernetes, it is the kubelet process that does the image pull at the start of a pod deployment, and after some wiresharking it turns out that the very first thing kubelet does is make an unauthenticated call to the `registry/v2` endpoint to fetch metadata which it then uses to begin authentication.
 
 This is expected behaviour for a docker registry, [according to documentation](https://docs.docker.com/registry/spec/auth/token/), but with nginx routing on auth header, it meant that the initial call was routed to Harbor which sent back an auth URL also for Harbor, and thus kubelet never even arrived at the read-only registry, let alone managed to authenticate.
 
@@ -99,7 +99,7 @@ Additionally, when creating a Kubernetes secret containing .dockerconfigjson, it
 
 As one final attempt at making nginx routing work, we looked for other headers being sent, but there was no single header that let us differentiate between kubelet, laptop, and Concourse.
 
-Kubelet sends a useragent of either docker or go-http-agent (depending on whether the call is the initial one or a retrial) and filtering on go-http-agent also catches Concourse requests, rendering it useless for this task. We were also worried it might end up catching all sorts of unintended cases since we have quite a lot of go-based applications in our ecosystem.
+Kubelet sends a useragent of either `docker` or `go-http-agent` (depending on whether the call is the initial one or a retrial) and filtering on `go-http-agent` also catches Concourse requests, rendering it useless for this task. We were also worried it might end up catching all sorts of unintended cases since we have quite a lot of `go`-based applications in our ecosystem.
 
 We took a moment to mourn the loss of our nginx idea, and went back to a DNS solution.
 
@@ -109,11 +109,11 @@ We took a moment to mourn the loss of our nginx idea, and went back to a DNS sol
 
 We put the DNS solution back in place again, where
 
-* route53 sets reg.wgtwo.com -> harbor
-* k8s nodes set reg.wgtwo.com -> read-only-registry
-* k8s coreDNS sets reg.wgtwo.com -> read-only-registry
-* CI runs an additional coreDNS pod setting reg.wgtwo.com -> harbor
-* Concourse uses CI coreDNS pod to set reg.wgtwo.com -> harbor
+* route53 sets `reg.wgtwo.com -> harbor`
+* k8s nodes set `reg.wgtwo.com -> read-only-registry`
+* k8s coreDNS sets `reg.wgtwo.com -> read-only-registry`
+* CI runs an additional coreDNS pod setting `reg.wgtwo.com -> harbor`
+* Concourse uses CI coreDNS pod to set `reg.wgtwo.com -> harbor`
 
 Which brought us back to the problem that was still there: how to update `/etc/resolv.conf` on the nodes. In the continued absence of config management, we hit upon the wonderful hack of using a privileged pod daemonset to manage the config for us via systemd.
 
