@@ -60,7 +60,7 @@ We don’t do any config management on the nodes, we just let [kOps](https://git
 Traffic from the outside world plus traffic from Concourse needs to go to Harbor.
 Traffic from the Kubernetes cluster needs to go to the read-only-registry.
 
-The [nginx geo module](http://nginx.org/en/docs/http/ngx_http_geo_module.html) sounded like a good idea, where we could set our internal subnet ranges to go to the read-only-registry. However getting the ingress annotations to put this config in the right place turned out to be challenging, since it needs to go outside of both “http snippet” and “server snippet” blocks. But before we dug further into this issue we realised that all of the traffic to nginx would arrive via the internet gateway anyway, meaning we wouldn’t see source IP anyway.
+The [nginx geo module](http://nginx.org/en/docs/http/ngx_http_geo_module.html) sounded like a good idea, where we could set our internal subnet ranges to go to the read-only-registry. However getting the ingress annotations to put this config in the right place turned out to be challenging, since it needs to go outside of both “http snippet” and “server snippet” blocks. But before we dug further into this issue we realised that all of the traffic to nginx would arrive via the internet gateway, meaning we wouldn’t see source IP anyway.
 
 # Solution 2b: nginx routes on custom header
 
