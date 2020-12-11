@@ -26,11 +26,11 @@ The overall workflow would look something like:
 
 Harbor has to live somewhere, so we decided it should live in the dev environment, close to the CI system that builds the majority of our images. However, container image names contain the registry location that they are pulled from / pushed to, eg reg.wgtwo.com/infra/logstash. Therefore in the dev environment we have to find a way to deal with the fact that we want users and the CI system to push to Harbor, but we also want Kubernetes to pull images from the read-only registry.
 
-So the main problem becomes: if the image name includes the url “reg.wgtwo.com”, how to make that point to two different places depending on usage?
+So the main problem becomes: if the image name includes the url `reg.wgtwo.com`, how to make that point to two different places depending on usage?
 
 # Solution 1: DNS
 
-In non-dev environments, the obvious solution is to redirect reg.wgtwo.com -> read-only-registry in Kubernetes CoreDNS. But in dev, we need different services to go to different places. The DNS model thus needs to look like:
+In non-dev environments, the obvious solution is to redirect `reg.wgtwo.com -> read-only-registry` in Kubernetes CoreDNS. But in dev, we need different services to go to different places. The DNS model thus needs to look like:
 
 ![DNS](/img/blog/forbidden-lore-hacking-dns-routing-for-k8s/dnsresolution.jpg)
 
@@ -38,21 +38,21 @@ In other words,
 
 * route53 sets reg.wgtwo.com -> harbor
 * k8s coreDNS sets reg.wgtwo.com -> read-only-registry
-* CI (Concourse) bypasses cluster lookup and goes to route53 instead, such that reg.wgtwo.com -> harbor
+* CI (Concourse) bypasses cluster lookup and goes to route53 instead, such that `reg.wgtwo.com -> harbor`
 
 <div class="blog-image-with-text">
-<p>We initially deployed a DNS sidecar to the CI system, but with multiple Concourse pods we got multiple sidecars and we really only needed one, plus we had to manipulate Concourse’s internal DNS cache (CONCOURSE_GARDEN_DNS_SERVER) but that broke DNS between Concourse and everything else in the cluster. Replacing the sidecar with a DNS pod in the CI namespace worked better, although then all the CI jobs needed to be updated to use that new pod as their nameserver.</p>
+<p>We initially deployed a DNS sidecar to the CI system, but with multiple Concourse pods we got multiple sidecars and we really only needed one, plus we had to manipulate Concourse’s internal DNS cache (`CONCOURSE_GARDEN_DNS_SERVER`) but that broke DNS between Concourse and everything else in the cluster. Replacing the sidecar with a DNS pod in the CI namespace worked better, although then all the CI jobs needed to be updated to use that new pod as their nameserver.</p>
 <img src="/img/blog/forbidden-lore-hacking-dns-routing-for-k8s/sleight-of-hand.gif" alt="Sleight of hand">
 </div>
 
 However at this point we realised that although we want to deploy pods into Kubernetes, the process that does the deploying lives on the Kubernetes nodes, outside of cluster scope. 
-We don’t do any config management on the nodes, we just let [kOps](https://github.com/kubernetes/kops) deploy everything that Kubernetes needs for a cluster, so we were reluctant to introduce an entirely different system just for managing one resolv.conf file. Also the concentric DNS setup would have a very wide scope and be somewhat difficult to debug. Maybe this was a problem better resolved using some clever nginx routing?
+We don’t do any config management on the nodes, we just let [kOps](https://github.com/kubernetes/kops) deploy everything that Kubernetes needs for a cluster, so we were reluctant to introduce an entirely different system just for managing one `resolv.conf` file. Also the concentric DNS setup would have a very wide scope and be somewhat difficult to debug. Maybe this was a problem better resolved using some clever nginx routing?
 
 # Solution 2: nginx
 
 <div class="blog-image-with-text">
 <p>If we could find some way of differentiating the Harbor traffic from read-only-registry traffic, we could let nginx route requests to the right place.</p>
-<iframe src="https://giphy.com/embed/QaPkV29BJh3gI" width="480" height="355" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+<iframe src="https://giphy.com/embed/QaPkV29BJh3gI" width="240" height="177" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
 </div>
 
 # Solution 2a: nginx routes traffic on IP
@@ -64,17 +64,17 @@ The [nginx geo module](http://nginx.org/en/docs/http/ngx_http_geo_module.html) s
 
 # Solution 2b: nginx routes on custom header
 
-The new ‘canary’ feature in nginx makes this kind of routing very easy - traffic that matches a certain criteria gets sent to a different backend. We could use a custom header such as “ro-reg” to send internal traffic to the read-only registry.
+The new `canary` feature in nginx makes this kind of routing very easy - traffic that matches a certain criteria gets sent to a different backend. We could use a custom header such as “ro-reg” to send internal traffic to the read-only registry.
 
     annotations:
-      nginx.ingress.Kubernetes.io/canary: "true"
-	    nginx.ingress.Kubernetes.io/canary-by-header: "ro-reg"
+      nginx.ingress.kubernetes.io/canary: "true"
+      nginx.ingress.kubernetes.io/canary-by-header: "ro-reg"
 
 The docker (client) config has an [HttpHeaders](https://github.com/docker/cli/blob/master/man/docker-config-json.5.md) section, so it would be easy enough to add this section to all of our image-pull secrets, meaning all internal pulls - but nothing else - should go to the read-only registry.
 
 We had to rearrange things a little in order to terminate SSL on nginx and not at the registry so that nginx would be able to read the headers, but that was straightforward.
 
-In our initial tests from the laptop, this worked great. However it quickly transpired that this was the only place it worked from. Where we needed it to work from - the Kubernetes nodes - didn’t run Docker, they run docker-shim on top of containerd, and HttpHeaders [are not implemented yet](https://github.com/containerd/cri/issues/1400). Back to the drawing board.
+In our initial tests from the laptop, this worked great. However it quickly transpired that this was the only place it worked from. Where we needed it to work from - the Kubernetes nodes - didn’t run Docker, they run `docker-shim` on top of containerd, and HttpHeaders [are not implemented yet](https://github.com/containerd/cri/issues/1400). Back to the drawing board.
 
 # Solution 2c: nginx routes on auth header
 
@@ -89,7 +89,7 @@ This is expected behaviour for a docker registry, [according to documentation](h
 
 # Aside: other issues with headers
 
-During this debugging session we also realised that we’d been creating image-pull secrets in Kubernetes with both .dockercfg and .dockerconfigjson, not realising that [.dockercfg is the old format](https://github.com/moby/moby/pull/12009) and that .dockercfg likely does not support HttpHeaders at all.
+During this debugging session we also realised that we’d been creating image-pull secrets in Kubernetes with both `.dockercfg` and `.dockerconfigjson`, not realising that `.dockercfg` [is the old format](https://github.com/moby/moby/pull/12009) and that `.dockercfg` likely does not support HttpHeaders at all.
 
 Kubelet [does support HttpHeaders](https://github.com/Kubernetes/Kubernetes/blob/e1fd2d7ff57af153023347d72d17226effd917c8/pkg/credentialprovider/config.go#L44), but relies on the underlying container runtime to also support them - which is not the case for containerd.
 
@@ -115,10 +115,10 @@ We put the DNS solution back in place again, where
 * CI runs an additional coreDNS pod setting reg.wgtwo.com -> harbor
 * Concourse uses CI coreDNS pod to set reg.wgtwo.com -> harbor
 
-Which brought us back to the problem that was still there: how to update /etc/resolv.conf on the nodes. In the continued absence of config management, we hit upon the wonderful hack of using a privileged pod daemonset to manage the config for us via systemd.
+Which brought us back to the problem that was still there: how to update `/etc/resolv.conf` on the nodes. In the continued absence of config management, we hit upon the wonderful hack of using a privileged pod daemonset to manage the config for us via systemd.
 
 <div class="blog-image-with-text">
-<p>We use the privileged pod to write a new config file to /etc/systemd/resolvd.conf, then reload the systemd-service. We thus control configuration on the Kubernetes node from inside of Kubernetes, which is admittedly morally wrong but also works really well, and keeps the configuration alongside all the rest of our configuration instead of hidden away somewhere new.</p>
+<p>We use the privileged pod to write a new config file to `/etc/systemd/resolvd.conf`, then reload the systemd-service. We thus control configuration on the Kubernetes node from inside of Kubernetes, which is admittedly morally wrong but also works really well, and keeps the configuration alongside all the rest of our configuration instead of hidden away somewhere new.</p>
 <img src="/img/blog/forbidden-lore-hacking-dns-routing-for-k8s/wheelchange.gif" alt="Wheel change">
 </div>
 
