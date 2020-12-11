@@ -1,7 +1,7 @@
 ---
 layout: blogpost
 permalink: /blog/forbidden-lore-hacking-dns-routing-for-k8s
-title: Forbidden lore: hacking DNS routing for k8s
+title: "Forbidden lore: hacking DNS routing for k8s"
 date: 2020-12-11
 tags: dns nginx kubernetes infrastructure
 author: <a href="https://www.linkedin.com/in/annaken">Anna Kennedy</a> - Software Engineer,
