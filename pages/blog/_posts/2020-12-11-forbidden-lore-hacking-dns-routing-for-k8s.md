@@ -36,9 +36,9 @@ In non-dev environments, the obvious solution is to redirect `reg.wgtwo.com -> r
 
 In other words,
 
-* route53 sets `reg.wgtwo.com -> harbor`
-* k8s coreDNS sets `reg.wgtwo.com -> read-only-registry`
-* CI (Concourse) bypasses cluster lookup and goes to route53 instead, such that `reg.wgtwo.com -> harbor`
+* ``Route53`` sets `reg.wgtwo.com -> harbor`
+* K8s coreDNS sets `reg.wgtwo.com -> read-only-registry`
+* CI (Concourse) bypasses cluster lookup and goes to ``Route53`` instead, such that `reg.wgtwo.com -> harbor`
 
 <div class="blog-image-with-text">
 <p>We initially deployed a DNS sidecar to the CI system, but with multiple Concourse pods we got multiple sidecars and we really only needed one, plus we had to manipulate Concourse’s internal DNS cache (`CONCOURSE_GARDEN_DNS_SERVER`) but that broke DNS between Concourse and everything else in the cluster. Replacing the sidecar with a DNS pod in the CI namespace worked better, although then all the CI jobs needed to be updated to use that new pod as their nameserver.</p>
@@ -57,8 +57,8 @@ We don’t do any config management on the nodes, we just let [kOps](https://git
 
 # Solution 2a: nginx routes traffic on IP
 
-Traffic from the outside world plus traffic from Concourse needs to go to Harbor.
-Traffic from the Kubernetes cluster needs to go to the read-only-registry.
+* Traffic from the outside world plus traffic from Concourse needs to go to Harbor.
+* Traffic from the Kubernetes cluster needs to go to the read-only-registry.
 
 The [nginx geo module](http://nginx.org/en/docs/http/ngx_http_geo_module.html) sounded like a good idea, where we could set our internal subnet ranges to go to the read-only-registry. However getting the ingress annotations to put this config in the right place turned out to be challenging, since it needs to go outside of both “http snippet” and “server snippet” blocks. But before we dug further into this issue we realised that all of the traffic to nginx would arrive via the internet gateway, meaning we wouldn’t see source IP anyway.
 
@@ -74,7 +74,7 @@ The docker (client) config has an [HttpHeaders](https://github.com/docker/cli/bl
 
 We had to rearrange things a little in order to terminate SSL on nginx and not at the registry so that nginx would be able to read the headers, but that was straightforward.
 
-In our initial tests from the laptop, this worked great. However it quickly transpired that this was the only place it worked from. Where we needed it to work from - the Kubernetes nodes - didn’t run Docker, they run `docker-shim` on top of containerd, and HttpHeaders [are not implemented yet](https://github.com/containerd/cri/issues/1400). Back to the drawing board.
+In our initial tests from the laptop, this worked great. However it quickly transpired that this was the only place it worked from. Where we needed it to work from - the Kubernetes nodes - didn’t run Docker, they run ``docker-shim`` on top of ``containerd``, and ``HttpHeaders`` [are not implemented yet](https://github.com/containerd/cri/issues/1400). Back to the drawing board.
 
 # Solution 2c: nginx routes on auth header
 
@@ -83,7 +83,7 @@ In our initial tests from the laptop, this worked great. However it quickly tran
 <iframe src="https://giphy.com/embed/I8RMi1UY8cEKs" width="480" height="274" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
 </div>
 
-We soon discovered that this solution was also never going to work. In Kubernetes, it is the kubelet process that does the image pull at the start of a pod deployment, and after some wiresharking it turns out that the very first thing kubelet does is make an unauthenticated call to the `registry/v2` endpoint to fetch metadata which it then uses to begin authentication.
+We soon discovered that this solution was also never going to work. In Kubernetes, it is the ``kubelet`` process that does the image pull at the start of a pod deployment, and after some wiresharking it turns out that the very first thing kubelet does is make an unauthenticated call to the `registry/v2` endpoint to fetch metadata which it then uses to begin authentication.
 
 This is expected behaviour for a docker registry, [according to documentation](https://docs.docker.com/registry/spec/auth/token/), but with nginx routing on auth header, it meant that the initial call was routed to Harbor which sent back an auth URL also for Harbor, and thus kubelet never even arrived at the read-only registry, let alone managed to authenticate.
 
@@ -109,9 +109,9 @@ We took a moment to mourn the loss of our nginx idea, and went back to a DNS sol
 
 We put the DNS solution back in place again, where
 
-* route53 sets `reg.wgtwo.com -> harbor`
-* k8s nodes set `reg.wgtwo.com -> read-only-registry`
-* k8s coreDNS sets `reg.wgtwo.com -> read-only-registry`
+* ``Route53`` sets `reg.wgtwo.com -> harbor`
+* K8s nodes set `reg.wgtwo.com -> read-only-registry`
+* K8s coreDNS sets `reg.wgtwo.com -> read-only-registry`
 * CI runs an additional coreDNS pod setting `reg.wgtwo.com -> harbor`
 * Concourse uses CI coreDNS pod to set `reg.wgtwo.com -> harbor`
 
