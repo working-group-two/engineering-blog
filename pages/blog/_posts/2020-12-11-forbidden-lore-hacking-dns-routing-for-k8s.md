@@ -60,7 +60,7 @@ We don’t do any config management on the nodes, we just let [kOps](https://git
 * Traffic from the outside world plus traffic from Concourse needs to go to Harbor.
 * Traffic from the Kubernetes cluster needs to go to the read-only-registry.
 
-The [nginx geo module](http://nginx.org/en/docs/http/ngx_http_geo_module.html) sounded like a good idea, where we could set our internal subnet ranges to go to the read-only-registry. However getting the ingress annotations to put this config in the right place turned out to be challenging, since it needs to go outside of both “http snippet” and “server snippet” blocks. But before we dug further into this issue we realised that all of the traffic to nginx would arrive via the internet gateway, meaning we wouldn’t see source IP anyway.
+The [nginx geo module](http://nginx.org/en/docs/http/ngx_http_geo_module.html) sounded like a good idea, where we could set our internal subnet ranges to go to the read-only-registry. However getting the ingress annotations to put this config in the right place turned out to be challenging, since it needs to go outside of both `http snippet` and `server snippet` blocks. But before we dug further into this issue we realised that all of the traffic to nginx would arrive via the internet gateway, meaning we wouldn’t see source IP anyway.
 
 # Solution 2b: nginx routes on custom header
 
@@ -117,8 +117,11 @@ We put the DNS solution back in place again, where
 
 Which brought us back to the problem that was still there: how to update `/etc/resolv.conf` on the nodes. In the continued absence of config management, we hit upon the wonderful hack of using a privileged pod daemonset to manage the config for us via systemd.
 
+The privileged pod on each node would write a new config file to `/etc/systemd/resolvd.conf`, and then restart the systemd service to update the running resolvd process.
+
 <div class="blog-image-with-text">
-<p>We use the privileged pod to write a new config file to `/etc/systemd/resolvd.conf`, then reload the systemd-service. We thus control configuration on the Kubernetes node from inside of Kubernetes, which is admittedly morally wrong but also works really well, and keeps the configuration alongside all the rest of our configuration instead of hidden away somewhere new.</p>
+<p>This would thus control configuration on the Kubernetes node from inside of Kubernetes, which is admittedly morally wrong but also works really well. It also keeps the configuration alongside all the rest of our configuration instead of hidden away somewhere new.
+</p>
 <img src="/img/blog/forbidden-lore-hacking-dns-routing-for-k8s/wheelchange.gif" alt="Wheel change">
 </div>
 
