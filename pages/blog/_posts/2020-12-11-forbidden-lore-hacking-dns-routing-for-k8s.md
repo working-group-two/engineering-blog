@@ -93,7 +93,7 @@ During this debugging session we also realised that we’d been creating image-p
 
 Kubelet [does support HttpHeaders](https://github.com/Kubernetes/Kubernetes/blob/e1fd2d7ff57af153023347d72d17226effd917c8/pkg/credentialprovider/config.go#L44), but relies on the underlying container runtime to also support them - which is not the case for containerd.
 
-Additionally, when creating a Kubernetes secret containing .dockerconfigjson, it appears that it is very important that there is no whitespace in the secret, or authentication will fail.
+Additionally, when creating a Kubernetes secret containing `.dockerconfigjson`, it appears that it is very important that there is no whitespace in the secret, or authentication will fail.
 
 # Solution 2d: route on some other inherent header
 
