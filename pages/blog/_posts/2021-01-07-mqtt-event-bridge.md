@@ -123,7 +123,7 @@ The numbers are redacted, so the actual event does indeed not have that many xâ€
 {"event":{"metadata":{"sequence":"2","ackInbox":"_INBOX.VMTx7rnS0i3qXpHfuS5t3b"},"timestamp":"2021-01-06T11:24:43Z","serviceId":"wotel","voiceEvent":{"callId":"0c056e2c-07f9-4c2b-b5ca-042f160af42f","type":"CALL_ENDED","fromNumber":{"e164":"+47xxxxxxxx"},"toNumber":{"e164":"+46xxxxxxxxx"},"owner":{"e164":"+46xxxxxxxxx"}}}}
 ```
 
-If you run any home automation or other hobby projects at home, changes are that you already have a MQTT broker running. You could then setup bridging to not worry about credentials and 
+If you run any home automation or other hobby projects at home, chances are that you already have a MQTT broker running. You could then setup bridging to not worry about credentials and 
 TLS when consuming your events.
 
 ## Challenges
