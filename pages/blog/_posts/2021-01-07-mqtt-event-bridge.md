@@ -115,8 +115,6 @@ When that is done, it returns to our app showing this beautiful UI (still not a 
 
 ![](/img/blog/mqtt-event-bridge/success.png)
 
-I never bothered to store the credentials in a database, so it should be pretty safe to show you the password.
-
 The following is the output from pasting that mosquitto_sub command in my terminal. It shows that I first called my Swedish number and hanging up before it was actually ringing.
 
 ```json
