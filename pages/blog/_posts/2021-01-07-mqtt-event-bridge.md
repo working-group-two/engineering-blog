@@ -22,11 +22,22 @@ The flow is shown in this sketch:
 
 The way it works is quite simple: You log in to the service using our OAuth solution. You then grant the service access to fetch events on your behalf. The service will then generate a username and password for you.
 
-The MQTT/gRPC events-bridge will fetch events for all subscribers that have enabled it, and publish these to the topic `{phone number}/events/{type}`.
-
-The generated credentials will then allow you to listen any topic matching `{phone number}/#`.
+The service will fetch events for all subscribers that have enabled it and publish these to the MQTT server with topic `{phone number}/events/{type}`. With the generated credentials, you may then subscribe to these events.
 
 Note that nothing of this requires any setup on your phone, so it would work equally well on a 20-30 year old Nokia phone.
+
+As I'll explain in more detail below, I did setup a quick Node-RED flow to consume these events as shown in the video below:
+
+<video controls style="width:100%;">
+<source src="/video/blog/mqtt-event-bridge/calling.mp4" type="video/mp4">
+    Your browser does not support HTML5 video players.
+</video>
+
+Here you can see that:
+1. The light changes to cool white when the call is initiated (phone not yet ringing)
+2. It turns pink when the phone is ringing
+3. It turns red when we pick up the call
+4. It returns to normal after the call has ended
 
 ## Connecting to Working Group Two's API
 
@@ -115,6 +126,8 @@ When that is done, it returns to our app showing this beautiful UI (still not a 
 
 ![](/img/blog/mqtt-event-bridge/success.png)
 
+The generated credentials will allow you to listen any topic matching `{phone number}/#`.
+
 The following is the output from pasting that mosquitto_sub command in my terminal. It shows that I first called my Swedish number and hanging up before it was actually ringing.
 
 ```json
@@ -122,8 +135,8 @@ The following is the output from pasting that mosquitto_sub command in my termin
 {"event":{"metadata":{"sequence":"2","ackInbox":"_INBOX.VMTx7rnS0i3qXpHfuS5t3b"},"timestamp":"2021-01-06T11:24:43Z","serviceId":"wotel","voiceEvent":{"callId":"0c056e2c-07f9-4c2b-b5ca-042f160af42f","type":"CALL_ENDED","fromNumber":{"e164":"+4712345678"},"toNumber":{"e164":"+46123456789"},"owner":{"e164":"+46123456789"}}}}
 ```
 
-If you run any home automation or other hobby projects at home, chances are that you already have a MQTT broker running. You could then setup bridging to not worry about credentials and 
-TLS when consuming your events.
+If you run any home automation or other hobby projects at home, chances are that you already have a MQTT broker running.
+You could then setup bridging to not worry about credentials and TLS when consuming your events.
 
 ## Wrapping it all up
 For this project I chose to use Node-RED, as it allows for very quick and easy to show drag-and-drop integrations.
@@ -145,18 +158,5 @@ Each of those functions simply set the Trådfri payload, as shown below:
 ```json
 {"state":"on","color":"cool daylight"}
 ```
-
-The finished result can be seen in the video below
-
-<video controls style="width:100%;">
-<source src="/video/blog/mqtt-event-bridge/calling.mp4" type="video/mp4">
-    Your browser does not support HTML5 video players.
-</video>
-
-Here you can see that:
-1. When the call is initiated (phone not yet ringing), the light switches to cool white.
-2. When the phone is ringing, it turns pink
-3. When we answer, it turns red
-4. When we hang up, it returns to “normal”.
 
 As this was created quickly as a hackathon project, the intention was never to actually make anything useful. Using this quick flow, it is however clear that it could be very useful for when my wife tries to call me, but I am programming equipped with my noise-cancelling headphones.
