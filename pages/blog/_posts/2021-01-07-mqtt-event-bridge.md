@@ -17,6 +17,9 @@ A lot of home automation tools, such as Node-RED and Home Assistant have great M
 
 During our last hackathon I built a simple bridge between our events API and MQTT. I wrote this bridge in Go, using [Mochi MQTT](https://github.com/mochi-co/mqtt) as an embedded MQTT server.
 
+The flow is shown in this sketch:
+![](/img/blog/mqtt-event-bridge/sketch.svg)
+
 The way it works is quite simple: You log in to the service using our OAuth solution. You then grant the service access to fetch events on your behalf. The service will then generate a username and password for you.
 
 The MQTT/gRPC events-bridge will fetch events for all subscribers that have enabled it, and publish these to the topic `{phone number}/events/{type}`.
@@ -112,26 +115,22 @@ When that is done, it returns to our app showing this beautiful UI (still not a 
 
 ![](/img/blog/mqtt-event-bridge/success.png)
 
-I never bothered to store the credentials in a database, so it should be pretty safe to show you the password.
-
 The following is the output from pasting that mosquitto_sub command in my terminal. It shows that I first called my Swedish number and hanging up before it was actually ringing.
 
-The numbers are redacted, so the actual event does indeed not have that many x’es.
-
 ```json
-{"event":{"metadata":{"sequence":"1","ackInbox":"_INBOX.VMTx7rnS0i3qXpHfuS5t3b"},"timestamp":"2021-01-06T11:24:40Z","serviceId":"wotel","voiceEvent":{"callId":"0c056e2c-07f9-4c2b-b5ca-042f160af42f","type":"CALL_INITIATED","fromNumber":{"e164":"+47xxxxxxxx"},"toNumber":{"e164":"+46xxxxxxxxx"},"owner":{"e164":"+46xxxxxxxxx"}}}}
-{"event":{"metadata":{"sequence":"2","ackInbox":"_INBOX.VMTx7rnS0i3qXpHfuS5t3b"},"timestamp":"2021-01-06T11:24:43Z","serviceId":"wotel","voiceEvent":{"callId":"0c056e2c-07f9-4c2b-b5ca-042f160af42f","type":"CALL_ENDED","fromNumber":{"e164":"+47xxxxxxxx"},"toNumber":{"e164":"+46xxxxxxxxx"},"owner":{"e164":"+46xxxxxxxxx"}}}}
+{"event":{"metadata":{"sequence":"1","ackInbox":"_INBOX.VMTx7rnS0i3qXpHfuS5t3b"},"timestamp":"2021-01-06T11:24:40Z","serviceId":"wotel","voiceEvent":{"callId":"0c056e2c-07f9-4c2b-b5ca-042f160af42f","type":"CALL_INITIATED","fromNumber":{"e164":"+4712345678"},"toNumber":{"e164":"+46123456789"},"owner":{"e164":"+46123456789"}}}}
+{"event":{"metadata":{"sequence":"2","ackInbox":"_INBOX.VMTx7rnS0i3qXpHfuS5t3b"},"timestamp":"2021-01-06T11:24:43Z","serviceId":"wotel","voiceEvent":{"callId":"0c056e2c-07f9-4c2b-b5ca-042f160af42f","type":"CALL_ENDED","fromNumber":{"e164":"+4712345678"},"toNumber":{"e164":"+46123456789"},"owner":{"e164":"+46123456789"}}}}
 ```
 
 If you run any home automation or other hobby projects at home, chances are that you already have a MQTT broker running. You could then setup bridging to not worry about credentials and 
 TLS when consuming your events.
 
-## Result
+## Wrapping it all up
 For this project I chose to use Node-RED, as it allows for very quick and easy to show drag-and-drop integrations.
 
-To control the lamp, we did add the module `node-red-contrib-tradfri` ([docs](https://flows.nodered.org/node/node-red-contrib-tradfri) | [GitHub](https://github.com/nidayand/node-red-contrib-tradfri)).
+To control the lamp, we did add the module `node-red-contrib-tradfri` as described in the Node-RED [documentation](https://flows.nodered.org/node/node-red-contrib-tradfri).
 
-First we did add a `mqtt out` node configured to listen to the topic 46xxxxxxxxx/# with output as a parsed JSON object using the credentials we got on login.
+First we did add a `mqtt out` node configured to listen to the topic 46123456789/# with output as a parsed JSON object using the credentials we got on login.
 
 ![](/img/blog/mqtt-event-bridge/nodered-debug.png)
 
