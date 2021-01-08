@@ -126,13 +126,6 @@ The numbers are redacted, so the actual event does indeed not have that many xâ€
 If you run any home automation or other hobby projects at home, chances are that you already have a MQTT broker running. You could then setup bridging to not worry about credentials and 
 TLS when consuming your events.
 
-## Challenges
-We are using phone numbers as your username in this project. As we all know, that is a very fragile identifier as phone numbers will be recycled.
-
-If you get a new number, but the previous owner of that number was already using this service we do not want him to have access to your events.
-
-To keep things simple we simply generate new credentials on every login to avoid any such issues.
-
 ## Result
 For this project I chose to use Node-RED, as it allows for very quick and easy to show drag-and-drop integrations.
 
