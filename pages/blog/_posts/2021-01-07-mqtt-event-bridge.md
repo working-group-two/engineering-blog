@@ -19,9 +19,9 @@ During our last hackathon I built a simple bridge between our events API and MQT
 
 The way it works is quite simple: You log in to the service using our OAuth solution. You then grant the service access to fetch events on your behalf. The service will then generate a username and password for you.
 
-The MQTT/gRPC events-bridge will fetch events for all subscribers that have enabled it, and publish these to the topic `/{phone number}/events/{type}`.
+The MQTT/gRPC events-bridge will fetch events for all subscribers that have enabled it, and publish these to the topic `{phone number}/events/{type}`.
 
-The generated credentials will then allow you to listen a topic matching `/{phone number}/#`.
+The generated credentials will then allow you to listen any topic matching `{phone number}/#`.
 
 ## Connecting to Working Group Two's API
 
@@ -47,19 +47,19 @@ When logging in, the user will be asked to consent to the following scopes:
 - events.voicemail.subscribe: Allow the service to see if a voicemail has been left
 - events.sms.subscribe: Allow the service to get a copy of every SMS sent and received
 
+All the events you have consented to share with the service will be stored in the service's queue.
+
 ```
 sms events        ─╮
 voice events      ─┼─▷  queue  ◁── gRPC API
 voice mail events ─╯
 ```
 
-All the events you have consented to share with the service will be stored in the service's queue.
-
 This queue can be consumed by using the events streaming API ([docs](https://docs.wgtwo.com/events/how-to/listen-for-events/)), which requires the service to use the OAuth2 client credentials grant flow.
 
 Events will be shared with the service as long as there exists an active consent.
 
-We then initiate the service side stream to fetch the events:
+We then initiate the server side stream to fetch the events:
 ```go
 request := &pb.SubscribeEventsRequest{
   Type:          []pb.EventType{pb.EventType_VOICEMAIL_EVENT},
@@ -82,12 +82,12 @@ for {
   }
 
   event := response.Event
-  // PUBLISH EVENT TO MQTT SERVER ON TOPIC /{event owner}/events/{type}
+  // PUBLISH EVENT TO MQTT SERVER ON TOPIC {event owner}/events/{type}
 }
 ```
 
 ## Connecting to our new MQTT service
-The demo page has a very pretty landing page (Disclaimer: I am not a designer).
+The service has a very pretty landing page (Disclaimer: I am not a designer).
 
 ![landing page](/img/blog/mqtt-event-bridge/landing-page.png)
 
@@ -106,7 +106,7 @@ As this is an experimental app which hasn’t been approved by anyone, our login
 ![](/img/blog/mqtt-event-bridge/login-consent.png)
 </div>
 
-When that is done, it returns to our app showing this beautiful UI (still not a UX designer):
+When that is done, it returns to our app showing this beautiful UI (still not a designer):
 
 ![](/img/blog/mqtt-event-bridge/success.png)
 
