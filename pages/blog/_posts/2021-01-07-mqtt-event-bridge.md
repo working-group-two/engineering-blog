@@ -23,6 +23,8 @@ The MQTT/gRPC events-bridge will fetch events for all subscribers that have enab
 
 The generated credentials will then allow you to listen any topic matching `{phone number}/#`.
 
+Note that nothing of this requires any setup on your phone, so it would work equally well on a 20-30 year old Nokia phone.
+
 ## Connecting to Working Group Two's API
 
 We will use a normal OAuth2 authorization code grant for logging in to our service.
