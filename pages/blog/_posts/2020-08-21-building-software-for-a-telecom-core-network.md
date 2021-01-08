@@ -134,25 +134,3 @@ As you can see, we’re still in the early stages of our developer platform. In 
 At the time of writing, all apps on the platform have to be free, but we are working on a monetization model similar to that of the Apple and Google app-stores. Our main priority is to come up with a model that is fair to both third-party developers and operators.
 
 If you’re interested in our platform, please head on over to <a href="https://developer.wgtwo.com" target="_blank">https://developer.wgtwo.com</a> and create an account. If you have any questions please contact us at <products@wgtwo.com>.
-
-<style>
-.post-images {
-    padding: 16px;
-    display: flex;
-    justify-content: space-around;
-    background: #283E96;
-    border-radius: 4px;
-    flex-wrap: wrap;
-}
-
-.post-images.threes img {
-    margin: 16px 10px;
-    width: calc(33% - 20px);
-}
-
-.post-images img {
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.25);
-    margin: 16px;
-}
-</style>
