@@ -139,7 +139,7 @@ We then simply hooked its output to a debug node. Looking at the output, we can 
 
 ![](/img/blog/mqtt-event-bridge/nodered-flow.png)
 
-We then simply add a switch for handling it as a voice event if the voiceEvent key exists. Likewise, we do a new switch based on the type field in that event.
+Then we added a switch for handling it as a voice event if the voiceEvent key exists. Likewise, we added a new switch on the type field of that event.
 
 Each of those functions simply set the Trådfri payload, as shown below:
 
