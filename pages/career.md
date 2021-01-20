@@ -8,7 +8,7 @@ permalink: /career
 
 We aim to make a huge impact in our industry and foster strong personal growth while doing it.
 We challenge each other, we share knowledge, and we believe in the value of difference of opinion.
-We are a rapidly growing company with 30+ employees from 9 different nationalities,
+We are a rapidly growing company with 50+ employees from 15 different nationalities,
 and we have three main offices (Oslo, Stockholm, Trondheim).
 
 ## We're hiring
