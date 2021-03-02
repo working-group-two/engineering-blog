@@ -15,7 +15,7 @@ we shall assume 1 second resolution of these timers.
 
 Before taking on timers let's cover some Kafka basics.
 
-# Kafka concepts
+## Kafka concepts
 There are a few Kafka concepts in play to simulate timers - Kafka topic, Kafka stream, Kafka streams library.
 Where *topic* is append only log of events, *stream* is a cache of N most recent events on the *topic*, 
 and the *streams library* is a software library implementing the concept of the *stream*.
@@ -28,7 +28,7 @@ It is using key/value cache associated with each stream and gives the result to 
 The result will have the present event enriched with the matched past events from the joined streams.
 Joining two streams will yield the timer callback. Let's see how.
 
-# Implementation 
+## Implementation 
 Since it is Kafka, timer expiration shall result in an event posted on a topic of user's choice at the right time.
 This event is delayed until due time by joining two streams: *oscillator* and *timer-request*. Callback 
 event is pushed to *timer-request* topic with key equal to the expiration timestamp. Oscillator topic
@@ -46,8 +46,7 @@ There are two Kafka applications running together to service these topics:
 * Oscillator
 * Futures
 
-
-## Oscillator
+### Oscillator
 
 With the resolution of 1 second oscillator keeps pushing *oscillator* topic:
 ```kotlin
@@ -66,7 +65,7 @@ while (running) {
  
 ```
 
-## Futures
+### Futures
 
 When requesting a timer by pushing *timer-request* topic, the user provides a callback structure 
 used to dispatch timer event:
@@ -135,7 +134,7 @@ timeoutEvents.process(
 )
 
 ```
-## Cancelling a timer
+### Cancelling a timer
 There is no way to cancel these timers as events can't be easily removed from the Kafka stream.
 Still, it is possible to ignore timer events by using a token in callback request, and a variable 
 in timer receiver state. When scheduling a timer the receiver puts the same token in two places:
@@ -150,7 +149,7 @@ value in its timerToken variable.
 Since normally Kafka does "at least once" delivery it is a good idea to reset the timerToken immediately 
 after notification event.  
 
-## What to worry about
+### What to worry about
 
 Kafka streams library is using local disk storage to keep the cache. The storage shall be large enough to host
 all timer requests based on the product of *timer-request* topic retention, callback size and timer scheduling rate.
@@ -160,7 +159,7 @@ Oscillator must keep ticking otherwise timers will stop coming. Make sure to hav
 metrics/alarms in place to stay on top of Oscillator health. Deploy few of them for redundancy having in 
 mind the extra load they will generate on timer users.
 
-# Conclusion
+## Conclusion
 
 There are many options to export application state to the data tier layer. Timers are often part of that
 state. Above we showed how to apply Kafka primitives to achieve a goal of making application "stateless" even
