@@ -1,5 +1,8 @@
 # omnicate.github.io
-Our website
+```diff
+- REPO FOR OUR PREVIOUS WEBSITE - NOT IN USE ANYMORE
+```
+
 
 ## Setup
 https://help.github.com/articles/setting-up-your-github-pages-site-locally-with-jekyll/
