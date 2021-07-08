@@ -20,20 +20,24 @@ header.page-header {
   background: #fff;
   padding: 24px 0;
   border-bottom: 1px solid #ddd;
+
   .width-limit {
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
+
   img {
     max-height: 40px;
   }
+
   nav {
     a {
       font-family: 'Open Sans', sans-serif;
       font-weight: 600;
       font-size: 18px;
       padding: 24px 0;
+
       + a {
         margin-left: 24px;
       }
@@ -53,8 +57,25 @@ header.page-header {
   background: #f7f7f7;
   color: #444444;
   padding: 24px;
+
   a {
     color: inherit;
     text-decoration: underline;
+  }
+}
+
+@media(max-width: 639px) {
+  header.page-header {
+    nav a {
+      font-size: 16px;
+
+      + a {
+        margin-left: 8px;
+      }
+    }
+
+    img {
+      max-height: 28px;
+    }
   }
 }
