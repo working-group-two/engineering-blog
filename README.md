@@ -1,5 +1,5 @@
-# omnicate.github.io
-The source code for blog.wgtwo.com
+# engineering blog
+The source code for engineering.wgtwo.com
 
 ## Setup
 https://help.github.com/articles/setting-up-your-github-pages-site-locally-with-jekyll/
