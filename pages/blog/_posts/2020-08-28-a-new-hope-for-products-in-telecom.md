@@ -1,6 +1,6 @@
 ---
 layout: blogpost
-permalink: /blog/a-new-hope-for-products-in-telecom
+permalink: /a-new-hope-for-products-in-telecom
 title: A new hope for products in telecom
 date: 2020-08-28
 tags: telecom software-development core-network app-ecosystem

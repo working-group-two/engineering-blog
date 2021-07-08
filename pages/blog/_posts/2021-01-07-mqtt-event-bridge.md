@@ -1,6 +1,6 @@
 ---
 layout: blogpost
-permalink: /blog/mqtt-event-bridge
+permalink: /mqtt-event-bridge
 title: "Changing the color of your bulbs: The fancy way"
 date: 2021-01-07
 tags: api grpc mqtt node-red

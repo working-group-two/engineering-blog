@@ -1,6 +1,6 @@
 ---
 layout: blogpost
-permalink: /blog/metrics-unlimited-thanos/
+permalink: /metrics-unlimited-thanos/
 title: "Towards observability nirvana: infinite metric retention with Thanos"
 date: 2020-01-28
 tags: infrastructure observability prometheus thanos kubernetes

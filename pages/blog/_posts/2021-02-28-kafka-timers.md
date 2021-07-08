@@ -1,6 +1,6 @@
 ---
 layout: blogpost
-permalink: /blog/kafka-timers
+permalink: /kafka-timers
 title: "Kafka timers"
 date: 2021-02-28
 tags: kafka timer stateless

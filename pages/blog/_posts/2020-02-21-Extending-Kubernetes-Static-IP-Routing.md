@@ -1,6 +1,6 @@
 ---
 layout: blogpost
-permalink: /blog/extending-k8s/
+permalink: /extending-k8s/
 title: "Extending Kubernetes for our needs"
 date: 2020-02-21
 tags: infrastructure kubernetes operator operator-framework networking AWS.fixedcase

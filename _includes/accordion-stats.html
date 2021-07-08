@@ -1,6 +1,0 @@
-<script>
-    document.querySelector("#faq-acc").addEventListener("shown", e => {
-        let question = e.path[1].querySelector(".uk-accordion-title").innerText;
-        gtag('event', `Clicked "${question}"`, {'event_category' : 'FAQ clicks'});
-    });
-</script>

@@ -1,4 +1,5 @@
-$brand: #009da5;
+$brand: #283E96;
+$brand-secondary: #009DA5;
 $main-text: rgba(0, 0, 0, .80);
 
 * {
@@ -10,7 +11,7 @@ html {
   overflow-y: scroll;
   color: $main-text;
   line-height: 1.5;
-  background: #fafafa;
+  background: #fcfcfc;
   height: 100%;
 }
 
@@ -39,7 +40,7 @@ h1 {
 h1,
 h2,
 h3 {
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Oxanium', sans-serif;
   margin-bottom: 0.25em;
 }
 
@@ -59,10 +60,6 @@ h2 + h3 {
   border: 1px solid #ddd;
 }
 
-#concept-sketch {
-  -webkit-font-smoothing: antialiased;
-}
-
 p {
   font-size: 18px;
 }
@@ -74,32 +71,4 @@ p {
 
 h2 + .landing-text {
   margin-top: 0;
-}
-
-.sales-notification {
-  padding: 16px 40px;
-  font-size: 18px;
-  font-style: italic;
-  display: flex;
-  align-items: center;
-  margin-top: 40px;
-  img {
-    height: 128px;
-    margin-right: 32px;
-  }
-}
-
-@media(max-width: 639px) {
-  .sales-notification {
-    padding: 8px 16px;
-    margin-top: 40px;
-    font-size: 14px;
-    .pitch-demographic-two {
-      display: none;
-    }
-    img {
-      height: 100px;
-      margin-right: 16px;
-    }
-  }
 }

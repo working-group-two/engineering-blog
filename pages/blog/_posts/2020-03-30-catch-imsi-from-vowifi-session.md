@@ -1,6 +1,6 @@
 ---
 layout: blogpost
-permalink: /blog/vowifi-imsi-leak/
+permalink: /vowifi-imsi-leak/
 title: VoWifi leaking IMSI
 date: 2020-03-30
 tags: telco 4G ePDG.fixedcase VoWifi.fixedcase networking security

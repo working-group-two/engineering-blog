@@ -1,6 +1,6 @@
 ---
 layout: blogpost
-permalink: /blog/building-software-for-a-telecom-core-network
+permalink: /building-software-for-a-telecom-core-network
 title: Building software for a telecom core network
 date: 2020-08-21
 tags: telecom software-development core-network app-ecosystem

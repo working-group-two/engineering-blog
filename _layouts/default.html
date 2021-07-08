@@ -7,32 +7,25 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="Taking traditional mobile telecom technology and making it easy to use for developers">
-        <title>{{ page.title }} - Working Group Two (Working group 2)</title>
+        <title>{{ page.title }} - Working Group Two</title>
         <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
         <link rel="shortcut icon" type="image/png" href="/img/favicon.png">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.39/css/uikit.min.css">
-        <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@400;600&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:600" rel="stylesheet">
         <link rel="stylesheet" href="/css/main.css">
     </head>
     <body>
-        <header class="mobile-header">
-            <a class="logo" href="/"><img src="/img/logo.svg" alt="Working Group Two"></a>
-            <button class="menu-trigger" aria-label="mobile-menu-trigger"><span uk-icon="icon: menu"></span></button>
+        <header class="page-header">
+            <div class="width-limit">
+                <a class="logo" href="/"><img src="/img/logo.png" alt="Working Group Two"></a>
+                <nav>
+                    <a href="/">All posts</a>
+                    <a href="https://wgtwo.com">wgtwo.com</a>
+                </nav>
+            </div>
         </header>
-        <nav class="sidebar">
-            <a class="logo" href="/"><img src="/img/sidebar-logo.svg" alt="Working Group Two"></a>
-            <ul class="nav-menu">
-                <li><a class="nav-link" href="/">Home</a></li>
-                <li><a class="nav-link" href="/our-product">Our product</a></li>
-                <li><a class="nav-link" href="/career">Career</a></li>
-                <li><a class="nav-link" href="/blog">Blog</a></li>
-                <li><a class="nav-link" href="/about">About us</a></li>
-                <li><a class="nav-link" href="/faq">FAQ</a></li>
-                <li><a class="nav-link" href="/contact">Contact</a></li>
-            </ul>
-        </nav>
-        <div class="sidebar-overlay"></div>
         <main class="page-main width-limit">
             {{ content }}
         </main>
@@ -46,12 +39,11 @@
         </footer>
         <script src="/js/uikit.min.js"></script>
         <script src="/js/uikit-icons.min.js"></script>
-        <script src="/js/scripts.js"></script>
         <div id="change-suggestion-modal" uk-modal>
             <div class="uk-modal-dialog uk-modal-body">
                 <h3 class="uk-modal-title">Suggest a change</h3>
                 <p>
-                    Working Groups Two's website is completely open-source and hosted on GitHub.
+                    Working Groups Two's blog is open-source and hosted on GitHub.
                     Anyone is free to suggest changes through GitHub.
                 </p>
                 <p class="uk-text-right">

@@ -1,6 +1,6 @@
 ---
 layout: blogpost
-permalink: /blog/what-is-a-short-message
+permalink: /what-is-a-short-message
 title: What the heck is a short message?
 date: 2020-10-01
 tags: telco MAP TCAP SS7 Forward-SM SMS

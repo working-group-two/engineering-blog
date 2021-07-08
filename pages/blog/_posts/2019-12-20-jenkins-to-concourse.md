@@ -1,6 +1,6 @@
 ---
 layout: blogpost
-permalink: /blog/replacing-jenkins-with-concourse/
+permalink: /replacing-jenkins-with-concourse/
 title: "We killed the butler: Replacing Jenkins with Concourse"
 date: 2019-12-20
 tags: infrastructure CICD.fixedcase

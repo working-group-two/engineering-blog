@@ -1,6 +1,6 @@
 ---
 layout: blogpost
-permalink: /blog/choosing-erlang-formatter/
+permalink: /choosing-erlang-formatter/
 title: Choosing an Erlang formatter
 date: 2020-05-18
 tags: erlang rebar3 coding culture

@@ -1,6 +1,6 @@
 ---
 layout: blogpost
-permalink: /blog/were-all-grownups-here
+permalink: /were-all-grownups-here
 title: We're all grownups here
 date: 2020-11-20
 tags: trust culture startup flexibility

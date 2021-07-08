@@ -1,6 +1,6 @@
 ---
 layout: blogpost
-permalink: /blog/hacking-dark-themes-with-css-blend-modes/
+permalink: /hacking-dark-themes-with-css-blend-modes/
 title: Hacking dark themes with CSS blend modes
 date: 2019-06-25
 tags: CSS frontend design
