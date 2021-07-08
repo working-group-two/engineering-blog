@@ -26,10 +26,12 @@ header.page-header {
     align-items: center;
   }
   img {
-    height: 40px;
+    max-height: 40px;
   }
   nav {
     a {
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 600;
       font-size: 18px;
       padding: 24px 0;
       + a {
