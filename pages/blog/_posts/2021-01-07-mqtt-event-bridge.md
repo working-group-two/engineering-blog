@@ -77,7 +77,7 @@ voice events      ─┼─▷  queue  ◁── gRPC API
 voice mail events ─╯
 ```
 
-This queue can be consumed by using the events streaming API ([docs](https://docs.wgtwo.com/events/how-to/listen-for-events/)), which requires the service to use the OAuth2 client credentials grant flow.
+This queue can be consumed by using the events streaming API ([docs](https://docs.wgtwo.com/events/listen-for-events/)), which requires the service to use the OAuth2 client credentials grant flow.
 
 Events will be shared with the service as long as there exists an active consent.
 
