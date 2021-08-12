@@ -17,6 +17,31 @@ over to Diameter dictionary files.
 
 ASN.1
 
+Specification of ASN.1
+
+| X.680 | Information technology - Abstract Syntax Notation One (ASN.1): Specification of basic notation                                                                    |
+| X.681 | Information technology - Abstract Syntax Notation One (ASN.1): Information object specification                                                                   |
+| X.682 | Information technology - Abstract Syntax Notation One (ASN.1): Constraint specification                                                                           |
+| X.683 | Information technology - Abstract Syntax Notation One (ASN.1): Parameterization of ASN.1 specifications                                                           |
+
+Specification for encoding rules
+
+| X.690 | Information technology - ASN.1 encoding rules: Specification of Basic Encoding Rules (BER), Canonical Encoding Rules (CER) and Distinguished Encoding Rules (DER) |
+| X.691 | Information technology - ASN.1 encoding rules: Specification of Packed Encoding Rules (PER)                                                                       |
+| X.692 | Information technology - ASN.1 encoding rules: Specification of Encoding Control Notation (ECN)                                                                   |
+| X.693 | Information technology - ASN.1 encoding rules: XML Encoding Rules (XER)                                                                                           |
+| X.694 | Information technology - ASN.1 encoding rules: Mapping W3C XML schema definitions into ASN.1                                                                      |
+| X.695 | Information technology - ASN.1 encoding rules: Registration and application of PER encoding instructions                                                          |
+| X.696 | Information technology - ASN.1 encoding rules: Specification of Octet Encoding Rules (OER)                                                                        |
+| X.697 | Information technology - ASN.1 encoding rules: Specification of JavaScript Object Notation Encoding Rules (JER)                                                   |
+
+Old deprecated specifications
+
+| X.208 | [Withdrawn] Specification of Abstract Syntax Notation One (ASN.1)                          |
+| X.209 | [Withdrawn] Specification of Basic Encoding Rules for Abstract Syntax Notation One (ASN.1) |
+
+https://www.itu.int/rec/T-REC-X/en
+
 # Nitty gritty
 
 ## Modules
@@ -49,6 +74,8 @@ DEFINITIONS ::= BEGIN
 
 END
 ```
+
+### Imports
 
 Importing types, values and other structures from other modules can be
 done with the `IMPORTS` and `FROM` keywords in the beginning of the
@@ -93,6 +120,34 @@ END -- CAP-errortypes ends here --
 The type definitions `Duration` and `LegID` above are imported from
 `CS1-DataTypes` module, while `MiscCallInfo` comes from
 `CS2-datatypes`.
+
+### Exports
+
+Exports from a module are done in a similar fashion.
+
+If the `EXPORT` keyword is not used in a module, the ASN.1 compilers
+will export all values and types from the module. It's the same as
+specifying `EXPORTS ALL;`.
+
+```
+CAP-GPRS-ReferenceNumber {itu-t(0) identified-organization(4) etsi(0) mobileDomain(0)
+umts-network(1) modules(3) cap-dialogueInformation(111) version8(7)}
+
+DEFINITIONS ::= BEGIN
+
+EXPORTS
+	id-CAP-GPRS-ReferenceNumber,
+	cAP-GPRS-ReferenceNumber-Abstract-Syntax;
+
+IMPORTS
+
+	Integer4
+FROM CS1-DataTypes {itu-t(0) identified-organization(4) etsi(0) inDomain(1) in-network(1)
+modules(0) cs1-datatypes(2) version1(0)}
+;
+
+END
+```
 
 ### Comments
 
@@ -378,14 +433,56 @@ id-ac	OBJECT IDENTIFIER ::= {id-CAP ac(3)}
 `id-ac` is a child of the `id-CAP` object identifier.
 
 ### EXTERNAL
+
+`EXTERNAL` represents a value that does not need to be specified as a
+ASN.1 type. It carries information on how the data should be interpreted.
+
+```
+
+Unidirectional {OPERATION:Invokable, OPERATION:Returnable} ::= SEQUENCE {
+  dialoguePortion  DialoguePortion OPTIONAL,
+  components       ComponentPortion{{Invokable}, {Returnable}}
+}
+
+DialoguePortion ::= [APPLICATION 11] EXPLICIT EXTERNAL
+```
+
+Here the value `dialoguePortion` will have tag 11 if specified.
+
 ### REAL
+
+Values of the type `REAL` will take a triplet of numbers (m, b, e),
+where m is the mantissa (a signed number), b the base (2 or 10), and e
+the exponent (a signed number).
+
+There are also three special values it can take `PLUS-INFINITY`, 0, and `MINUS-INFINITY`.
+
+```
+theBestRealValue REAL ::= (123, 10, -2) -- 1.23
+maxValue REAL ::= PLUS-INFINITY
+```
+
 ### UTF8String
-### TIME
+
 ### NumericString
+
+The `NumericString` takes string values which only contain 0-9 and
+spaces in them.
+
+### VisibleString
+
+Printing character sets of international ASCII, and space
+
 ### IA5String
+
+Used to represent ISO 646 (IA5; International Alphabet 5) characters.
+The entire character set contains precisely 128 characters and are
+generally equivalent to the first 128 characters of the ASCII
+alphabet.
+
+### TIME
 ### UTCTime
 ### GeneralizedTime
-### VisibleString
 ### DATE
 ### TIME-OF-DAY
 ### DATE-TIME
@@ -398,6 +495,83 @@ id-ac	OBJECT IDENTIFIER ::= {id-CAP ac(3)}
 ### SELECTION
 
 ## Classes
+
+## Special
+
+### Parameterized components
+
+```
+    {}
+```
+
+### Extensions
+
+```
+    ...
+```
+
+### Implicit, Explicit tags
+
+
+## Deprecations of earlier ASN.1 versions
+
+### ANY
+
+### Macros
+
+## Encodings
+
+### BER
+
+Binary encoding rules
+
+Oldest encoding rule
+
+Tag-Length-Value format
+
+### DER
+
+Distinguished Encoding Rules
+
+Subset of BER
+
+### CER
+
+Canonical Encoding Rules
+
+Subset of BER used for X.509 digital certificates
+
+### PER
+
+Packed encoding rules
+
+Most compact encoding rules, used for bandwidth conservation.
+
+Does not send the Tag of the TLV because the order in which components
+of the message occur is known.  PER also does not send the Length of
+the TLV if the Value has a fixed length. Uses information from ASN.1
+message description to eliminate redundant information from the Value
+portion.
+
+### OER
+
+Octet encoding rules
+
+Octet-oriented so all Tag-Length-Values are padded so that the length
+are of multiples of 8 bits.
+
+Fastest ASN.1 encoding
+
+Favors encoding/decoding speed
+
+### XER, E-XER
+
+(Extended) XML encoding rules
+
+### JER
+
+JSON encoding rules
+
 
 <!-- # Diameter dictionary files -->
 
