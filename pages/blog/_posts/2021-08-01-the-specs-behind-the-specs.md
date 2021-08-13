@@ -19,26 +19,32 @@ ASN.1
 
 Specification of ASN.1
 
-| X.680 | Information technology - Abstract Syntax Notation One (ASN.1): Specification of basic notation                                                                    |
-| X.681 | Information technology - Abstract Syntax Notation One (ASN.1): Information object specification                                                                   |
-| X.682 | Information technology - Abstract Syntax Notation One (ASN.1): Constraint specification                                                                           |
-| X.683 | Information technology - Abstract Syntax Notation One (ASN.1): Parameterization of ASN.1 specifications                                                           |
+| ITU-T no | Specification                                                                                           |
+| =--      | ---                                                                                                     |
+| X.680    | Information technology - Abstract Syntax Notation One (ASN.1): Specification of basic notation          |
+| X.681    | Information technology - Abstract Syntax Notation One (ASN.1): Information object specification         |
+| X.682    | Information technology - Abstract Syntax Notation One (ASN.1): Constraint specification                 |
+| X.683    | Information technology - Abstract Syntax Notation One (ASN.1): Parameterization of ASN.1 specifications |
 
 Specification for encoding rules
 
-| X.690 | Information technology - ASN.1 encoding rules: Specification of Basic Encoding Rules (BER), Canonical Encoding Rules (CER) and Distinguished Encoding Rules (DER) |
-| X.691 | Information technology - ASN.1 encoding rules: Specification of Packed Encoding Rules (PER)                                                                       |
-| X.692 | Information technology - ASN.1 encoding rules: Specification of Encoding Control Notation (ECN)                                                                   |
-| X.693 | Information technology - ASN.1 encoding rules: XML Encoding Rules (XER)                                                                                           |
-| X.694 | Information technology - ASN.1 encoding rules: Mapping W3C XML schema definitions into ASN.1                                                                      |
-| X.695 | Information technology - ASN.1 encoding rules: Registration and application of PER encoding instructions                                                          |
-| X.696 | Information technology - ASN.1 encoding rules: Specification of Octet Encoding Rules (OER)                                                                        |
-| X.697 | Information technology - ASN.1 encoding rules: Specification of JavaScript Object Notation Encoding Rules (JER)                                                   |
+| ITU-T no | Specification                                                                                                                                                     |
+| =--      | ---                                                                                                                                                               |
+| X.690    | Information technology - ASN.1 encoding rules: Specification of Basic Encoding Rules (BER), Canonical Encoding Rules (CER) and Distinguished Encoding Rules (DER) |
+| X.691    | Information technology - ASN.1 encoding rules: Specification of Packed Encoding Rules (PER)                                                                       |
+| X.692    | Information technology - ASN.1 encoding rules: Specification of Encoding Control Notation (ECN)                                                                   |
+| X.693    | Information technology - ASN.1 encoding rules: XML Encoding Rules (XER)                                                                                           |
+| X.694    | Information technology - ASN.1 encoding rules: Mapping W3C XML schema definitions into ASN.1                                                                      |
+| X.695    | Information technology - ASN.1 encoding rules: Registration and application of PER encoding instructions                                                          |
+| X.696    | Information technology - ASN.1 encoding rules: Specification of Octet Encoding Rules (OER)                                                                        |
+| X.697    | Information technology - ASN.1 encoding rules: Specification of JavaScript Object Notation Encoding Rules (JER)                                                   |
 
 Old deprecated specifications
 
-| X.208 | [Withdrawn] Specification of Abstract Syntax Notation One (ASN.1)                          |
-| X.209 | [Withdrawn] Specification of Basic Encoding Rules for Abstract Syntax Notation One (ASN.1) |
+| ITU-T no | Specification                                                                              |
+| =--      | ---                                                                                        |
+| X.208    | [Withdrawn] Specification of Abstract Syntax Notation One (ASN.1)                          |
+| X.209    | [Withdrawn] Specification of Basic Encoding Rules for Abstract Syntax Notation One (ASN.1) |
 
 https://www.itu.int/rec/T-REC-X/en
 
@@ -413,9 +419,12 @@ and as can see in the `Modules` example version 8 of cap-datatypes is part of ET
 `CAP-datatypes {itu-t(0) identified-organization(4) etsi(0) mobileDomain(0) umts-network(1) modules(3) cap-datatypes(52) version8(7)}`
 
 Other root arcs
-| 0 | ITU-T           |
-| 1 | ISO             |
-| 2 | joint-iso-itu-t |
+
+| Root | Organization    |
+| =--  | ---             |
+| 0    | ITU-T           |
+| 1    | ISO             |
+| 2    | joint-iso-itu-t |
 
 The labels are optional and the reference could also be written as `{0
 4 0 0 1 3 52 7}`. Only positive integers are allowed including zero (0).
