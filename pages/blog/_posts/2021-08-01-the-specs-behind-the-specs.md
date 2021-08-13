@@ -257,6 +257,8 @@ types) using one of the following types and keywords `SEQUENCE`,
 that `CHOICE` and `SELECTION` does not [need to] have their own
 universal tags, due to those consisting of only other types.
 
+## Basic types
+
 ### BOOLEAN
 
 The `BOOLEAN` type takes values `TRUE` or `FALSE`.
@@ -489,10 +491,164 @@ alphabet.
 ### DURATION
 
 
-### SEQUENCE (OF)
-### SET (OF)
+## Structured types
+
 ### CHOICE
+
+### SEQUENCE (OF)
+
+`SEQUENCE` and `SEQUENCE OF` are used for composing multiple types.
+
+
+```
+EventTypeSMS ::= ENUMERATED {
+	sms-CollectedInfo					(1),
+	o-smsFailure						(2),
+	o-smsSubmission						(3),
+	sms-DeliveryRequested				(11),
+	t-smsFailure						(12),
+	t-smsDelivery						(13)
+}
+MonitorMode ::= ENUMERATED {
+	interrupted							(0),
+	notifyAndContinue					(1),
+	transparent							(2)
+}
+
+SMSEvent ::= SEQUENCE {
+    eventTypeSMS   [0] EventTypeSMS,
+    monitorMode    [1] MonitorMode
+}
+
+Tone ::= SEQUENCE {
+    toneID         [0] Integer4,
+    duration       [1] Integer4 OPTIONAL,
+    ...
+}
+```
+
+A value of the `SMSEvent` type have information on both `EventTypeSMS`
+and `MonitorMode`. The fixed number of fields in the `SEQUENCE` type
+are ordered.  Context-specific tagging (e.g. the `[0], [1], [2]` stuff
+in the examples), is frequently applied for the structured types, but
+one could also utilize the keywords `AUTOMATIC TAGGING` in the module
+definition.
+
+
+
+`SEQUENCE OF` on the other hand, holds an arbitrary number of fields
+of a single type.
+
+```
+FilterItem ::= CHOICE {
+    equality [0] AttributeValueAssertion,
+    substrings [1] SEQUENCE {
+    type ATTRIBUTE.&id({SupportedAttributes}),
+    strings SEQUENCE OF CHOICE {
+        initial [0] ATTRIBUTE.&Type
+        ({SupportedAttributes}{@substrings.type}),
+        any [1] ATTRIBUTE.&Type
+        ({SupportedAttributes}{@substrings.type}),
+        final [2] ATTRIBUTE.&Type
+        ({SupportedAttributes}{@substrings.type}) }},
+    greaterOrEqual [2] AttributeValueAssertion,
+    lessOrEqual [3] AttributeValueAssertion,
+    present [4] AttributeType,
+    approximateMatch [5] AttributeValueAssertion,
+    extensibleMatch [6] MatchingRuleAssertion
+}
+```
+
+In the quite complex example above we see that the type `FilterItem`
+is of type `CHOICE` and can take subtype called ``strings`. `strings`
+is of type `SEQUENCE OF CHOICE` which means it can take a list of
+zero, one or more of `initial`, `any` or `final`. The example is quite
+complex because it also uses multiple parameterized values. see
+(Automatic, Implicit, Explicit tags)[#automatic,-implicit,-explicit-tags]
+
+We find another example in the DialoguePDUs module from
+[Q.773](https://www.itu.int/rec/T-REC-Q.773-199706-I/en) where the
+AARQ is of type `SEQUENCE`, and the third field `user-infromation` is
+an `SEQUENCE OF` `EXTERNAL` type.
+
+```
+AARQ-apdu ::= [APPLICATION 0] IMPLICIT SEQUENCE {
+  protocol-version
+    [0] IMPLICIT BIT STRING {version1(0)} DEFAULT {version1},
+  application-context-name  [1]  OBJECT IDENTIFIER,
+  user-information          [30] IMPLICIT SEQUENCE OF EXTERNAL OPTIONAL
+}
+```
+
+They are quite different in how they are used, but they are encoded in
+a similar way. Some languages represent `SEQUENCE` internally as a
+`struct`, and `SEQUENCE OF` as an array, but encoded they would look
+quite similar.
+
+### SET (OF)
+
+`SET` and `SET OF` are similar to `SEQUENCE` and `SEQUENCE OF`
+respectively. The difference is that the composite types are
+unordered.
+
+From `CAP-datatypes` we find an example of a `SET OF` parameterized
+type with size constraint.
+
+```
+GenericNumbers {PARAMETERS-BOUND : bound} ::= SET SIZE(1..bound.&numOfGenericNumbers) OF GenericNumber {bound}
+```
+
+Or an example of a value from the `TCAP-Tools` module in [Q.775](https://www.itu.int/rec/T-REC-Q.775-199706-I/en)
+
+```
+
+cancelFailed ERROR ::= {
+  PARAMETER
+    SET {problem   [0]  CancelProblem,
+         invokeId  [1]  present < TCInvokeIdSet
+    }
+}
+```
+
+
 ### SELECTION
+
+The SELECTION type `<` is used when one want's to obtain one of the
+possible subtypes of a `CHOICE` definition.
+
+If we expand the previous example from the [SET](#set-(of))
+
+```
+cancel OPERATION ::= {
+  ARGUMENT  present < TCInvokeIdSet
+  ERRORS    {cancelFailed}
+}
+
+cancelFailed ERROR ::= {
+  PARAMETER
+    SET {problem   [0]  CancelProblem,
+         invokeId  [1]  present < TCInvokeIdSet
+    }
+}
+```
+
+we see that the `ARGUMENT` type and the invokeId field take the type
+from the `present` field in the `TCInvokeIdSet` type.
+
+the definition of `TCInvokeIdSet` is as follows
+
+```
+InvokeId ::= CHOICE {present  INTEGER,
+                     absent   NULL
+}
+
+TCInvokeIdSet ::= InvokeId(WITH COMPONENTS {
+                             present  (-128..127)
+                           })
+```
+
+Thus `invokeId` and `ARGUMENT` fields will take integer values which
+are between -128 and 127.
 
 ## Classes
 
@@ -510,10 +666,10 @@ alphabet.
     ...
 ```
 
-### Implicit, Explicit tags
+### Automatic, Implicit, Explicit tags
 
 
-## Deprecations of earlier ASN.1 versions
+## Deprecations of earlier ASN.1 specifications
 
 ### ANY
 
