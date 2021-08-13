@@ -573,7 +573,7 @@ is of type `CHOICE` and can take subtype called ``strings`. `strings`
 is of type `SEQUENCE OF CHOICE` which means it can take a list of
 zero, one or more of `initial`, `any` or `final`. The example is quite
 complex because it also uses multiple parameterized values. see
-(Automatic, Implicit, Explicit tags)[#automatic,-implicit,-explicit-tags]
+[Automatic, Implicit, Explicit tags](#automatic-implicit-explicit-tags)
 
 We find another example in the DialoguePDUs module from
 [Q.773](https://www.itu.int/rec/T-REC-Q.773-199706-I/en) where the
@@ -625,7 +625,7 @@ cancelFailed ERROR ::= {
 The SELECTION type `<` is used when one want's to obtain one of the
 possible subtypes of a `CHOICE` definition.
 
-If we expand the previous example from the [SET](#set-(of))
+If we expand the previous example from the [SET](#set-of)
 
 ```
 cancel OPERATION ::= {
