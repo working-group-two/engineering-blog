@@ -8,45 +8,86 @@ author: <a href="https://www.linkedin.com/in/sebastian-weddmark-olsson/">Sebasti
 ---
 
 
-This will be a two piece blog post. I'll start with ASN.1 and then go
-over to Diameter dictionary files.
+This will be a two piece blog post. I'll start with ASN.1 in this very
+long post and then sometime later go over the Diameter dictionary
+specifications.
 
 # Abstract Syntax Notation version One
 
-## The how and why (background)
+Abstract Syntax Notation version One or ASN.1 for short provides a
+high level description of messages. It abstracts the language
+implementations from the protocol design.
 
-ASN.1
+It was initially used by OSI to describe email messages but are used
+by many other applications especially within telecommunications and
+cryptography.
 
-Specification of ASN.1
+Developers might have heard of similar such abstract syntax notations
+used for interface definitions such as Google Protocol Buffers, or
+Facebook's Apache Thrift, but those languages have not managed by a
+standardization organ, so the owning corporations could (in theory) do
+breaking changes or change the license or even remove the definition
+languages overnight.
 
-| ITU-T no | Specification                                                                                           |
-| =--      | ---                                                                                                     |
-| X.680    | Information technology - Abstract Syntax Notation One (ASN.1): Specification of basic notation          |
-| X.681    | Information technology - Abstract Syntax Notation One (ASN.1): Information object specification         |
-| X.682    | Information technology - Abstract Syntax Notation One (ASN.1): Constraint specification                 |
-| X.683    | Information technology - Abstract Syntax Notation One (ASN.1): Parameterization of ASN.1 specifications |
+Anyway, back to ASN.1
 
-Specification for encoding rules
+The first ASN.1 standardization came out 1984, and there have been
+many improvements since, especially with the 1994 update which added
+extended functionality for telecommunication technologies.
 
-| ITU-T no | Specification                                                                                                                                                     |
-| =--      | ---                                                                                                                                                               |
-| X.690    | Information technology - ASN.1 encoding rules: Specification of Basic Encoding Rules (BER), Canonical Encoding Rules (CER) and Distinguished Encoding Rules (DER) |
-| X.691    | Information technology - ASN.1 encoding rules: Specification of Packed Encoding Rules (PER)                                                                       |
-| X.692    | Information technology - ASN.1 encoding rules: Specification of Encoding Control Notation (ECN)                                                                   |
-| X.693    | Information technology - ASN.1 encoding rules: XML Encoding Rules (XER)                                                                                           |
-| X.694    | Information technology - ASN.1 encoding rules: Mapping W3C XML schema definitions into ASN.1                                                                      |
-| X.695    | Information technology - ASN.1 encoding rules: Registration and application of PER encoding instructions                                                          |
-| X.696    | Information technology - ASN.1 encoding rules: Specification of Octet Encoding Rules (OER)                                                                        |
-| X.697    | Information technology - ASN.1 encoding rules: Specification of JavaScript Object Notation Encoding Rules (JER)                                                   |
+"Long live ASN.1!" - Olivier Dubuisson from the [best
+book](https://www.oss.com/asn1/resources/books-whitepapers-pubs/asn1-books.html#dubuisson)
+that I've read on the subject. (How many ASN.1 books are there you
+might wonder? Actually there were [more
+books](https://www.oss.com/asn1/resources/books-whitepapers-pubs/asn1-books.html)
+than I expected on the subject, but to make it perfectly clear: I only
+read the one.)
 
-Old deprecated specifications
+Off-topic but a fun fact I got from reading the book that I didn't
+know about is that 'little Endian' and 'big Endian', which are used to
+denote if the bitstring should be read from leftmost or rightmost bit,
+actually originates from the 1726 best-seller [Gulliver's
+travels](https://www.ling.upenn.edu/courses/Spring_2003/ling538/Lecnotes/ADfn1.htm).
 
-| ITU-T no | Specification                                                                              |
-| =--      | ---                                                                                        |
-| X.208    | [Withdrawn] Specification of Abstract Syntax Notation One (ASN.1)                          |
-| X.209    | [Withdrawn] Specification of Basic Encoding Rules for Abstract Syntax Notation One (ASN.1) |
+## The how and why
 
-https://www.itu.int/rec/T-REC-X/en
+ASN.1 builds on the following ideas:
+
+- Data structures to be transmitted should be described regardless of
+  programming language used transmitting or receiving them.
+- The notation should allow building complex data types from basic
+  types, and be able to do so recursively.
+- The notation must be formal to prevent ambiguities.
+
+That said, ASN.1 is not an abstract syntax in itself, but a language
+to describe abstract syntaxes.
+
+There are currently four main ASN.1 specifications, as well as at least one
+specification per encoding rule. I've listed them all below for easy access.
+
+
+| ITU-T no                                                                               | ASN.1 specifications                                                                                    |
+|----------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|
+| [X.680](https://www.itu.int/rec/T-REC-X/recommendation.asp?lang=en&parent=T-REC-X.680) | Information technology - Abstract Syntax Notation One (ASN.1): Specification of basic notation          |
+| [X.681](https://www.itu.int/rec/T-REC-X/recommendation.asp?lang=en&parent=T-REC-X.681) | Information technology - Abstract Syntax Notation One (ASN.1): Information object specification         |
+| [X.682](https://www.itu.int/rec/T-REC-X/recommendation.asp?lang=en&parent=T-REC-X.682) | Information technology - Abstract Syntax Notation One (ASN.1): Constraint specification                 |
+| [X.683](https://www.itu.int/rec/T-REC-X/recommendation.asp?lang=en&parent=T-REC-X.683) | Information technology - Abstract Syntax Notation One (ASN.1): Parameterization of ASN.1 specifications |
+
+| ITU-T no                                                                               | Specifications for encoding rules                                                                                                                                 |
+|----------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [X.690](https://www.itu.int/rec/T-REC-X/recommendation.asp?lang=en&parent=T-REC-X.690) | Information technology - ASN.1 encoding rules: Specification of Basic Encoding Rules (BER), Canonical Encoding Rules (CER) and Distinguished Encoding Rules (DER) |
+| [X.691](https://www.itu.int/rec/T-REC-X/recommendation.asp?lang=en&parent=T-REC-X.691) | Information technology - ASN.1 encoding rules: Specification of Packed Encoding Rules (PER)                                                                       |
+| [X.692](https://www.itu.int/rec/T-REC-X/recommendation.asp?lang=en&parent=T-REC-X.692) | Information technology - ASN.1 encoding rules: Specification of Encoding Control Notation (ECN)                                                                   |
+| [X.693](https://www.itu.int/rec/T-REC-X/recommendation.asp?lang=en&parent=T-REC-X.693) | Information technology - ASN.1 encoding rules: XML Encoding Rules (XER)                                                                                           |
+| [X.694](https://www.itu.int/rec/T-REC-X/recommendation.asp?lang=en&parent=T-REC-X.694) | Information technology - ASN.1 encoding rules: Mapping W3C XML schema definitions into ASN.1                                                                      |
+| [X.695](https://www.itu.int/rec/T-REC-X/recommendation.asp?lang=en&parent=T-REC-X.695) | Information technology - ASN.1 encoding rules: Registration and application of PER encoding instructions                                                          |
+| [X.696](https://www.itu.int/rec/T-REC-X/recommendation.asp?lang=en&parent=T-REC-X.696) | Information technology - ASN.1 encoding rules: Specification of Octet Encoding Rules (OER)                                                                        |
+| [X.697](https://www.itu.int/rec/T-REC-X/recommendation.asp?lang=en&parent=T-REC-X.697) | Information technology - ASN.1 encoding rules: Specification of JavaScript Object Notation Encoding Rules (JER)                                                   |
+
+| ITU-T no                                                                               | Deprecated ASN.1 specifications                                                            |
+|----------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------|
+| [X.208](https://www.itu.int/rec/T-REC-X/recommendation.asp?lang=en&parent=T-REC-X.208) | [Withdrawn] Specification of Abstract Syntax Notation One (ASN.1)                          |
+| [X.209](https://www.itu.int/rec/T-REC-X/recommendation.asp?lang=en&parent=T-REC-X.209) | [Withdrawn] Specification of Basic Encoding Rules for Abstract Syntax Notation One (ASN.1) |
 
 # Nitty gritty
 
@@ -421,7 +462,7 @@ and as can see in the `Modules` example version 8 of cap-datatypes is part of ET
 Other root arcs
 
 | Root | Organization    |
-| =--  | ---             |
+| ---  | ---             |
 | 0    | ITU-T           |
 | 1    | ISO             |
 | 2    | joint-iso-itu-t |
@@ -442,6 +483,10 @@ id-ac	OBJECT IDENTIFIER ::= {id-CAP ac(3)}
 ```
 
 `id-ac` is a child of the `id-CAP` object identifier.
+
+One could lookup object identifiers by visiting this amazing
+[page (oidref.com)](https://oidref.com/).
+
 
 ### EXTERNAL
 
