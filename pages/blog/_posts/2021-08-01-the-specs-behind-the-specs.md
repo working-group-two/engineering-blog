@@ -8,13 +8,16 @@ author: <a href="https://www.linkedin.com/in/sebastian-weddmark-olsson/">Sebasti
 ---
 
 
-This will be a two piece blog post. I'll start with ASN.1 in this very
-long post and then sometime later go over the Diameter dictionary
-specifications.
+This will *probably* be a two piece blog post. I'll start with ASN.1
+in this very long post and then sometime later go over the Diameter
+dictionary specifications.
+
+There might be some Erlang specific paragraphs here and there, but
+this blog post is mainly about ASN.1 as a specification.
 
 # Abstract Syntax Notation version One
 
-Abstract Syntax Notation version One or ASN.1 for short provides a
+Abstract Syntax Notation version One (ASN.1 for short) provides a
 high level description of messages. It abstracts the language
 implementations from the protocol design.
 
@@ -22,8 +25,8 @@ It was initially used by OSI to describe email messages but are used
 by many other applications especially within telecommunications and
 cryptography.
 
-Developers might have heard of similar such abstract syntax notations
-used for interface definitions such as Google Protocol Buffers, or
+You might have heard of similar such abstract syntax notations used
+for interface definitions such as Google Protocol Buffers, or
 Facebook's Apache Thrift, but those languages have not managed by a
 standardization organ, so the owning corporations could (in theory) do
 breaking changes or change the license or even remove the definition
@@ -32,7 +35,7 @@ languages overnight.
 Anyway, back to ASN.1
 
 The first ASN.1 standardization came out 1984, and there have been
-many improvements since, especially with the 1994 update which added
+many improvements since, for instance with the 1994 update which added
 extended functionality for telecommunication technologies.
 
 "Long live ASN.1!" - Olivier Dubuisson from the [best
@@ -43,10 +46,11 @@ books](https://www.oss.com/asn1/resources/books-whitepapers-pubs/asn1-books.html
 than I expected on the subject, but to make it perfectly clear: I only
 read the one.)
 
-Off-topic but a fun fact I got from reading the book that I didn't
-know about is that 'little Endian' and 'big Endian', which are used to
-denote if the bitstring should be read from leftmost or rightmost bit,
-actually originates from the 1726 best-seller [Gulliver's
+Off-topic but a bit of a fun fact I got from reading the book which I
+didn't know about before is that 'little Endian' and 'big Endian',
+which are used to denote if the bitstring should be read from leftmost
+or rightmost bit, actually originates from the 1726 best-seller
+[Gulliver's
 travels](https://www.ling.upenn.edu/courses/Spring_2003/ling538/Lecnotes/ADfn1.htm).
 
 ## The how and why
@@ -100,19 +104,21 @@ It consist of a module reference and an optional object identifier
 together with the declaration of the `DEFINITIONS` type definition.
 Note that even though the object identifier is optional, it is
 considered bad practice to leave it out. The reason for it being
-optional is for backward compatability; it was not part of the
+optional is for backward compatibility; it was not part of the
 original ASN.1 specification.
 The `DEFINITIONS` keyword usually comes together with the `BEGIN` and
 `END` keywords so multiple definitions can be done. (What else is the
 point of a module if not to make a collection...).
 
 The Erlang ASN.1 compiler requires each module to be in a separate
-file, but generally one ASN.1 file could contain many modules.
-Usual file endings are `.asn` and `.asn1`
+file, but generally one ASN.1 file could contain many modules.  Usual
+file endings are `.asn` and `.asn1`. One
+[trick](https://www.erlang.org/doc/apps/asn1/asn1_getting_started.html#multi-file-compilation)
+that can be used to circumvent this Erlang specific problem is to list
+multiple ASN.1 files in a new file ending with `set.asn`.
 
-One example of one file many modules exist in the CAP specification
+One example of a file with many modules exist in the CAP specification
 [ETSI 129.078](https://www.etsi.org/deliver/etsi_ts/129000_129099/129078/16.00.00_60/)
-
 
 The ASN.1 template for a module
 ```
@@ -121,15 +127,25 @@ DEFINITIONS ::= BEGIN
 
 END
 ```
+as seen in an example
+```
+CAP-operationcodes {itu-t(0) identified-organization(4) etsi(0) mobileDomain(0) umts-network(1) 
+modules(3) cap-operationcodes(53) version8(7)}
 
-### Imports
+DEFINITIONS ::= BEGIN
+```
+
+For information about the object identifier see the [types section](#object-identifier)
+
+### Importing from other modules
 
 Importing types, values and other structures from other modules can be
 done with the `IMPORTS` and `FROM` keywords in the beginning of the
 module body.  The `IMPORTS` keyword ends with a single semicolon `;`,
 and the different imported definitions are comma-separated.
 
-The meaning of the optional `IMPLICIT TAGS` keywords I'll handle later in this post.
+The meaning of the optional `IMPLICIT TAGS` keywords I'll handle
+[later](#automatic-implicit-explicit-tags).
 
 ```
 CAP-datatypes {itu-t(0) identified-organization(4) etsi(0) mobileDomain(0) umts-network(1) modules(3) cap-datatypes(52) version8(7)}
@@ -166,14 +182,14 @@ END -- CAP-errortypes ends here --
 
 The type definitions `Duration` and `LegID` above are imported from
 `CS1-DataTypes` module, while `MiscCallInfo` comes from
-`CS2-datatypes`.
+the `CS2-datatypes` module.
 
-### Exports
+### Exporting from a module
 
 Exports from a module are done in a similar fashion.
 
 If the `EXPORT` keyword is not used in a module, the ASN.1 compilers
-will export all values and types from the module. It's the same as
+should export all values and types from the module. It's the same as
 specifying `EXPORTS ALL;`.
 
 ```
@@ -196,18 +212,18 @@ modules(0) cs1-datatypes(2) version1(0)}
 END
 ```
 
-### Comments
+### Commenting
 
 As can be seen in the above example one can enter comments into the
 ASN.1.  Comments starts with double dash `--` and ends with either a
 newline or another `--`, whichever comes first.
 
-## Assignments
+## Assignments and naming
 
-Type references must start with an uppercase letter and may not end
-with a dash `-`. It must also only contain upper- and lower-case
-letters, digits or dashes `-`.
-The syntax for a type assignment is
+The rules specify that type references must start with an uppercase
+letter and may not end with a dash `-`. It must also only contain
+upper- and lower-case letters, digits or dashes `-`.  The syntax for a
+type assignment is
 
 ```
 TypeRef ::= TypeDefinition
@@ -262,9 +278,14 @@ minAChBillingChargingLength             INTEGER ::= 0
 
 ## Types
 
-There are some common types, each consists of a type reference and a tag number.
-The tag number is used to identify it when sending the type in the network.
-The universal tags are specified in [ITU-T X.680](https://www.itu.int/rec/T-REC-X.680/en)
+Now when we have talked a bit about naming references, and how to
+assign values and types I'll go over which built-in types exist, and
+how to create new types.
+
+There are some common types, each consists of a type reference and a
+tag number.  The tag number is used to identify it when sending the
+type in the network.  The universal tags are specified in [ITU-T
+X.680](https://www.itu.int/rec/T-REC-X.680/en)
 
 Here is a list of the most common types
 
@@ -298,11 +319,12 @@ Here is a list of the most common types
 
 
 The common types can be divided into simple and structured types.
-Structured types are the composition of multiple types (component
-types) using one of the following types and keywords `SEQUENCE`,
-`SEQUENCE OF`, `SET`, `SET OF`, `CHOICE`, and/or `SELECTION`.  Note
-that `CHOICE` and `SELECTION` does not [need to] have their own
-universal tags, due to those consisting of only other types.
+Structured types are the composition of multiple types (so called
+component types) using one of the following types and keywords
+`SEQUENCE`, `SEQUENCE OF`, `SET`, `SET OF`, `CHOICE`, and/or
+`SELECTION`.  Note that `CHOICE` and `SELECTION` does not [need to]
+have their own universal tags, due to those are consisting of other
+types.
 
 ## Basic types
 
@@ -318,6 +340,12 @@ AudibleIndicator ::= CHOICE {
 
 ```
 
+Here the value `tone` of the composit type `AudibleIndicator` is of
+type `BOOLEAN`. Note: It was one of the cleanest example I could find
+of a `BOOLEAN` in the ASN.1 files we use, because Telco often use a
+special "trick" when it comes to booleans in order to save bandwidth,
+i.e. the `NULL` type.
+
 ### NULL
 
 The `NULL` type is basically a placeholder, where the recognition of a
@@ -331,13 +359,14 @@ space as `BOOLEAN` if `TRUE`.
 
 ```
 CancelArg {PARAMETERS-BOUND : bound} ::= CHOICE {
-	invokeID							[0] InvokeID,
-	allRequests							[1] NULL,
-	callSegmentToCancel					[2]	CallSegmentToCancel {bound}
+    invokeID            [0] InvokeID,
+    allRequests         [1] NULL,
+    callSegmentToCancel [2] CallSegmentToCancel {bound}
 }
 ```
 
-in this example `allRequests` can be defined (as `NULL`) or not at all.
+in this example `allRequests` can be defined (then only the tag is
+transmitted) or not at all.
 
 ### INTEGER
 
@@ -347,13 +376,13 @@ have the additional notation that names some of the values.
 
 ```
 GSMMAPOperationLocalvalue ::= INTEGER{
-	updateLocation (2),
-	cancelLocation (3),
-	provideRoamingNumber (4),
-	noteSubscriberDataModified (5),
-	resumeCallHandling (6),
-	insertSubscriberData (7),
-	-- rest of the named integers --
+    updateLocation (2),
+    cancelLocation (3),
+    provideRoamingNumber (4),
+    noteSubscriberDataModified (5),
+    resumeCallHandling (6),
+    insertSubscriberData (7),
+    -- rest of the named integers --
 }
 ```
 
@@ -399,11 +428,11 @@ sequence.
 
 ```
 DeferredLocationEventType ::= BIT STRING {
-	msAvailable	(0) ,
-	enteringIntoArea	(1),
-	leavingFromArea	(2),
-	beingInsideArea	(3) ,
-	periodicLDR	(4)
+    msAvailable (0) ,
+    enteringIntoArea (1),
+    leavingFromArea (2),
+    beingInsideArea (3) ,
+    periodicLDR (4)
 } (SIZE (1..16))
 ```
 
@@ -417,10 +446,14 @@ are all valid value definitions of the same bit sequence where the
 first and third bits are set, and no other bits are set.  The `B` stands
 for binary representation and `H` for hexadecimal representation.
 
+The `SIZE` is a constraint on the type defining it to be of a specific
+length. This keyword comes as an extra notation for many of the
+`STRING` types below (as well as some of the other types).
+
 ### OCTET STRING
 
 Type `OCTET STRING` takes values that are an ordered sequence of zero
-or more eight-bit octets.
+or more (eight-bit) octets.
 
 ```
 MM-Code ::= OCTET STRING (SIZE (1))
@@ -430,17 +463,17 @@ In the same manor as `BIT STRING` both values below are valid
 instances of `MM-Code`:
 
 ```
-iMSI-Attach1	MM-Code ::= '00000010'B
-iMSI-Attach2	MM-Code ::= '02'H
+iMSI-Attach1 MM-Code ::= '00000010'B
+iMSI-Attach2 MM-Code ::= '02'H
 ```
 
 while
 
 ```
-notValidIMSI-Attach	MM-Code ::= '10010'B
+notValidIMSI-Attach MM-Code ::= '10010'B
 ```
 
-is not a valid value due to it not being a multiple of eight bits.
+is not considered a valid value due to it not being a multiple of eight bits.
 
 ### OBJECT IDENTIFIER
 
@@ -472,14 +505,14 @@ The labels are optional and the reference could also be written as `{0
 
 Another example comes from the CAP-object-identifiers module in ETSI 129.078.
 ```
-tc-Messages	OBJECT IDENTIFIER ::=
-	{itu-t recommendation q 773 modules(2) messages(1) version3(3)}
+tc-Messages OBJECT IDENTIFIER ::=
+    {itu-t recommendation q 773 modules(2) messages(1) version3(3)}
 
-id-CAP	OBJECT IDENTIFIER ::=
-	{itu-t(0) identified-organization(4) etsi(0) mobileDomain(0)
-	umts-network(1) cap4(22)}
+id-CAP OBJECT IDENTIFIER ::=
+    {itu-t(0) identified-organization(4) etsi(0) mobileDomain(0)
+     umts-network(1) cap4(22)}
 
-id-ac	OBJECT IDENTIFIER ::= {id-CAP ac(3)}
+id-ac OBJECT IDENTIFIER ::= {id-CAP ac(3)}
 ```
 
 `id-ac` is a child of the `id-CAP` object identifier.
@@ -494,7 +527,6 @@ One could lookup object identifiers by visiting this amazing
 ASN.1 type. It carries information on how the data should be interpreted.
 
 ```
-
 Unidirectional {OPERATION:Invokable, OPERATION:Returnable} ::= SEQUENCE {
   dialoguePortion  DialoguePortion OPTIONAL,
   components       ComponentPortion{{Invokable}, {Returnable}}
@@ -503,7 +535,8 @@ Unidirectional {OPERATION:Invokable, OPERATION:Returnable} ::= SEQUENCE {
 DialoguePortion ::= [APPLICATION 11] EXPLICIT EXTERNAL
 ```
 
-Here the value `dialoguePortion` will have tag 11 if specified.
+Here the value `dialoguePortion` will have tag 11 if specified, it is
+then up to the application to decide how to deal with the value.
 
 ### REAL
 
@@ -511,30 +544,63 @@ Values of the type `REAL` will take a triplet of numbers (m, b, e),
 where m is the mantissa (a signed number), b the base (2 or 10), and e
 the exponent (a signed number).
 
-There are also three special values it can take `PLUS-INFINITY`, 0, and `MINUS-INFINITY`.
+There are also three special values it can take `PLUS-INFINITY`, 0,
+and `MINUS-INFINITY`.
 
 ```
 theBestRealValue REAL ::= (123, 10, -2) -- 1.23
 maxValue REAL ::= PLUS-INFINITY
 ```
 
-### UTF8String
+### Strings types
 
-### NumericString
+I feel like most of the string types are the same, except that they
+all take diffrent character sets. I've already described `BIT STRING`
+and `OCTET STRING` which both operate the bit set, but there is a
+lot of others that operate over character sets.
 
-The `NumericString` takes string values which only contain 0-9 and
-spaces in them.
 
-### VisibleString
 
-Printing character sets of international ASCII, and space
+| Type                         | Tag | Character set regex/comment                                                                                        |
+|------------------------------|-----|--------------------------------------------------------------------------------------------------------------------|
+| UTF8String                   | 12  | Synonymous with UniversalString at abstract level                                                                  |
+| NumericString                | 18  | `[0-9 ]`                                                                                                           |
+| PrintableString              | 19  | `[A-Za-z0-9'()+,./:=? -]`                                                                                          |
+| TelexString (T61String)      | 20  | [ISOReg](ISOReg) reg. #6, #87,#102,#103,#106,#107, #126, #144, #150, #153, #156, #164, #165, #168 + space,delete            |
+| VideotexString               | 21  | [ISOReg](ISOReg) reg. #1,#13,#72,#73,#87,#89,#102,#108,#126,#128,#129,#144,#150,#153,#164,#165,#168 + space,delete |
+| IA5String                    | 22  | [ISOReg](ISOReg) reg. #1,#6 + space,delete                                                                         |
+| GraphicString                | 25  | [ISOReg](ISOReg) graphical sets (called 'G') + space                                                               |
+| VisibleString (ISO646String) | 26  | [ISOReg](ISOReg) reg. #6 + space                                                                                   |
+| GeneralString                | 27  | [ISOReg](ISOReg) graphical sets (called 'G'), control characters (called 'C') + space,delete                       |
+| UniversalString              | 28  | [ISO10646-1]                                                                                                       |
+| BMPString                    | 30  | Basic Multilingual Plane; subtype of UniversalString                                                               |
+|                              |     |                                                                                                                    |
 
-### IA5String
+[ISOReg](https://www.itscj-ipsj.jp/custom_contents/cms/linkfile/ISO-IR.pdf)
 
-Used to represent ISO 646 (IA5; International Alphabet 5) characters.
+
+I'll just list some examples found in our ASN.1 files:
+
+```
+AMFNameUTF8String ::= UTF8String (SIZE(1..150, ...))
+
+DirectoryString ::= CHOICE {
+    teletexString TeletexString (SIZE (1..maxSize)),
+    printableString PrintableString (SIZE (1..maxSize)),
+    universalString UniversalString (SIZE (1..maxSize)),
+    bmpString BMPString (SIZE (1..maxSize))
+--    utf8String UTF8String (SIZE (1..maxSize))
+    }
+
+DisplayInformation ::= IA5String (SIZE (minDisplayInformationLength..maxDisplayInformationLength))
+```
+
+
+`IA5String` used to represent ISO 646 (IA5; International Alphabet 5) characters.
 The entire character set contains precisely 128 characters and are
 generally equivalent to the first 128 characters of the ASCII
 alphabet.
+
 
 ### TIME
 ### UTCTime
@@ -548,6 +614,13 @@ alphabet.
 ## Structured types
 
 ### CHOICE
+
+The type `CHOICE` can take values from one of multiple types.
+
+```
+
+```
+
 
 ### SEQUENCE (OF)
 
@@ -703,6 +776,30 @@ TCInvokeIdSet ::= InvokeId(WITH COMPONENTS {
 
 Thus `invokeId` and `ARGUMENT` fields will take integer values which
 are between -128 and 127.
+
+## DEFAULT and OPTIONAL keywords
+
+One can use the `DEFAULT` keyword in order to specify the default value.
+
+```
+CollectedDigits ::= SEQUENCE {
+  minimumNbOfDigits    [0] INTEGER (1..16) DEFAULT 1,
+  maximumNbOfDigits    [1] INTEGER (1..16),
+  endOfReplyDigit      [2] OCTET STRING (SIZE (1..2)) OPTIONAL,
+  cancelDigit          [3] OCTET STRING (SIZE (1..2)) OPTIONAL,
+  startDigit           [4] OCTET STRING (SIZE (1..2)) OPTIONAL,
+  firstDigitTimeOut    [5] INTEGER (1..127) OPTIONAL,
+  interDigitTimeOut    [6] INTEGER (1..127) OPTIONAL,
+  errorTreatment       [7] ErrorTreatment DEFAULT stdErrorAndInfo,
+  interruptableAnnInd  [8] BOOLEAN DEFAULT TRUE,
+  voiceInformation     [9] BOOLEAN DEFAULT FALSE,
+  voiceBack            [10] BOOLEAN DEFAULT FALSE
+}
+```
+
+In this example we see the type `CollectedDigits` where most of the
+values are either `DEFAULT` or `OPTIONAL`. The only value that needs
+to be set is `maximumNbOfDigits`.
 
 ## Classes
 
