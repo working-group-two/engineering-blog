@@ -1329,13 +1329,11 @@ know about these.
 
 ## Final words
 
-Congratulations for making through this blog post. I feel sorry for
-you, but I hope this can help you understand the complexity and
+Congratulations for making through this blog post. You deserve a
+medal, and I hope this can help you understand the complexity and
 greatness of ASN.1.
 
 If I write a part 2 I will take you through the Diameter specs
 instead, which are way less complicated.
 
-<a class="image" href="https://xkcd.com/945/"><img src="https://imgs.xkcd.com/comics/im_sorry.png" /></a>
-
-I'm sorry, I know what I did.
+<a class="image" href="https://xkcd.com/208/"><img src="https://imgs.xkcd.com/comics/regular_expressions.png" /></a>
