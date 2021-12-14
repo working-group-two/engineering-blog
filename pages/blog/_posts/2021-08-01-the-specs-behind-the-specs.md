@@ -289,33 +289,33 @@ X.680](https://www.itu.int/rec/T-REC-X.680/en)
 
 Here is a list of the most common types
 
-| Type              | Universal Tag Number |
-|-------------------|----------------------|
-| BOOLEAN           | 1                    |
-| INTEGER           | 2                    |
-| BIT STRING        | 3                    |
-| OCTET STRING      | 4                    |
-| NULL              | 5                    |
-| OBJECT IDENTIFIER | 6                    |
-| EXTERNAL          | 8                    |
-| REAL              | 9                    |
-| ENUMERATED        | 10                   |
-| UTF8String        | 12                   |
-| TIME              | 14                   |
-| SEQUENCE (OF)     | 16                   |
-| SET (OF)          | 17                   |
-| NumericString     | 18                   |
-| IA5String         | 22                   |
-| UTCTime           | 23                   |
-| GeneralizedTime   | 24                   |
-| VisibleString     | 26                   |
-| DATE              | 31                   |
-| TIME-OF-DAY       | 32                   |
-| DATE-TIME         | 33                   |
-| DURATION          | 34                   |
-|                   |                      |
-| CHOICE            | *                    |
-| SELECTION         | *                    |
+| Type                                    | Universal Tag Number |
+|-----------------------------------------|----------------------|
+| [BOOLEAN](#boolean)                     | 1                    |
+| [INTEGER](#integer)                     | 2                    |
+| [BIT STRING](#bit-string)               | 3                    |
+| [OCTET STRING](#octet-string)           | 4                    |
+| [NULL](#null)                           | 5                    |
+| [OBJECT IDENTIFIER](#object-identifier) | 6                    |
+| [EXTERNAL](#external)                   | 8                    |
+| [REAL](#real)                           | 9                    |
+| [ENUMERATED](#enumerated)               | 10                   |
+| [UTF8String](#string-types)             | 12                   |
+| [TIME](#time-types)                     | 14                   |
+| [SEQUENCE (OF)](#sequence-of)           | 16                   |
+| [SET (OF)](#set-of)                     | 17                   |
+| [NumericString](#string-types)          | 18                   |
+| [IA5String](#string-types)              | 22                   |
+| [UTCTime](#time-types)                  | 23                   |
+| [GeneralizedTime](#time-types)          | 24                   |
+| [VisibleString](#string-types)          | 26                   |
+| [DATE](#time-types)                     | 31                   |
+| [TIME-OF-DAY](#time-types)              | 32                   |
+| [DATE-TIME](#time-types)                | 33                   |
+| [DURATION](#time-types)                 | 34                   |
+|                                         |                      |
+| [CHOICE](#choice)                       | *                    |
+| [SELECTION](#selection)                 | *                    |
 
 
 The common types can be divided into simple and structured types.
@@ -552,7 +552,7 @@ theBestRealValue REAL ::= (123, 10, -2) -- 1.23
 maxValue REAL ::= PLUS-INFINITY
 ```
 
-### Strings types
+### String types
 
 I feel like most of the string types are the same, except that they
 all take diffrent character sets. I've already described `BIT STRING`
@@ -561,25 +561,27 @@ lot of others that operate over character sets.
 
 
 
-| Type                         | Tag | Character set regex/comment                                                                                        |
-|------------------------------|-----|--------------------------------------------------------------------------------------------------------------------|
-| UTF8String                   | 12  | Synonymous with UniversalString at abstract level                                                                  |
-| NumericString                | 18  | `[0-9 ]`                                                                                                           |
-| PrintableString              | 19  | `[A-Za-z0-9'()+,./:=? -]`                                                                                          |
-| TelexString (T61String)      | 20  | [ISOReg](ISOReg) reg. #6, #87,#102,#103,#106,#107, #126, #144, #150, #153, #156, #164, #165, #168 + space,delete            |
-| VideotexString               | 21  | [ISOReg](ISOReg) reg. #1,#13,#72,#73,#87,#89,#102,#108,#126,#128,#129,#144,#150,#153,#164,#165,#168 + space,delete |
-| IA5String                    | 22  | [ISOReg](ISOReg) reg. #1,#6 + space,delete                                                                         |
-| GraphicString                | 25  | [ISOReg](ISOReg) graphical sets (called 'G') + space                                                               |
-| VisibleString (ISO646String) | 26  | [ISOReg](ISOReg) reg. #6 + space                                                                                   |
-| GeneralString                | 27  | [ISOReg](ISOReg) graphical sets (called 'G'), control characters (called 'C') + space,delete                       |
-| UniversalString              | 28  | [ISO10646-1]                                                                                                       |
-| BMPString                    | 30  | Basic Multilingual Plane; subtype of UniversalString                                                               |
-|                              |     |                                                                                                                    |
+| Type                         | Tag | Character set regex/comment                                                                                                                                                                   |
+|------------------------------|-----|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| UTF8String                   | 12  | Synonymous with UniversalString at abstract level                                                                                                                                             |
+| NumericString                | 18  | `[0-9 ]`                                                                                                                                                                                      |
+| PrintableString              | 19  | `[A-Za-z0-9'()+,./:=? -]`                                                                                                                                                                     |
+| TelexString (T61String)      | 20  | [ISOReg](https://www.itscj-ipsj.jp/custom_contents/cms/linkfile/ISO-IR.pdf) reg. #6, #87, #102, #103, #106, #107, #126, #144, #150, #153, #156, #164, #165, #168 + space,delete               |
+| VideotexString               | 21  | [ISOReg](https://www.itscj-ipsj.jp/custom_contents/cms/linkfile/ISO-IR.pdf) reg. #1, #13, #72, #73, #87, #89, #102, #108, #126, #128, #129, #144, #150, #153, #164, #165, #168 + space,delete |
+| IA5String                    | 22  | [ISOReg](https://www.itscj-ipsj.jp/custom_contents/cms/linkfile/ISO-IR.pdf) reg. #1, #6 + space,delete                                                                                        |
+| GraphicString                | 25  | [ISOReg](https://www.itscj-ipsj.jp/custom_contents/cms/linkfile/ISO-IR.pdf) graphical sets (called 'G') + space                                                                               |
+| VisibleString (ISO646String) | 26  | [ISOReg](https://www.itscj-ipsj.jp/custom_contents/cms/linkfile/ISO-IR.pdf) reg. #6 + space                                                                                                   |
+| GeneralString                | 27  | [ISOReg](https://www.itscj-ipsj.jp/custom_contents/cms/linkfile/ISO-IR.pdf) graphical sets (called 'G'), control characters (called 'C') + space,delete                                       |
+| UniversalString              | 28  | [ISO10646-1]                                                                                                                                                                                  |
+| BMPString                    | 30  | Basic Multilingual Plane; subtype of UniversalString                                                                                                                                          |
+
 
 [ISOReg](https://www.itscj-ipsj.jp/custom_contents/cms/linkfile/ISO-IR.pdf)
+is a pretty good source, it reference most of the registers but not
+all of them as far as I can see.
 
 
-I'll just list some examples found in our ASN.1 files:
+I'll list some examples of string types found in our ASN.1 files:
 
 ```
 AMFNameUTF8String ::= UTF8String (SIZE(1..150, ...))
@@ -594,33 +596,123 @@ DirectoryString ::= CHOICE {
 
 DisplayInformation ::= IA5String (SIZE (minDisplayInformationLength..maxDisplayInformationLength))
 ```
+`IA5String` used to represent ISO 646 (IA5; International Alphabet 5)
+characters.  The entire character set contains precisely 128
+characters and are generally equivalent to the first 128 characters of
+the ASCII alphabet.
 
+There are multiple formats for the values of `UniversalString`, `BMPString` and
+`UTF8String` types. One could either specify a quadruple with `{group,
+plane, row, cell}` for the character needed, or an array of defined values (strings).
 
-`IA5String` used to represent ISO 646 (IA5; International Alphabet 5) characters.
-The entire character set contains precisely 128 characters and are
-generally equivalent to the first 128 characters of the ASCII
-alphabet.
+An example from Dubuisson:
 
+```
+latinCapitalLetterA UniversalString ::= {0,0,0,65}
+greekCapitalLetterSigma UniversalString ::= {0,0,3,145}
 
-### TIME
-### UTCTime
-### GeneralizedTime
-### DATE
-### TIME-OF-DAY
-### DATE-TIME
-### DURATION
+my-string UniversalString ::= {
+    "This is a capital A: ", latinCapitalLetterA,
+    ", and a capital alpha: ", greekCapitalLetterAlpha,
+    "; try and spot the difference!"}
+```
+
+And X.680 gives us yet another example
+
+```
+IMPORTS
+  BasicLatin, greekCapitalLetterSigma
+  FROM ASN1-CHARACTER-MODULE
+    { joint-iso-itu-t asn1(1) specification(0) modules(0) iso10646(0) };
+
+ MyAlphabet ::= UniversalString (FROM (BasicLatin | greekCapitalLetterSigma))
+
+ mystring MyAlphabet ::= { "abc" , greekCapitalLetterSigma , "def" }
+```
+
+### Time types
+
+The `UTCTime` and `GeneralizedTime` types are actually specified as
+`VisibleString`.
+
+`UTCTime` format is "YYMMDD" for date followed by "hhmm" or "hhmmss"
+for time, ending with either "z", "-hhmm" or "+hhmm" for time offset.
+
+Specifying "2021-12-14 04:32 CET" in `UTCTime`
+
+```
+"2112140332Z"
+"2112140432+0100"
+```
+
+`GeneralizedTime` gives a bit more flexibility with regards to the format.
+
+It consists of a calendar date of format "YYYYMMDD", followed by
+either "hh", "hhmm", "hhmmss" and optional parts ".[0-9]+", and
+optionally ending with the coordinated universal time character "z" or
+the time offset in hours/minutes "-hhmm" or "+hhmm".
+
+These are the same, but one with higher precision and in local time.
+```
+"2021121403.54Z" -- 3.54 hours after midnight
+"20211214043227.981935+0100" -- 3 hours, 32 minutes, 27 seconds, 981935 microseconds
+```
+
+`DATE`, `TIME-OF-DAY`, `DATE-TIME` and `DURATION` was introduced after
+the third generation of ISO 8601 was released 2004.
+
+They are defined as subsets of `TIME`.
+
+```
+DATE ::= [UNIVERSAL 31] IMPLICIT TIME
+       (SETTINGS "Basic=Date Date=YMD Year=Basic")
+TIME-OF-DAY ::= [UNIVERSAL 32] IMPLICIT TIME
+       (SETTINGS "Basic=Time Time=HMS Local-or-UTC=L")
+DATE-TIME ::= [UNIVERSAL 33] IMPLICIT TIME
+       (SETTINGS "Basic=Date-Time Date=YMD Year=Basic Time=HMS Local-or-UTC=L")
+DURATION ::= [UNIVERSAL 34] IMPLICIT TIME
+       (SETTINGS "Basic=Interval Interval-type=D")
+```
+
+As I can find no real world examples from our ASN.1-files, I'm forced
+to make-up examples of these
+
+```
+date1 DATE ::= "211214"
+time1 TIME-OF-DAY ::= "043227"
+date-time1 DATE-TIME ::= "211214043227"
+duration1 DURATION ::= "P0Y29M0DT0H0M0S" -- 29 months to an accuracy of 1 second
+```
+
+Values of type `DURATION` starts with "P" followed by alot of
+different optional parts and formats.  If the time designation is used
+it should start with a "T" to keep months and minutes separate.
+
+```
+duration2 DURATION ::= "P2MT2M" -- 2 months and 2 minutes
+duration3 DURATION ::= "P29M0DT0.00M" -- 29 months with accuracy of one-hundredth of a minute
+duration4 DURATION ::= "P32W" -- 32 weeks
+```
 
 
 ## Structured types
 
 ### CHOICE
 
-The type `CHOICE` can take values from one of multiple types.
+The type `CHOICE` can take values from one of multiple types, `CHOICE`
+doesn't have it's own universal tag.
 
 ```
-
+CancelArg ::= CHOICE {
+    invokeID        [0] InvokeID,
+    allRequests     [1] NULL
+}
 ```
 
+The value of type `CancelArg` will either of an `InvokeID` type, or a
+`NULL` type.  It will be tagged `[0]` or `[1]` respectively, that is
+why `CHOICE` doesn't have it's own universal tag, as it is derived
+from ASN.1 specification.
 
 ### SEQUENCE (OF)
 
@@ -629,17 +721,17 @@ The type `CHOICE` can take values from one of multiple types.
 
 ```
 EventTypeSMS ::= ENUMERATED {
-	sms-CollectedInfo					(1),
-	o-smsFailure						(2),
-	o-smsSubmission						(3),
-	sms-DeliveryRequested				(11),
-	t-smsFailure						(12),
-	t-smsDelivery						(13)
+    sms-CollectedInfo                   (1),
+    o-smsFailure                        (2),
+    o-smsSubmission                     (3),
+    sms-DeliveryRequested               (11),
+    t-smsFailure                        (12),
+    t-smsDelivery                       (13)
 }
 MonitorMode ::= ENUMERATED {
-	interrupted							(0),
-	notifyAndContinue					(1),
-	transparent							(2)
+    interrupted                         (0),
+    notifyAndContinue                   (1),
+    transparent                         (2)
 }
 
 SMSEvent ::= SEQUENCE {
@@ -656,38 +748,35 @@ Tone ::= SEQUENCE {
 
 A value of the `SMSEvent` type have information on both `EventTypeSMS`
 and `MonitorMode`. The fixed number of fields in the `SEQUENCE` type
-are ordered.  Context-specific tagging (e.g. the `[0], [1], [2]` stuff
-in the examples), is frequently applied for the structured types, but
-one could also utilize the keywords `AUTOMATIC TAGGING` in the module
-definition.
-
-
+are ordered.  Context-specific tagging (e.g. the `[0]`, `[1]`, `[2]`
+stuff in the examples), is frequently applied for the structured
+types, but one could also utilize the keywords `AUTOMATIC TAGGING` in
+the module definition.
 
 `SEQUENCE OF` on the other hand, holds an arbitrary number of fields
 of a single type.
 
 ```
 FilterItem ::= CHOICE {
-    equality [0] AttributeValueAssertion,
-    substrings [1] SEQUENCE {
-    type ATTRIBUTE.&id({SupportedAttributes}),
-    strings SEQUENCE OF CHOICE {
-        initial [0] ATTRIBUTE.&Type
-        ({SupportedAttributes}{@substrings.type}),
-        any [1] ATTRIBUTE.&Type
-        ({SupportedAttributes}{@substrings.type}),
-        final [2] ATTRIBUTE.&Type
-        ({SupportedAttributes}{@substrings.type}) }},
-    greaterOrEqual [2] AttributeValueAssertion,
-    lessOrEqual [3] AttributeValueAssertion,
-    present [4] AttributeType,
+    equality         [0] AttributeValueAssertion,
+    substrings       [1] SEQUENCE {
+        type    ATTRIBUTE.&id({SupportedAttributes}),
+        strings SEQUENCE OF CHOICE {
+            initial [0] ATTRIBUTE.&Type({SupportedAttributes}{@substrings.type}),
+            any     [1] ATTRIBUTE.&Type({SupportedAttributes}{@substrings.type}),
+            final   [2] ATTRIBUTE.&Type({SupportedAttributes}{@substrings.type})
+        }
+    },
+    greaterOrEqual   [2] AttributeValueAssertion,
+    lessOrEqual      [3] AttributeValueAssertion,
+    present          [4] AttributeType,
     approximateMatch [5] AttributeValueAssertion,
-    extensibleMatch [6] MatchingRuleAssertion
+    extensibleMatch  [6] MatchingRuleAssertion
 }
 ```
 
 In the quite complex example above we see that the type `FilterItem`
-is of type `CHOICE` and can take subtype called ``strings`. `strings`
+is of type `CHOICE` and can take subtype called `strings`. `strings`
 is of type `SEQUENCE OF CHOICE` which means it can take a list of
 zero, one or more of `initial`, `any` or `final`. The example is quite
 complex because it also uses multiple parameterized values. see
@@ -695,7 +784,7 @@ complex because it also uses multiple parameterized values. see
 
 We find another example in the DialoguePDUs module from
 [Q.773](https://www.itu.int/rec/T-REC-Q.773-199706-I/en) where the
-AARQ is of type `SEQUENCE`, and the third field `user-infromation` is
+AARQ is of type `SEQUENCE`, and the third field `user-information` is
 an `SEQUENCE OF` `EXTERNAL` type.
 
 ```
@@ -718,14 +807,16 @@ quite similar.
 respectively. The difference is that the composite types are
 unordered.
 
-From `CAP-datatypes` we find an example of a `SET OF` parameterized
-type with size constraint.
+From `CAP-datatypes` we find an example of a `SET OF` with a
+[parameterized component](#parameterized-components) specifying a size
+constraint.
 
 ```
 GenericNumbers {PARAMETERS-BOUND : bound} ::= SET SIZE(1..bound.&numOfGenericNumbers) OF GenericNumber {bound}
 ```
 
-Or an example of a value from the `TCAP-Tools` module in [Q.775](https://www.itu.int/rec/T-REC-Q.775-199706-I/en)
+Or an example of a value from the `TCAP-Tools` module in
+[Q.775](https://www.itu.int/rec/T-REC-Q.775-199706-I/en)
 
 ```
 
@@ -736,7 +827,6 @@ cancelFailed ERROR ::= {
     }
 }
 ```
-
 
 ### SELECTION
 
@@ -803,28 +893,235 @@ to be set is `maximumNbOfDigits`.
 
 ## Classes
 
-## Special
+One can also use informal object classes in order to specify and
+define values for general types.
 
-### Parameterized components
 
 ```
-    {}
+OPERATION ::= CLASS {
+  &ArgumentType          OPTIONAL,
+  &argumentTypeOptional  BOOLEAN OPTIONAL,
+  &returnResult          BOOLEAN DEFAULT TRUE,
+  &ResultType            OPTIONAL,
+  &resultTypeOptional    BOOLEAN OPTIONAL,
+  &Errors                ERROR OPTIONAL,
+  &Linked                OPERATION OPTIONAL,
+  &synchronous           BOOLEAN DEFAULT FALSE,
+  &alwaysReturns         BOOLEAN DEFAULT TRUE,
+  &InvokePriority        Priority OPTIONAL,
+  &ResultPriority        Priority OPTIONAL,
+  &operationCode         Code UNIQUE OPTIONAL
+}
+WITH SYNTAX {
+  [ARGUMENT &ArgumentType
+   [OPTIONAL &argumentTypeOptional]]
+  [RESULT &ResultType
+   [OPTIONAL &resultTypeOptional]]
+  [RETURN RESULT &returnResult]
+  [ERRORS &Errors]
+  [LINKED &Linked]
+  [SYNCHRONOUS &synchronous]
+  [ALWAYS RESPONDS &alwaysReturns]
+  [INVOKE PRIORITY &InvokePriority]
+  [RESULT-PRIORITY &ResultPriority]
+  [CODE &operationCode]
+}
+
+provideRoutingInformation OPERATION ::= {
+  ARGUMENT  RequestArgument
+  RESULT    RoutingInformation
+  ERRORS
+    {invalidCalledNumber | subscriberNotReachable | calledBarred |
+      processingFailure}
+  LINKED    {getCallingPartyAddress}
+}
+
+getCallingPartyAddress OPERATION ::= {
+  RESULT  CallingPartyAddress
+  ERRORS  {callingPartyAddressNotAvailable | processingFailure}
+}
+
+invalidCalledNumber ERROR ::= {CODE  local:1}
+subscriberNotReachable ERROR ::= {CODE  local:2}
+
+RequestArgument ::= SEQUENCE {
+  calledNumber  IsdnNumber,
+  basicService  BasicServiceIndicator OPTIONAL
+}
+
+RoutingInformation ::= CHOICE {
+  reroutingNumber    [0] IMPLICIT IsdnNumber,
+  forwardedToNumber  [1] IMPLICIT IsdnNumber
+}
+
 ```
 
-### Extensions
+In the above `OPERATION` class, a syntax is defined for the
+class. This class and syntax can then be used to define specific
+values, for instance the `provideRoutingInformation` and
+`getCallingPartyAddress` values.
+
+We also glimse another class in the above example which I didn't
+include. Can you find it?
+
+## Parameterized components
+
+Another way to make the specs more generalized is to use parameterized
+components. We've already seen a couple of examples of such, see the
+chapter for the [NULL](#null), [EXTERNAL](#external) and [SET
+(OF)](#set-of) types.
+
+Let's look at the example from `SET OF` again.
+
+
+```
+GenericNumbers {PARAMETERS-BOUND : bound} ::= SET SIZE(1..bound.&numOfGenericNumbers) OF GenericNumber {bound}
+
+GenericNumber {PARAMETERS-BOUND : bound} ::= OCTET STRING (SIZE(
+    bound.&minGenericNumberLength .. bound.&maxGenericNumberLength))
+```
+
+`GenericNumbers` take a parameter `bound` of the type `PARAMETERS-BOUND` as input.
+
+`PARAMETERS-BOUND` is defined as a class with a lot of different
+integer values, so I've minimized the class a bit.
+
+```
+PARAMETERS-BOUND ::= CLASS {
+    --- a lot of other fields
+    &minGenericNumberLength  INTEGER,
+    &maxGenericNumberLength  INTEGER,
+    &numOfGenericNumbers     INTEGER,
+}
+
+WITH SYNTAX {
+    --- a lot of other fields
+    MINIMUM-FOR-GENERIC-NUMBER  &minGenericNumberLength
+    MAXIMUM-FOR-GENERIC-NUMBER  &maxGenericNumberLength
+    NUM-OF-GENERIC-NUMBERS      &numOfGenericNumbers
+}
+```
+
+One could then specify different values using the `PARAMETERS-BOUND`
+class to reuse the `GenericNumber` and `GenericNumbers` types.
+
+```
+cAPSpecificBoundSet PARAMETERS-BOUND ::= {
+    --- again, lots of other values
+    MINIMUM-FOR-GENERIC-NUMBER                  3
+    MAXIMUM-FOR-GENERIC-NUMBER                  11
+    NUM-OF-GENERIC-NUMBERS                      5
+}
+```
+
+If one would pass `cAPSpecificBoundSet` to a value of type
+`GenericNumbers`, it would define an instance which holds 1-5
+`GenericNumber`s of 3-11 octets.
+
+Quite powerful if you have multiple definitions which uses similar
+structure.
+
+## Extensions
+
+
+
 
 ```
     ...
 ```
 
-### Automatic, Implicit, Explicit tags
+## Automatic, Implicit, Explicit tags
 
 
-## Deprecations of earlier ASN.1 specifications
+## Deprecations and discurragements
+
+Some things have been deprecated from earlier ASN.1 specifications,
+and use of these are strongly discurraged.
 
 ### ANY
 
+First out is the `ANY` type, which could take the form of any
+value. It's like an unrestricted `CHOICE` type.
+
+```
+Invoke ::= SEQUENCE {
+    invokeID           InvokeIdType,
+    linkedID       [0] InvokeIdType OPTIONAL,
+    operationCode      MAP-OPERATION,
+    parameter          InvokeParameter OPTIONAL
+}
+InvokeParameter ::= ANY
+```
+
+Problem with this is that the ASN.1 compiler does not have a formal
+way of knowing which values are approved. The use of `ANY` also
+usually meant it was coupled with some other value, for instance the
+`operationCode` in the example above.
+
+To make this link one could have used `DEFINED BY` specifying which
+field the `ANY` type is coupled with. The drawback with this solution
+is that it still has an ambiguous meaning, and the types are of no use
+for the application designer.
+
+```
+ExtensionField ::= SEQUENCE {
+    type        INTEGER,
+    --  shall identify the value of an EXTENSION type
+    criticality ENUMERATED {
+        ignore(0),
+        abort(1)
+    } DEFAULT ignore,
+    value   [1] ANY DEFINED BY type
+}
+```
+
+Instead the concept of informal object classes and parameterized
+components were introduced.
+
 ### Macros
+
+Macros were removed because they were poorly documented and too
+general, because of this they were hard to implement and automize in
+the compilers. They follow the BNF notation.
+
+```
+OPERATION MACRO ::=
+BEGIN
+    TYPE NOTATION ::= Parameter Result Errors LinkedOperations
+    VALUE NOTATION ::= value (VALUE CHOICE { localValue INTEGER, globalValue OBJECT IDENTIFIER } )
+    Parameter ::= ArgKeyword NamedType | empty
+    ArgKeyword ::= "ARGUMENT" | "PARAMETER"
+    Result ::= "RESULT" ResultType | empty
+    Errors ::= "ERRORS" "{"ErrorNames"}" | empty
+    LinkedOperations ::= "LINKED" "{"LinkedOperationNames"}" | empty
+    ResultType ::= NamedType | empty
+    ErrorNames ::= ErrorList | empty
+    ErrorList ::= Error | ErrorList "," Error
+    Error ::= value (ERROR)
+             -- shall reference an error value
+             | type
+             -- shall reference an error type
+             -- if no error value is specified
+    LinkedOperationNames ::= OperationList | empty
+    OperationList ::= Operation | OperationList "," Operation
+    Operation ::= value (OPERATION)
+                  -- shall reference an operation value
+                  | type
+                  -- shall reference an operation type if
+                  -- no operation value is specified
+    NamedType ::= identifier type | type
+END
+```
+
+The two needed fields of the macro are `TYPE NOTATION` and `VALUE
+NOTATION`. The rest of the fields are the value sequence defining what
+the macro should insert. Quotes define the string to insert (excluding
+the actual quotes), `empty` inserts nothing. `identifier`, `value`, or
+`type` are used to infer different things. Dubuisson has (yet again) a
+good chapter on this topic.
+
+Also here one should use informal object classes and parameterized
+components instead of using macros.
 
 ## Encodings
 
