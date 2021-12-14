@@ -1289,60 +1289,53 @@ components instead of using macros.
 
 ## Encodings
 
-### BER
+There are numerous codecs when transmitting the abstract syntax, all
+with different pros and cons.
 
-Binary encoding rules
+| Short name | Long name                    |
+|------------|------------------------------|
+| BER        | Binary encoding rules        |
+| DER        | Distinguished encoding rules |
+| CER        | Canonical encoding rules     |
+| PER        | Packed encoding rules        |
+| OER        | Octet encoding rules         |
+| XER        | XML encoding rules           |
+| EXER       | Extended XML encoding rules  |
+| JER        | JSON encoding rules          |
 
-Oldest encoding rule
+BER is the oldest encoding rule for ASN.1. It uses Tag-Length-Value
+format.
 
-Tag-Length-Value format
+DER and CER are subsets of BER. CER is mostly used for X.509 digital
+certificates.
 
-### DER
-
-Distinguished Encoding Rules
-
-Subset of BER
-
-### CER
-
-Canonical Encoding Rules
-
-Subset of BER used for X.509 digital certificates
-
-### PER
-
-Packed encoding rules
-
-Most compact encoding rules, used for bandwidth conservation.
-
-Does not send the Tag of the TLV because the order in which components
+PER is the most compact format, and used for bandwith conservation. It
+does not send the Tag of the TLV because the order in which components
 of the message occur is known.  PER also does not send the Length of
 the TLV if the Value has a fixed length. Uses information from ASN.1
 message description to eliminate redundant information from the Value
 portion.
 
-### OER
+OER uses an octet oriented format, so the length of all
+Tag-Length-Values are padded to be multiples of 8 bits. This makes it
+the fastest ASN.1 encoding and decoding.
 
-Octet encoding rules
+XER and EXER are used for transmitting XML format.
 
-Octet-oriented so all Tag-Length-Values are padded so that the length
-are of multiples of 8 bits.
+JER is used when transmitting JSON.
 
-Fastest ASN.1 encoding
+There are a bunch of others as well, but I guess it usually enough to
+know about these.
 
-Favors encoding/decoding speed
+## Final words
 
-### XER, E-XER
+Congratulations for making through this blog post. I feel sorry for
+you, but I hope this can help you understand the complexity and
+greatness of ASN.1.
 
-(Extended) XML encoding rules
+If I write a part 2 I will take you through the Diameter specs
+instead, which are way less complicated.
 
-### JER
+<a class="image" href="https://xkcd.com/945/"><img src="https://imgs.xkcd.com/comics/im_sorry.png" /></a>
 
-JSON encoding rules
-
-
-<!-- # Diameter dictionary files -->
-
-<!-- <div> -->
-<!--     <img src="/img/blog/sms/forward-sm.svg" alt="You calling your mom" /> -->
-<!-- </div> -->
+I'm sorry, I know what I did.
