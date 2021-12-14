@@ -1023,15 +1023,179 @@ structure.
 
 ## Extensions
 
+Sometimes you will need to support different versions of a protocol
+(or someone else need to support different version, and you just need
+to read the types of the protocol), and maybe the new version need to
+extend some types in order to include more information. Then without
+redefining everything and copy the previous version of the type to the
+new version of the type one can use extension markers (syntax `...`).
 
-
+Take the `QosMonitoringRequest` type below as an example. In the first
+version of the protocol (NGAP if you really want to know), the
+`QoSMonitoringRequest` could take only enums `ul`, `dl`, or `both`.
+However, in a subsequent version it was extended with a new enum
+`stop`. With the extension marker `...` the v1-compilers can handle
+the first three enums, and the v2-compilers can handle all enums from
+v1 but also the `stop` enum.
 
 ```
+QosMonitoringRequest ::= ENUMERATED {
+    ul,
+    dl,
+    both,
     ...
+} -- version 1
+
+QosMonitoringRequest ::= ENUMERATED {
+    ul,
+    dl,
+    both,
+    ...,
+    stop
+} -- version 2
 ```
+
+For enums, if there is yet a newer version, say version 3 of this type
+one, you should just add the new enum under the previous enums.
+
+```
+QosMonitoringRequest ::= ENUMERATED {
+    ul,
+    dl,
+    both,
+    ...,
+    stop,
+    half
+} -- imaginary version 3
+```
+
+For `SEQUENCE`, `SET` and `CHOICE` one could either do the same, or to
+keep the versions separated, add another extension mark with the new
+fields in between. One could also add version brackets to group the
+extensions and highlight the differences.
+
+```
+Ax ::= SEQUENCE {
+    a INTEGER (250..253),
+    b BOOLEAN,
+    c CHOICE {
+        d INTEGER, -- version 1
+        ...,
+        [[
+            e BOOLEAN,
+            f IA5String
+        ]],
+        ... -- version 2
+    },
+    ..., -- version 1
+    [[
+        g NumericString (SIZE(3)),
+        h BOOLEAN OPTIONAL
+    ]],
+    ..., -- version 2
+    i BMPString OPTIONAL,  -- version 3
+    j PrintableString OPTIONAL -- version 3
+}
+
+```
+
+Only the types `ENUMERATED`, `SEQUENCE`, `SET` and `CHOICE`, as well
+as subtype constraints, and object and value sets can be extended.
 
 ## Automatic, Implicit, Explicit tags
 
+When an value is transmitted all ambiguities need to be removed. That
+is why every type needs to have an unique identifier, called a tag.
+
+The section [DEFAULT and OPTIONAL
+keywords](#default-and-optional-keywords) has a good example I will
+explain.
+
+
+```
+CollectedDigits ::= SEQUENCE {
+  minimumNbOfDigits    [0] INTEGER (1..16) DEFAULT 1,
+  maximumNbOfDigits    [1] INTEGER (1..16),
+  endOfReplyDigit      [2] OCTET STRING (SIZE (1..2)) OPTIONAL,
+  cancelDigit          [3] OCTET STRING (SIZE (1..2)) OPTIONAL,
+  startDigit           [4] OCTET STRING (SIZE (1..2)) OPTIONAL,
+  firstDigitTimeOut    [5] INTEGER (1..127) OPTIONAL,
+  interDigitTimeOut    [6] INTEGER (1..127) OPTIONAL,
+  errorTreatment       [7] ErrorTreatment DEFAULT stdErrorAndInfo,
+  interruptableAnnInd  [8] BOOLEAN DEFAULT TRUE,
+  voiceInformation     [9] BOOLEAN DEFAULT FALSE,
+  voiceBack            [10] BOOLEAN DEFAULT FALSE
+}
+```
+
+In this sequence we can see that many of the falues are optional and
+some have defaults, only the value `maximumNbOfDigits` is mandatory.
+
+When the sending side transmits a value of `CollectedDigits` type, the
+receiving side will get a sequence of the values mentioned. With
+BER-encoding each defined value will have an identifier, a length (of
+the value transmitted) and the value. This is called a
+Tag-Length-Value or TLV for short.
+
+All basic types already has an universal tag as stated in the [types
+table](#types), but the composite types does not. (If not tagged, how
+would it see the difference between `endOfReplyDigit`, `cancelDigit`
+and `startDigit` in the example above?)
+
+When explicitly tagged (as above) the both the tag `[2]` and the
+universal tag `[4]` for `OCTET STRING` would be transmitted for
+`endOfReplyDigits`. This is all fine and well, because then the types
+could be potentially extended, the `OCTET STRING` could for instance
+be replaced with a `BIT STRING` and the receiver would still
+understand the message because the universal tag `[3]` would be sent
+instead.  This will use more bandwidth because both tags would be
+sent. Instead one could specify implicit tags, meaning it will only
+transmit the bare minimum of tags which make the values unique.
+
+```
+RoutingInformation ::= CHOICE {
+  reroutingNumber    [0] IMPLICIT IsdnNumber,
+  forwardedToNumber  [1] IMPLICIT IsdnNumber
+}
+
+IsdnNumber ::= SEQUENCE {
+  typeOfAddress  TypeOfAddress,
+  digits         TelephonyString
+}
+
+TypeOfAddress ::= ENUMERATED {national(0), international(1), private(2)}
+
+TelephonyString ::=
+  IA5String
+    (FROM ("0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "*" |
+           "#"))(SIZE (1..15))
+
+```
+
+A value of `RoutingInformation` in this example will only transmit the
+tag `[0]` or `[1]` (and of course the length and value). It counts on
+that the receiving part has the same version of the ASN.1 and knows
+the abstract syntax. If it wouldn't have been `IMPLICIT`, then it
+would have sent either tags `[0]` or `[1]` followed by the tags for
+`TypeOfAddress` (ENUMERATED) `[10]`, and tags for `TelephonyString`
+(IA5String) `[4]`.
+
+One can specify `IMPLICIT` and `EXPLICIT` tagging on module basis,
+where the `DEFINITIONS` are assigned.
+
+```
+DEFINITIONS IMPLICIT TAGS ::= BEGIN
+```
+
+Instead of writing all the tags self (explicitly in both cases), one
+can instead use the keywords `AUTOMATED TAGS`.
+
+```
+DEFINITIONS AUTOMATIC TAGS ::= BEGIN
+```
+
+This will add tags to the composit types that doesn't have them
+(explicitly) set.
 
 ## Deprecations and discurragements
 
