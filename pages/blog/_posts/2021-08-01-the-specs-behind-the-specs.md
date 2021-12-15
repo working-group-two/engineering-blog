@@ -43,8 +43,8 @@ book](https://www.oss.com/asn1/resources/books-whitepapers-pubs/asn1-books.html#
 that I've read on the subject. (How many ASN.1 books are there you
 might wonder? Actually there were [more
 books](https://www.oss.com/asn1/resources/books-whitepapers-pubs/asn1-books.html)
-than I expected on the subject, but to make it perfectly clear: I only
-read the one.)
+than I expected on the subject, but to make it perfectly clear: I did
+only read the one.)
 
 Off-topic but a bit of a fun fact I got from reading the book which I
 didn't know about before is that 'little Endian' and 'big Endian',
@@ -66,32 +66,18 @@ ASN.1 builds on the following ideas:
 That said, ASN.1 is not an abstract syntax in itself, but a language
 to describe abstract syntaxes.
 
-There are currently four main ASN.1 specifications, as well as at least one
-specification per encoding rule. I've listed them all below for easy access.
+There are currently four main ASN.1 specifications (listed below), as
+well as at least one specification per encoding rule (listed in the
+[last section](#encodings)).
 
 
-| ITU-T no                                                                               | ASN.1 specifications                                                                                    |
-|----------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|
-| [X.680](https://www.itu.int/rec/T-REC-X/recommendation.asp?lang=en&parent=T-REC-X.680) | Information technology - Abstract Syntax Notation One (ASN.1): Specification of basic notation          |
-| [X.681](https://www.itu.int/rec/T-REC-X/recommendation.asp?lang=en&parent=T-REC-X.681) | Information technology - Abstract Syntax Notation One (ASN.1): Information object specification         |
-| [X.682](https://www.itu.int/rec/T-REC-X/recommendation.asp?lang=en&parent=T-REC-X.682) | Information technology - Abstract Syntax Notation One (ASN.1): Constraint specification                 |
-| [X.683](https://www.itu.int/rec/T-REC-X/recommendation.asp?lang=en&parent=T-REC-X.683) | Information technology - Abstract Syntax Notation One (ASN.1): Parameterization of ASN.1 specifications |
+| ITU-T no                                                                               | ASN.1 specifications                                                           |
+|----------------------------------------------------------------------------------------|--------------------------------------------------------------------------------|
+| [X.680](https://www.itu.int/rec/T-REC-X/recommendation.asp?lang=en&parent=T-REC-X.680) | Abstract Syntax Notation One (ASN.1): Specification of basic notation          |
+| [X.681](https://www.itu.int/rec/T-REC-X/recommendation.asp?lang=en&parent=T-REC-X.681) | Abstract Syntax Notation One (ASN.1): Information object specification         |
+| [X.682](https://www.itu.int/rec/T-REC-X/recommendation.asp?lang=en&parent=T-REC-X.682) | Abstract Syntax Notation One (ASN.1): Constraint specification                 |
+| [X.683](https://www.itu.int/rec/T-REC-X/recommendation.asp?lang=en&parent=T-REC-X.683) | Abstract Syntax Notation One (ASN.1): Parameterization of ASN.1 specifications |
 
-| ITU-T no                                                                               | Specifications for encoding rules                                                                                                                                 |
-|----------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [X.690](https://www.itu.int/rec/T-REC-X/recommendation.asp?lang=en&parent=T-REC-X.690) | Information technology - ASN.1 encoding rules: Specification of Basic Encoding Rules (BER), Canonical Encoding Rules (CER) and Distinguished Encoding Rules (DER) |
-| [X.691](https://www.itu.int/rec/T-REC-X/recommendation.asp?lang=en&parent=T-REC-X.691) | Information technology - ASN.1 encoding rules: Specification of Packed Encoding Rules (PER)                                                                       |
-| [X.692](https://www.itu.int/rec/T-REC-X/recommendation.asp?lang=en&parent=T-REC-X.692) | Information technology - ASN.1 encoding rules: Specification of Encoding Control Notation (ECN)                                                                   |
-| [X.693](https://www.itu.int/rec/T-REC-X/recommendation.asp?lang=en&parent=T-REC-X.693) | Information technology - ASN.1 encoding rules: XML Encoding Rules (XER)                                                                                           |
-| [X.694](https://www.itu.int/rec/T-REC-X/recommendation.asp?lang=en&parent=T-REC-X.694) | Information technology - ASN.1 encoding rules: Mapping W3C XML schema definitions into ASN.1                                                                      |
-| [X.695](https://www.itu.int/rec/T-REC-X/recommendation.asp?lang=en&parent=T-REC-X.695) | Information technology - ASN.1 encoding rules: Registration and application of PER encoding instructions                                                          |
-| [X.696](https://www.itu.int/rec/T-REC-X/recommendation.asp?lang=en&parent=T-REC-X.696) | Information technology - ASN.1 encoding rules: Specification of Octet Encoding Rules (OER)                                                                        |
-| [X.697](https://www.itu.int/rec/T-REC-X/recommendation.asp?lang=en&parent=T-REC-X.697) | Information technology - ASN.1 encoding rules: Specification of JavaScript Object Notation Encoding Rules (JER)                                                   |
-
-| ITU-T no                                                                               | Deprecated ASN.1 specifications                                                            |
-|----------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------|
-| [X.208](https://www.itu.int/rec/T-REC-X/recommendation.asp?lang=en&parent=T-REC-X.208) | [Withdrawn] Specification of Abstract Syntax Notation One (ASN.1)                          |
-| [X.209](https://www.itu.int/rec/T-REC-X/recommendation.asp?lang=en&parent=T-REC-X.209) | [Withdrawn] Specification of Basic Encoding Rules for Abstract Syntax Notation One (ASN.1) |
 
 # Nitty gritty
 
@@ -276,7 +262,7 @@ highLayerCompatibilityLength            INTEGER ::= 2
 minAChBillingChargingLength             INTEGER ::= 0
 ```
 
-## Types
+# Types
 
 Now when we have talked a bit about naming references, and how to
 assign values and types I'll go over which built-in types exist, and
@@ -867,6 +853,8 @@ TCInvokeIdSet ::= InvokeId(WITH COMPONENTS {
 Thus `invokeId` and `ARGUMENT` fields will take integer values which
 are between -128 and 127.
 
+# Other concepts
+
 ## DEFAULT and OPTIONAL keywords
 
 One can use the `DEFAULT` keyword in order to specify the default value.
@@ -1287,7 +1275,7 @@ good chapter on this topic.
 Also here one should use informal object classes and parameterized
 components instead of using macros.
 
-## Encodings
+# Encodings
 
 There are numerous codecs when transmitting the abstract syntax, all
 with different pros and cons.
@@ -1302,6 +1290,7 @@ with different pros and cons.
 | XER        | XML encoding rules           |
 | EXER       | Extended XML encoding rules  |
 | JER        | JSON encoding rules          |
+
 
 BER is the oldest encoding rule for ASN.1. It uses Tag-Length-Value
 format.
@@ -1324,16 +1313,33 @@ XER and EXER are used for transmitting XML format.
 
 JER is used when transmitting JSON.
 
-There are a bunch of others as well, but I guess it usually enough to
-know about these.
+There are probably a bunch of others as well, but these are the ones
+that have a specification.
 
-## Final words
+| ITU-T number                                                                           | Name                                                                                                                                     |
+|----------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|
+| [X.690](https://www.itu.int/rec/T-REC-X/recommendation.asp?lang=en&parent=T-REC-X.690) | ASN.1 encoding rules: Specification of Basic Encoding Rules (BER), Canonical Encoding Rules (CER) and Distinguished Encoding Rules (DER) |
+| [X.691](https://www.itu.int/rec/T-REC-X/recommendation.asp?lang=en&parent=T-REC-X.691) | ASN.1 encoding rules: Specification of Packed Encoding Rules (PER)                                                                       |
+| [X.692](https://www.itu.int/rec/T-REC-X/recommendation.asp?lang=en&parent=T-REC-X.692) | ASN.1 encoding rules: Specification of Encoding Control Notation (ECN)                                                                   |
+| [X.693](https://www.itu.int/rec/T-REC-X/recommendation.asp?lang=en&parent=T-REC-X.693) | ASN.1 encoding rules: XML Encoding Rules (XER)                                                                                           |
+| [X.694](https://www.itu.int/rec/T-REC-X/recommendation.asp?lang=en&parent=T-REC-X.694) | ASN.1 encoding rules: Mapping W3C XML schema definitions into ASN.1                                                                      |
+| [X.695](https://www.itu.int/rec/T-REC-X/recommendation.asp?lang=en&parent=T-REC-X.695) | ASN.1 encoding rules: Registration and application of PER encoding instructions                                                          |
+| [X.696](https://www.itu.int/rec/T-REC-X/recommendation.asp?lang=en&parent=T-REC-X.696) | ASN.1 encoding rules: Specification of Octet Encoding Rules (OER)                                                                        |
+| [X.697](https://www.itu.int/rec/T-REC-X/recommendation.asp?lang=en&parent=T-REC-X.697) | ASN.1 encoding rules: Specification of JavaScript Object Notation Encoding Rules (JER)                                                   |
+
+# Final words
 
 Congratulations for making through this blog post. You deserve a
 medal, and I hope this can help you understand the complexity and
 greatness of ASN.1.
 
+We have gone through the **basics** of ASN.1, there are still a lot of
+things to be uncovered. You now understand the most common basic and
+structured types, as well as the main differences between the
+different encodings.
+
 If I write a part 2 I will take you through the Diameter specs
-instead, which are way less complicated.
+instead, which are much more straighforward.
 
 <a class="image" href="https://xkcd.com/208/"><img src="https://imgs.xkcd.com/comics/regular_expressions.png" /></a>
+
