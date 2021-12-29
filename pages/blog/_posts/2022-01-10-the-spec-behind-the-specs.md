@@ -2,7 +2,7 @@
 layout: blogpost
 permalink: /the-specs-behind-the-specs-part-1
 title: The specs behind the specs part 1
-date: 2021-08-01
+date: 2022-01-10
 tags: telco ASN.1 dia
 author: <a href="https://www.linkedin.com/in/sebastian-weddmark-olsson/">Sebastian Weddmark Olsson</a>, Telco newb
 ---
@@ -10,7 +10,8 @@ author: <a href="https://www.linkedin.com/in/sebastian-weddmark-olsson/">Sebasti
 
 This will *probably* be a two piece blog post. I'll start with ASN.1
 in this very long post and then sometime later go over the Diameter
-dictionary specifications.
+dictionary specifications. It has taken me about half a year to finish
+up this part.
 
 There might be some Erlang specific paragraphs here and there, but
 this blog post is mainly about ASN.1 as a specification.
