@@ -21,16 +21,17 @@ Abstract Syntax Notation version One (ASN.1 for short) provides a
 high level description of messages. It abstracts the language
 implementations from the protocol design.
 
-It was initially used by OSI to describe email messages but are used
-by many other applications especially within telecommunications and
-cryptography.
+It was initially used by [Open Systems Interconnection
+(OSI)](https://en.wikipedia.org/wiki/Open_Systems_Interconnection) to
+describe email messages but is used by many other applications
+especially within telecommunications and cryptography.
 
 You might have heard of similar such abstract syntax notations used
 for interface definitions such as Google Protocol Buffers, or
-Facebook's Apache Thrift, but those languages have not managed by a
-standardization organ, so the owning corporations could (in theory) do
-breaking changes or change the license or even remove the definition
-languages overnight.
+Facebook's Apache Thrift, but those languages have not been managed by
+a standardization organization, so the owning corporations could (in
+theory) make breaking changes or change the license or even remove the
+language definitions overnight.
 
 Anyway, back to ASN.1
 
@@ -1116,7 +1117,7 @@ CollectedDigits ::= SEQUENCE {
 }
 ```
 
-In this sequence we can see that many of the falues are optional and
+In this sequence we can see that many of the values are optional and
 some have defaults, only the value `maximumNbOfDigits` is mandatory.
 
 When the sending side transmits a value of `CollectedDigits` type, the
@@ -1233,7 +1234,7 @@ components were introduced.
 ### Macros
 
 Macros were removed because they were poorly documented and too
-general, because of this they were hard to implement and automize in
+general. Because of this they were hard to implement and automate in
 the compilers. They follow the BNF notation.
 
 ```
