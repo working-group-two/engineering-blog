@@ -16,9 +16,9 @@ up this part.
 There might be some Erlang specific paragraphs here and there, but
 this blog post is mainly about ASN.1 as a specification.
 
-# Abstract Syntax Notation version One
+# Abstract Syntax Notation One
 
-Abstract Syntax Notation version One (ASN.1 for short) provides a
+Abstract Syntax Notation One (ASN.1 for short) provides a
 high level description of messages. It abstracts the language
 implementations from the protocol design.
 
@@ -106,7 +106,7 @@ that can be used to circumvent this Erlang specific problem is to list
 multiple ASN.1 files in a new file ending with `set.asn`.
 
 One example of a file with many modules exist in the CAP specification
-[ETSI 129.078](https://www.etsi.org/deliver/etsi_ts/129000_129099/129078/16.00.00_60/)
+[3GPP TS 29.078](https://portal.3gpp.org/desktopmodules/Specifications/SpecificationDetails.aspx?specificationId=1597)
 
 The ASN.1 template for a module
 ```
@@ -209,7 +209,7 @@ newline or another `--`, whichever comes first.
 ## Assignments and naming
 
 The rules specify that type references must start with an uppercase
-letter and may not end with a dash `-`. It must also only contain
+letter and may not end with a dash `-`. It may also only contain
 upper- and lower-case letters, digits or dashes `-`.  The syntax for a
 type assignment is
 
@@ -447,7 +447,7 @@ or more (eight-bit) octets.
 MM-Code ::= OCTET STRING (SIZE (1))
 ```
 
-In the same manor as `BIT STRING` both values below are valid
+In the same manner as `BIT STRING` both values below are valid
 instances of `MM-Code`:
 
 ```
@@ -584,7 +584,7 @@ DirectoryString ::= CHOICE {
 
 DisplayInformation ::= IA5String (SIZE (minDisplayInformationLength..maxDisplayInformationLength))
 ```
-`IA5String` used to represent ISO 646 (IA5; International Alphabet 5)
+`IA5String` is used to represent ISO 646 (IA5; International Alphabet 5)
 characters.  The entire character set contains precisely 128
 characters and are generally equivalent to the first 128 characters of
 the ASCII alphabet.
@@ -1187,10 +1187,10 @@ DEFINITIONS AUTOMATIC TAGS ::= BEGIN
 This will add tags to the composit types that doesn't have them
 (explicitly) set.
 
-## Deprecations and discurragements
+## Deprecations and discouragements
 
 Some things have been deprecated from earlier ASN.1 specifications,
-and use of these are strongly discurraged.
+and use of these are strongly discouraged.
 
 ### ANY
 
