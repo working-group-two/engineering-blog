@@ -322,9 +322,9 @@ The `BOOLEAN` type takes values `TRUE` or `FALSE`.
 
 ```
 AudibleIndicator ::= CHOICE {
-	tone								BOOLEAN,
-	burstList							[1] BurstList
-	}
+    tone       BOOLEAN,
+    burstList  [1] BurstList
+}
 
 ```
 
@@ -341,9 +341,10 @@ value is important but the actual value is not.
 
 In 3GPP it is similar to `BOOLEAN` in the sense that a defined `NULL`
 value is considered `TRUE` and if the value is missing it is
-considered `FALSE`. The reason for this is that it will take no space
-when sent over the network if it is `FALSE` and the same amount of
-space as `BOOLEAN` if `TRUE`.
+considered `FALSE`. The reason for this is that when sent over the
+network with [BER encoding](#encodings), it will take no space because
+`BOOLEAN` is always of length 1 but `NULL` is always length 0,
+i.e. `NULL` does not contain a value.
 
 ```
 CancelArg {PARAMETERS-BOUND : bound} ::= CHOICE {
@@ -1284,7 +1285,7 @@ with different pros and cons.
 
 | Short name | Long name                    |
 |------------|------------------------------|
-| BER        | Binary encoding rules        |
+| BER        | Basic encoding rules         |
 | DER        | Distinguished encoding rules |
 | CER        | Canonical encoding rules     |
 | PER        | Packed encoding rules        |
@@ -1295,25 +1296,41 @@ with different pros and cons.
 
 
 BER is the oldest encoding rule for ASN.1. It uses Tag-Length-Value
-format.
+format where all tags, lengths and values are multiples of
+octets. Because this was the first encoding rule it was named `basic`
+to indicate that there might be more standardized encoding rules in
+the future.
 
-DER and CER are subsets of BER. CER is mostly used for X.509 digital
-certificates.
+DER and CER are subsets of BER, which was added for developers of
+X.400 email and X.500 directory applications. It provides means to
+make sure bit strings are not altered during transfer. The main
+difference between DER and CER is that DER uses a definite-length
+format and CER an indefinite-length format, so CER is best used for
+applications that transfer a big amount of data.
 
 PER is the most compact format, and used for bandwith conservation. It
 does not send the Tag of the TLV because the order in which components
 of the message occur is known.  PER also does not send the Length of
-the TLV if the Value has a fixed length. Uses information from ASN.1
-message description to eliminate redundant information from the Value
-portion.
+the TLV if the Value has a fixed length. It uses information from
+ASN.1 message description to eliminate redundant information from the
+Value portion. It can either be aligned to multiple of octets by
+padding each value with '0's, or unaligned (U-PER/Unaligned PER) which
+is more compact but take more time to decode.
 
-OER uses an octet oriented format, so the length of all
-Tag-Length-Values are padded to be multiples of 8 bits. This makes it
-the fastest ASN.1 encoding and decoding.
+OER was adapted from PER and uses an octet oriented format, so the
+length of all specified Tags, Lengths, and Values are padded to be
+multiples of 8 bits octets as in BER. OER is usually faster than both
+BER and PER with regards to encoding and decoding.
 
-XER and EXER are used for transmitting XML format.
+XER, CXER and EXER are used for transmitting XML format. CXER is used
+for transmitting data canonically, e.g. used by security applications.
+EXER or Extended XER is used when "stylish" features is wanted, and
+adds possibility to extend the encoder for instance when wanting to
+insert processing instructions or comments into the XML.
 
-JER is used when transmitting JSON.
+JER is used when transmitting JSON in accordance to the format
+specified in
+[ECMA-404](https://www.ecma-international.org/publications-and-standards/standards/ecma-404/).
 
 There are probably a bunch of others as well, but these are the ones
 that have a specification.
