@@ -7,14 +7,41 @@ tags: telco ASN.1 dia
 author: <a href="https://www.linkedin.com/in/sebastian-weddmark-olsson/">Sebastian Weddmark Olsson</a>, Telco newb
 ---
 
+"Abstract Syntax Notation One (ASN.1) is a standard interface
+description language for defining data structures that can be
+serialized and deserialized in a cross-platform way." -
+[Wikipedia](https://en.wikipedia.org/wiki/ASN.1)
 
-This will *probably* be a two piece blog post. I'll start with ASN.1
-in this very long post and then sometime later go over the Diameter
-dictionary specifications. It has taken me about half a year to finish
-up this part.
+# Introduction
+
+Today you'll read about a specific language used to describe many of
+the messages in the telecom specifications. It will be a deep-dive
+into technical parts, so I imagine you could just use the blog post
+when you want to look up different parts without fully reading it.
+
+In Working Group Two we use this language for some specific telco
+messages (such as SIGTRAN layers TCAP/MAP/CAP, as well as S1AP, N1AP
+and probably some more). They are defined directly in some of the
+telecom specifications, and because of that it is possible to use them
+to send messages between different telecom cores.
+
+This will *probably* be a two piece blog post as there is another
+interface describing language which is not ASN.1, and this is already
+a very long post. The other specification is used in Diameter
+dictionaries, but I'll spare those for now. It has already taken me
+about half a year to finish up this article.
 
 There might be some Erlang specific paragraphs here and there, but
-this blog post is mainly about ASN.1 as a specification.
+this blog post is mainly about ASN.1 as a specification, which can be
+used in any language supporting it.  For Erlang specifics I came
+across [this blog
+post](https://medium.com/erlang-battleground/erlang-asn-1-abstract-syntax-notation-one-deeb8300f479)
+written by Viacheslav Katsuba, and because it is build into Erlang by
+default I recommend the
+[APIs](https://www.erlang.org/doc/apps/asn1/asn1_getting_started.html)
+as well.
+
+**DISCLAIMER: SEVERE HEADACHE MIGHT FOLLOW.**
 
 # Abstract Syntax Notation One
 
@@ -1133,16 +1160,6 @@ table](#types), but the composite types does not. (If not tagged, how
 would it see the difference between `endOfReplyDigit`, `cancelDigit`
 and `startDigit` in the example above?)
 
-When explicitly tagged (as above) the both the tag `[2]` and the
-universal tag `[4]` for `OCTET STRING` would be transmitted for
-`endOfReplyDigits`. This is all fine and well, because then the types
-could be potentially extended, the `OCTET STRING` could for instance
-be replaced with a `BIT STRING` and the receiver would still
-understand the message because the universal tag `[3]` would be sent
-instead.  This will use more bandwidth because both tags would be
-sent. Instead one could specify implicit tags, meaning it will only
-transmit the bare minimum of tags which make the values unique.
-
 ```
 RoutingInformation ::= CHOICE {
   reroutingNumber    [0] IMPLICIT IsdnNumber,
@@ -1163,13 +1180,13 @@ TelephonyString ::=
 
 ```
 
-A value of `RoutingInformation` in this example will only transmit the
-tag `[0]` or `[1]` (and of course the length and value). It counts on
-that the receiving part has the same version of the ASN.1 and knows
-the abstract syntax. If it wouldn't have been `IMPLICIT`, then it
-would have sent either tags `[0]` or `[1]` followed by the tags for
-`TypeOfAddress` (ENUMERATED) `[10]`, and tags for `TelephonyString`
-(IA5String) `[4]`.
+A value of `RoutingInformation` in this example will with BER encoding
+only transmit the tag `[0]` or `[1]` (and of course the length and
+value). It counts on that the receiving part has the same version of
+the ASN.1 and knows the abstract syntax. If it wouldn't have been
+`IMPLICIT`, then it would have sent either tags `[0]` or `[1]`
+followed by the tags for `TypeOfAddress` (ENUMERATED) `[10]`, and tags
+for `TelephonyString` (IA5String) `[4]`.
 
 One can specify `IMPLICIT` and `EXPLICIT` tagging on module basis,
 where the `DEFINITIONS` are assigned.
