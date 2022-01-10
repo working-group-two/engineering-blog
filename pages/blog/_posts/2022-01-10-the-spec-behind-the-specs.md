@@ -4,7 +4,7 @@ permalink: /the-specs-behind-the-specs-part-1
 title: The specs behind the specs part 1
 date: 2022-01-10
 tags: telco ASN.1 dia
-author: <a href="https://www.linkedin.com/in/sebastian-weddmark-olsson/">Sebastian Weddmark Olsson</a>, Telco newb
+author: <a href="https://www.linkedin.com/in/sebastian-weddmark-olsson/">Sebastian Weddmark Olsson</a> - Telco newb
 ---
 
 "Abstract Syntax Notation One (ASN.1) is a standard interface
@@ -520,6 +520,7 @@ The labels are optional and the reference could also be written as `{0
 4 0 0 1 3 52 7}`. Only positive integers are allowed including zero (0).
 
 Another example comes from the CAP-object-identifiers module in ETSI 129.078.
+
 ```
 tc-Messages OBJECT IDENTIFIER ::=
     {itu-t recommendation q 773 modules(2) messages(1) version3(3)}
@@ -536,20 +537,19 @@ id-ac OBJECT IDENTIFIER ::= {id-CAP ac(3)}
 One could lookup object identifiers by visiting this amazing
 [page (oidref.com)](https://oidref.com/).
 
-
 ### EXTERNAL
 
 `EXTERNAL` represents a value that does not need to be specified as a
 ASN.1 type. It carries information on how the data should be interpreted.
 
-```
+{% raw %}```
 Unidirectional {OPERATION:Invokable, OPERATION:Returnable} ::= SEQUENCE {
   dialoguePortion  DialoguePortion OPTIONAL,
   components       ComponentPortion{{Invokable}, {Returnable}}
 }
 
 DialoguePortion ::= [APPLICATION 11] EXPLICIT EXTERNAL
-```
+```{% endraw %}
 
 Here the value `dialoguePortion` will have tag 11 if specified, it is
 then up to the application to decide how to deal with the value.
