@@ -2,7 +2,7 @@
 layout: blogpost
 permalink: /the-specs-behind-the-specs-part-1
 title: The specs behind the specs part 1
-date: 2022-01-10
+date: 2022-01-11
 tags: telco ASN.1 dia
 author: <a href="https://www.linkedin.com/in/sebastian-weddmark-olsson/">Sebastian Weddmark Olsson</a> - Telco newb
 ---
