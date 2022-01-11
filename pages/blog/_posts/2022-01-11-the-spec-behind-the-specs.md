@@ -163,7 +163,7 @@ and the different imported definitions are comma-separated.
 The meaning of the optional `IMPLICIT TAGS` keywords I'll handle
 [later](#automatic-implicit-explicit-tags).
 
-```
+```asn.1
 CAP-datatypes {itu-t(0) identified-organization(4) etsi(0) mobileDomain(0) umts-network(1) modules(3) cap-datatypes(52) version8(7)}
 DEFINITIONS IMPLICIT TAGS ::= BEGIN
 
@@ -208,7 +208,7 @@ If the `EXPORT` keyword is not used in a module, the ASN.1 compilers
 should export all values and types from the module. It's the same as
 specifying `EXPORTS ALL;`.
 
-```
+```asn.1
 CAP-GPRS-ReferenceNumber {itu-t(0) identified-organization(4) etsi(0) mobileDomain(0)
 umts-network(1) modules(3) cap-dialogueInformation(111) version8(7)}
 
@@ -241,12 +241,12 @@ letter and may not end with a dash `-`. It may also only contain
 upper- and lower-case letters, digits or dashes `-`.  The syntax for a
 type assignment is
 
-```
+```asn.1
 TypeRef ::= TypeDefinition
 ```
 
 For instance
-```
+```asn.1
 InvokeIdType ::= INTEGER (-128..127)
 
 CancelArg ::= CHOICE {
@@ -279,12 +279,12 @@ value references must start with a lower-case letter, and also carry
 the values type.
 
 Syntax
-```
+```asn.1
 valueRef Type ::= value
 ```
 
 For example
-```
+```asn.1
 leg1 LegType ::= '01'H
 leg2 LegType ::= '02'H
 
@@ -348,7 +348,7 @@ types.
 
 The `BOOLEAN` type takes values `TRUE` or `FALSE`.
 
-```
+```asn.1
 AudibleIndicator ::= CHOICE {
     tone       BOOLEAN,
     burstList  [1] BurstList
@@ -374,7 +374,7 @@ network with [BER encoding](#encodings), it will take no space because
 `BOOLEAN` is always of length 1 but `NULL` is always length 0,
 i.e. `NULL` does not contain a value.
 
-```
+```asn.1
 CancelArg {PARAMETERS-BOUND : bound} ::= CHOICE {
     invokeID            [0] InvokeID,
     allRequests         [1] NULL,
@@ -391,7 +391,7 @@ transmitted) or not at all.
 have the additional notation that names some of the values.
 
 
-```
+```asn.1
 GSMMAPOperationLocalvalue ::= INTEGER{
     updateLocation (2),
     cancelLocation (3),
@@ -403,7 +403,7 @@ GSMMAPOperationLocalvalue ::= INTEGER{
 }
 ```
 
-```
+```asn.1
 localvalue1 GSMMAPOperationLocalvalue ::= updateLocation
 localvalue2 GSMMAPOperationLocalvalue ::= 2
 localvalue3 GSMMAPOperationLocalvalue ::= -55413459
@@ -416,7 +416,7 @@ are all valid `GSMMAPOperationLocalvalue`s.
 specific values only.
 
 
-```
+```asn.1
 RequestedInformationType ::= ENUMERATED {
     callAttemptElapsedTime(0),
     callStopTime(1),
@@ -426,14 +426,14 @@ RequestedInformationType ::= ENUMERATED {
 }
 ```
 
-```
+```asn.1
 reqInfoType1 RequestedInformationType ::= callAttemptElapsedTime
 reqInfoType2 RequestedInformationType ::= 0
 ```
 
 are both valid values of `RequestInformationType`, while this is not:
 
-```
+```asn.1
 notValidReqInfoType RequestedInformationType ::= 4
 ```
 
@@ -443,7 +443,7 @@ notValidReqInfoType RequestedInformationType ::= 4
 can also take an additional notation that name certain bits in the bit
 sequence.
 
-```
+```asn.1
 DeferredLocationEventType ::= BIT STRING {
     msAvailable (0) ,
     enteringIntoArea (1),
@@ -453,7 +453,7 @@ DeferredLocationEventType ::= BIT STRING {
 } (SIZE (1..16))
 ```
 
-```
+```asn.1
 eventType1 DeferredLocationEventType ::= (msAvailable, beingInsideArea)
 eventType2 DeferredLocationEventType ::= '10010'B
 eventType3 DeferredLocationEventType ::= '12'H
@@ -472,21 +472,21 @@ length. This keyword comes as an extra notation for many of the
 Type `OCTET STRING` takes values that are an ordered sequence of zero
 or more (eight-bit) octets.
 
-```
+```asn.1
 MM-Code ::= OCTET STRING (SIZE (1))
 ```
 
 In the same manner as `BIT STRING` both values below are valid
 instances of `MM-Code`:
 
-```
+```asn.1
 iMSI-Attach1 MM-Code ::= '00000010'B
 iMSI-Attach2 MM-Code ::= '02'H
 ```
 
 while
 
-```
+```asn.1
 notValidIMSI-Attach MM-Code ::= '10010'B
 ```
 
@@ -522,7 +522,7 @@ The labels are optional and the reference could also be written as `{0
 
 Another example comes from the CAP-object-identifiers module in ETSI 129.078.
 
-```
+```asn.1
 tc-Messages OBJECT IDENTIFIER ::=
     {itu-t recommendation q 773 modules(2) messages(1) version3(3)}
 
@@ -543,7 +543,7 @@ One could lookup object identifiers by visiting this amazing
 `EXTERNAL` represents a value that does not need to be specified as a
 ASN.1 type. It carries information on how the data should be interpreted.
 
-{% raw %}```
+{% raw %}```asn.1
 Unidirectional {OPERATION:Invokable, OPERATION:Returnable} ::= SEQUENCE {
   dialoguePortion  DialoguePortion OPTIONAL,
   components       ComponentPortion{{Invokable}, {Returnable}}
@@ -564,7 +564,7 @@ the exponent (a signed number).
 There are also three special values it can take `PLUS-INFINITY`, 0,
 and `MINUS-INFINITY`.
 
-```
+```asn.1
 theBestRealValue REAL ::= (123, 10, -2) -- 1.23
 maxValue REAL ::= PLUS-INFINITY
 ```
@@ -600,7 +600,7 @@ all of them as far as I can see.
 
 I'll list some examples of string types found in our ASN.1 files:
 
-```
+```asn.1
 AMFNameUTF8String ::= UTF8String (SIZE(1..150, ...))
 
 DirectoryString ::= CHOICE {
@@ -624,7 +624,7 @@ plane, row, cell}` for the character needed, or an array of defined values (stri
 
 An example from Dubuisson:
 
-```
+```asn.1
 latinCapitalLetterA UniversalString ::= {0,0,0,65}
 greekCapitalLetterSigma UniversalString ::= {0,0,3,145}
 
@@ -636,7 +636,7 @@ my-string UniversalString ::= {
 
 And X.680 gives us yet another example
 
-```
+```asn.1
 IMPORTS
   BasicLatin, greekCapitalLetterSigma
   FROM ASN1-CHARACTER-MODULE
@@ -657,7 +657,7 @@ for time, ending with either "z", "-hhmm" or "+hhmm" for time offset.
 
 Specifying "2021-12-14 04:32 CET" in `UTCTime`
 
-```
+```asn.1
 "2112140332Z"
 "2112140432+0100"
 ```
@@ -670,7 +670,7 @@ optionally ending with the coordinated universal time character "z" or
 the time offset in hours/minutes "-hhmm" or "+hhmm".
 
 These are the same, but one with higher precision and in local time.
-```
+```asn.1
 "2021121403.54Z" -- 3.54 hours after midnight
 "20211214043227.981935+0100" -- 3 hours, 32 minutes, 27 seconds, 981935 microseconds
 ```
@@ -680,7 +680,7 @@ the third generation of ISO 8601 was released 2004.
 
 They are defined as subsets of `TIME`.
 
-```
+```asn.1
 DATE ::= [UNIVERSAL 31] IMPLICIT TIME
        (SETTINGS "Basic=Date Date=YMD Year=Basic")
 TIME-OF-DAY ::= [UNIVERSAL 32] IMPLICIT TIME
@@ -694,7 +694,7 @@ DURATION ::= [UNIVERSAL 34] IMPLICIT TIME
 As I can find no real world examples from our ASN.1-files, I'm forced
 to make-up examples of these
 
-```
+```asn.1
 date1 DATE ::= "211214"
 time1 TIME-OF-DAY ::= "043227"
 date-time1 DATE-TIME ::= "211214043227"
@@ -705,7 +705,7 @@ Values of type `DURATION` starts with "P" followed by alot of
 different optional parts and formats.  If the time designation is used
 it should start with a "T" to keep months and minutes separate.
 
-```
+```asn.1
 duration2 DURATION ::= "P2MT2M" -- 2 months and 2 minutes
 duration3 DURATION ::= "P29M0DT0.00M" -- 29 months with accuracy of one-hundredth of a minute
 duration4 DURATION ::= "P32W" -- 32 weeks
@@ -719,7 +719,7 @@ duration4 DURATION ::= "P32W" -- 32 weeks
 The type `CHOICE` can take values from one of multiple types, `CHOICE`
 doesn't have it's own universal tag.
 
-```
+```asn.1
 CancelArg ::= CHOICE {
     invokeID        [0] InvokeID,
     allRequests     [1] NULL
@@ -735,8 +735,7 @@ from ASN.1 specification.
 
 `SEQUENCE` and `SEQUENCE OF` are used for composing multiple types.
 
-
-```
+```asn.1
 EventTypeSMS ::= ENUMERATED {
     sms-CollectedInfo                   (1),
     o-smsFailure                        (2),
@@ -773,7 +772,7 @@ the module definition.
 `SEQUENCE OF` on the other hand, holds an arbitrary number of fields
 of a single type.
 
-```
+```asn.1
 FilterItem ::= CHOICE {
     equality         [0] AttributeValueAssertion,
     substrings       [1] SEQUENCE {
@@ -804,7 +803,7 @@ We find another example in the DialoguePDUs module from
 AARQ is of type `SEQUENCE`, and the third field `user-information` is
 an `SEQUENCE OF` `EXTERNAL` type.
 
-```
+```asn.1
 AARQ-apdu ::= [APPLICATION 0] IMPLICIT SEQUENCE {
   protocol-version
     [0] IMPLICIT BIT STRING {version1(0)} DEFAULT {version1},
@@ -828,15 +827,14 @@ From `CAP-datatypes` we find an example of a `SET OF` with a
 [parameterized component](#parameterized-components) specifying a size
 constraint.
 
-```
+```asn.1
 GenericNumbers {PARAMETERS-BOUND : bound} ::= SET SIZE(1..bound.&numOfGenericNumbers) OF GenericNumber {bound}
 ```
 
 Or an example of a value from the `TCAP-Tools` module in
 [Q.775](https://www.itu.int/rec/T-REC-Q.775-199706-I/en)
 
-```
-
+```asn.1
 cancelFailed ERROR ::= {
   PARAMETER
     SET {problem   [0]  CancelProblem,
@@ -852,7 +850,7 @@ possible subtypes of a `CHOICE` definition.
 
 If we expand the previous example from the [SET](#set-of)
 
-```
+```asn.1
 cancel OPERATION ::= {
   ARGUMENT  present < TCInvokeIdSet
   ERRORS    {cancelFailed}
@@ -871,7 +869,7 @@ from the `present` field in the `TCInvokeIdSet` type.
 
 the definition of `TCInvokeIdSet` is as follows
 
-```
+```asn.1
 InvokeId ::= CHOICE {present  INTEGER,
                      absent   NULL
 }
@@ -890,7 +888,7 @@ are between -128 and 127.
 
 One can use the `DEFAULT` keyword in order to specify the default value.
 
-```
+```asn.1
 CollectedDigits ::= SEQUENCE {
   minimumNbOfDigits    [0] INTEGER (1..16) DEFAULT 1,
   maximumNbOfDigits    [1] INTEGER (1..16),
@@ -915,8 +913,7 @@ to be set is `maximumNbOfDigits`.
 One can also use informal object classes in order to specify and
 define values for general types.
 
-
-```
+```asn.1
 OPERATION ::= CLASS {
   &ArgumentType          OPTIONAL,
   &argumentTypeOptional  BOOLEAN OPTIONAL,
@@ -992,8 +989,7 @@ chapter for the [NULL](#null), [EXTERNAL](#external) and [SET
 
 Let's look at the example from `SET OF` again.
 
-
-```
+```asn.1
 GenericNumbers {PARAMETERS-BOUND : bound} ::= SET SIZE(1..bound.&numOfGenericNumbers) OF GenericNumber {bound}
 
 GenericNumber {PARAMETERS-BOUND : bound} ::= OCTET STRING (SIZE(
@@ -1005,7 +1001,7 @@ GenericNumber {PARAMETERS-BOUND : bound} ::= OCTET STRING (SIZE(
 `PARAMETERS-BOUND` is defined as a class with a lot of different
 integer values, so I've minimized the class a bit.
 
-```
+```asn.1
 PARAMETERS-BOUND ::= CLASS {
     --- a lot of other fields
     &minGenericNumberLength  INTEGER,
@@ -1024,7 +1020,7 @@ WITH SYNTAX {
 One could then specify different values using the `PARAMETERS-BOUND`
 class to reuse the `GenericNumber` and `GenericNumbers` types.
 
-```
+```asn.1
 cAPSpecificBoundSet PARAMETERS-BOUND ::= {
     --- again, lots of other values
     MINIMUM-FOR-GENERIC-NUMBER                  3
@@ -1057,7 +1053,7 @@ However, in a subsequent version it was extended with a new enum
 the first three enums, and the v2-compilers can handle all enums from
 v1 but also the `stop` enum.
 
-```
+```asn.1
 QosMonitoringRequest ::= ENUMERATED {
     ul,
     dl,
@@ -1077,7 +1073,7 @@ QosMonitoringRequest ::= ENUMERATED {
 For enums, if there is yet a newer version, say version 3 of this type
 one, you should just add the new enum under the previous enums.
 
-```
+```asn.1
 QosMonitoringRequest ::= ENUMERATED {
     ul,
     dl,
@@ -1093,7 +1089,7 @@ keep the versions separated, add another extension mark with the new
 fields in between. One could also add version brackets to group the
 extensions and highlight the differences.
 
-```
+```asn.1
 Ax ::= SEQUENCE {
     a INTEGER (250..253),
     b BOOLEAN,
@@ -1131,7 +1127,7 @@ keywords](#default-and-optional-keywords) has a good example I will
 explain.
 
 
-```
+```asn.1
 CollectedDigits ::= SEQUENCE {
   minimumNbOfDigits    [0] INTEGER (1..16) DEFAULT 1,
   maximumNbOfDigits    [1] INTEGER (1..16),
@@ -1161,7 +1157,7 @@ table](#types), but the composite types does not. (If not tagged, how
 would it see the difference between `endOfReplyDigit`, `cancelDigit`
 and `startDigit` in the example above?)
 
-```
+```asn.1
 RoutingInformation ::= CHOICE {
   reroutingNumber    [0] IMPLICIT IsdnNumber,
   forwardedToNumber  [1] IMPLICIT IsdnNumber
@@ -1192,14 +1188,14 @@ for `TelephonyString` (IA5String) `[4]`.
 One can specify `IMPLICIT` and `EXPLICIT` tagging on module basis,
 where the `DEFINITIONS` are assigned.
 
-```
+```asn.1
 DEFINITIONS IMPLICIT TAGS ::= BEGIN
 ```
 
 Instead of writing all the tags self (explicitly in both cases), one
 can instead use the keywords `AUTOMATED TAGS`.
 
-```
+```asn.1
 DEFINITIONS AUTOMATIC TAGS ::= BEGIN
 ```
 
@@ -1216,7 +1212,7 @@ and use of these are strongly discouraged.
 First out is the `ANY` type, which could take the form of any
 value. It's like an unrestricted `CHOICE` type.
 
-```
+```asn.1
 Invoke ::= SEQUENCE {
     invokeID           InvokeIdType,
     linkedID       [0] InvokeIdType OPTIONAL,
@@ -1236,7 +1232,7 @@ field the `ANY` type is coupled with. The drawback with this solution
 is that it still has an ambiguous meaning, and the types are of no use
 for the application designer.
 
-```
+```asn.1
 ExtensionField ::= SEQUENCE {
     type        INTEGER,
     --  shall identify the value of an EXTENSION type
@@ -1257,7 +1253,7 @@ Macros were removed because they were poorly documented and too
 general. Because of this they were hard to implement and automate in
 the compilers. They follow the BNF notation.
 
-```
+```asn.1
 OPERATION MACRO ::=
 BEGIN
     TYPE NOTATION ::= Parameter Result Errors LinkedOperations
