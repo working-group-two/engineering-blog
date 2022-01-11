@@ -136,14 +136,15 @@ One example of a file with many modules exist in the CAP specification
 [3GPP TS 29.078](https://portal.3gpp.org/desktopmodules/Specifications/SpecificationDetails.aspx?specificationId=1597)
 
 The ASN.1 template for a module
-```
+```asn.1
 ModuleReference ObjectIdentifier
 DEFINITIONS ::= BEGIN
 
 END
 ```
 as seen in an example
-```
+
+```asn.1
 CAP-operationcodes {itu-t(0) identified-organization(4) etsi(0) mobileDomain(0) umts-network(1) 
 modules(3) cap-operationcodes(53) version8(7)}
 
