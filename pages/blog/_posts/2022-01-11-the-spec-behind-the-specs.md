@@ -1374,5 +1374,6 @@ different encodings.
 If I write a part 2 I will take you through the Diameter specs
 instead, which are much more straighforward.
 
+Image from [xkcd](xkcd.com) describing how I feel with ASN.1:
 <a class="image" href="https://xkcd.com/208/"><img src="https://imgs.xkcd.com/comics/regular_expressions.png" /></a>
 
