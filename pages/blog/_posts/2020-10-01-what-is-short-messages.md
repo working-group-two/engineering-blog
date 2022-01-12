@@ -275,7 +275,7 @@ signalling will be based on *HTTP2*/*JSON* ontop of *TCP*. The *SMSF*
 will still need to support both *MAP* and *Diameter*.
 
 
-Relevant [xkcd](xkcd.com):
+Relevant [xkcd](https://xkcd.com):
 <div class="left-right-row">
     <table class="text">
         <tr>
