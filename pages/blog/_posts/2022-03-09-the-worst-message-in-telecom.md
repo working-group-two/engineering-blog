@@ -2,7 +2,7 @@
 layout: blogpost
 permalink: /the-worst-message-in-telecom
 title: The worst message in telecom (you won't believe)
-date: 2022-01-16
+date: 2022-03-09
 tags: telco diameter credit-control charging
 author: <a href="https://www.linkedin.com/in/sebastian-weddmark-olsson/">Sebastian Weddmark Olsson</a> - Telco newb
 ---

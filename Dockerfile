@@ -13,4 +13,4 @@ RUN bundler install
 
 EXPOSE 4000
 
-ENTRYPOINT ["bundler", "exec", "jekyll", "serve", "--watch", "--config", "_config.yml", "-H", "0.0.0.0", "-P", "4000"]
+ENTRYPOINT ["bundler", "exec", "jekyll", "serve", "--watch", "--config", "_config.yml", "-H", "0.0.0.0", "-P", "4000", "--future"]
