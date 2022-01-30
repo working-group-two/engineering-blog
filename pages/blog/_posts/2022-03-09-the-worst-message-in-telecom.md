@@ -40,6 +40,7 @@ user's session. For instance the SMSGW node is collecting CDRs for
 SMS-usage,
 %% TODO fill in the blanks ^ mention some more nodes that collect CDRs.
 
+
 The other way is to have a online charging setup, where all the telco
 nodes need to ask for credits at the same time the user is using the
 services. The system that gets the request is called an Online
@@ -108,8 +109,103 @@ requests and it's pricing.
 Disclaimer: These are all my personal thoughts, and there are probably
 reasons the interface and messages are designed the way they are.
 
-The problem is with the implementation of the Ro interface where the
-Credit-Control messages are on. Basically there are two standards for
-Ro, the base Diameter Ro defined by RFC4006, as well as the 3GPP
-(Telco) Ro defined by TS 32.299.
+The problem is with the implementation of the network interfaces. An
+interface in is the definition of how nodes talk to each other. It
+usually specifies which nodes are involved, and which messages are
+allowed.  For instance the Ro interface contains
+Credit-Control messages for SMS, MMS and voice calls, between the
+HSS/IMS and the OCS.  There is also the Gy interface between the
+Packet Gateway (PGW) and the OCS, which also carries Credit-Control
+messages for data usage.
+
+![Different OCS interfaces](img/blog/the-worst-message-in-telecom/ocs-interfaces.svg)
+
+
+| Interface | Description                               | Nodes involved  |
+|-----------|-------------------------------------------|-----------------|
+| Ro        | Online charging for SMS, MMS, voice calls | IMS (CSCF), OCS |
+| Gy        | Online charging for data services         | PGW (PCEF), OCS |
+
+Then we have the specifications for the Credit-Control message.
+Basically there are two specifications, the base Diameter defined in
+RFC4006, which can be used for any Diameter application which would
+want to have charging functions, as well as the 3GPP (Telco) defined
+in TS 32.299, for how charging should work in telecommunication
+applications like specified above.
+
+These two specifications are similar but different, let us compare the
+`Request` messages in Diameter dictionary form:
+
+
+<style type="text/css">
+.ccr-avps tr:nth-child(12),
+.ccr-avps tr:nth-child(13),
+.ccr-avps tr:nth-child(17),
+.ccr-avps tr:nth-child(19),
+.ccr-avps tr:nth-child(21),
+.ccr-avps tr:nth-child(22),
+.ccr-avps tr:nth-child(25),
+.ccr-avps tr:nth-child(28),
+.ccr-avps tr:nth-child(31) { color: red; }
+</style>
+
+
+<div class="ccr-avps" markdown=1>
+
+
+| Base Credit-Control-Request           | Telco Credit-Control-Request          |
+|---------------------------------------|---------------------------------------|
+| < Diameter Header: 272, REQ, PXY >    | < Diameter Header: 272, REQ, PXY >    |
+| < Session-Id >                        | < Session-Id >                        |
+| { Origin-Host }                       | { Origin-Host }                       |
+| { Origin-Realm }                      | { Origin-Realm }                      |
+| { Destination-Realm }                 | { Destination-Realm }                 |
+| { Auth-Application-Id }               | { Auth-Application-Id }               |
+| { Service-Context-Id }                | { Service-Context-Id }                |
+| { CC-Request-Type }                   | { CC-Request-Type }                   |
+| { CC-Request-Number }                 | { CC-Request-Number }                 |
+| [ Destination-Host ]                  | [ Destination-Host ]                  |
+| [ User-Name ]                         | [ User-Name ]                         |
+| [ CC-Sub-Session-Id ]                 |                                       |
+| [ Acct-Multi-Session-Id ]             |                                       |
+| [ Origin-State-Id ]                   | [ Origin-State-Id ]                   |
+| [ Event-Timestamp ]                   | [ Event-Timestamp ]                   |
+| *[ Subscription-Id ]                  | *[ Subscription-Id ]                  |
+| [ Service-Identifier ]                |                                       |
+| [ Termination-Cause ]                 | [ Termination-Cause ]                 |
+| [ Requested-Service-Unit ]            |                                       |
+| [ Requested-Action ]                  | [ Requested-Action ]                  |
+|                                       | [ AoC-Request-Type ]                  |
+| *[ Used-Service-Unit ]                |                                       |
+| [ Multiple-Services-Indicator ]       | [ Multiple-Services-Indicator ]       |
+| *[ Multiple-Services-Credit-Control ] | *[ Multiple-Services-Credit-Control ] |
+| *[ Service-Parameter-Info ]           |                                       |
+| [ CC-Correlation-Id ]                 | [ CC-Correlation-Id ]                 |
+| [ User-Equipment-Info ]               | [ User-Equipment-Info ]               |
+|                                       | [ OC-Supported-Features ]             |
+| *[ Proxy-Info ]                       | *[ Proxy-Info ]                       |
+| *[ Route-Record ]                     | *[ Route-Record ]                     |
+|                                       | [ Service-Information ]               |
+| *[ AVP ]                              | *[ AVP ]                              |
+
+</div>
+
+A quick guide on how to read this:
+
+- `< AVP >` indicates a mandatory Attribute-Value Pair with a fixed position in the message.
+- `{ AVP }` indicates a mandatory Attribute-Value Pair in the message.
+- `[ AVP ]` indicates an optional Attribute-Value Pair in the message.
+- `*AVP` indicates that multiple occurrences of an Attribute-Value Pair is possible.
+
+Each [Attribute-Value
+Pairs](https://en.wikipedia.org/wiki/Name%E2%80%93value_pair) contain
+information over each field in the message, and they can contain deep
+structure with multiple (grouped) fields.
+
+The last field named `*[ AVP ]` actually means that the message can
+contain other arbitrary AVPs that are not mentioned, defined by the sender.
+
+To comment on this, the messages are similar, but not compatible
+with each other.
+
 

@@ -4,6 +4,13 @@ The source code for engineering.wgtwo.com
 ## Setup
 https://help.github.com/articles/setting-up-your-github-pages-site-locally-with-jekyll/
 
+or use the docker container:
+```
+$ docker build -t wg2blog .
+$ docker run -v $PWD:/srv/jekyll -p 4000:4000 wg2blog
+```
+
+
 ## Writing using Markdown
 https://help.github.com/articles/basic-writing-and-formatting-syntax/
 
